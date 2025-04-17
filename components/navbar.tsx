@@ -45,19 +45,23 @@ export default function Navbar() {
 
   const handleNavClick = (href: string) => {
     setMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (typeof window !== "undefined") {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
   const handleOpenResume = () => {
-    const link = document.createElement("a");
-    link.href = "/resume.pdf";
-    link.target = "_blank";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    if (typeof window !== "undefined") {
+      const link = document.createElement("a");
+      link.href = "/resume.pdf";
+      link.target = "_blank";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   };
 
   return (
