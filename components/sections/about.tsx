@@ -1,15 +1,19 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { FileText, Github, Linkedin } from "lucide-react";
+import { FileText, Github, Linkedin, RefreshCw } from "lucide-react";
 import Link from "next/link";
 
 export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.3 });
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const imageSources = ["/pfp.png", "/pfp2.jpg"];
+  const fallbackImage = "/placeholder.svg";
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -29,6 +33,10 @@ export default function About() {
       opacity: 1,
       transition: { duration: 0.5 },
     },
+  };
+
+  const handleToggleImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageSources.length);
   };
 
   const handleOpenResume = () => {
@@ -122,20 +130,28 @@ export default function About() {
             variants={itemVariants}
             className="order-1 md:order-2 flex justify-center"
           >
-            <div className="relative w-64 h-64 md:w-80 md:h-80">
+            <div className="relative w-64 h-64 md:w-80 md:h-80 group">
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 to-purple-900 blur-2xl opacity-20 animate-pulse" />
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-purple-500/30 p-1">
-                <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-purple-900/80 to-black">
+                <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-purple-900/80 to-black relative">
                   <Image
-                    src="/placeholder.svg"
-                    alt="Profile"
+                    key={currentImageIndex}
+                    src={imageSources[currentImageIndex]}
+                    alt="Profile Picture"
                     fill
                     className="object-cover"
+                    priority
+                    onError={(e) => {
+                      if (e.currentTarget.src !== fallbackImage) {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = fallbackImage;
+                      }
+                    }}
                   />
+                  <div className="absolute inset-0 bg-purple-600/30 mix-blend-multiply rounded-full pointer-events-none"></div>
                 </div>
               </div>
 
-              {/* Orbiting circle decoration */}
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{
@@ -146,6 +162,20 @@ export default function About() {
                 className="absolute inset-0 w-full h-full rounded-full border-2 border-dashed border-purple-500/20"
                 style={{ transformOrigin: "center center" }}
               />
+
+              <button
+                onClick={handleToggleImage}
+                className="absolute bottom-2 right-2 z-10 p-2 border border-purple-700 text-purple-300 hover:bg-purple-900/30 rounded-full hover:text-purple-100 transition-all duration-200 opacity-0 group-hover:opacity-100 focus:opacity-100 outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-black"
+                aria-label="Toggle profile picture"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    handleToggleImage();
+                  }
+                }}
+              >
+                <RefreshCw className="h-4 w-4" />
+              </button>
             </div>
           </motion.div>
         </motion.div>

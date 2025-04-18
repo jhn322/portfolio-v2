@@ -38,7 +38,7 @@ export default function Hero() {
           className="mb-6"
         >
           <h2 className="text-xl md:text-2xl font-light text-purple-300">
-            Hello, I&apos;m
+            Hello, my name is
           </h2>
         </motion.div>
 
