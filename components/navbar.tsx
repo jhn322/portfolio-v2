@@ -71,10 +71,10 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
         className={cn(
-          "fixed top-6 inset-x-0 z-50 w-[90%] max-w-3xl mx-auto px-4 py-3 rounded-full backdrop-blur-md transition-all duration-300",
+          "fixed top-6 inset-x-0 z-50 w-[90%] max-w-3xl mx-auto px-4 py-3 rounded-full backdrop-blur-md border transition-all duration-300",
           isScrolled
-            ? "bg-black/70 shadow-[0_0_15px_rgba(139,92,246,0.3)] border border-purple-900/50"
-            : "bg-black/30"
+            ? "bg-black/70 border-purple-900/50 shadow-[0_0_20px_rgba(139,92,246,0.35)]"
+            : "bg-black/30 border-transparent"
         )}
       >
         <div className="flex items-center justify-between w-full gap-4">
@@ -116,7 +116,7 @@ export default function Navbar() {
             variant="outline"
             size="sm"
             onClick={handleOpenResume}
-            className="hidden md:flex items-center gap-2 text-purple-400 border-purple-400/50 hover:text-white hover:bg-purple-400/10 hover:border-purple-400 rounded-full"
+            className="hidden md:flex items-center gap-2 rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30 hover:text-white"
           >
             Resume
           </Button>

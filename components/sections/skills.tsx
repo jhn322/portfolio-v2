@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Player } from "@lottiefiles/react-lottie-player";
 import { Code, Layers, Database, Palette, Cpu, LineChart } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -141,16 +140,6 @@ export default function Skills() {
         </motion.div>
 
         <div className="relative">
-          {/* Animated background element */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full max-h-96 pointer-events-none">
-            <Player
-              autoplay
-              loop
-              src="https://lottie.host/embed/e0bfb0f7-c7c5-4dc7-a9c9-a983a9f1d86b/WKBlkIJEAa.json"
-              style={{ width: "100%", height: "100%", opacity: 0.1 }}
-            />
-          </div>
-
           <div
             ref={ref}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10"

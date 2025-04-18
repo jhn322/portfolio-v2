@@ -3,7 +3,33 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const { name, email, subject, message } = await req.json();
+    console.log("Contact form submission received");
+
+    // Parse JSON body
+    let body;
+    try {
+      body = await req.json();
+      console.log("Request body parsed:", body);
+    } catch (e) {
+      console.error("Failed to parse request body:", e);
+      return NextResponse.json(
+        { error: "Invalid request body" },
+        { status: 400 }
+      );
+    }
+
+    const { name, email, subject, message } = body;
+
+    // Validate required fields
+    if (!name || !email || !message) {
+      console.error("Missing required fields:", { name, email, message });
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 }
+      );
+    }
+
+    console.log("Preparing email content");
 
     // Create HTML content for user confirmation
     const userHtmlContent = `
@@ -92,6 +118,8 @@ export async function POST(req: Request) {
       Copyright ${new Date().getFullYear()} | Johan Söderlund
     `;
 
+    console.log("Sending confirmation email to user:", email);
+
     // Send confirmation email to user
     const userEmailResult = await sendEmail({
       to: email,
@@ -100,21 +128,36 @@ export async function POST(req: Request) {
       textContent: userPlainTextContent,
     });
 
+    console.log("User email result:", userEmailResult);
+    console.log("Sending notification email to admin");
+
+    // Define admin email
+    const adminEmail =
+      process.env.EMAIL_RECIPIENT || "johan.soderlund96@gmail.com";
+    console.log("Admin email address:", adminEmail);
+
     // Send notification email to admin
     const adminEmailResult = await sendEmail({
-      to: "johan.soderlund96@gmail.com",
+      to: adminEmail,
       subject: `New Contact Form Submission: ${subject}`,
       htmlContent: adminHtmlContent,
       textContent: adminPlainTextContent,
     });
+
+    console.log("Admin email result:", adminEmailResult);
 
     if (!userEmailResult.success || !adminEmailResult.success) {
       console.error("Email sending failed:", {
         userEmail: userEmailResult,
         adminEmail: adminEmailResult,
       });
+
       return NextResponse.json(
-        { error: "Failed to send email" },
+        {
+          error: "Failed to send email",
+          userEmailError: userEmailResult.message,
+          adminEmailError: adminEmailResult.message,
+        },
         { status: 500 }
       );
     }
@@ -122,8 +165,18 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Email sending error:", error);
+
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
+    const errorStack = error instanceof Error ? error.stack : undefined;
+
+    console.error("Error details:", {
+      message: errorMessage,
+      stack: errorStack,
+    });
+
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: "Internal server error", details: errorMessage },
       { status: 500 }
     );
   }

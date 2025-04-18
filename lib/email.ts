@@ -46,8 +46,25 @@ export async function sendEmail({
     const apiKey = process.env.BREVO_API_KEY || "";
     console.log(
       "Using Brevo API Key (first 10 chars):",
-      apiKey.substring(0, 10) + "..."
+      apiKey.substring(0, 10) + "...",
+      "Length:",
+      apiKey.length
     );
+
+    // Check if the API key is valid
+    if (!apiKey || apiKey.length < 20) {
+      console.error("Invalid Brevo API key - too short or missing");
+      return { success: false, error: "Invalid API key configuration" };
+    }
+
+    // Log all environment variables for debugging (without showing full API key)
+    console.log("Environment variables check:", {
+      hasBrevoApiKey: !!process.env.BREVO_API_KEY,
+      brevoApiKeyLength: (process.env.BREVO_API_KEY || "").length,
+      emailRecipient: process.env.EMAIL_RECIPIENT,
+      emailSender: process.env.EMAIL_SENDER,
+      emailSenderName: process.env.EMAIL_SENDER_NAME,
+    });
 
     const client = initBrevoClient();
 
@@ -70,13 +87,29 @@ export async function sendEmail({
       sender: sendSmtpEmail.sender,
       subject: sendSmtpEmail.subject,
       templateId: sendSmtpEmail.templateId,
+      hasHtmlContent: !!htmlContent,
+      htmlContentLength: htmlContent.length,
     });
 
+    console.log("Attempting to send email...");
     const response = await client.sendTransacEmail(sendSmtpEmail);
     console.log("Email sent successfully:", response);
     return { success: true, data: response };
   } catch (error) {
     console.error("Detailed email error:", error);
-    return { success: false, error: error };
+
+    // More detailed error logging
+    if (error instanceof Error) {
+      console.error("Error name:", error.name);
+      console.error("Error message:", error.message);
+      console.error("Error stack:", error.stack);
+    }
+
+    return {
+      success: false,
+      error: error,
+      message:
+        error instanceof Error ? error.message : "Unknown error occurred",
+    };
   }
 }
