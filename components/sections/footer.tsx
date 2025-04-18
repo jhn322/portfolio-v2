@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin } from "lucide-react";
@@ -26,20 +27,27 @@ export default function Footer() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex gap-3"
             >
-              <Button
-                variant="outline"
-                size="icon"
-                className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30 hover:text-white"
+              <Link href="https://github.com/jhn322" target="_blank">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30 hover:text-white"
+                >
+                  <Github className="h-4 w-4" />
+                </Button>
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/johan-s%C3%B6derlund-31b9862b7/"
+                target="_blank"
               >
-                <Github className="h-4 w-4" />
-              </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30 hover:text-white"
-              >
-                <Linkedin className="h-4 w-4" />
-              </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30 hover:text-white"
+                >
+                  <Linkedin className="h-4 w-4" />
+                </Button>
+              </Link>
             </motion.div>
           </div>
 
