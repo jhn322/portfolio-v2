@@ -24,12 +24,24 @@ export default function Home() {
         <Hero />
       </ClientOnly>
 
-      <About />
-      <Skills />
-      <FeaturedProjects />
-      <OtherProjects />
-      <ContactDrawer />
-      <Footer />
+      <ClientOnly fallback={<div className="py-20 md:py-32">Loading...</div>}>
+        <About />
+      </ClientOnly>
+      <ClientOnly fallback={<div className="py-20 md:py-32">Loading...</div>}>
+        <Skills />
+      </ClientOnly>
+      <ClientOnly fallback={<div className="py-20 md:py-32">Loading...</div>}>
+        <FeaturedProjects />
+      </ClientOnly>
+      <ClientOnly fallback={<div className="py-20 md:py-32">Loading...</div>}>
+        <OtherProjects />
+      </ClientOnly>
+      <ClientOnly>
+        <ContactDrawer />
+      </ClientOnly>
+      <ClientOnly fallback={<div className="py-10"></div>}>
+        <Footer />
+      </ClientOnly>
     </main>
   );
 }
