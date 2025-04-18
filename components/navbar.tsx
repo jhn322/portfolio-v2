@@ -73,7 +73,7 @@ export default function Navbar() {
         className={cn(
           "fixed top-6 inset-x-0 z-50 w-[90%] max-w-3xl mx-auto px-4 py-3 rounded-full backdrop-blur-md border transition-all duration-300",
           isScrolled
-            ? "bg-black/70 border-purple-900/50 shadow-[0_0_20px_rgba(139,92,246,0.35)]"
+            ? "bg-black/70 border-purple-900/50 shadow-[0_0_15px_rgba(139,92,246,0.15)]"
             : "bg-black/30 border-transparent"
         )}
       >

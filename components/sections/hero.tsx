@@ -74,7 +74,7 @@ export default function Hero() {
         >
           <Button
             onClick={scrollToFeaturedProjects}
-            className="rounded-full px-8 py-6 bg-gradient-to-r from-purple-900 to-purple-700 hover:from-purple-800 hover:to-purple-600 text-white shadow-[0_0_15px_rgba(139,92,246,0.5)]"
+            className="rounded-full px-8 py-6 bg-gradient-to-r from-purple-900 to-purple-700 hover:from-purple-800 hover:to-purple-600 text-white shadow-[0_0_15px_rgba(139,92,246,0.25)]"
           >
             Explore My Projects
           </Button>
