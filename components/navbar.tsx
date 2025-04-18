@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Github, Linkedin } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const navItems = [
   { name: "Home", href: "#hero" },
@@ -177,6 +178,36 @@ export default function Navbar() {
               >
                 Resume
               </Button>
+            </motion.div>
+
+            {/* Social links */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: (navItems.length + 1) * 0.1 }}
+              className="mt-6 flex gap-4"
+            >
+              <Link href="https://github.com/jhn322" target="_blank">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30 hover:text-white"
+                >
+                  <Github className="h-5 w-5" />
+                </Button>
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/johan-s%C3%B6derlund-31b9862b7/"
+                target="_blank"
+              >
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30 hover:text-white"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </Button>
+              </Link>
             </motion.div>
           </div>
         </motion.div>
