@@ -131,7 +131,7 @@ export default function OtherProjects() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-1 text-xs text-purple-300"
+                      className="px-3 py-1 text-sm  text-purple-300 rounded-full border border-purple-700/30"
                     >
                       {tag}
                     </span>
