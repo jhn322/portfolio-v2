@@ -16,22 +16,48 @@ export default function Contact() {
   const isInView = useInView(ref, { once: false, amount: 0.3 });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setFormError(null);
 
-    // Simulate form submission
-    setTimeout(() => {
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    const data = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      subject: formData.get("subject") as string,
+      message: formData.get("message") as string,
+    };
+
+    try {
+      const response = await fetch("/api/send-confirmation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to send message");
+      }
+
       setIsSubmitting(false);
       setIsSubmitted(true);
       formRef.current?.reset();
-
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    }, 1500);
+    } catch (error) {
+      setIsSubmitting(false);
+      setFormError(
+        error instanceof Error ? error.message : "An error occurred"
+      );
+      console.error("Contact form error:", error);
+    }
   };
 
   const contactInfo = [
@@ -142,11 +168,17 @@ export default function Contact() {
                   onSubmit={handleSubmit}
                   className="space-y-6"
                 >
+                  {formError && (
+                    <div className="bg-red-900/30 border border-red-500/30 rounded-2xl p-4 text-center">
+                      <p className="text-red-300">{formError}</p>
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Name</Label>
                       <Input
                         id="name"
+                        name="name"
                         placeholder="Your name"
                         required
                         className="bg-black/50 border-purple-900/50 focus:border-purple-500 focus:ring-purple-500"
@@ -156,6 +188,7 @@ export default function Contact() {
                       <Label htmlFor="email">Email</Label>
                       <Input
                         id="email"
+                        name="email"
                         type="email"
                         placeholder="Your email"
                         required
@@ -168,6 +201,7 @@ export default function Contact() {
                     <Label htmlFor="subject">Subject</Label>
                     <Input
                       id="subject"
+                      name="subject"
                       placeholder="Subject"
                       required
                       className="bg-black/50 border-purple-900/50 focus:border-purple-500 focus:ring-purple-500"
@@ -178,6 +212,7 @@ export default function Contact() {
                     <Label htmlFor="message">Message</Label>
                     <Textarea
                       id="message"
+                      name="message"
                       placeholder="Your message"
                       rows={5}
                       required
