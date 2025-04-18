@@ -5,6 +5,7 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { FileText, Github, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 export default function About() {
   const ref = useRef(null);
@@ -30,6 +31,17 @@ export default function About() {
     },
   };
 
+  const handleOpenResume = () => {
+    if (typeof window !== "undefined") {
+      const link = document.createElement("a");
+      link.href = "/resume.pdf";
+      link.target = "_blank";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
   return (
     <section id="about" className="py-20 md:py-32 relative">
       <div className="container mx-auto px-4">
@@ -50,48 +62,58 @@ export default function About() {
               variants={itemVariants}
               className="text-gray-300 mb-4 text-lg"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur.
+              As a full-stack Web Developer I am passionate about my craft and
+              am committed to delivering solutions I can be proud of. I see each
+              project as an opportunity to improve and learn something new,
+              ensuring that the end result surpasses the previous one. I strive
+              to grow professionally and personally by focusing on efficiency,
+              functionality, and aesthetics.
             </motion.p>
 
             <motion.p
               variants={itemVariants}
               className="text-gray-300 mb-6 text-lg"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              My interest in web development stems from its unique blend of
+              creativity and technical problem-solving. I&apos;m particularly
+              drawn to building intuitive user interfaces and robust backend
+              systems that deliver seamless integration towards each other.
             </motion.p>
 
             <motion.div
               variants={itemVariants}
               className="flex flex-wrap gap-4"
             >
-              <Button className="rounded-full bg-purple-800 hover:bg-purple-700">
+              <Button
+                onClick={handleOpenResume}
+                className="rounded-full bg-gradient-to-r from-purple-900/50 to-purple-600/50"
+              >
                 <FileText className="mr-2 h-4 w-4" />
-                Download Resume
+                Resume
               </Button>
 
               <div className="flex gap-3">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30"
+                <Link href="https://github.com/jhn322" target="_blank">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30"
+                  >
+                    <Github className="h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link
+                  href="https://www.linkedin.com/in/johan-s%C3%B6derlund-31b9862b7/"
+                  target="_blank"
                 >
-                  <Github className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30"
-                >
-                  <Linkedin className="h-4 w-4" />
-                </Button>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30"
+                  >
+                    <Linkedin className="h-4 w-4" />
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           </motion.div>

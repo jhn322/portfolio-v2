@@ -4,12 +4,24 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { Code, Layers, Database, Palette, Cpu, LineChart } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+const MAX_ITEMS_SINGLE_COLUMN = 5;
 
 const skills = [
   {
     category: "Frontend",
     icon: <Code className="h-6 w-6" />,
-    items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    items: [
+      "React",
+      "Redux",
+      "Vue.js",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "Tailwind CSS",
+      "Framer Motion",
+    ],
     color: "from-purple-600 to-purple-900",
   },
   {
@@ -75,7 +87,7 @@ export default function Skills() {
 
         <div className="relative">
           {/* Animated background element */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full max-h-96">
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full max-h-96 pointer-events-none">
             <Player
               autoplay
               loop
@@ -99,40 +111,72 @@ export default function Skills() {
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 className="relative group"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-900/50 to-purple-700/50 rounded-2xl blur-xl opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-900/50 to-purple-700/50 rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none" />
 
-                <div className="relative bg-black/60 backdrop-blur-sm border border-purple-900/30 p-6 rounded-2xl h-full">
-                  <div className="flex items-center mb-4">
-                    <div
-                      className={`p-3 rounded-2xl bg-gradient-to-r ${skill.color} mr-3`}
+                <Card className="relative bg-gradient-to-br from-black/40 to-purple-900/20 backdrop-blur-md border-purple-900/30 h-full overflow-hidden group">
+                  <CardHeader className="flex flex-row items-center space-x-4 pb-4">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: -5 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 15,
+                      }}
+                      className={`p-3 rounded-xl bg-gradient-to-br ${skill.color} shadow-lg`}
                     >
                       {skill.icon}
-                    </div>
-                    <h3 className="text-xl font-bold">{skill.category}</h3>
-                  </div>
-
-                  <ul className="space-y-2">
-                    {skill.items.map((item, itemIndex) => (
-                      <motion.li
-                        key={item}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={
-                          isInView
-                            ? { opacity: 1, x: 0 }
-                            : { opacity: 0, x: -10 }
-                        }
-                        transition={{
-                          duration: 0.3,
-                          delay: index * 0.1 + itemIndex * 0.05,
-                        }}
-                        className="flex items-center"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mr-2" />
-                        <span className="text-gray-300">{item}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
+                    </motion.div>
+                    <CardTitle className="text-xl font-bold">
+                      {skill.category}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-0 pl-8 pr-6 pb-6">
+                    {skill.items.length > MAX_ITEMS_SINGLE_COLUMN ? (
+                      <div className="grid grid-cols-2 gap-x-6">
+                        <ul className="space-y-1.5">
+                          {skill.items
+                            .slice(0, Math.ceil(skill.items.length / 2))
+                            .map((item, itemIndex) => (
+                              <SkillListItem
+                                key={item}
+                                item={item}
+                                isInView={isInView}
+                                baseDelay={index * 0.1}
+                                itemIndex={itemIndex}
+                              />
+                            ))}
+                        </ul>
+                        <ul className="space-y-1.5">
+                          {skill.items
+                            .slice(Math.ceil(skill.items.length / 2))
+                            .map((item, itemIndex) => (
+                              <SkillListItem
+                                key={item}
+                                item={item}
+                                isInView={isInView}
+                                baseDelay={index * 0.1}
+                                itemIndex={
+                                  itemIndex + Math.ceil(skill.items.length / 2)
+                                }
+                              />
+                            ))}
+                        </ul>
+                      </div>
+                    ) : (
+                      <ul className="space-y-1.5">
+                        {skill.items.map((item, itemIndex) => (
+                          <SkillListItem
+                            key={item}
+                            item={item}
+                            isInView={isInView}
+                            baseDelay={index * 0.1}
+                            itemIndex={itemIndex}
+                          />
+                        ))}
+                      </ul>
+                    )}
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
           </div>
@@ -141,3 +185,34 @@ export default function Skills() {
     </section>
   );
 }
+
+// Helper component for list items to avoid repetition
+interface SkillListItemProps {
+  item: string;
+  isInView: boolean;
+  baseDelay: number;
+  itemIndex: number;
+}
+
+const SkillListItem = ({
+  item,
+  isInView,
+  baseDelay,
+  itemIndex,
+}: SkillListItemProps) => (
+  <motion.li
+    key={item}
+    initial={{ opacity: 0, x: -10 }}
+    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+    transition={{
+      duration: 0.3,
+      delay: baseDelay + itemIndex * 0.05,
+    }}
+    className="flex items-center group/item transition-transform duration-200 ease-out hover:translate-x-1.5"
+  >
+    <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mr-3 flex-shrink-0" />
+    <span className="text-gray-300 group-hover/item:text-purple-300 transition-colors duration-200">
+      {item}
+    </span>
+  </motion.li>
+);
