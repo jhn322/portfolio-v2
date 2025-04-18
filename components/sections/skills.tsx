@@ -15,8 +15,14 @@ const skills = [
     items: [
       "React",
       "Redux",
+      "Shadcn",
       "Vue.js",
       "Next.js",
+      "Three.js",
+      "Chess.js",
+      "Anime.js",
+      "Wordpress",
+      "HTML & CSS",
       "TypeScript",
       "JavaScript",
       "Tailwind CSS",
@@ -27,36 +33,83 @@ const skills = [
   {
     category: "Backend",
     icon: <Database className="h-6 w-6" />,
-    items: ["Node.js", "Express", "PostgreSQL", "MongoDB", "GraphQL"],
+    items: [
+      "YAML",
+      "Sanity",
+      "Prisma",
+      "Python",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "GraphQL",
+      "WhisperAI",
+      "PostgreSQL",
+      "Stockfish.js",
+      "API Integration",
+    ],
     color: "from-purple-700 to-purple-950",
   },
   {
     category: "Design",
     icon: <Palette className="h-6 w-6" />,
-    items: ["Figma", "Adobe XD", "UI/UX", "Responsive Design", "Prototyping"],
+    items: [
+      "Figma",
+      "Canva",
+      "UI/UX",
+      "Premiere",
+      "Photoshop",
+      "Sony Vegas",
+      "Prototyping",
+      "After Effects",
+      "Responsive Design",
+      "Mobile First Design",
+    ],
     color: "from-purple-800 to-purple-950",
   },
   {
-    category: "DevOps",
+    category: "DevOps & OS",
     icon: <Cpu className="h-6 w-6" />,
-    items: ["Docker", "AWS", "CI/CD", "Vercel", "Netlify"],
+    items: [
+      "AWS",
+      "CI/CD",
+      "Nginx",
+      "macOS",
+      "Docker",
+      "Vercel",
+      "Netlify",
+      "Windows",
+      "GitHub Actions",
+      "Linux Distributions",
+    ],
     color: "from-purple-600 to-purple-900",
   },
   {
     category: "Tools",
     icon: <Layers className="h-6 w-6" />,
-    items: ["Git", "GitHub", "VS Code", "Postman", "Jira"],
+    items: [
+      "Git",
+      "Jira",
+      "Cursor",
+      "GitHub",
+      "VS Code",
+      "Postman",
+      "Obsidian",
+      "Portainer",
+      "Markdown",
+      "Handbrake",
+    ],
     color: "from-purple-700 to-purple-950",
   },
   {
     category: "Analytics",
     icon: <LineChart className="h-6 w-6" />,
     items: [
-      "Google Analytics",
-      "Hotjar",
       "SEO",
-      "Performance Optimization",
       "A/B Testing",
+      "Lighthouse",
+      "Developer Tools",
+      "Google Analytics",
+      "Performance Optimization",
     ],
     color: "from-purple-800 to-purple-950",
   },
@@ -80,8 +133,10 @@ export default function Skills() {
             <span className="absolute -bottom-2 left-1/3 w-1/3 h-1 bg-purple-600"></span>
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto text-lg">
-            I&apos;ve cultivated a diverse skill set that allows me to build
-            complete, polished products from concept to deployment.
+            I offer a vast array of skills covering the entire development
+            spectrum—from frontend and backend to visual design, Docker
+            containerization, and wide OS familiarity—enabling me to build
+            complete and sophisticated apps from development to deployment.
           </p>
         </motion.div>
 
