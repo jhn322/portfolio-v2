@@ -9,20 +9,16 @@ export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const scrollToFeaturedProjects = () => {
-    if (typeof window !== "undefined") {
-      const aboutSection = document.getElementById("featured-projects");
-      if (aboutSection) {
-        aboutSection.scrollIntoView({ behavior: "smooth" });
-      }
+    const aboutSection = document.getElementById("featured-projects");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const scrollToAbout = () => {
-    if (typeof window !== "undefined") {
-      const aboutSection = document.getElementById("about");
-      if (aboutSection) {
-        aboutSection.scrollIntoView({ behavior: "smooth" });
-      }
+    const aboutSection = document.getElementById("about");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
