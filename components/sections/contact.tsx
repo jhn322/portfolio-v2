@@ -107,9 +107,8 @@ export default function Contact() {
                 </h4>
                 <p className="text-gray-300 mb-4">
                   I&apos;m always open to discussing new projects, creative
-                  ideas or opportunities to be part of your vision. Feel free to
-                  reach out via email and I&apos;ll get back to you as soon as
-                  possible.
+                  ideas or opportunities. Feel free to reach out via email and
+                  I&apos;ll get back to you as soon as possible.
                 </p>
               </div>
             </div>
