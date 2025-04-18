@@ -9,17 +9,23 @@ import { ExternalLink, Github } from "lucide-react";
 const projects = [
   {
     title: "NextMove",
-    description: "A comprehensive Chess app.",
+    description: "A modern chess application built with Next.js, TypeScript, and Supabase. Play against AI opponents of varying difficulty levels, track your game history and statistics, and customize settings. Features user authentication via NextAuth.js, sound effects, animations, and a responsive design for both desktop and mobile.",
     image: "/placeholder.svg",
     tags: [
       "Next.js",
+      "React",
       "TypeScript",
       "Tailwind CSS",
-      "Framer Motion",
-      "Chart.js",
+      "Radix UI",
+      "Shadcn UI",
+      "NextAuth.js",
+      "Supabase",
+      "PostgreSQL",
+      "chess.js",
+      "Stockfish",
     ],
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "https://next-move-js.vercel.app/",
+    githubUrl: "https://github.com/jhn322/next-move",
   },
   {
     title: "Holmsund Information",
@@ -33,7 +39,7 @@ const projects = [
   {
     title: "Rently",
     description:
-      "Rently is a heartwarming answer to overconsumption and unnecessary waste. Why buy when you can rent? By connecting neighbors, friends, and local communities, we’ve created a space where stuff gets used, not wasted. Got a power drill collecting dust? Rent it out to someone who’s fixing their shelf. Need a tent for that one camping trip? Rent it from your neighbor instead of shelling out cash for a new one.",
+      "Rently is a heartwarming answer to overconsumption and unnecessary waste. Why buy when you can rent? By connecting neighbors, friends, and local communities, we've created a space where stuff gets used, not wasted. Got a power drill collecting dust? Rent it out to someone who's fixing their shelf. Need a tent for that one camping trip? Rent it from your neighbor instead of shelling out cash for a new one.",
     image: "/placeholder.svg",
     tags: ["Next.js", "Firebase", "Tailwind CSS", "WebSockets", "Auth0"],
     liveUrl: "#",
