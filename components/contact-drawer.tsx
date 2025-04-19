@@ -184,6 +184,7 @@ export default function ContactDrawer() {
             variant="ghost"
             size="icon"
             onClick={handleClose}
+            aria-label="Close contact form"
             className="rounded-full text-gray-400 hover:text-white hover:bg-purple-900/20"
           >
             <X className="h-5 w-5" />

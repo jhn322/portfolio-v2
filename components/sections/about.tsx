@@ -105,6 +105,7 @@ export default function About() {
                   <Button
                     variant="outline"
                     size="icon"
+                    aria-label="GitHub Profile"
                     className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30"
                   >
                     <Github className="h-4 w-4" />
@@ -117,6 +118,7 @@ export default function About() {
                   <Button
                     variant="outline"
                     size="icon"
+                    aria-label="LinkedIn Profile"
                     className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30"
                   >
                     <Linkedin className="h-4 w-4" />
