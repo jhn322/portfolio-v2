@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Send, Mail, MapPin, X, ChevronUp } from "lucide-react";
+import { MovingButton } from "./ui/moving-border-button";
 
 export default function ContactDrawer() {
   const [isOpen, setIsOpen] = useState(false);
@@ -134,13 +135,16 @@ export default function ContactDrawer() {
               reach out!
             </p>
 
-            <Button
+            <MovingButton
               onClick={handleOpen}
-              className="rounded-full px-8 py-6 bg-gradient-to-r from-purple-900 to-purple-700 hover:from-purple-800 hover:to-purple-600 text-white shadow-[0_0_15px_rgba(139,92,246,0.25)]"
+              borderRadius="9999px"
+              containerClassName="rounded-full"
+              className="bg-gradient-to-r from-purple-900 to-purple-700 hover:from-purple-800 hover:to-purple-600 text-white px-8 py-3 flex items-center justify-center"
+              borderClassName="bg-[radial-gradient(theme(colors.purple.200)_40%,transparent_60%)]"
             >
               <ChevronUp className="mr-2 h-5 w-5" />
               Open Contact Form
-            </Button>
+            </MovingButton>
           </motion.div>
         </div>
       </section>
@@ -166,16 +170,16 @@ export default function ContactDrawer() {
         drag="y"
         dragConstraints={{ top: 0, bottom: 500 }}
         dragElastic={0.1}
+        dragTransition={{ bounceStiffness: 600, bounceDamping: 30 }}
         onDragEnd={handleDragEnd}
         dragMomentum={false}
-        dragTransition={{ bounceStiffness: 600, bounceDamping: 30 }}
       >
         {/* Drag handle */}
         <div className="flex justify-center items-center py-4 cursor-grab active:cursor-grabbing">
           <div className="w-12 h-1.5 bg-gray-600 rounded-full"></div>
         </div>
 
-        <div className="absolute top-4 right-4">
+        <div className="absolute top-4 right-4 z-10">
           <Button
             variant="ghost"
             size="icon"

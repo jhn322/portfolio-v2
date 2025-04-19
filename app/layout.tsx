@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { inter, manrope } from "@/lib/fonts";
 import "../app/globals.css";
 
 export const metadata: Metadata = {
-  title: "JS Portfolio",
-  description: "JS Portfolio",
+  title: "Johan S - Portfolio",
+  description: "Johan S - Portfolio",
   icons: {
     icon: "/favicon.png",
     apple: "/apple-icon.png",
@@ -18,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={`${inter.variable} ${manrope.variable} font-sans`}>
+        {children}
+      </body>
     </html>
   );
 }

@@ -138,7 +138,15 @@ export default function AnimatedBackground() {
       const heroSection = document.getElementById("hero");
       if (heroSection) {
         const rect = heroSection.getBoundingClientRect();
-        setIsInHeroSection(rect.top <= 0 && rect.bottom >= 0);
+        const viewportHeight = window.innerHeight;
+
+        // Only consider in hero section when at least 50% of the hero is visible
+        // and the hero occupies at least 50% of the viewport
+        const heroVisiblePortion =
+          Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
+        const heroVisiblePercentage = heroVisiblePortion / viewportHeight;
+
+        setIsInHeroSection(heroVisiblePercentage > 0.5);
       }
     };
 

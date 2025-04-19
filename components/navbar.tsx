@@ -126,6 +126,11 @@ export default function Navbar() {
               variant="ghost"
               size="icon"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={
+                mobileMenuOpen
+                  ? "Close navigation menu"
+                  : "Open navigation menu"
+              }
               className="text-white h-10 w-10"
             >
               {mobileMenuOpen ? <X /> : <Menu />}
@@ -191,6 +196,7 @@ export default function Navbar() {
                 <Button
                   variant="outline"
                   size="icon"
+                  aria-label="GitHub Profile"
                   className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30 hover:text-white"
                 >
                   <Github className="h-5 w-5" />
@@ -203,6 +209,7 @@ export default function Navbar() {
                 <Button
                   variant="outline"
                   size="icon"
+                  aria-label="LinkedIn Profile"
                   className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30 hover:text-white"
                 >
                   <Linkedin className="h-5 w-5" />
