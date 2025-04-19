@@ -31,7 +31,7 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#7c3aed", // Purple-600
+          DEFAULT: "#7c3aed",
           foreground: "#ffffff",
           "50": "#faf5ff",
           "100": "#f3e8ff",

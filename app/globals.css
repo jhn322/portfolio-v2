@@ -36,12 +36,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3b0764;
+  background: #6b21a8;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4c0a77;
+  background: #7e22ce;
 }
 
 /* Gradient text utility */
