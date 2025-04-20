@@ -118,7 +118,7 @@ export default function ContactDrawer() {
   return (
     <>
       {/* Contact button */}
-      <section id="contact" className="py-20 md:py-32 relative">
+      <section id="contact" className="py-20 md:py-32 relative z-20">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

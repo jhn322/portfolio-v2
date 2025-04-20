@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -170,13 +171,13 @@ export default function OtherProjects() {
                       className="rounded-full text-purple-300 hover:bg-purple-900/30 hover:text-white h-10 w-10"
                       aria-label={`View GitHub repository for ${project.title}`}
                     >
-                      <a
+                      <Link
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <Github className="h-5 w-5" />
-                      </a>
+                      </Link>
                     </Button>
                     <Button
                       asChild
@@ -185,21 +186,27 @@ export default function OtherProjects() {
                       className="rounded-full text-purple-300 hover:bg-purple-900/30 hover:text-white h-10 w-10"
                       aria-label={`View live demo for ${project.title}`}
                     >
-                      <a
+                      <Link
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <ExternalLink className="h-5 w-5" />
-                      </a>
+                      </Link>
                     </Button>
                   </div>
                 </CardHeader>
 
                 <CardContent className="flex-grow pb-4">
-                  <CardTitle className="text-xl font-bold mb-2 group-hover:text-purple-300 transition-colors duration-300">
-                    {project.title}
-                  </CardTitle>
+                  <Link
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <CardTitle className="text-xl font-bold mb-2 group-hover:text-purple-300 transition-colors duration-300">
+                      {project.title}
+                    </CardTitle>
+                  </Link>
                   <p className="text-gray-300 text-sm">{project.description}</p>
                 </CardContent>
 

@@ -8,6 +8,7 @@ import ClientOnly from "@/components/client-only";
 import AnimatedBackground from "@/components/background";
 import Navbar from "@/components/navbar";
 import Hero from "@/components/sections/hero";
+import { Experience } from "@/components/sections/experience";
 
 export default function Home() {
   return (
@@ -23,7 +24,6 @@ export default function Home() {
       <ClientOnly fallback={<div className="h-screen"></div>}>
         <Hero />
       </ClientOnly>
-
       <ClientOnly fallback={<div className="py-20 md:py-32">Loading...</div>}>
         <About />
       </ClientOnly>
@@ -35,6 +35,9 @@ export default function Home() {
       </ClientOnly>
       <ClientOnly fallback={<div className="py-20 md:py-32">Loading...</div>}>
         <OtherProjects />
+      </ClientOnly>
+      <ClientOnly fallback={<div className="py-20 md:py-32">Loading...</div>}>
+        <Experience />
       </ClientOnly>
       <ClientOnly>
         <ContactDrawer />
