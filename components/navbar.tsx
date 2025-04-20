@@ -30,17 +30,46 @@ export default function Navbar() {
     const sections = document.querySelectorAll("section[id]");
 
     const handleScroll = () => {
+      // Get current scroll position
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+      const isBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 100;
+
+      if (isBottom) {
+        // Set active section to contact if at the bottom of the page
+        setActiveSection("contact");
+        return;
+      }
+
       let current = "";
       sections.forEach((section) => {
-        const sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop < 100) {
+        const sectionTop = (section as HTMLElement).offsetTop;
+        const sectionHeight = (section as HTMLElement).offsetHeight;
+
+        if (
+          scrollPosition >= sectionTop &&
+          scrollPosition < sectionTop + sectionHeight
+        ) {
           current = section.getAttribute("id") || "";
         }
       });
-      setActiveSection(current);
+
+      // Consider other-projects as part of "Projects"
+      if (current === "other-projects") {
+        setActiveSection("featured-projects");
+        return;
+      }
+
+      if (current) {
+        setActiveSection(current);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
