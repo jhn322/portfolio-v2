@@ -2,10 +2,10 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
+import { TiltImage } from "@/components/ui/tilt-image";
 
 const projects = [
   {
@@ -165,39 +165,14 @@ export default function FeaturedProjects() {
               } gap-8 lg:gap-12 items-center`}
             >
               <div className="w-full lg:w-3/5 relative group">
-                {/* Project image with hover effect */}
-                <div className="relative overflow-hidden rounded-2xl border border-purple-900/30">
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 to-black/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.5 }}
-                    className="relative aspect-video"
-                  >
-                    {/* Primary Image */}
-                    <Image
-                      src={project.image || "/placeholder.svg"}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-opacity duration-300 group-hover:opacity-0"
-                      priority={index < 2}
-                    />
-                    {/* Hover Image */}
-                    {project.hoverImage && (
-                      <Image
-                        src={project.hoverImage}
-                        alt={`${project.title} hover preview`}
-                        fill
-                        className="object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                        priority={index < 2}
-                      />
-                    )}
-                  </motion.div>
-                </div>
-
-                {/* Decorative elements */}
-                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-r from-purple-600 to-purple-900 rounded-full blur-2xl opacity-30 z-0" />
-                <div className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-r from-purple-600 to-purple-900 rounded-full blur-2xl opacity-30 z-0" />
+                {/* Project images with 3D tilt effect */}
+                <TiltImage
+                  image={project.image}
+                  hoverImage={project.hoverImage}
+                  title={project.title}
+                  priority={index < 2}
+                  isAlternate={index % 2 !== 0}
+                />
               </div>
 
               <div className="w-full lg:w-2/5">
