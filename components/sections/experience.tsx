@@ -8,7 +8,7 @@ import { ExperienceTabs } from "../ui/experience-tabs";
 
 export function Experience() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.1 });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   const tabs = [
     {

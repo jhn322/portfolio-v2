@@ -9,6 +9,7 @@ import {
   type PanInfo,
   useMotionValue,
   useTransform,
+  useInView,
 } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -26,6 +27,8 @@ export default function ContactDrawer() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   const controls = useAnimation();
   const y = useMotionValue(0);
   const opacity = useTransform(y, [0, 300], [1, 0]);
@@ -140,8 +143,9 @@ export default function ContactDrawer() {
       <section id="contact" className="py-20 md:py-32 relative z-20">
         <div className="container mx-auto px-4 text-center">
           <motion.div
+            ref={sectionRef}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6 }}
             className="text-center mb-10"
           >

@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface TabItem {
@@ -19,10 +19,17 @@ interface TabsProps {
 export const ExperienceTabs = ({ tabs, defaultValue }: TabsProps) => {
   const [activeTab, setActiveTab] = useState(defaultValue || tabs[0].value);
   const contentRef = React.useRef<HTMLDivElement>(null);
+  const tabsRef = useRef(null);
+  const isInView = useInView(tabsRef, { once: true, amount: 0.1 });
 
   return (
-    <div className="w-full relative">
-      <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8">
+    <div className="w-full relative" ref={tabsRef}>
+      <motion.div
+        className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.4 }}
+      >
         {tabs.map((tab) => (
           <button
             key={tab.value}
@@ -45,9 +52,14 @@ export const ExperienceTabs = ({ tabs, defaultValue }: TabsProps) => {
             <span className="relative z-10">{tab.title}</span>
           </button>
         ))}
-      </div>
+      </motion.div>
 
-      <div className="relative mt-8 w-full">
+      <motion.div
+        className="relative mt-8 w-full"
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.4, delay: 0.2 }}
+      >
         <AnimatePresence initial={false} mode="wait">
           {tabs.map(
             (tab) =>
@@ -66,7 +78,7 @@ export const ExperienceTabs = ({ tabs, defaultValue }: TabsProps) => {
               )
           )}
         </AnimatePresence>
-      </div>
+      </motion.div>
     </div>
   );
 };

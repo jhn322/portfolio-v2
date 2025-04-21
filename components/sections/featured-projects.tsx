@@ -132,7 +132,7 @@ const projects = [
 
 export default function FeaturedProjects() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.1 });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
     <section id="featured-projects" className="py-20 md:py-32 relative">

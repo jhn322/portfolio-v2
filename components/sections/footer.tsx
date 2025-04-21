@@ -1,20 +1,51 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin } from "lucide-react";
+import { useRef } from "react";
 
 export default function Footer() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
+
   return (
     <footer className="py-10 relative">
-      {/* Remove the background gradient div */}
       <div className="container mx-auto px-4">
-        <div className="border-t border-purple-900/30 pt-10">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5 }}
+          className="pt-10 relative"
+        >
+          {/* Animated lines from center outwards */}
+          <div className="flex justify-center items-center mb-6">
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={
+                isInView ? { opacity: 1, scaleX: 1 } : { opacity: 0, scaleX: 0 }
+              }
+              transition={{ duration: 1.4, delay: 0.2 }}
+              className="h-px w-1/2 bg-purple-900/30"
+              style={{ transformOrigin: "right" }}
+            />
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={
+                isInView ? { opacity: 1, scaleX: 1 } : { opacity: 0, scaleX: 0 }
+              }
+              transition={{ duration: 1.4, delay: 0.2 }}
+              className="h-px w-1/2 bg-purple-900/30"
+              style={{ transformOrigin: "left" }}
+            />
+          </div>
+
           <div className="flex flex-col md:flex-row justify-between items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5 }}
               className="mb-6 md:mb-0"
             >
@@ -23,7 +54,7 @@ export default function Footer() {
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex gap-3"
             >
@@ -55,7 +86,7 @@ export default function Footer() {
 
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             className="mt-8 text-center text-gray-400 text-sm"
           >
@@ -63,7 +94,7 @@ export default function Footer() {
               JS © {new Date().getFullYear()}
             </p>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

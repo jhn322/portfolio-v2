@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export default function About() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const imageSources = ["/pfp.png", "/pfp2.jpg"];

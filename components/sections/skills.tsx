@@ -116,7 +116,7 @@ const skills = [
 
 export default function Skills() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.1 });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
     <section id="skills" className="py-20 md:py-32 relative">
@@ -147,12 +147,12 @@ export default function Skills() {
             {skills.map((skill, index) => (
               <motion.div
                 key={skill.category}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={
-                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
                 }
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                whileHover={{ y: -10 }}
                 className="relative group"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-900/50 to-purple-700/50 rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none" />
