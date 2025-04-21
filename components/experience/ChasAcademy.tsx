@@ -271,9 +271,9 @@ const ChasAcademy = () => {
         animate="show"
         className="flex flex-col xs:flex-row text-white gap-1 font-medium text-xl"
       >
-        Full-Stack JavaScript Development
+        Full-stack JavaScript Developer
         <Link
-          href="https://chasacademy.se/"
+          href="https://chasacademy.se/program/fullstackutvecklare-javascript"
           target="_blank"
           className="text-purple-400 tracking-wide group flex items-center gap-1"
         >
