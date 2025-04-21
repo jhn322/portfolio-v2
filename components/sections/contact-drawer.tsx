@@ -3,14 +3,7 @@
 import type React from "react";
 
 import { useRef, useState, useEffect } from "react";
-import {
-  motion,
-  useAnimation,
-  type PanInfo,
-  useMotionValue,
-  useTransform,
-  useInView,
-} from "framer-motion";
+import { motion, useAnimation, type PanInfo, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -30,8 +23,6 @@ export default function ContactDrawer() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   const controls = useAnimation();
-  const y = useMotionValue(0);
-  const opacity = useTransform(y, [0, 300], [1, 0]);
 
   // Reset form after success message is shown
   useEffect(() => {
@@ -63,7 +54,6 @@ export default function ContactDrawer() {
 
   const handleOpen = () => {
     setIsOpen(true);
-    // y.set(100); // TODO Fix for bug?
     controls.start({
       y: 0,
       transition: { type: "spring", damping: 30, stiffness: 400 },
@@ -71,14 +61,15 @@ export default function ContactDrawer() {
   };
 
   const handleClose = () => {
-    controls
-      .start({
-        y: "100%",
-        transition: { type: "spring", damping: 30, stiffness: 400 },
-      })
-      .then(() => {
-        setIsOpen(false);
-      });
+    controls.start({
+      y: "100%",
+      transition: { type: "spring", damping: 30, stiffness: 400 },
+    });
+    setIsOpen(false);
+    controls.start({
+      y: "100%",
+      transition: { type: "spring", damping: 30, stiffness: 400 },
+    });
   };
 
   const handleDragEnd = (
@@ -179,6 +170,7 @@ export default function ContactDrawer() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          transition={{ duration: 0 }}
           onClick={handleClose}
         />
       )}
@@ -189,7 +181,6 @@ export default function ContactDrawer() {
         } h-[80vh]`}
         initial={{ y: "100%" }}
         animate={controls}
-        style={{ y, opacity }}
         drag="y"
         dragConstraints={{ top: 0, bottom: 500 }}
         dragElastic={0.1}
