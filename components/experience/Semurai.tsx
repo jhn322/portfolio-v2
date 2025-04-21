@@ -288,10 +288,7 @@ const Semurai = () => {
           className="text-purple-400 tracking-wide group flex items-center gap-1"
         >
           @Semurai
-          <ExternalLink
-            size={12}
-            className="opacity-0 group-hover:opacity-100 transition-opacity"
-          />
+          <ExternalLink size={12} />
         </Link>
       </motion.h3>
       <motion.p
