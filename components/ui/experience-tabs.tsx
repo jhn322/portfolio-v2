@@ -59,7 +59,7 @@ export const ExperienceTabs = ({ tabs, defaultValue }: TabsProps) => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
-                  className="z-20 bg-gradient-to-br from-black/40 to-purple-900/20 backdrop-blur-md border border-purple-900/30 rounded-xl p-6 shadow-lg w-full"
+                  className="z-20 bg-gradient-to-br from-black/40 to-purple-900/20 backdrop-blur-md border border-purple-900/30 rounded-2xl p-6 shadow-lg w-full"
                 >
                   {tab.content}
                 </motion.div>

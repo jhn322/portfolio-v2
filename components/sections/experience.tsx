@@ -37,8 +37,8 @@ export function Experience() {
             <span className="absolute -bottom-2 left-1/3 w-1/3 h-1 bg-purple-600"></span>
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto text-lg">
-            Places I&apos;ve worked and the responsibilities I&apos;ve taken on
-            throughout my professional journey.
+            Places I&apos;ve worked and studied, highlighting my professional
+            journey and educational background in web development.
           </p>
         </motion.div>
 

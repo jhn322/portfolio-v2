@@ -166,7 +166,7 @@ export default function Skills() {
                         stiffness: 300,
                         damping: 15,
                       }}
-                      className={`p-3 rounded-xl bg-gradient-to-br ${skill.color} shadow-lg`}
+                      className={`p-3 rounded-2xl bg-gradient-to-br ${skill.color} shadow-lg`}
                     >
                       {skill.icon}
                     </motion.div>

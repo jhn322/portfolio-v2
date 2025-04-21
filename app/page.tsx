@@ -9,6 +9,7 @@ import AnimatedBackground from "@/components/background";
 import Navbar from "@/components/navbar";
 import Hero from "@/components/sections/hero";
 import { Experience } from "@/components/sections/experience";
+import StickyIcons from "@/components/sticky-icons";
 
 export default function Home() {
   return (
@@ -44,6 +45,9 @@ export default function Home() {
       </ClientOnly>
       <ClientOnly fallback={<div className="py-10"></div>}>
         <Footer />
+      </ClientOnly>
+      <ClientOnly>
+        <StickyIcons />
       </ClientOnly>
     </main>
   );

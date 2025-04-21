@@ -42,6 +42,7 @@ export default function ContactDrawer() {
 
   const handleOpen = () => {
     setIsOpen(true);
+    // y.set(100); // TODO Fix for bug?
     controls.start({
       y: 0,
       transition: { type: "spring", damping: 30, stiffness: 400 },
@@ -152,7 +153,7 @@ export default function ContactDrawer() {
       {/* Contact drawer */}
       {isOpen && (
         <motion.div
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50" // TODO Fix for bug?
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

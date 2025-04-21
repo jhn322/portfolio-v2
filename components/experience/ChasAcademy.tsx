@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const container = {
   hidden: { opacity: 0 },
@@ -60,7 +60,7 @@ const ChasAcademy = () => {
           className="text-base flex gap-2 text-gray-300"
         >
           <span className="text-purple-400 mt-1">
-            <ChevronRight size={16} />
+            <ArrowRight size={16} />
           </span>
           <div>
             <span className="font-bold text-white">
@@ -78,7 +78,7 @@ const ChasAcademy = () => {
           className="text-base flex gap-2 text-gray-300"
         >
           <span className="text-purple-400 mt-1">
-            <ChevronRight size={16} />
+            <ArrowRight size={16} />
           </span>
           <div>
             <span className="font-bold text-white">Technical Skills</span>
@@ -94,7 +94,7 @@ const ChasAcademy = () => {
           className="text-base flex gap-2 text-gray-300"
         >
           <span className="text-purple-400 mt-1">
-            <ChevronRight size={16} />
+            <ArrowRight size={16} />
           </span>
           <div>
             <span className="font-bold text-white">Project Highlights</span>
