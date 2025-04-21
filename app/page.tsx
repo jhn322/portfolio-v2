@@ -2,7 +2,7 @@ import About from "@/components/sections/about";
 import Skills from "@/components/sections/skills";
 import FeaturedProjects from "@/components/sections/featured-projects";
 import OtherProjects from "@/components/sections/other-projects";
-import ContactDrawer from "@/components/contact-drawer";
+import ContactDrawer from "@/components/sections/contact-drawer";
 import Footer from "@/components/sections/footer";
 import ClientOnly from "@/components/client-only";
 import AnimatedBackground from "@/components/background";

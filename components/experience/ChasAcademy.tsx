@@ -287,7 +287,7 @@ const ChasAcademy = () => {
         animate="show"
         className="text-sm mt-1 font-medium text-gray-400"
       >
-        Aug 2022 - Jun 2024
+        Sep 2023 - Jun 2025
       </motion.p>
       <motion.ul
         variants={container}

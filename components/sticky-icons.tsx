@@ -70,7 +70,7 @@ const Icon = ({
     >
       <IconComponent className="h-5 w-5 text-white" />
       {isHovered && (
-        <div className="absolute left-[calc(100%+10px)] top-1/2 z-50 -translate-y-1/2 animate-fadeIn rounded-2xl bg-gradient-to-r from-purple-900 to-purple-700 p-3 text-white pointer-events-none min-w-max">
+        <div className="absolute left-[calc(100%+10px)] top-1/2 z-40 -translate-y-1/2 animate-fadeIn rounded-2xl bg-gradient-to-r from-purple-900 to-purple-700 p-3 text-white pointer-events-none min-w-max">
           <span className="mb-1 block font-bold">{label}</span>
           <span className="text-sm">{subtext}</span>
         </div>
@@ -106,7 +106,7 @@ const StickyIcons = () => {
   ];
 
   return (
-    <div className="fixed bottom-0 left-14 z-50 hidden flex-col items-center md:flex">
+    <div className="fixed bottom-0 left-14 z-40 hidden flex-col items-center 2xl:flex">
       <div className="flex flex-col items-center space-y-4">
         {iconData.map((icon, index) => (
           <Icon key={index} {...icon} />

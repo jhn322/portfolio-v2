@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import {
   motion,
   useAnimation,
@@ -15,7 +15,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Send, Mail, MapPin, X, ChevronUp } from "lucide-react";
-import { MovingButton } from "./ui/moving-border-button";
+import { MovingButton } from "../ui/moving-border-button";
+import Lottie from "lottie-react";
+import contactAnimation from "../lottie/contact.json";
+import sentAnimation from "../lottie/sent.json";
 
 export default function ContactDrawer() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,6 +29,21 @@ export default function ContactDrawer() {
   const controls = useAnimation();
   const y = useMotionValue(0);
   const opacity = useTransform(y, [0, 300], [1, 0]);
+
+  // Reset form after success message is shown
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+
+    if (isSubmitted) {
+      timeout = setTimeout(() => {
+        setIsSubmitted(false);
+      }, 6000);
+    }
+
+    return () => {
+      if (timeout) clearTimeout(timeout);
+    };
+  }, [isSubmitted]);
 
   const contactInfo = [
     {
@@ -198,53 +216,60 @@ export default function ContactDrawer() {
               Let&apos;s Connect
             </h2>
 
-            <div className="grid md:grid-cols-2 gap-12 items-start">
-              <div>
-                <h3 className="text-xl font-bold mb-6">Contact Information</h3>
+            {isSubmitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="max-w-md mx-auto bg-gradient-to-br from-black/40 to-purple-900/20 backdrop-blur-md border border-purple-900/30 rounded-2xl p-6 shadow-lg w-full text-center"
+              >
+                <div className="h-80 w-full mb-4">
+                  <Lottie
+                    animationData={sentAnimation}
+                    loop={true}
+                    style={{ height: "100%" }}
+                  />
+                </div>
+                <h4 className="text-xl font-bold mb-2">Message Sent!</h4>
+                <p className="text-gray-300">
+                  Thank you for reaching out. I&apos;ll get back to you as soon
+                  as possible.
+                </p>
+              </motion.div>
+            ) : (
+              <div className="grid md:grid-cols-2 gap-12 items-start">
+                <div>
+                  <h3 className="text-xl font-bold mb-6">
+                    Contact Information
+                  </h3>
 
-                <div className="space-y-6 mb-10">
-                  {contactInfo.map((item) => (
-                    <div key={item.label} className="flex items-center">
-                      <div className="p-3 rounded-2xl bg-gradient-to-r from-purple-700 to-purple-900 mr-4">
-                        {item.icon}
+                  <div className="space-y-6 mb-10">
+                    {contactInfo.map((item) => (
+                      <div key={item.label} className="flex items-center">
+                        <div className="p-3 rounded-2xl bg-gradient-to-r from-purple-700 to-purple-900 mr-4">
+                          {item.icon}
+                        </div>
+                        <div>
+                          <p className="text-gray-400 text-sm">{item.label}</p>
+                          <p className="text-white font-medium">{item.value}</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-gray-400 text-sm">{item.label}</p>
-                        <p className="text-white font-medium">{item.value}</p>
-                      </div>
+                    ))}
+                  </div>
+
+                  <div className="hidden md:block">
+                    <div className="h-80 w-full">
+                      <Lottie
+                        animationData={contactAnimation}
+                        loop={true}
+                        style={{ height: "100%" }}
+                      />
                     </div>
-                  ))}
+                  </div>
                 </div>
 
                 <div>
-                  <h4 className="text-xl font-bold mb-4">
-                    Let&apos;s create something amazing together
-                  </h4>
-                  <p className="text-gray-300 mb-4">
-                    I&apos;m always open to discussing new projects or
-                    opportunities to be part of your team. Feel free to reach
-                    out via email and I&apos;ll get back to you as soon as
-                    possible.
-                  </p>
-                </div>
-              </div>
+                  <h3 className="text-xl font-bold mb-6">Send Me a Message</h3>
 
-              <div>
-                <h3 className="text-xl font-bold mb-6">Send Me a Message</h3>
-
-                {isSubmitted ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="bg-purple-900/30 border border-purple-500/30 rounded-2xl p-4 text-center"
-                  >
-                    <h4 className="text-xl font-bold mb-2">Message Sent!</h4>
-                    <p className="text-gray-300">
-                      Thank you for reaching out. I&apos;ll get back to you as
-                      soon as possible.
-                    </p>
-                  </motion.div>
-                ) : (
                   <form
                     ref={formRef}
                     onSubmit={handleSubmit}
@@ -261,7 +286,7 @@ export default function ContactDrawer() {
                         <Input
                           id="name"
                           name="name"
-                          placeholder="Your name"
+                          placeholder="Name"
                           required
                           className="bg-black/50 border-purple-900/50 focus:border-purple-500 focus:ring-purple-500 h-12 !rounded-2xl"
                         />
@@ -272,7 +297,7 @@ export default function ContactDrawer() {
                           id="email"
                           name="email"
                           type="email"
-                          placeholder="Your email"
+                          placeholder="Email"
                           required
                           className="bg-black/50 border-purple-900/50 focus:border-purple-500 focus:ring-purple-500 h-12 !rounded-2xl"
                         />
@@ -284,7 +309,7 @@ export default function ContactDrawer() {
                       <Input
                         id="subject"
                         name="subject"
-                        placeholder="Subject"
+                        placeholder="What would you like to discuss?"
                         required
                         className="bg-black/50 border-purple-900/50 focus:border-purple-500 focus:ring-purple-500 h-12 !rounded-2xl"
                       />
@@ -295,7 +320,7 @@ export default function ContactDrawer() {
                       <Textarea
                         id="message"
                         name="message"
-                        placeholder="Your message"
+                        placeholder="Tell me about your oppertunity, or just say hello!"
                         rows={6}
                         required
                         className="bg-black/50 border-purple-900/50 focus:border-purple-500 focus:ring-purple-500 resize-none !rounded-2xl"
@@ -320,9 +345,9 @@ export default function ContactDrawer() {
                       )}
                     </Button>
                   </form>
-                )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </motion.div>

@@ -2,9 +2,9 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import Semurai from "../experience/Semurai"; // Updated path
-import ChasAcademy from "../experience/ChasAcademy"; // Updated path
-import { ExperienceTabs } from "../ui/experience-tabs"; // Updated path
+import Semurai from "../experience/Semurai";
+import ChasAcademy from "../experience/ChasAcademy";
+import { ExperienceTabs } from "../ui/experience-tabs";
 
 export function Experience() {
   const ref = useRef(null);
