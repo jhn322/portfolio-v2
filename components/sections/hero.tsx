@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import { MovingButton } from "@/components/ui/moving-border-button";
+import ThreeDButton from "@/components/ui/three-d-button";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -64,15 +64,12 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex flex-col items-center gap-6"
         >
-          <MovingButton
+          <ThreeDButton
             onClick={scrollToFeaturedProjects}
-            borderRadius="9999px"
-            containerClassName="rounded-full"
-            className="text-sm md:text-md lg:text-lg bg-gradient-to-r from-purple-900 to-purple-700 hover:from-purple-800 hover:to-purple-600 px-8 py-3"
-            borderClassName="bg-[radial-gradient(theme(colors.purple.200)_40%,transparent_60%)]"
+            className="text-md md:text-lg lg:text-xl"
           >
-            Explore My Projects
-          </MovingButton>
+            Explore My Projects!
+          </ThreeDButton>
 
           <motion.div
             initial={{ opacity: 0 }}
