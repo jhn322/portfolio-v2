@@ -15,7 +15,7 @@ import { MovingButton } from "../ui/moving-border-button";
 import Lottie from "lottie-react";
 import contactAnimation from "../lottie/contact.json";
 import sentAnimation from "../lottie/sent.json";
-
+import Link from "next/link";
 // Zod schema for validation
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -249,14 +249,14 @@ export default function ContactDrawer() {
                     open to new opportunities!
                   </p>
 
-                  <div className="space-y-7 mb-10">
+                  <div className="space-y-7 mb-10 relative z-10">
                     {contactInfo.map((contactItem) => {
                       const content = (
                         <div
                           key={contactItem.label}
                           className="flex items-center group"
                         >
-                          <div className="p-4 rounded-2xl bg-gradient-to-r from-purple-700 to-purple-900 mr-5 shrink-0 hover:from-purple-800 hover:to-purple-600">
+                          <div className="p-4 rounded-2xl bg-gradient-to-r from-purple-700 to-purple-900 mr-5 shrink-0 group-hover:from-purple-800 group-hover:to-purple-600 transition-colors">
                             {contactItem.icon}
                           </div>
                           <div>
@@ -272,7 +272,7 @@ export default function ContactDrawer() {
 
                       if (contactItem.label === "Email") {
                         return (
-                          <a
+                          <Link
                             key={contactItem.label}
                             href={`mailto:${contactItem.value}`}
                             className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-lg"
@@ -280,11 +280,11 @@ export default function ContactDrawer() {
                             tabIndex={0}
                           >
                             {content}
-                          </a>
+                          </Link>
                         );
                       } else if (contactItem.label === "Location") {
                         return (
-                          <a
+                          <Link
                             key={contactItem.label}
                             href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactItem.value)}`}
                             target="_blank"
@@ -294,7 +294,7 @@ export default function ContactDrawer() {
                             tabIndex={0}
                           >
                             {content}
-                          </a>
+                          </Link>
                         );
                       }
 
@@ -302,7 +302,7 @@ export default function ContactDrawer() {
                     })}
                   </div>
 
-                  <div className="hidden lg:flex lg:justify-center h-80 w-full -mt-20 lg:-mt-16 relative z-0">
+                  <div className="hidden lg:flex lg:justify-center h-80 w-full -mt-20 lg:-mt-16 relative z-0 pointer-events-none">
                     <motion.div
                       className="h-full w-full max-w-[300px]"
                       animate={{
