@@ -112,6 +112,8 @@ const ThreeDButton = ({
   const handleMouseLeave = () => {
     mouseX.set(0);
     mouseY.set(0);
+    mouseXSpring.set(0);
+    mouseYSpring.set(0);
     setIsHovered(false);
   };
 
