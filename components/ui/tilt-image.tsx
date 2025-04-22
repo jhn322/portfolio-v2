@@ -41,7 +41,7 @@ export const TiltImage = ({
 
         <div className="relative aspect-video w-full h-full">
           <Image
-            src={image || "/placeholder.svg"}
+            src={image}
             alt={title}
             fill
             className="object-cover transition-opacity duration-300 group-hover:opacity-0 rounded-2xl"
