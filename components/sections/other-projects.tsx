@@ -12,8 +12,18 @@ import {
 } from "@/components/ui/card";
 import { ExternalLink, Github, Folder } from "lucide-react";
 import { FadeIn } from "../ui/fade-in";
+import { ProjectTag } from "../ui/project-tag";
 
-const projects = [
+interface Project {
+  title: string;
+  description: string;
+  tags: string[];
+  liveUrl: string;
+  githubUrl: string;
+  projectType?: "Personal" | "Passion";
+}
+
+const projects: Project[] = [
   {
     title: "Kometa Config",
     description:
@@ -31,6 +41,26 @@ const projects = [
     ],
     liveUrl: "https://kometa.wiki/en/latest/",
     githubUrl: "https://github.com/jhn322/kometa-config",
+    projectType: "Passion",
+  },
+  {
+    title: "Dead Link Checker",
+    description:
+      "Python-based utility script designed to automatically scan configuration files for potentially dead web links, specifically targeting Trakt and Letterboxd list URLs within YAML structures. It efficiently checks the status of each discovered URL using HTTP HEAD requests and identifies any links that are no longer accessible. The script provides a summary report to a log file, and sends a notification to a configured Discord channel via webhooks.",
+    tags: [
+      "Python",
+      "YAML",
+      "Automation",
+      "Discord",
+      "API",
+      "Cron",
+      "URL Validation",
+      "Requests",
+      "Web Scraping",
+    ],
+    liveUrl: "https://github.com/jhn322/dead-link-checker",
+    githubUrl: "https://github.com/jhn322/dead-link-checker",
+    projectType: "Personal",
   },
   {
     title: "Kanban Board",
@@ -95,23 +125,6 @@ const projects = [
     liveUrl: "https://jhn-labb-typscript-react.netlify.app/",
     githubUrl: "https://github.com/jhn322/labb-typescript-react",
   },
-  {
-    title: "Memory",
-    description:
-      "Built with vanilla JavaScript, this interactive app challenges your memory skills with a fun Pokémon-themed pair matching game. Flip cards to reveal Pokémon, remember their positions, and match them with as few turns as possible.",
-    tags: [
-      "JavaScript",
-      "CSS",
-      "HTML",
-      "Game",
-      "Pokémon Images",
-      "Memory",
-      "Math Calculations",
-      "Interactive",
-    ],
-    liveUrl: "https://jhn322.github.io/memory/",
-    githubUrl: "https://github.com/jhn322/memory",
-  },
 ];
 
 export default function OtherProjects() {
@@ -142,7 +155,7 @@ export default function OtherProjects() {
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-900 to-purple-700 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none" />
 
                 <Card className="relative h-full flex flex-col bg-gradient-to-br from-black/40 to-purple-900/20 backdrop-blur-md border-purple-900/30 overflow-hidden group">
-                  <CardHeader className="flex flex-row justify-between items-start pb-4">
+                  <CardHeader className="flex flex-row justify-between items-start pb-4 relative">
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: -5 }}
                       transition={{
@@ -195,9 +208,14 @@ export default function OtherProjects() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <CardTitle className="text-xl font-bold mb-2 group-hover:text-purple-300 transition-colors duration-300">
-                        {project.title}
-                      </CardTitle>
+                      <div className="flex items-center mb-2">
+                        <CardTitle className="text-xl font-bold group-hover:text-purple-300 transition-colors duration-300">
+                          {project.title}
+                        </CardTitle>
+                        {project.projectType && (
+                          <ProjectTag type={project.projectType} />
+                        )}
+                      </div>
                     </Link>
                     <p className="text-gray-300 text-sm">
                       {project.description}

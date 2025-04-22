@@ -5,8 +5,20 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import { TiltImage } from "@/components/ui/tilt-image";
 import { FadeIn } from "../ui/fade-in";
+import { ProjectTag } from "../ui/project-tag";
 
-const projects = [
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  hoverImage: string;
+  tags: string[];
+  liveUrl: string;
+  githubUrl: string;
+  projectType?: "Personal" | "Passion";
+}
+
+const projects: Project[] = [
   {
     title: "NextMove",
     description:
@@ -26,6 +38,7 @@ const projects = [
     ],
     liveUrl: "https://next-move-js.vercel.app/",
     githubUrl: "https://github.com/jhn322/next-move",
+    projectType: "Personal",
   },
   {
     title: "Holmsund Information",
@@ -46,6 +59,7 @@ const projects = [
     ],
     liveUrl: "https://jhn-holmsund-information.netlify.app/",
     githubUrl: "https://github.com/jhn322/holmsund-information",
+    projectType: "Personal",
   },
   {
     title: "Rently",
@@ -166,9 +180,14 @@ export default function FeaturedProjects() {
               </div>
 
               <div className="w-full lg:w-2/5">
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                  {project.title}
-                </h3>
+                <div className="flex items-center mb-4">
+                  <h3 className="text-2xl md:text-3xl font-bold">
+                    {project.title}
+                  </h3>
+                  {project.projectType && (
+                    <ProjectTag type={project.projectType} />
+                  )}
+                </div>
 
                 <p className="text-gray-300 mb-6">{project.description}</p>
 
