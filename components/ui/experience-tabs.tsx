@@ -1,9 +1,10 @@
 "use client";
 
 import * as React from "react";
-import { useState, useRef } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { FadeIn } from "../ui/fade-in";
 
 interface TabItem {
   title: string;
@@ -18,17 +19,12 @@ interface TabsProps {
 
 export const ExperienceTabs = ({ tabs, defaultValue }: TabsProps) => {
   const [activeTab, setActiveTab] = useState(defaultValue || tabs[0].value);
-  const contentRef = React.useRef<HTMLDivElement>(null);
-  const tabsRef = useRef(null);
-  const isInView = useInView(tabsRef, { once: true, amount: 0.1 });
 
   return (
-    <div className="w-full relative" ref={tabsRef}>
-      <motion.div
+    <div className="w-full relative">
+      <FadeIn
+        threshold={0.1}
         className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8"
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.4 }}
       >
         {tabs.map((tab) => (
           <button
@@ -52,20 +48,14 @@ export const ExperienceTabs = ({ tabs, defaultValue }: TabsProps) => {
             <span className="relative z-10">{tab.title}</span>
           </button>
         ))}
-      </motion.div>
+      </FadeIn>
 
-      <motion.div
-        className="relative mt-8 w-full"
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.4, delay: 0.2 }}
-      >
+      <FadeIn threshold={0.1} delay={150} className="relative mt-8 w-full">
         <AnimatePresence initial={false} mode="wait">
           {tabs.map(
             (tab) =>
               activeTab === tab.value && (
                 <motion.div
-                  ref={contentRef}
                   key={tab.value}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -78,7 +68,7 @@ export const ExperienceTabs = ({ tabs, defaultValue }: TabsProps) => {
               )
           )}
         </AnimatePresence>
-      </motion.div>
+      </FadeIn>
     </div>
   );
 };

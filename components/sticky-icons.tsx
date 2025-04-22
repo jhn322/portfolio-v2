@@ -3,8 +3,8 @@
 import { useState, useRef } from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+import { FadeIn } from "./ui/fade-in";
 
 type IconData = {
   href: string;
@@ -82,9 +82,6 @@ const Icon = ({
 };
 
 const StickyIcons = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
-
   const iconData: IconData[] = [
     {
       href: "https://github.com/jhn322",
@@ -111,35 +108,18 @@ const StickyIcons = () => {
   ];
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.6 }}
-      className="fixed bottom-0 left-14 z-40 hidden flex-col items-center 2xl:flex"
-    >
+    <div className="fixed bottom-0 left-14 z-40 hidden flex-col items-center 2xl:flex">
       <div className="flex flex-col items-center space-y-4">
         {iconData.map((icon, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-            transition={{ duration: 0.5, delay: 0.5 - index * 0.1 }}
-          >
+          <FadeIn key={icon.href} threshold={0.1} delay={300 + index * 100}>
             <Icon {...icon} />
-          </motion.div>
+          </FadeIn>
         ))}
       </div>
-      <motion.div
-        initial={{ opacity: 0, scaleY: 0 }}
-        animate={
-          isInView ? { opacity: 1, scaleY: 1 } : { opacity: 0, scaleY: 0 }
-        }
-        transition={{ duration: 0.5, delay: 0.4 }}
-        className="mt-4 h-32 w-px bg-primary-800"
-        style={{ transformOrigin: "bottom" }}
-      />
-    </motion.div>
+      <FadeIn threshold={0.1} delay={300 + iconData.length * 100}>
+        <div className="mt-4 h-32 w-px bg-gradient-to-t from-transparent via-purple-500 to-purple-500" />
+      </FadeIn>
+    </div>
   );
 };
 

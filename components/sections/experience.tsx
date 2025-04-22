@@ -1,15 +1,11 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
 import Semurai from "../experience/Semurai";
 import ChasAcademy from "../experience/ChasAcademy";
 import { ExperienceTabs } from "../ui/experience-tabs";
+import { FadeIn } from "../ui/fade-in";
 
 export function Experience() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
-
   const tabs = [
     {
       title: "Semurai",
@@ -26,12 +22,7 @@ export function Experience() {
   return (
     <section id="experience" className="py-20 md:py-32 relative z-10">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <FadeIn threshold={0.1} className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 inline-block relative">
             My Experience
             <span className="absolute -bottom-2 left-1/3 w-1/3 h-1 bg-purple-600"></span>
@@ -40,16 +31,12 @@ export function Experience() {
             Places I&apos;ve worked and studied, highlighting my professional
             journey and educational background in web development.
           </p>
-        </motion.div>
+        </FadeIn>
 
-        <div ref={ref} className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.5 }}
-          >
+        <div className="max-w-4xl mx-auto">
+          <FadeIn threshold={0.1} delay={150}>
             <ExperienceTabs tabs={tabs} />
-          </motion.div>
+          </FadeIn>
         </div>
       </div>
     </section>

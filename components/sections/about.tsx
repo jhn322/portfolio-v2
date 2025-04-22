@@ -1,39 +1,17 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { FileText, Github, Linkedin, RefreshCw } from "lucide-react";
 import Link from "next/link";
+import { FadeIn } from "../ui/fade-in";
 
 export default function About() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const imageSources = ["/pfp.webp", "/pfp2.webp"];
   const fallbackImage = "/placeholder.svg";
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5 },
-    },
-  };
 
   const handleToggleImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageSources.length);
@@ -53,45 +31,30 @@ export default function About() {
   return (
     <section id="about" className="py-20 md:py-32 relative">
       <div className="container mx-auto px-4">
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="grid md:grid-cols-2 gap-12 items-center"
-        >
-          <motion.div variants={itemVariants} className="order-2 md:order-1">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <FadeIn delay={200} threshold={0.3} className="order-2 md:order-1">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 inline-block relative">
               About Me
               <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-purple-600"></span>
             </h2>
 
-            <motion.p
-              variants={itemVariants}
-              className="text-gray-300 mb-4 text-lg"
-            >
+            <p className="text-gray-300 mb-4 text-lg">
               As a full-stack Web Developer I am passionate about my craft and
               am committed to delivering solutions I can be proud of. I see each
               project as an opportunity to improve and learn something new,
               ensuring that the end result surpasses the previous one. I strive
               to grow professionally and personally by focusing on efficiency,
               functionality, and aesthetics.
-            </motion.p>
+            </p>
 
-            <motion.p
-              variants={itemVariants}
-              className="text-gray-300 mb-6 text-lg"
-            >
+            <p className="text-gray-300 mb-6 text-lg">
               My interest in web development stems from its unique blend of
               creativity and technical problem-solving. I&apos;m particularly
               drawn to building intuitive user interfaces and robust backend
               systems that deliver seamless integration towards each other.
-            </motion.p>
+            </p>
 
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-wrap gap-4"
-            >
+            <div className="flex flex-wrap gap-4">
               <Button onClick={handleOpenResume} className="rounded-full">
                 <FileText className="mr-2 h-4 w-4" />
                 Resume
@@ -122,11 +85,12 @@ export default function About() {
                   </Button>
                 </Link>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </FadeIn>
 
-          <motion.div
-            variants={itemVariants}
+          <FadeIn
+            delay={400}
+            threshold={0.3}
             className="order-1 md:order-2 flex justify-center"
           >
             <div className="relative w-64 h-64 md:w-80 md:h-80 group">
@@ -176,8 +140,8 @@ export default function About() {
                 <RefreshCw className="h-4 w-4" />
               </button>
             </div>
-          </motion.div>
-        </motion.div>
+          </FadeIn>
+        </div>
       </div>
     </section>
   );

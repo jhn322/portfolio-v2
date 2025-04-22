@@ -1,11 +1,10 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import { TiltImage } from "@/components/ui/tilt-image";
+import { FadeIn } from "../ui/fade-in";
 
 const projects = [
   {
@@ -131,18 +130,10 @@ const projects = [
 ];
 
 export default function FeaturedProjects() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
-
   return (
     <section id="featured-projects" className="py-20 md:py-32 relative">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <FadeIn threshold={0.1} className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 inline-block relative">
             Featured Projects
             <span className="absolute -bottom-2 left-1/3 w-1/3 h-1 bg-purple-600"></span>
@@ -151,15 +142,14 @@ export default function FeaturedProjects() {
             Here are some of my most significant projects that showcase my
             skills and expertise.
           </p>
-        </motion.div>
+        </FadeIn>
 
-        <div ref={ref} className="space-y-32">
+        <div className="space-y-32">
           {projects.map((project, index) => (
-            <motion.div
+            <FadeIn
               key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ duration: 0.7, delay: index * 0.2 }}
+              threshold={0.1}
+              delay={index * 150}
               className={`flex flex-col ${
                 index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
               } gap-8 lg:gap-12 items-center`}
@@ -176,42 +166,13 @@ export default function FeaturedProjects() {
               </div>
 
               <div className="w-full lg:w-2/5">
-                <motion.h3
-                  initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
-                  animate={
-                    isInView
-                      ? { opacity: 1, x: 0 }
-                      : { opacity: 0, x: index % 2 === 0 ? 20 : -20 }
-                  }
-                  transition={{ duration: 0.5, delay: index * 0.2 + 0.2 }}
-                  className="text-2xl md:text-3xl font-bold mb-4"
-                >
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">
                   {project.title}
-                </motion.h3>
+                </h3>
 
-                <motion.p
-                  initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
-                  animate={
-                    isInView
-                      ? { opacity: 1, x: 0 }
-                      : { opacity: 0, x: index % 2 === 0 ? 20 : -20 }
-                  }
-                  transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
-                  className="text-gray-300 mb-6"
-                >
-                  {project.description}
-                </motion.p>
+                <p className="text-gray-300 mb-6">{project.description}</p>
 
-                <motion.div
-                  initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
-                  animate={
-                    isInView
-                      ? { opacity: 1, x: 0 }
-                      : { opacity: 0, x: index % 2 === 0 ? 20 : -20 }
-                  }
-                  transition={{ duration: 0.5, delay: index * 0.2 + 0.4 }}
-                  className="flex flex-wrap gap-2 mb-6"
-                >
+                <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
@@ -220,18 +181,9 @@ export default function FeaturedProjects() {
                       {tag}
                     </span>
                   ))}
-                </motion.div>
+                </div>
 
-                <motion.div
-                  initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
-                  animate={
-                    isInView
-                      ? { opacity: 1, x: 0 }
-                      : { opacity: 0, x: index % 2 === 0 ? 20 : -20 }
-                  }
-                  transition={{ duration: 0.5, delay: index * 0.2 + 0.5 }}
-                  className="flex gap-4"
-                >
+                <div className="flex gap-4">
                   <Link
                     href={project.liveUrl}
                     target="_blank"
@@ -255,9 +207,9 @@ export default function FeaturedProjects() {
                       Source Code
                     </Button>
                   </Link>
-                </motion.div>
+                </div>
               </div>
-            </motion.div>
+            </FadeIn>
           ))}
         </div>
       </div>

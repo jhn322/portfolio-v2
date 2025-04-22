@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin } from "lucide-react";
-import { useRef } from "react";
+import { FadeIn } from "../ui/fade-in";
 
 export default function Footer() {
   const ref = useRef(null);
@@ -13,14 +14,7 @@ export default function Footer() {
   return (
     <footer className="py-10 relative">
       <div className="container mx-auto px-4">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-          className="pt-10 relative"
-        >
-          {/* Animated lines from center outwards */}
+        <div ref={ref} className="pt-10 relative">
           <div className="flex justify-center items-center mb-6">
             <motion.div
               initial={{ opacity: 0, scaleX: 0 }}
@@ -43,21 +37,11 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5 }}
-              className="mb-6 md:mb-0"
-            >
+            <FadeIn threshold={0.1} delay={300} className="mb-6 md:mb-0">
               <p className="text-gray-400 mt-2">Building for a better web</p>
-            </motion.div>
+            </FadeIn>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex gap-3"
-            >
+            <FadeIn threshold={0.1} delay={400} className="flex gap-3">
               <Link href="https://github.com/jhn322" target="_blank">
                 <Button
                   variant="outline"
@@ -81,20 +65,19 @@ export default function Footer() {
                   <Linkedin className="h-4 w-4" />
                 </Button>
               </Link>
-            </motion.div>
+            </FadeIn>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+          <FadeIn
+            threshold={0.1}
+            delay={500}
             className="mt-8 text-center text-gray-400 text-sm"
           >
             <p className="flex items-center justify-center">
               JS © {new Date().getFullYear()}
             </p>
-          </motion.div>
-        </motion.div>
+          </FadeIn>
+        </div>
       </div>
     </footer>
   );

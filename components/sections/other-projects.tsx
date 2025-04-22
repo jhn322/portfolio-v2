@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {
@@ -12,6 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ExternalLink, Github, Folder } from "lucide-react";
+import { FadeIn } from "../ui/fade-in";
 
 const projects = [
   {
@@ -115,18 +115,10 @@ const projects = [
 ];
 
 export default function OtherProjects() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
-
   return (
     <section id="other-projects" className="py-20 md:py-32 relative">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <FadeIn threshold={0.1} className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 inline-block relative">
             Other Noteworthy Projects
             <span className="absolute -bottom-2 left-1/3 w-1/3 h-1 bg-purple-600"></span>
@@ -136,92 +128,95 @@ export default function OtherProjects() {
             different technologies and learn new things throughout my coding
             journey.
           </p>
-        </motion.div>
+        </FadeIn>
 
-        <div
-          ref={ref}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <motion.div
+            <FadeIn
               key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="relative group"
+              threshold={0.1}
+              delay={index * 100}
+              className="relative group h-full"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-900 to-purple-700 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none" />
+              <motion.div whileHover={{ y: -10 }} className="h-full">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-900 to-purple-700 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none" />
 
-              <Card className="relative h-full flex flex-col bg-gradient-to-br from-black/40 to-purple-900/20 backdrop-blur-md border-purple-900/30 overflow-hidden group">
-                <CardHeader className="flex flex-row justify-between items-start pb-4">
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: -5 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                    className="p-3 rounded-2xl bg-gradient-to-r from-purple-700 to-purple-900 shadow-lg"
-                  >
-                    <Folder className="h-6 w-6" />
-                  </motion.div>
-
-                  <div className="flex gap-1">
-                    <Button
-                      asChild
-                      variant="ghost"
-                      size="icon"
-                      className="rounded-full text-purple-300 hover:bg-purple-900/30 hover:text-white h-10 w-10"
-                      aria-label={`View GitHub repository for ${project.title}`}
+                <Card className="relative h-full flex flex-col bg-gradient-to-br from-black/40 to-purple-900/20 backdrop-blur-md border-purple-900/30 overflow-hidden group">
+                  <CardHeader className="flex flex-row justify-between items-start pb-4">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: -5 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 15,
+                      }}
+                      className="p-3 rounded-2xl bg-gradient-to-r from-purple-700 to-purple-900 shadow-lg"
                     >
-                      <Link
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Folder className="h-6 w-6" />
+                    </motion.div>
+
+                    <div className="flex gap-1">
+                      <Button
+                        asChild
+                        variant="ghost"
+                        size="icon"
+                        className="rounded-full text-purple-300 hover:bg-purple-900/30 hover:text-white h-10 w-10"
+                        aria-label={`View GitHub repository for ${project.title}`}
                       >
-                        <Github className="h-5 w-5" />
-                      </Link>
-                    </Button>
-                    <Button
-                      asChild
-                      variant="ghost"
-                      size="icon"
-                      className="rounded-full text-purple-300 hover:bg-purple-900/30 hover:text-white h-10 w-10"
-                      aria-label={`View live demo for ${project.title}`}
-                    >
-                      <Link
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        <Link
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github className="h-5 w-5" />
+                        </Link>
+                      </Button>
+                      <Button
+                        asChild
+                        variant="ghost"
+                        size="icon"
+                        className="rounded-full text-purple-300 hover:bg-purple-900/30 hover:text-white h-10 w-10"
+                        aria-label={`View live demo for ${project.title}`}
                       >
-                        <ExternalLink className="h-5 w-5" />
-                      </Link>
-                    </Button>
-                  </div>
-                </CardHeader>
+                        <Link
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink className="h-5 w-5" />
+                        </Link>
+                      </Button>
+                    </div>
+                  </CardHeader>
 
-                <CardContent className="flex-grow pb-4">
-                  <Link
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <CardTitle className="text-xl font-bold mb-2 group-hover:text-purple-300 transition-colors duration-300">
-                      {project.title}
-                    </CardTitle>
-                  </Link>
-                  <p className="text-gray-300 text-sm">{project.description}</p>
-                </CardContent>
-
-                <CardFooter className="flex flex-wrap gap-2 pt-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10"
+                  <CardContent className="flex-grow pb-4">
+                    <Link
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      {tag}
-                    </span>
-                  ))}
-                </CardFooter>
-              </Card>
-            </motion.div>
+                      <CardTitle className="text-xl font-bold mb-2 group-hover:text-purple-300 transition-colors duration-300">
+                        {project.title}
+                      </CardTitle>
+                    </Link>
+                    <p className="text-gray-300 text-sm">
+                      {project.description}
+                    </p>
+                  </CardContent>
+
+                  <CardFooter className="flex flex-wrap gap-2 pt-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </CardFooter>
+                </Card>
+              </motion.div>
+            </FadeIn>
           ))}
         </div>
       </div>

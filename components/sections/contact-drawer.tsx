@@ -1,8 +1,8 @@
 "use client";
 
 import type React from "react";
-import { useRef, useState, useEffect } from "react";
-import { motion, useAnimation, type PanInfo, useInView } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, useAnimation, type PanInfo } from "framer-motion";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -16,6 +16,8 @@ import Lottie from "lottie-react";
 import contactAnimation from "../lottie/contact.json";
 import sentAnimation from "../lottie/sent.json";
 import Link from "next/link";
+import { FadeIn } from "../ui/fade-in";
+
 // Zod schema for validation
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -34,8 +36,6 @@ export default function ContactDrawer() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   const controls = useAnimation();
 
   const {
@@ -136,13 +136,7 @@ export default function ContactDrawer() {
       {/* Contact button */}
       <section id="contact" className="py-20 md:py-32 relative z-20">
         <div className="container mx-auto px-4 text-center">
-          <motion.div
-            ref={sectionRef}
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-10"
-          >
+          <FadeIn threshold={0.1} className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 inline-block relative">
               Get In Touch
               <span className="absolute -bottom-2 left-1/3 w-1/3 h-1 bg-purple-600"></span>
@@ -162,7 +156,7 @@ export default function ContactDrawer() {
               <ChevronUp className="mr-2 h-5 w-5" />
               Open Contact Form
             </MovingButton>
-          </motion.div>
+          </FadeIn>
         </div>
       </section>
 
