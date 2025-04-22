@@ -10,7 +10,7 @@ Here are some of the key technologies and libraries used in this project:
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
 - **UI Components:** [Shadcn UI](https://ui.shadcn.com/) (Radix UI)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Animations:** [Framer Motion](https://www.framer.com/motion/), [Lottie](https://lottiefiles.com/), [Tailwind CSS Animate](https://tailwindcss.com/docs/animation)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/), [Lottie](https://lottiefiles.com/), [Tailwind CSS Animate](https://tailwindcss.com/docs/animation), Custom `useIntersectionObserver` Hook + `FadeIn` Component
 - **3D:** [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction), [Drei](https://github.com/pmndrs/drei)
 - **Forms:** [React Hook Form](https://react-hook-form.com/), [Zod](https://zod.dev/)
 - **Theming:** [Next Themes](https://github.com/pacocoursey/next-themes)
