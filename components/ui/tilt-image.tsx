@@ -54,7 +54,6 @@ export const TiltImage = ({
               alt={`${title} hover preview`}
               fill
               className="object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-2xl"
-              priority={priority}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           )}

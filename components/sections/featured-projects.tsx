@@ -12,8 +12,8 @@ const projects = [
     title: "NextMove",
     description:
       "A modern chess application built with Next.js, TypeScript, and MongoDB. Play against AI opponents of varying difficulty levels, track your game history and statistics, and customize settings. Features user authentication via NextAuth.js, sound effects, animations, and a responsive design for both desktop and mobile.",
-    image: "/featured-projects/nextmove.png",
-    hoverImage: "/featured-projects/nextmove-hover.png",
+    image: "/featured-projects/nextmove.webp",
+    hoverImage: "/featured-projects/nextmove-hover.webp",
     tags: [
       "Next.js",
       "TypeScript",
@@ -32,8 +32,8 @@ const projects = [
     title: "Holmsund Information",
     description:
       "An informational website designed to highlight the unique destinations Holmsund has to offer. Coded with React and a variety of npm libraries, the site provides an intuitive navigation experience, ensuring that users can easily explore Holmsund. It also features a robust fuzzy search functionality, capable of handling a wide range of queries to deliver accurate results. Additionally, it boasts a large collection of images and text content, all curated to inspire and inform visitors about the local culture and places.",
-    image: "/featured-projects/holmsund.png",
-    hoverImage: "/featured-projects/holmsund-hover.png",
+    image: "/featured-projects/holmsund.webp",
+    hoverImage: "/featured-projects/holmsund-hover.webp",
     tags: [
       "React",
       "JavaScript",
@@ -52,8 +52,8 @@ const projects = [
     title: "Rently",
     description:
       "Rently is a heartwarming answer to overconsumption and unnecessary waste. Why buy when you can rent? By connecting neighbors, friends, and local communities, we've created a space where stuff gets used, not wasted. Got a power drill collecting dust? Rent it out to someone who's fixing their shelf. Need a tent for that one camping trip? Rent it from your neighbor instead of shelling out cash for a new one.",
-    image: "/featured-projects/rently.png",
-    hoverImage: "/featured-projects/rently-hover.png",
+    image: "/featured-projects/rently.webp",
+    hoverImage: "/featured-projects/rently-hover.webp",
     tags: [
       "Vue.js",
       "Store",
@@ -72,8 +72,8 @@ const projects = [
     title: "Kanban Group Project",
     description:
       "A few weeks-long group project leveraging GIT collaboration while coding in React with Redux to develop a highly functional Kanban board for effective planning. This project enables users to create and manage tasks with ease, including features for setting due dates, deadlines, and assigning team members. Also, users can move cards between columns to track progress and organize tasks efficiently. This Kanban board is designed to enhance productivity and streamline project management.",
-    image: "/featured-projects/kanban.png",
-    hoverImage: "/featured-projects/kanban-hover.png",
+    image: "/featured-projects/kanban.webp",
+    hoverImage: "/featured-projects/kanban-hover.webp",
     tags: [
       "React",
       "Redux",
@@ -92,8 +92,8 @@ const projects = [
     title: "The Dashboard",
     description:
       "An aesthetically pleasing dashboard designed to be your go-to landing page for bookmarking and organizing links you want to save for later. This interface provides a quick overview of the weather, so you can stay informed at a glance. Also, it features a convenient note-taking section where you can write down important information or reminders. Your notes are automatically saved and persist across visits. This dashboard combines functionality with a sleek design.",
-    image: "/featured-projects/dashboard.png",
-    hoverImage: "/featured-projects/dashboard-hover.png",
+    image: "/featured-projects/dashboard.webp",
+    hoverImage: "/featured-projects/dashboard-hover.webp",
     tags: [
       "JavaScript",
       "CSS",
@@ -112,8 +112,8 @@ const projects = [
     title: "Quire",
     description:
       "A digital assistant designed for creating, saving, and editing everyday notes with ease. Whether you need to write down a quick reminder for the next day or develop a detailed chapter for a creative project, Quire is here to support you. Its intuitive interface allows for seamless note-taking and organization, ensuring your ideas and tasks are always at your fingertips.",
-    image: "/featured-projects/quire.png",
-    hoverImage: "/featured-projects/quire-hover.png",
+    image: "/featured-projects/quire.webp",
+    hoverImage: "/featured-projects/quire-hover.webp",
     tags: [
       "JavaScript",
       "CSS",

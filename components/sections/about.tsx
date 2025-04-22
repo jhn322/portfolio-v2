@@ -12,7 +12,7 @@ export default function About() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const imageSources = ["/pfp.png", "/pfp2.jpg"];
+  const imageSources = ["/pfp.webp", "/pfp2.webp"];
   const fallbackImage = "/placeholder.svg";
 
   const containerVariants = {

@@ -131,7 +131,7 @@ const ThreeDButton = ({
           scale: 1.3,
           boxShadow: "0 0 25px 5px rgba(168, 85, 247, 0.2)",
         }}
-        className={`relative grid place-items-center rounded-full bg-gradient-to-r from-purple-900 to-purple-700 px-8 py-4 font-bold border border-purple-500 text-purple-50 shadow-lg transition-colors duration-300 hover:border-purple-400 hover:from-purple-800 hover:to-purple-600 ${containerClassName ?? ""}`}
+        className={`relative grid place-items-center rounded-full bg-gradient-to-r from-purple-900 to-purple-700 px-8 py-4 font-semibold border border-purple-500 text-purple-50 shadow-lg transition-colors duration-300 hover:border-purple-400 hover:from-purple-800 hover:to-purple-600 ${containerClassName ?? ""}`}
         style={{ perspective: "1000px" }}
         {...props}
       >
