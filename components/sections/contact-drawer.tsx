@@ -1,9 +1,11 @@
 "use client";
 
 import type React from "react";
-
 import { useRef, useState, useEffect } from "react";
 import { motion, useAnimation, type PanInfo, useInView } from "framer-motion";
+import { useForm, type SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -14,26 +16,45 @@ import Lottie from "lottie-react";
 import contactAnimation from "../lottie/contact.json";
 import sentAnimation from "../lottie/sent.json";
 
+// Zod schema for validation
+const formSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  subject: z
+    .string()
+    .min(5, { message: "Subject must be at least 5 characters." }),
+  message: z
+    .string()
+    .min(10, { message: "Message must be at least 10 characters." }),
+});
+
+type FormSchemaType = z.infer<typeof formSchema>;
+
 export default function ContactDrawer() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
-  const formRef = useRef<HTMLFormElement>(null);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   const controls = useAnimation();
 
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<FormSchemaType>({
+    resolver: zodResolver(formSchema),
+  });
+
   // Reset form after success message is shown
   useEffect(() => {
     let timeout: NodeJS.Timeout;
-
     if (isSubmitted) {
       timeout = setTimeout(() => {
         setIsSubmitted(false);
-      }, 6000);
+      }, 7000);
     }
-
     return () => {
       if (timeout) clearTimeout(timeout);
     };
@@ -66,10 +87,6 @@ export default function ContactDrawer() {
       transition: { type: "spring", damping: 30, stiffness: 400 },
     });
     setIsOpen(false);
-    controls.start({
-      y: "100%",
-      transition: { type: "spring", damping: 30, stiffness: 400 },
-    });
   };
 
   const handleDragEnd = (
@@ -86,23 +103,11 @@ export default function ContactDrawer() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  const onSubmit: SubmitHandler<FormSchemaType> = async (data) => {
     setFormError(null);
 
-    const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
-
-    const data = {
-      name: formData.get("name") as string,
-      email: formData.get("email") as string,
-      subject: formData.get("subject") as string,
-      message: formData.get("message") as string,
-    };
-
     try {
-      const response = await fetch("/api/send-confirmation", {
+      const response = await fetch("/api/send-mail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -116,13 +121,11 @@ export default function ContactDrawer() {
         throw new Error(result.error || "Failed to send message");
       }
 
-      setIsSubmitting(false);
       setIsSubmitted(true);
-      formRef.current?.reset();
+      reset();
     } catch (error) {
-      setIsSubmitting(false);
       setFormError(
-        error instanceof Error ? error.message : "An error occurred"
+        error instanceof Error ? error.message : "An unknown error occurred"
       );
       console.error("Contact form error:", error);
     }
@@ -166,7 +169,7 @@ export default function ContactDrawer() {
       {/* Contact drawer */}
       {isOpen && (
         <motion.div
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50" // TODO Fix for bug?
+          className="fixed inset-0 bg-black/90 backdrop-blur-md z-50"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -176,9 +179,9 @@ export default function ContactDrawer() {
       )}
 
       <motion.div
-        className={`fixed bottom-0 left-0 right-0 z-50 bg-black border-t border-purple-900/50 rounded-t-3xl ${
-          isOpen ? "shadow-[0_-5px_25px_rgba(139,92,246,0.3)]" : ""
-        } h-[80vh]`}
+        className={`fixed bottom-0 left-0 right-0 z-[60] bg-black/90 backdrop-blur-xl border-t border-purple-500/30 rounded-t-3xl ${
+          isOpen ? "shadow-[0_-5px_30px_rgba(147,51,234,0.35)]" : ""
+        } h-[80vh] md:h-[85vh] max-h-[900px] overflow-hidden`}
         initial={{ y: "100%" }}
         animate={controls}
         drag="y"
@@ -188,26 +191,29 @@ export default function ContactDrawer() {
         onDragEnd={handleDragEnd}
         dragMomentum={false}
       >
+        {/* Purple gradient overlay on drawer */}
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-purple-800/10 to-transparent pointer-events-none"></div>
+
         {/* Drag handle */}
-        <div className="flex justify-center items-center py-4 cursor-grab active:cursor-grabbing">
-          <div className="w-12 h-1.5 bg-gray-600 rounded-full"></div>
+        <div className="flex justify-center items-center py-4 cursor-grab active:cursor-grabbing relative z-10">
+          <div className="w-12 h-1.5 bg-purple-400/40 rounded-full"></div>
         </div>
 
-        <div className="absolute top-4 right-4 z-10">
+        <div className="absolute top-6 right-6 z-20">
           <Button
             variant="ghost"
             size="icon"
             onClick={handleClose}
             aria-label="Close contact form"
-            className="rounded-full text-gray-400 hover:text-white hover:bg-purple-900/20"
+            className="rounded-full text-purple-200 hover:text-white hover:bg-purple-600/20 h-10 w-10 flex items-center justify-center p-0"
           >
             <X className="h-5 w-5" />
           </Button>
         </div>
 
-        <div className="h-[80vh] overflow-y-auto px-6 pb-16">
-          <div className="container mx-auto max-w-5xl">
-            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
+        <div className="h-[calc(80vh-40px)] md:h-[calc(85vh-40px)] overflow-y-auto overflow-x-hidden px-6 pb-16 md:pb-24 relative z-10">
+          <div className="container mx-auto max-w-6xl">
+            <h2 className="text-2xl md:text-4xl font-bold mb-8 md:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-purple-400">
               Let&apos;s Connect
             </h2>
 
@@ -215,7 +221,7 @@ export default function ContactDrawer() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="max-w-md mx-auto bg-gradient-to-br from-black/40 to-purple-900/20 backdrop-blur-md border border-purple-900/30 rounded-2xl p-6 shadow-lg w-full text-center"
+                className="max-w-md mx-auto bg-gradient-to-br from-purple-900/20 to-purple-800/10 backdrop-blur-md border border-purple-500/20 rounded-2xl p-6 shadow-lg w-full text-center"
               >
                 <div className="h-80 w-full mb-4">
                   <Lottie
@@ -231,109 +237,209 @@ export default function ContactDrawer() {
                 </p>
               </motion.div>
             ) : (
-              <div className="grid md:grid-cols-2 gap-12 items-start">
-                <div>
-                  <h3 className="text-xl font-bold mb-6">
+              <div className="grid lg:grid-cols-2 gap-12 md:gap-16 lg:gap-20 items-start">
+                <div className="w-full overflow-x-hidden">
+                  <h3 className="text-xl md:text-2xl font-bold mb-8 inline-block relative">
                     Contact Information
+                    <span className="absolute -bottom-2 left-0 w-1/4 h-0.5 bg-purple-400"></span>
                   </h3>
+                  <p className="text-gray-300 text-base leading-relaxed mb-8">
+                    If you are interested in hiring me, please feel free to use
+                    the form or contact me directly via email. I&apos;m always
+                    open to new opportunities!
+                  </p>
 
-                  <div className="space-y-6 mb-10">
-                    {contactInfo.map((item) => (
-                      <div key={item.label} className="flex items-center">
-                        <div className="p-3 rounded-2xl bg-gradient-to-r from-purple-700 to-purple-900 mr-4">
-                          {item.icon}
+                  <div className="space-y-7 mb-10">
+                    {contactInfo.map((contactItem) => {
+                      const content = (
+                        <div
+                          key={contactItem.label}
+                          className="flex items-center group"
+                        >
+                          <div className="p-4 rounded-2xl bg-gradient-to-r from-purple-700 to-purple-900 mr-5 shrink-0 hover:from-purple-800 hover:to-purple-600">
+                            {contactItem.icon}
+                          </div>
+                          <div>
+                            <p className="text-gray-400 text-sm font-medium mb-1">
+                              {contactItem.label}
+                            </p>
+                            <p className="text-white font-medium text-lg group-hover:text-purple-300 transition-colors">
+                              {contactItem.value}
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <p className="text-gray-400 text-sm">{item.label}</p>
-                          <p className="text-white font-medium">{item.value}</p>
-                        </div>
-                      </div>
-                    ))}
+                      );
+
+                      if (contactItem.label === "Email") {
+                        return (
+                          <a
+                            key={contactItem.label}
+                            href={`mailto:${contactItem.value}`}
+                            className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-lg"
+                            aria-label={`Send email to ${contactItem.value}`}
+                            tabIndex={0}
+                          >
+                            {content}
+                          </a>
+                        );
+                      } else if (contactItem.label === "Location") {
+                        return (
+                          <a
+                            key={contactItem.label}
+                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactItem.value)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-lg"
+                            aria-label={`View ${contactItem.value} on Google Maps`}
+                            tabIndex={0}
+                          >
+                            {content}
+                          </a>
+                        );
+                      }
+
+                      return <div key={contactItem.label}>{content}</div>;
+                    })}
                   </div>
 
-                  <div className="hidden md:block">
-                    <div className="h-80 w-full">
+                  <div className="hidden lg:flex lg:justify-center h-80 w-full -mt-20 lg:-mt-16 relative z-0">
+                    <motion.div
+                      className="h-full w-full max-w-[300px]"
+                      animate={{
+                        y: [0, -10, 0],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    >
                       <Lottie
                         animationData={contactAnimation}
                         loop={true}
-                        style={{ height: "100%" }}
+                        style={{ height: "100%", width: "100%" }}
                       />
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
 
-                <div>
-                  <h3 className="text-xl font-bold mb-6">Send Me a Message</h3>
+                <div className="relative w-full">
+                  <div className="absolute -top-20 -left-20 w-40 h-40 rounded-full bg-purple-600/10 blur-3xl"></div>
+                  <div className="absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-purple-600/10 blur-3xl"></div>
+
+                  <h3 className="text-xl md:text-2xl font-bold mb-8 inline-block relative">
+                    Send Me a Message
+                    <span className="absolute -bottom-2 left-0 w-1/4 h-0.5 bg-purple-400"></span>
+                  </h3>
 
                   <form
-                    ref={formRef}
-                    onSubmit={handleSubmit}
-                    className="space-y-6"
+                    onSubmit={handleSubmit(onSubmit)}
+                    className="space-y-6 relative z-10"
                   >
                     {formError && (
-                      <div className="bg-red-900/30 border border-red-500/30 rounded-2xl p-4 text-center">
+                      <div className="bg-red-900/30 border border-red-500/30 rounded-2xl p-5 text-center shadow-md">
                         <p className="text-red-300">{formError}</p>
                       </div>
                     )}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="name">Name</Label>
+                        <Label
+                          htmlFor="name"
+                          className="text-sm font-medium text-gray-300"
+                        >
+                          Name
+                        </Label>
                         <Input
                           id="name"
-                          name="name"
                           placeholder="Name"
-                          required
-                          className="bg-black/50 border-purple-900/50 focus:border-purple-500 focus:ring-purple-500 h-12 !rounded-2xl"
+                          {...register("name")}
+                          className={`bg-purple-900/10 border-purple-500/20 focus:border-purple-400 focus:ring-purple-400/20 h-12 !rounded-xl shadow-sm placeholder:text-gray-500 ${errors.name ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
+                          aria-invalid={errors.name ? "true" : "false"}
                         />
+                        {errors.name && (
+                          <p className="text-sm text-red-400 mt-1">
+                            {errors.name.message}
+                          </p>
+                        )}
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
+                        <Label
+                          htmlFor="email"
+                          className="text-sm font-medium text-gray-300"
+                        >
+                          Email
+                        </Label>
                         <Input
                           id="email"
-                          name="email"
                           type="email"
                           placeholder="Email"
-                          required
-                          className="bg-black/50 border-purple-900/50 focus:border-purple-500 focus:ring-purple-500 h-12 !rounded-2xl"
+                          {...register("email")}
+                          className={`bg-purple-900/10 border-purple-500/20 focus:border-purple-400 focus:ring-purple-400/20 h-12 !rounded-xl shadow-sm placeholder:text-gray-500 ${errors.email ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
+                          aria-invalid={errors.email ? "true" : "false"}
                         />
+                        {errors.email && (
+                          <p className="text-sm text-red-400 mt-1">
+                            {errors.email.message}
+                          </p>
+                        )}
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="subject">Subject</Label>
+                      <Label
+                        htmlFor="subject"
+                        className="text-sm font-medium text-gray-300"
+                      >
+                        Subject
+                      </Label>
                       <Input
                         id="subject"
-                        name="subject"
                         placeholder="What would you like to discuss?"
-                        required
-                        className="bg-black/50 border-purple-900/50 focus:border-purple-500 focus:ring-purple-500 h-12 !rounded-2xl"
+                        {...register("subject")}
+                        className={`bg-purple-900/10 border-purple-500/20 focus:border-purple-400 focus:ring-purple-400/20 h-12 !rounded-xl shadow-sm placeholder:text-gray-500 ${errors.subject ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
+                        aria-invalid={errors.subject ? "true" : "false"}
                       />
+                      {errors.subject && (
+                        <p className="text-sm text-red-400 mt-1">
+                          {errors.subject.message}
+                        </p>
+                      )}
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
+                      <Label
+                        htmlFor="message"
+                        className="text-sm font-medium text-gray-300"
+                      >
+                        Message
+                      </Label>
                       <Textarea
                         id="message"
-                        name="message"
-                        placeholder="Tell me about your oppertunity, or just say hello!"
+                        placeholder="Tell me about your opportunity, or just say hello!"
                         rows={6}
-                        required
-                        className="bg-black/50 border-purple-900/50 focus:border-purple-500 focus:ring-purple-500 resize-none !rounded-2xl"
+                        {...register("message")}
+                        className={`bg-purple-900/10 border-purple-500/20 focus:border-purple-400 focus:ring-purple-400/20 resize-none !rounded-xl shadow-sm placeholder:text-gray-500 ${errors.message ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
+                        aria-invalid={errors.message ? "true" : "false"}
                       />
+                      {errors.message && (
+                        <p className="text-sm text-red-400 mt-1">
+                          {errors.message.message}
+                        </p>
+                      )}
                     </div>
 
                     <Button
                       type="submit"
-                      className="w-full rounded-full bg-gradient-to-r from-purple-800 to-purple-600 hover:from-purple-700 hover:to-purple-500 h-12 mt-4"
+                      className="w-full rounded-xl bg-gradient-to-r from-purple-900 to-purple-700 hover:from-purple-800 hover:to-purple-600 h-12"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
-                        <div className="flex items-center">
+                        <div className="flex items-center justify-center">
                           <div className="animate-spin mr-2 h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
                           Sending...
                         </div>
                       ) : (
-                        <div className="flex items-center">
+                        <div className="flex items-center justify-center">
                           <Send className="mr-2 h-4 w-4" />
                           Send Message
                         </div>
