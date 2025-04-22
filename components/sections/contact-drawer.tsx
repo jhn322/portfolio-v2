@@ -156,7 +156,7 @@ export default function ContactDrawer() {
               onClick={handleOpen}
               borderRadius="9999px"
               containerClassName="rounded-full"
-              className="bg-gradient-to-r from-purple-900 to-purple-700 hover:from-purple-800 hover:to-purple-600 text-white px-8 py-3 flex items-center justify-center"
+              className="bg-gradient-to-r from-purple-900 to-purple-700 hover:from-purple-800 hover:to-purple-600 px-8 py-3 flex items-center justify-center"
               borderClassName="bg-[radial-gradient(theme(colors.purple.200)_40%,transparent_60%)]"
             >
               <ChevronUp className="mr-2 h-5 w-5" />
@@ -428,23 +428,28 @@ export default function ContactDrawer() {
                       )}
                     </div>
 
-                    <Button
-                      type="submit"
-                      className="w-full rounded-xl bg-gradient-to-r from-purple-900 to-purple-700 hover:from-purple-800 hover:to-purple-600 h-12"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? (
-                        <div className="flex items-center justify-center">
-                          <div className="animate-spin mr-2 h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
-                          Sending...
-                        </div>
-                      ) : (
-                        <div className="flex items-center justify-center">
-                          <Send className="mr-2 h-4 w-4" />
-                          Send Message
-                        </div>
-                      )}
-                    </Button>
+                    <div className="py-4">
+                      <MovingButton
+                        type="submit"
+                        borderRadius="9999px"
+                        containerClassName="rounded-full w-full"
+                        className="bg-gradient-to-r from-purple-900 to-purple-700 hover:from-purple-800 hover:to-purple-600 px-8 py-3 flex items-center justify-center"
+                        borderClassName="bg-[radial-gradient(theme(colors.purple.200)_40%,transparent_60%)]"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? (
+                          <div className="flex items-center justify-center">
+                            <div className="animate-spin mr-2 h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
+                            Sending...
+                          </div>
+                        ) : (
+                          <div className="flex items-center justify-center">
+                            <Send className="mr-2 h-4 w-4" />
+                            Send Message
+                          </div>
+                        )}
+                      </MovingButton>
+                    </div>
                   </form>
                 </div>
               </div>

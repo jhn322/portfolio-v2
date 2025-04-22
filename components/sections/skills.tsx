@@ -155,7 +155,7 @@ export default function Skills() {
                 whileHover={{ y: -10 }}
                 className="relative group"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-900/50 to-purple-700/50 rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-900 to-purple-700 rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none" />
 
                 <Card className="relative bg-gradient-to-br from-black/40 to-purple-900/20 backdrop-blur-md border-purple-900/30 h-full overflow-hidden group">
                   <CardHeader className="flex flex-row items-center space-x-4 pb-4">

@@ -92,10 +92,7 @@ export default function About() {
               variants={itemVariants}
               className="flex flex-wrap gap-4"
             >
-              <Button
-                onClick={handleOpenResume}
-                className="rounded-full bg-gradient-to-r from-purple-900/50 to-purple-600/50"
-              >
+              <Button onClick={handleOpenResume} className="rounded-full">
                 <FileText className="mr-2 h-4 w-4" />
                 Resume
               </Button>

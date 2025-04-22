@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
 import { MovingButton } from "@/components/ui/moving-border-button";
 
 export default function Hero() {
@@ -10,13 +9,6 @@ export default function Hero() {
 
   const scrollToFeaturedProjects = () => {
     const aboutSection = document.getElementById("featured-projects");
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById("about");
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: "smooth" });
     }
@@ -76,7 +68,7 @@ export default function Hero() {
             onClick={scrollToFeaturedProjects}
             borderRadius="9999px"
             containerClassName="rounded-full"
-            className="text-sm md:text-md lg:text-lg bg-gradient-to-r from-purple-900 to-purple-700 hover:from-purple-800 hover:to-purple-600 text-white px-8 py-3"
+            className="text-sm md:text-md lg:text-lg bg-gradient-to-r from-purple-900 to-purple-700 hover:from-purple-800 hover:to-purple-600 px-8 py-3"
             borderClassName="bg-[radial-gradient(theme(colors.purple.200)_40%,transparent_60%)]"
           >
             Explore My Projects
@@ -86,16 +78,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
-              onClick={scrollToAbout}
-              className="cursor-pointer"
-            >
-              <ArrowDown className="h-8 w-8 text-purple-300 hover:text-purple-500/70 border-2 border-purple-500 hover:border-purple-700/70 rounded-full p-1" />
-            </motion.div>
-          </motion.div>
+          ></motion.div>
         </motion.div>
       </div>
     </section>

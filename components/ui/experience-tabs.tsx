@@ -44,7 +44,7 @@ export const ExperienceTabs = ({ tabs, defaultValue }: TabsProps) => {
             {activeTab === tab.value && (
               <motion.span
                 layoutId="activeExperienceTab"
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-900/50 to-purple-600/50"
+                className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-900 to-purple-700"
                 style={{ borderRadius: 9999 }}
                 transition={{ type: "spring", stiffness: 300, damping: 25 }}
               />

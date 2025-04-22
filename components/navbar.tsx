@@ -140,7 +140,7 @@ export default function Navbar() {
                 {activeSection === item.href.substring(1) && (
                   <motion.span
                     layoutId="activeSection"
-                    className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-900/50 to-purple-600/50"
+                    className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-900 to-purple-700"
                     style={{ borderRadius: 9999 }}
                     transition={{ type: "spring", duration: 0.6 }}
                   />
@@ -197,7 +197,7 @@ export default function Navbar() {
                   className={cn(
                     "text-lg w-full justify-center",
                     activeSection === item.href.substring(1)
-                      ? "text-white rounded-full bg-gradient-to-r from-purple-900/50 to-purple-600/50"
+                      ? "text-white rounded-full"
                       : "text-gray-400"
                   )}
                 >

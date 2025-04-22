@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, useInView } from "framer-motion";
+import Link from "next/link";
 
 type IconData = {
   href: string;
@@ -53,7 +54,7 @@ const Icon = ({
   };
 
   return (
-    <a
+    <Link
       href={href}
       className={cn(
         "relative flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-purple-900 to-purple-700 hover:from-purple-800 hover:to-purple-600 text-white",
@@ -76,7 +77,7 @@ const Icon = ({
           <span className="text-sm">{subtext}</span>
         </div>
       )}
-    </a>
+    </Link>
   );
 };
 
