@@ -355,9 +355,9 @@ const Semurai = () => {
               UI/UX & Content Management
             </span>
             <br />
-            Implemented modern component libraries including Shadcn UI and
-            custom animations with Framer Motion. Built reusable components such
-            as carousels, accordions, and parallax heroes. Integrated Sanity CMS
+            Implemented modern component libraries including Shadcn and custom
+            animations with Framer Motion. Built reusable components such as
+            carousels, accordions, and parallax heroes. Integrated Sanity CMS
             for dynamic content management on client projects and optimized for
             SEO performance.
           </div>

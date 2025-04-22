@@ -8,7 +8,7 @@ Here are some of the key technologies and libraries used in this project:
 
 - **Framework:** [Next.js](https://nextjs.org/) (v15)
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
-- **UI Components:** [Shadcn UI](https://ui.shadcn.com/) (Radix UI)
+- **UI Components:** [Shadcn](https://shadcn.com/), [Radix UI](https://www.radix-ui.com/), [React Icons](https://react-icons.github.io/react-icons/), [Lucide](https://lucide.dev/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 - **Animations:** [Framer Motion](https://www.framer.com/motion/), [Lottie](https://lottiefiles.com/), [Tailwind CSS Animate](https://tailwindcss.com/docs/animation), Custom `useIntersectionObserver` Hook + `FadeIn` Component
 - **3D:** [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction), [Drei](https://github.com/pmndrs/drei)

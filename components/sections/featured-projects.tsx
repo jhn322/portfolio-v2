@@ -30,7 +30,7 @@ const projects: Project[] = [
       "TypeScript",
       "Tailwind CSS",
       "Radix UI",
-      "Shadcn UI",
+      "Shadcn",
       "NextAuth.js",
       "MongoDB",
       "Chess.js",
