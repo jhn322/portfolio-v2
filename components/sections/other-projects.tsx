@@ -44,7 +44,7 @@ const projects: Project[] = [
     projectType: "Passion",
   },
   {
-    title: "Dead Link Checker",
+    title: "YAML URL Checker",
     description:
       "Python-based utility script designed to automatically scan configuration files for potentially dead web links, specifically targeting Trakt and Letterboxd list URLs within YAML structures. It efficiently checks the status of each discovered URL using HTTP HEAD requests and identifies any links that are no longer accessible. The script provides a summary report to a log file, and sends a notification to a configured Discord channel via webhooks.",
     tags: [
@@ -58,8 +58,8 @@ const projects: Project[] = [
       "Requests",
       "Web Scraping",
     ],
-    liveUrl: "https://github.com/jhn322/dead-link-checker",
-    githubUrl: "https://github.com/jhn322/dead-link-checker",
+    liveUrl: "https://github.com/jhn322/yaml-url-checker",
+    githubUrl: "https://github.com/jhn322/yaml-url-checker",
     projectType: "Personal",
   },
   {
