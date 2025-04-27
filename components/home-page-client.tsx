@@ -16,9 +16,12 @@ const DynamicHero = dynamic(() => import("@/components/sections/hero"), {
 const DynamicAbout = dynamic(() => import("@/components/sections/about"), {
   loading: () => <Skeleton className="h-[600px] w-full py-20 md:py-32" />,
 });
-const DynamicSkills = dynamic(() => import("@/components/sections/skills"), {
-  loading: () => <Skeleton className="h-[800px] w-full py-20 md:py-32" />,
-});
+const DynamicSkillsSolarSystem = dynamic(
+  () => import("@/components/sections/skills"),
+  {
+    loading: () => <Skeleton className="h-[900px] w-full py-20 md:py-32" />,
+  }
+);
 const DynamicFeaturedProjects = dynamic(
   () => import("@/components/sections/featured-projects"),
   {
@@ -55,7 +58,7 @@ export default function HomePageClient() {
       <Navbar />
       <DynamicHero />
       <DynamicAbout />
-      <DynamicSkills />
+      <DynamicSkillsSolarSystem />
       <DynamicFeaturedProjects />
       <DynamicOtherProjects />
       <DynamicExperience />
