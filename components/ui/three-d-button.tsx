@@ -13,11 +13,20 @@ import useMeasure from "react-use-measure";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Sphere, Torus, Cone, Icosahedron } from "@react-three/drei";
 import * as THREE from "three";
+import { usePerformanceMode } from "@/hooks/use-performance-mode";
 
 // Extend HTMLMotionProps<"button"> instead of React.ButtonHTMLAttributes
 // Omit children as we define it explicitly
 interface ThreeDButtonProps
   extends Omit<HTMLMotionProps<"button">, "children"> {
+  children: React.ReactNode;
+  className?: string;
+  containerClassName?: string;
+}
+
+// Regular button props for mobile version
+interface SimpleButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   className?: string;
   containerClassName?: string;
@@ -29,7 +38,6 @@ const AnimatedGroup = ({
 }: {
   mouseX: MotionValue<number>;
   mouseY: MotionValue<number>;
-  isHovered: boolean;
 }) => {
   const groupRef = useRef<THREE.Group>(null!);
 
@@ -93,6 +101,7 @@ const ThreeDButton = ({
   const [isHovered, setIsHovered] = useState(false);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+  const { shouldOptimize } = usePerformanceMode();
 
   // Spring physics for smooth animation
   const springConfig = { damping: 15, stiffness: 250, mass: 0.8 };
@@ -100,6 +109,8 @@ const ThreeDButton = ({
   const mouseYSpring = useSpring(mouseY, springConfig);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (shouldOptimize) return;
+
     const { clientX, clientY } = e;
     const { left, top, width, height } = bounds;
     // Map mouse position to a range relative to button center
@@ -110,6 +121,8 @@ const ThreeDButton = ({
   };
 
   const handleMouseLeave = () => {
+    if (shouldOptimize) return;
+
     mouseX.set(0);
     mouseY.set(0);
     mouseXSpring.set(0);
@@ -118,9 +131,32 @@ const ThreeDButton = ({
   };
 
   const handleMouseEnter = () => {
+    if (shouldOptimize) return;
+
     setIsHovered(true);
   };
 
+  // If we're on mobile, render a simple button without any animations
+  if (shouldOptimize) {
+    // Convert motion props to regular button props
+    const simpleProps: SimpleButtonProps = {
+      className: `relative grid place-items-center rounded-full bg-gradient-to-r from-purple-900 to-purple-700 px-8 py-4 font-semibold border border-purple-500 text-purple-50 shadow-lg transition-colors duration-300 hover:border-purple-400 hover:from-purple-800 hover:to-purple-600 ${containerClassName ?? ""}`,
+      onClick: props.onClick,
+      type: props.type,
+      disabled: props.disabled,
+      children: (
+        <span
+          className={`relative z-10 transition-colors duration-300 ${className ?? ""}`}
+        >
+          {children}
+        </span>
+      ),
+    };
+
+    return <button ref={ref} {...simpleProps} />;
+  }
+
+  // Desktop version with all animations
   return (
     <MotionConfig transition={{ type: "spring", ...springConfig }}>
       <motion.button
@@ -168,11 +204,7 @@ const ThreeDButton = ({
                 intensity={0.8}
                 color="#FFFFFF"
               />
-              <AnimatedGroup
-                mouseX={mouseXSpring}
-                mouseY={mouseYSpring}
-                isHovered={isHovered}
-              />
+              <AnimatedGroup mouseX={mouseXSpring} mouseY={mouseYSpring} />
             </Canvas>
           )}
         </motion.div>

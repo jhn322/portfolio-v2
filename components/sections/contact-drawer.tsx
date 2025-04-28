@@ -12,11 +12,16 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Send, Mail, MapPin, X, ChevronUp } from "lucide-react";
 import { MovingButton } from "../ui/moving-border-button";
+import { StaticButton } from "../ui/static-button";
 import Lottie from "lottie-react";
 import contactAnimation from "../lottie/contact.json";
 import sentAnimation from "../lottie/sent.json";
 import Link from "next/link";
 import { FadeIn } from "../ui/fade-in";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { usePerformanceMode } from "@/hooks/use-performance-mode";
+import { useLottieOptimization } from "@/hooks/use-lottie-optimization";
+import { useMotionOptimization } from "@/hooks/use-motion-optimization";
 
 // Zod schema for validation
 const formSchema = z.object({
@@ -37,6 +42,10 @@ export default function ContactDrawer() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const controls = useAnimation();
+  const isMobile = useIsMobile();
+  const { shouldOptimize } = usePerformanceMode();
+  const { getOptimizedLottieOptions } = useLottieOptimization();
+  const { getOptimizedTransition } = useMotionOptimization();
 
   const {
     register,
@@ -73,18 +82,31 @@ export default function ContactDrawer() {
     },
   ];
 
+  // Get optimized transitions
+  const openTransition = getOptimizedTransition({
+    type: "spring",
+    damping: 30,
+    stiffness: 400,
+  });
+
+  const closeTransition = getOptimizedTransition({
+    type: "spring",
+    damping: 30,
+    stiffness: 400,
+  });
+
   const handleOpen = () => {
     setIsOpen(true);
     controls.start({
       y: 0,
-      transition: { type: "spring", damping: 30, stiffness: 400 },
+      transition: openTransition,
     });
   };
 
   const handleClose = () => {
     controls.start({
       y: "100%",
-      transition: { type: "spring", damping: 30, stiffness: 400 },
+      transition: closeTransition,
     });
     setIsOpen(false);
   };
@@ -98,7 +120,7 @@ export default function ContactDrawer() {
     } else {
       controls.start({
         y: 0,
-        transition: { type: "spring", damping: 30, stiffness: 400 },
+        transition: openTransition,
       });
     }
   };
@@ -131,6 +153,20 @@ export default function ContactDrawer() {
     }
   };
 
+  // Determine which button component to use based on device
+  const ButtonComponent = isMobile ? StaticButton : MovingButton;
+
+  const optimizedLottieOptions = getOptimizedLottieOptions({
+    loop: true,
+    style: { height: "100%" },
+  });
+
+  const contactAnimationTransition = getOptimizedTransition({
+    duration: 4,
+    repeat: Infinity,
+    ease: "easeInOut",
+  });
+
   return (
     <>
       {/* Contact button */}
@@ -146,7 +182,7 @@ export default function ContactDrawer() {
               reach out!
             </p>
 
-            <MovingButton
+            <ButtonComponent
               onClick={handleOpen}
               borderRadius="9999px"
               containerClassName="rounded-full"
@@ -155,7 +191,7 @@ export default function ContactDrawer() {
             >
               <ChevronUp className="mr-2 h-5 w-5" />
               Open Contact Form
-            </MovingButton>
+            </ButtonComponent>
           </FadeIn>
         </div>
       </section>
@@ -167,7 +203,7 @@ export default function ContactDrawer() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0 }}
+          transition={{ duration: shouldOptimize ? 0.1 : 0 }}
           onClick={handleClose}
         />
       )}
@@ -180,8 +216,11 @@ export default function ContactDrawer() {
         animate={controls}
         drag="y"
         dragConstraints={{ top: 0, bottom: 500 }}
-        dragElastic={0.1}
-        dragTransition={{ bounceStiffness: 600, bounceDamping: 30 }}
+        dragElastic={shouldOptimize ? 0.05 : 0.1}
+        dragTransition={{
+          bounceStiffness: shouldOptimize ? 400 : 600,
+          bounceDamping: shouldOptimize ? 40 : 30,
+        }}
         onDragEnd={handleDragEnd}
         dragMomentum={false}
       >
@@ -220,8 +259,7 @@ export default function ContactDrawer() {
                 <div className="h-80 w-full mb-4">
                   <Lottie
                     animationData={sentAnimation}
-                    loop={true}
-                    style={{ height: "100%" }}
+                    {...optimizedLottieOptions}
                   />
                 </div>
                 <h4 className="text-xl font-bold mb-2">Message Sent!</h4>
@@ -257,7 +295,7 @@ export default function ContactDrawer() {
                             <p className="text-gray-400 text-sm font-medium mb-1">
                               {contactItem.label}
                             </p>
-                            <p className="text-white font-medium text-lg group-hover:text-purple-300 transition-colors">
+                            <p className="text-white font-medium text-sm md:text-base group-hover:text-purple-300 transition-colors break-all whitespace-normal">
                               {contactItem.value}
                             </p>
                           </div>
@@ -302,16 +340,11 @@ export default function ContactDrawer() {
                       animate={{
                         y: [0, -10, 0],
                       }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
+                      transition={contactAnimationTransition}
                     >
                       <Lottie
                         animationData={contactAnimation}
-                        loop={true}
-                        style={{ height: "100%", width: "100%" }}
+                        {...optimizedLottieOptions}
                       />
                     </motion.div>
                   </div>
@@ -347,7 +380,7 @@ export default function ContactDrawer() {
                           id="name"
                           placeholder="Name"
                           {...register("name")}
-                          className={`bg-purple-900/10 border-purple-500/20 focus:border-purple-400 focus:ring-purple-400/20 h-12 !rounded-xl shadow-sm placeholder:text-gray-500 ${errors.name ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
+                          className={`bg-purple-900/10 border-purple-500/20 focus:border-purple-400 focus:ring-purple-400/20 h-12 !rounded-xl shadow-sm placeholder:text-gray-500 placeholder:text-sm md:placeholder:text-base ${errors.name ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
                           aria-invalid={errors.name ? "true" : "false"}
                         />
                         {errors.name && (
@@ -368,7 +401,7 @@ export default function ContactDrawer() {
                           type="email"
                           placeholder="Email"
                           {...register("email")}
-                          className={`bg-purple-900/10 border-purple-500/20 focus:border-purple-400 focus:ring-purple-400/20 h-12 !rounded-xl shadow-sm placeholder:text-gray-500 ${errors.email ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
+                          className={`bg-purple-900/10 border-purple-500/20 focus:border-purple-400 focus:ring-purple-400/20 h-12 !rounded-xl shadow-sm placeholder:text-gray-500 placeholder:text-sm md:placeholder:text-base ${errors.email ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
                           aria-invalid={errors.email ? "true" : "false"}
                         />
                         {errors.email && (
@@ -390,7 +423,7 @@ export default function ContactDrawer() {
                         id="subject"
                         placeholder="What would you like to discuss?"
                         {...register("subject")}
-                        className={`bg-purple-900/10 border-purple-500/20 focus:border-purple-400 focus:ring-purple-400/20 h-12 !rounded-xl shadow-sm placeholder:text-gray-500 ${errors.subject ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
+                        className={`bg-purple-900/10 border-purple-500/20 focus:border-purple-400 focus:ring-purple-400/20 h-12 !rounded-xl shadow-sm placeholder:text-gray-500 placeholder:text-sm md:placeholder:text-base ${errors.subject ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
                         aria-invalid={errors.subject ? "true" : "false"}
                       />
                       {errors.subject && (
@@ -412,7 +445,7 @@ export default function ContactDrawer() {
                         placeholder="Tell me about your opportunity, or just say hello!"
                         rows={6}
                         {...register("message")}
-                        className={`bg-purple-900/10 border-purple-500/20 focus:border-purple-400 focus:ring-purple-400/20 resize-none !rounded-xl shadow-sm placeholder:text-gray-500 ${errors.message ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
+                        className={`bg-purple-900/10 border-purple-500/20 focus:border-purple-400 focus:ring-purple-400/20 resize-none !rounded-xl shadow-sm placeholder:text-gray-500 placeholder:text-sm md:placeholder:text-base ${errors.message ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
                         aria-invalid={errors.message ? "true" : "false"}
                       />
                       {errors.message && (
@@ -423,7 +456,7 @@ export default function ContactDrawer() {
                     </div>
 
                     <div className="py-4">
-                      <MovingButton
+                      <ButtonComponent
                         type="submit"
                         borderRadius="9999px"
                         containerClassName="rounded-full w-full"
@@ -437,12 +470,12 @@ export default function ContactDrawer() {
                             Sending...
                           </div>
                         ) : (
-                          <div className="flex items-center justify-center">
+                          <div className="flex items-center justify-center text-base">
                             <Send className="mr-2 h-4 w-4" />
                             Send Message
                           </div>
                         )}
-                      </MovingButton>
+                      </ButtonComponent>
                     </div>
                   </form>
                 </div>
