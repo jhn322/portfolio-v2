@@ -47,7 +47,7 @@ const CoursesDetails = ({
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-gray-300 text-sm pt-4 pb-2 pl-7 border-l border-purple-800 ml-2"
+          className="text-gray-300 text-sm pt-4 pb-2 pl-7 border-l border-purple-700 ml-2"
         >
           <ul className="space-y-6">
             <li>

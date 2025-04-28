@@ -162,7 +162,8 @@ export default function FeaturedProjects() {
           {projects.map((project, index) => (
             <FadeIn
               key={project.title}
-              delay={index * 150}
+              delay={index * 100}
+              rootMargin="0px 0px -100px 0px"
               className={`flex flex-col ${
                 index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
               } gap-8 lg:gap-12 items-center`}
