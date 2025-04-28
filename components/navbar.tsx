@@ -140,8 +140,8 @@ export default function Navbar() {
         className={cn(
           "fixed top-6 inset-x-0 z-50 w-[90%] max-w-3xl mx-auto px-4 py-3 rounded-full backdrop-blur-md border transition-all duration-300",
           isScrolled
-            ? "bg-purple-950/40 border-purple-700/50 shadow-[0_0_15px_rgba(139,92,246,0.15)]"
-            : "bg-purple-950/20 border-purple-700/20",
+            ? "bg-purple-900/30 text-purple-300 border-purple-700/30 shadow-[0_8px_24px_rgba(0,0,0,0.10)]"
+            : "bg-purple-900/20 text-purple-300 border-purple-700/20 shadow-[0_8px_24px_rgba(0,0,0,0.05)]",
           mobileMenuOpen ? "bg-transparent border-transparent shadow-none" : "",
           isWideScreen ? "wideScreen" : ""
         )}
@@ -163,7 +163,7 @@ export default function Navbar() {
                 variant="ghost"
                 onClick={() => handleNavClick(item.href)}
                 className={cn(
-                  "relative px-3 py-2 rounded-full text-sm transition-all duration-300",
+                  "relative px-3 py-2 text-sm transition-all duration-300",
                   activeSection === item.href.substring(1)
                     ? "text-white"
                     : "text-gray-300 hover:text-white"
@@ -172,7 +172,7 @@ export default function Navbar() {
                 {activeSection === item.href.substring(1) && (
                   <motion.span
                     layoutId="activeSection"
-                    className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-900 to-purple-700"
+                    className="absolute inset-0 rounded-full bg-purple-700"
                     style={{ borderRadius: 9999 }}
                     transition={{ type: "spring", duration: 0.6 }}
                   />
@@ -185,7 +185,7 @@ export default function Navbar() {
             variant="outline"
             size="sm"
             onClick={handleOpenResume}
-            className="hidden md:flex items-center gap-2 rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30 hover:text-white"
+            className="hidden md:flex items-center gap-2 border-purple-300 font-semibold text-purple-300 hover:text-white hover:bg-purple-900/30 rounded-full"
           >
             Resume
           </Button>
@@ -255,7 +255,7 @@ export default function Navbar() {
                         {activeSection === item.href.substring(1) && (
                           <motion.span
                             layoutId="mobileActiveIndicator"
-                            className="absolute left-2 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-purple-500"
+                            className="absolute left-2 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-purple-300"
                             transition={{ type: "spring", duration: 0.6 }}
                           />
                         )}
@@ -274,7 +274,7 @@ export default function Navbar() {
                 <Button
                   variant="outline"
                   onClick={handleOpenResume}
-                  className="justify-center text-purple-300 border-purple-700 hover:text-white hover:bg-purple-400/10 flex items-center gap-2 rounded-full px-6 py-2"
+                  className="justify-center text-purple-300 border-purple-300 hover:text-white hover:bg-purple-900/30 flex items-center gap-2 rounded-full px-6 py-2"
                 >
                   Resume
                 </Button>
@@ -292,7 +292,7 @@ export default function Navbar() {
                     variant="outline"
                     size="icon"
                     aria-label="GitHub Profile"
-                    className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30 hover:text-white"
+                    className="border-purple-300 text-purple-300 hover:bg-purple-900/30 hover:text-white rounded-full"
                   >
                     <Github className="h-5 w-5" />
                   </Button>
@@ -305,7 +305,7 @@ export default function Navbar() {
                     variant="outline"
                     size="icon"
                     aria-label="LinkedIn Profile"
-                    className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30 hover:text-white"
+                    className="border-purple-300 text-purple-300 hover:bg-purple-900/30 hover:text-white rounded-full"
                   >
                     <Linkedin className="h-5 w-5" />
                   </Button>

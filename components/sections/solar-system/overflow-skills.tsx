@@ -120,7 +120,7 @@ const SkillCategorySection = ({ category }: { category: SkillCategory }) => {
           </span>
           <motion.div
             animate={{ rotate: isExpanded ? 180 : 0 }}
-            className="lg:hidden text-purple-400"
+            className="lg:hidden text-purple-300"
           >
             <ChevronDown size={16} />
           </motion.div>
@@ -165,7 +165,7 @@ const SkillCategorySection = ({ category }: { category: SkillCategory }) => {
         {category.skills.length > 4 && (
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="mt-2 text-xs text-purple-400 hover:text-purple-300 transition-colors lg:hidden"
+            className="mt-2 text-xs text-purple-300 transition-colors lg:hidden"
           >
             {isExpanded ? "Show less" : `+${category.skills.length - 4} more`}
           </button>

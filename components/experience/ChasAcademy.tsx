@@ -239,7 +239,7 @@ const CoursesDetails = ({
           <div className="flex justify-center mt-6">
             <button
               onClick={toggleAccordion}
-              className="flex items-center gap-1 text-purple-400 hover:text-purple-300 transition-colors duration-200"
+              className="flex items-center gap-1 text-purple-300"
             >
               <span>Show less</span>
               <ChevronUp size={16} />
@@ -275,7 +275,7 @@ const ChasAcademy = () => {
         <Link
           href="https://chasacademy.se/program/fullstackutvecklare-javascript"
           target="_blank"
-          className="text-purple-400 tracking-wide group flex items-center gap-1"
+          className="text-purple-300 tracking-wide group flex items-center gap-1"
         >
           @Chas Academy
           <ExternalLink size={12} />
@@ -299,7 +299,7 @@ const ChasAcademy = () => {
           variants={item}
           className="text-base flex gap-2 text-gray-300"
         >
-          <span className="text-purple-400 mt-1">
+          <span className="text-purple-300 mt-1">
             <ArrowRight size={16} />
           </span>
           <div>
@@ -318,7 +318,7 @@ const ChasAcademy = () => {
           variants={item}
           className="text-base flex gap-2 text-gray-300"
         >
-          <span className="text-purple-400 mt-1">
+          <span className="text-purple-300 mt-1">
             <ArrowRight size={16} />
           </span>
           <div>
@@ -335,7 +335,7 @@ const ChasAcademy = () => {
           variants={item}
           className="text-base flex gap-2 text-gray-300"
         >
-          <span className="text-purple-400 mt-1">
+          <span className="text-purple-300 mt-1">
             <ArrowRight size={16} />
           </span>
           <div>
@@ -352,7 +352,7 @@ const ChasAcademy = () => {
           variants={item}
           className="text-base flex gap-2 text-gray-300"
         >
-          <span className="text-purple-400 mt-1">
+          <span className="text-purple-300 mt-1">
             <ArrowRight size={16} />
           </span>
           <div>
@@ -375,7 +375,7 @@ const ChasAcademy = () => {
         >
           <button
             onClick={toggleAccordion}
-            className="flex items-center gap-1 text-purple-400 hover:text-purple-300 transition-colors duration-200"
+            className="flex items-center gap-1 text-purple-300 hover:text-purple-300 transition-colors duration-200"
           >
             <span>View courses</span>
             <ChevronDown size={16} />

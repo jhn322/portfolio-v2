@@ -47,7 +47,7 @@ export default function Footer() {
                   variant="outline"
                   size="icon"
                   aria-label="GitHub Profile"
-                  className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30 hover:text-white"
+                  className="border-purple-300 text-purple-300 hover:bg-purple-900/30 hover:text-white rounded-full"
                 >
                   <Github className="h-4 w-4" />
                 </Button>
@@ -60,7 +60,7 @@ export default function Footer() {
                   variant="outline"
                   size="icon"
                   aria-label="LinkedIn Profile"
-                  className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30 hover:text-white"
+                  className="border-purple-300 text-purple-300 hover:bg-purple-900/30 hover:text-white rounded-full"
                 >
                   <Linkedin className="h-4 w-4" />
                 </Button>

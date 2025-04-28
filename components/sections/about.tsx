@@ -35,7 +35,7 @@ export default function About() {
           <FadeIn delay={200} threshold={0.3} className="order-2 md:order-1">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 inline-block relative">
               About Me
-              <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-purple-600"></span>
+              <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-purple-700"></span>
             </h2>
 
             <p className="text-gray-300 mb-4 text-lg">
@@ -55,7 +55,7 @@ export default function About() {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Button onClick={handleOpenResume} className="rounded-full">
+              <Button onClick={handleOpenResume}>
                 <FileText className="mr-2 h-4 w-4" />
                 Resume
               </Button>
@@ -66,7 +66,7 @@ export default function About() {
                     variant="outline"
                     size="icon"
                     aria-label="GitHub Profile"
-                    className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30"
+                    className="border-purple-300 text-purple-300 hover:bg-purple-900/30 rounded-full"
                   >
                     <Github className="h-4 w-4" />
                   </Button>
@@ -79,7 +79,7 @@ export default function About() {
                     variant="outline"
                     size="icon"
                     aria-label="LinkedIn Profile"
-                    className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30"
+                    className="border-purple-300 text-purple-300 hover:bg-purple-900/30 rounded-full"
                   >
                     <Linkedin className="h-4 w-4" />
                   </Button>
@@ -94,7 +94,7 @@ export default function About() {
             className="order-1 md:order-2 flex justify-center"
           >
             <div className="relative w-64 h-64 md:w-80 md:h-80 group">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 to-purple-900 blur-2xl opacity-20 animate-pulse" />
+              <div className="absolute inset-0 rounded-full bg-purple-700 blur-2xl opacity-20 animate-pulse" />
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-purple-500/30 p-1">
                 <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-purple-900/80 to-black relative">
                   <Image

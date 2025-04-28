@@ -8,7 +8,7 @@ import backgroundAnimation from "./lottie/background.json";
 const Lottie = dynamic(() => import("lottie-react"), {
   ssr: false,
   loading: () => (
-    <div className="fixed top-0 left-0 w-full h-full bg-gradient-to-b from-purple-950 to-black pointer-events-none z-0" />
+    <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0" />
   ),
 });
 

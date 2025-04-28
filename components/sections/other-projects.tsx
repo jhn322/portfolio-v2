@@ -152,9 +152,9 @@ export default function OtherProjects() {
               className="relative group h-full"
             >
               <motion.div whileHover={{ y: -10 }} className="h-full">
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-900 to-purple-700 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none" />
+                <div className="absolute inset-0 bg-purple-700 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none" />
 
-                <Card className="relative h-full flex flex-col bg-gradient-to-br from-black/40 to-purple-900/20 backdrop-blur-md border-purple-900/30 overflow-hidden group">
+                <Card className="relative h-full flex flex-col bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30 overflow-hidden group">
                   <CardHeader className="flex flex-row justify-between items-start pb-4 relative">
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: -5 }}
@@ -163,7 +163,7 @@ export default function OtherProjects() {
                         stiffness: 300,
                         damping: 15,
                       }}
-                      className="p-3 rounded-2xl bg-gradient-to-r from-purple-700 to-purple-900 shadow-lg"
+                      className="p-3 rounded-2xl bg-purple-700 shadow-lg"
                     >
                       <Folder className="h-6 w-6" />
                     </motion.div>
@@ -173,7 +173,7 @@ export default function OtherProjects() {
                         asChild
                         variant="ghost"
                         size="icon"
-                        className="rounded-full text-purple-300 hover:bg-purple-900/30 hover:text-white h-10 w-10"
+                        className="text-purple-300 hover:bg-purple-900/30 hover:text-white h-10 w-10 rounded-full"
                         aria-label={`View GitHub repository for ${project.title}`}
                       >
                         <Link
@@ -188,7 +188,7 @@ export default function OtherProjects() {
                         asChild
                         variant="ghost"
                         size="icon"
-                        className="rounded-full text-purple-300 hover:bg-purple-900/30 hover:text-white h-10 w-10"
+                        className="text-purple-300 hover:bg-purple-900/30 hover:text-white h-10 w-10 rounded-full"
                         aria-label={`View live demo for ${project.title}`}
                       >
                         <Link
@@ -226,7 +226,7 @@ export default function OtherProjects() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10"
+                        className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/30"
                       >
                         {tag}
                       </span>

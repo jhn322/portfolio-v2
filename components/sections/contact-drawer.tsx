@@ -186,7 +186,7 @@ export default function ContactDrawer() {
               onClick={handleOpen}
               borderRadius="9999px"
               containerClassName="rounded-full"
-              className="bg-gradient-to-r from-purple-900 to-purple-700 hover:from-purple-800 hover:to-purple-600 px-8 py-3 flex items-center justify-center"
+              className="bg-purple-700 hover:bg-purple-600 px-8 py-3 flex items-center justify-center"
               borderClassName="bg-[radial-gradient(theme(colors.purple.200)_40%,transparent_60%)]"
             >
               <ChevronUp className="mr-2 h-5 w-5" />
@@ -199,7 +199,7 @@ export default function ContactDrawer() {
       {/* Contact drawer */}
       {isOpen && (
         <motion.div
-          className="fixed inset-0 bg-black/90 backdrop-blur-md z-50"
+          className="fixed inset-0 bg-black/90 backdrop-blur-lg z-50"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -209,8 +209,8 @@ export default function ContactDrawer() {
       )}
 
       <motion.div
-        className={`fixed bottom-0 left-0 right-0 z-[60] bg-black/90 backdrop-blur-xl border-t border-purple-500/30 rounded-t-3xl ${
-          isOpen ? "shadow-[0_-5px_30px_rgba(147,51,234,0.35)]" : ""
+        className={`fixed bottom-0 left-0 right-0 z-[60] bg-black/90 backdrop-blur-xl border-t border-purple-900/30 rounded-t-2xl ${
+          isOpen ? "shadow-[0_-5px_30px_rgba(147,51,234,0.10)]" : ""
         } h-[80vh] md:h-[85vh] max-h-[900px] overflow-hidden`}
         initial={{ y: "100%" }}
         animate={controls}
@@ -225,11 +225,11 @@ export default function ContactDrawer() {
         dragMomentum={false}
       >
         {/* Purple gradient overlay on drawer */}
-        <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-purple-800/10 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-900/30 to-[#0a0010]/90 pointer-events-none"></div>
 
         {/* Drag handle */}
         <div className="flex justify-center items-center py-4 cursor-grab active:cursor-grabbing relative z-10">
-          <div className="w-12 h-1.5 bg-purple-400/40 rounded-full"></div>
+          <div className="w-12 h-1.5 bg-purple-300 rounded-full"></div>
         </div>
 
         <div className="absolute top-6 right-6 z-20">
@@ -238,7 +238,7 @@ export default function ContactDrawer() {
             size="icon"
             onClick={handleClose}
             aria-label="Close contact form"
-            className="rounded-full text-purple-200 hover:text-white hover:bg-purple-600/20 h-10 w-10 flex items-center justify-center p-0"
+            className="text-purple-300 hover:text-white hover:bg-purple-900/30 h-10 w-10 flex items-center justify-center p-0 rounded-full"
           >
             <X className="h-5 w-5" />
           </Button>
@@ -254,7 +254,7 @@ export default function ContactDrawer() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="max-w-md mx-auto bg-gradient-to-br from-purple-900/20 to-purple-800/10 backdrop-blur-md border border-purple-500/20 rounded-2xl p-6 shadow-lg w-full text-center"
+                className="max-w-md mx-auto bg-gradient-to-br from-purple-900/20 to-purple-800/10 backdrop-blur-md border border-purple-900/30 rounded-2xl p-6 shadow-lg w-full text-center"
               >
                 <div className="h-80 w-full mb-4">
                   <Lottie
@@ -273,7 +273,7 @@ export default function ContactDrawer() {
                 <div className="w-full overflow-x-hidden">
                   <h3 className="text-xl md:text-2xl font-bold mb-8 inline-block relative">
                     Contact Information
-                    <span className="absolute -bottom-2 left-0 w-1/4 h-0.5 bg-purple-400"></span>
+                    <span className="absolute -bottom-2 left-0 w-1/4 h-0.5 bg-purple-700"></span>
                   </h3>
                   <p className="text-gray-300 text-base leading-relaxed mb-8">
                     If you are interested in hiring me, please feel free to use
@@ -288,7 +288,7 @@ export default function ContactDrawer() {
                           key={contactItem.label}
                           className="flex items-center group"
                         >
-                          <div className="p-4 rounded-2xl bg-gradient-to-r from-purple-700 to-purple-900 mr-5 shrink-0 group-hover:from-purple-800 group-hover:to-purple-600 transition-colors">
+                          <div className="p-4 rounded-2xl bg-purple-700 hover:bg-purple-600 mr-5 shrink-0 transition-colors">
                             {contactItem.icon}
                           </div>
                           <div>
@@ -356,7 +356,7 @@ export default function ContactDrawer() {
 
                   <h3 className="text-xl md:text-2xl font-bold mb-8 inline-block relative">
                     Send Me a Message
-                    <span className="absolute -bottom-2 left-0 w-1/4 h-0.5 bg-purple-400"></span>
+                    <span className="absolute -bottom-2 left-0 w-1/4 h-0.5 bg-purple-700"></span>
                   </h3>
 
                   <form
@@ -380,7 +380,7 @@ export default function ContactDrawer() {
                           id="name"
                           placeholder="Name"
                           {...register("name")}
-                          className={`bg-purple-900/10 border-purple-500/20 focus:border-purple-400 focus:ring-purple-400/20 h-12 !rounded-xl shadow-sm placeholder:text-gray-500 placeholder:text-sm md:placeholder:text-base ${errors.name ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
+                          className={`bg-purple-900/10 border-purple-900/30 focus:border-purple-300 focus:ring-purple-400/20 h-12 !rounded-2xl shadow-sm placeholder:text-gray-500 placeholder:text-sm md:placeholder:text-base ${errors.name ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
                           aria-invalid={errors.name ? "true" : "false"}
                         />
                         {errors.name && (
@@ -401,7 +401,7 @@ export default function ContactDrawer() {
                           type="email"
                           placeholder="Email"
                           {...register("email")}
-                          className={`bg-purple-900/10 border-purple-500/20 focus:border-purple-400 focus:ring-purple-400/20 h-12 !rounded-xl shadow-sm placeholder:text-gray-500 placeholder:text-sm md:placeholder:text-base ${errors.email ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
+                          className={`bg-purple-900/10 border-purple-900/30 focus:border-purple-300 focus:ring-purple-400/20 h-12 !rounded-2xl shadow-sm placeholder:text-gray-500 placeholder:text-sm md:placeholder:text-base ${errors.email ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
                           aria-invalid={errors.email ? "true" : "false"}
                         />
                         {errors.email && (
@@ -423,7 +423,7 @@ export default function ContactDrawer() {
                         id="subject"
                         placeholder="What would you like to discuss?"
                         {...register("subject")}
-                        className={`bg-purple-900/10 border-purple-500/20 focus:border-purple-400 focus:ring-purple-400/20 h-12 !rounded-xl shadow-sm placeholder:text-gray-500 placeholder:text-sm md:placeholder:text-base ${errors.subject ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
+                        className={`bg-purple-900/10 border-purple-900/30 focus:border-purple-300 focus:ring-purple-400/20 h-12 !rounded-2xl shadow-sm placeholder:text-gray-500 placeholder:text-sm md:placeholder:text-base ${errors.subject ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
                         aria-invalid={errors.subject ? "true" : "false"}
                       />
                       {errors.subject && (
@@ -445,7 +445,7 @@ export default function ContactDrawer() {
                         placeholder="Tell me about your opportunity, or just say hello!"
                         rows={6}
                         {...register("message")}
-                        className={`bg-purple-900/10 border-purple-500/20 focus:border-purple-400 focus:ring-purple-400/20 resize-none !rounded-xl shadow-sm placeholder:text-gray-500 placeholder:text-sm md:placeholder:text-base ${errors.message ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
+                        className={`bg-purple-900/10 border-purple-900/30 focus:border-purple-300 focus:ring-purple-400/20 resize-none !rounded-2xl shadow-sm placeholder:text-gray-500 placeholder:text-sm md:placeholder:text-base ${errors.message ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : ""}`}
                         aria-invalid={errors.message ? "true" : "false"}
                       />
                       {errors.message && (
@@ -460,7 +460,7 @@ export default function ContactDrawer() {
                         type="submit"
                         borderRadius="9999px"
                         containerClassName="rounded-full w-full"
-                        className="bg-gradient-to-r from-purple-900 to-purple-700 hover:from-purple-800 hover:to-purple-600 px-8 py-3 flex items-center justify-center"
+                        className="bg-purple-700 hover:bg-purple-600 px-8 py-3 flex items-center justify-center"
                         borderClassName="bg-[radial-gradient(theme(colors.purple.200)_40%,transparent_60%)]"
                         disabled={isSubmitting}
                       >

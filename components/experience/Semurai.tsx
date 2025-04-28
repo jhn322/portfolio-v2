@@ -55,7 +55,7 @@ const ProjectDetails = ({
                 <Link
                   href="https://blueredgold.vercel.app/"
                   target="_blank"
-                  className="group flex items-center gap-1 hover:text-purple-400 transition-colors"
+                  className="group flex items-center gap-1 hover:text-purple-300 transition-colors"
                 >
                   BlueRedGold
                   <ExternalLink size={12} />
@@ -90,7 +90,7 @@ const ProjectDetails = ({
                 <Link
                   href="https://offertu.vercel.app/"
                   target="_blank"
-                  className="group flex items-center gap-1 hover:text-purple-400 transition-colors"
+                  className="group flex items-center gap-1 hover:text-purple-300 transition-colors"
                 >
                   Offertu
                   <ExternalLink size={12} />
@@ -125,7 +125,7 @@ const ProjectDetails = ({
                 <Link
                   href="https://www.leadvio.se/"
                   target="_blank"
-                  className="group flex items-center gap-1 hover:text-purple-400 transition-colors"
+                  className="group flex items-center gap-1 hover:text-purple-300 transition-colors"
                 >
                   Leadvio
                   <ExternalLink size={12} />
@@ -157,7 +157,7 @@ const ProjectDetails = ({
                 <Link
                   href="https://librechat.himitsu.ai/"
                   target="_blank"
-                  className="group flex items-center gap-1 hover:text-purple-400 transition-colors"
+                  className="group flex items-center gap-1 hover:text-purple-300 transition-colors"
                 >
                   LibreChat
                   <ExternalLink size={12} />
@@ -188,7 +188,7 @@ const ProjectDetails = ({
                 <Link
                   href="https://theresina.templweb.com/"
                   target="_blank"
-                  className="group flex items-center gap-1 hover:text-purple-400 transition-colors"
+                  className="group flex items-center gap-1 hover:text-purple-300 transition-colors"
                 >
                   Dico
                   <ExternalLink size={12} />
@@ -219,7 +219,7 @@ const ProjectDetails = ({
                 <Link
                   href="https://semurai-dev-blog.vercel.app/"
                   target="_blank"
-                  className="group flex items-center gap-1 hover:text-purple-400 transition-colors"
+                  className="group flex items-center gap-1 hover:text-purple-300 transition-colors"
                 >
                   Dev Blog
                   <ExternalLink size={12} />
@@ -249,7 +249,7 @@ const ProjectDetails = ({
           <div className="flex justify-center mt-6">
             <button
               onClick={toggleAccordion}
-              className="flex items-center gap-1 text-purple-400 hover:text-purple-300 transition-colors duration-200"
+              className="flex items-center gap-1 text-purple-300"
             >
               <span>Show less</span>
               <ChevronUp size={16} />
@@ -285,7 +285,7 @@ const Semurai = () => {
         <Link
           href="https://semurai.se/"
           target="_blank"
-          className="text-purple-400 tracking-wide group flex items-center gap-1"
+          className="text-purple-300 tracking-wide group flex items-center gap-1"
         >
           @Semurai
           <ExternalLink size={12} />
@@ -309,7 +309,7 @@ const Semurai = () => {
           variants={item}
           className="text-base flex gap-2 text-gray-300"
         >
-          <span className="text-purple-400 mt-1">
+          <span className="text-purple-300 mt-1">
             <ArrowRight size={16} />
           </span>
           <div>
@@ -328,7 +328,7 @@ const Semurai = () => {
           variants={item}
           className="text-base flex gap-2 text-gray-300"
         >
-          <span className="text-purple-400 mt-1">
+          <span className="text-purple-300 mt-1">
             <ArrowRight size={16} />
           </span>
           <div>
@@ -347,7 +347,7 @@ const Semurai = () => {
           variants={item}
           className="text-base flex gap-2 text-gray-300"
         >
-          <span className="text-purple-400 mt-1">
+          <span className="text-purple-300 mt-1">
             <ArrowRight size={16} />
           </span>
           <div>
@@ -366,7 +366,7 @@ const Semurai = () => {
           variants={item}
           className="text-base flex gap-2 text-gray-300"
         >
-          <span className="text-purple-400 mt-1">
+          <span className="text-purple-300 mt-1">
             <ArrowRight size={16} />
           </span>
           <div>
@@ -390,7 +390,7 @@ const Semurai = () => {
         >
           <button
             onClick={toggleAccordion}
-            className="flex items-center gap-1 text-purple-400 hover:text-purple-300 transition-colors duration-200"
+            className="flex items-center gap-1 text-purple-300"
           >
             <span>View projects</span>
             <ChevronDown size={16} />

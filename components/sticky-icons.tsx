@@ -57,7 +57,7 @@ const Icon = ({
     <Link
       href={href}
       className={cn(
-        "relative flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-purple-900 to-purple-700 hover:from-purple-800 hover:to-purple-600 text-white",
+        "relative flex h-10 w-10 items-center justify-center rounded-full bg-purple-700 hover:bg-purple-600 text-white",
         "cursor-pointer transition-colors duration-200 ease-in-out"
       )}
       target="_blank"
@@ -72,7 +72,7 @@ const Icon = ({
     >
       <IconComponent className="h-5 w-5 text-white" />
       {isHovered && (
-        <div className="absolute left-[calc(100%+10px)] top-1/2 z-40 -translate-y-1/2 animate-fadeIn rounded-2xl bg-gradient-to-r from-purple-900 to-purple-700 p-3 text-white pointer-events-none min-w-max">
+        <div className="absolute left-[calc(100%+10px)] top-1/2 z-40 -translate-y-1/2 animate-fadeIn rounded-2xl bg-purple-700 hover:bg-purple-600 p-3 text-white pointer-events-none min-w-max">
           <span className="mb-1 block font-bold">{label}</span>
           <span className="text-sm">{subtext}</span>
         </div>
@@ -117,7 +117,7 @@ const StickyIcons = () => {
         ))}
       </div>
       <FadeIn threshold={0.1} delay={300 + iconData.length * 100}>
-        <div className="mt-4 h-32 w-px bg-gradient-to-t from-transparent via-purple-500 to-purple-500" />
+        <div className="mt-4 h-32 w-px bg-purple-700" />
       </FadeIn>
     </div>
   );

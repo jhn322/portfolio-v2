@@ -208,7 +208,7 @@ export default function FeaturedProjects() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Button className="rounded-full bg-purple-800 hover:bg-purple-700">
+                    <Button>
                       <ExternalLink className="mr-2 h-4 w-4" />
                       Live Demo
                     </Button>
@@ -220,7 +220,7 @@ export default function FeaturedProjects() {
                   >
                     <Button
                       variant="outline"
-                      className="rounded-full border-purple-700 text-purple-300 hover:bg-purple-900/30 hover:text-white"
+                      className="border-purple-300 text-purple-300 hover:bg-purple-900/30 hover:text-white rounded-full"
                     >
                       <Github className="mr-2 h-4 w-4" />
                       Source Code
