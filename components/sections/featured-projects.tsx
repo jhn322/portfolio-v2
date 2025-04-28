@@ -163,6 +163,7 @@ export default function FeaturedProjects() {
             <FadeIn
               key={project.title}
               delay={index * 100}
+              threshold={0.05}
               rootMargin="0px 0px -100px 0px"
               className={`flex flex-col ${
                 index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
