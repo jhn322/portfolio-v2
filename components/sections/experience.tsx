@@ -22,7 +22,7 @@ export function Experience() {
   return (
     <section id="experience" className="py-20 md:py-32 relative z-10">
       <div className="container mx-auto px-4">
-        <FadeIn threshold={0.1} className="text-center mb-16">
+        <FadeIn delay={100} className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 inline-block relative">
             My Experience
             <span className="absolute -bottom-2 left-1/3 w-1/3 h-1 bg-purple-600"></span>
@@ -34,7 +34,7 @@ export function Experience() {
         </FadeIn>
 
         <div className="max-w-4xl mx-auto">
-          <FadeIn threshold={0.1} delay={150}>
+          <FadeIn delay={150}>
             <ExperienceTabs tabs={tabs} />
           </FadeIn>
         </div>

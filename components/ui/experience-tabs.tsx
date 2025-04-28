@@ -23,7 +23,7 @@ export const ExperienceTabs = ({ tabs, defaultValue }: TabsProps) => {
   return (
     <div className="w-full relative">
       <FadeIn
-        threshold={0.1}
+        delay={100}
         className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8"
       >
         {tabs.map((tab) => (
@@ -50,7 +50,7 @@ export const ExperienceTabs = ({ tabs, defaultValue }: TabsProps) => {
         ))}
       </FadeIn>
 
-      <FadeIn threshold={0.1} delay={150} className="relative mt-8 w-full">
+      <FadeIn delay={150} className="relative mt-8 w-full">
         <AnimatePresence initial={false} mode="wait">
           {tabs.map(
             (tab) =>

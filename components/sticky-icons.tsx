@@ -111,12 +111,12 @@ const StickyIcons = () => {
     <div className="fixed bottom-0 left-14 z-40 hidden flex-col items-center 2xl:flex">
       <div className="flex flex-col items-center space-y-4">
         {iconData.map((icon, index) => (
-          <FadeIn key={icon.href} threshold={0.1} delay={300 + index * 100}>
+          <FadeIn key={icon.href} delay={300 + index * 100}>
             <Icon {...icon} />
           </FadeIn>
         ))}
       </div>
-      <FadeIn threshold={0.1} delay={300 + iconData.length * 100}>
+      <FadeIn delay={300 + iconData.length * 100}>
         <div className="mt-4 h-32 w-px bg-purple-700" />
       </FadeIn>
     </div>

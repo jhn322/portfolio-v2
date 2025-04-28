@@ -32,7 +32,7 @@ export default function About() {
     <section id="about" className="py-20 md:py-32 relative">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <FadeIn delay={200} threshold={0.3} className="order-2 md:order-1">
+          <FadeIn delay={200} className="order-2 md:order-1">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 inline-block relative">
               About Me
               <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-purple-700"></span>
@@ -90,7 +90,6 @@ export default function About() {
 
           <FadeIn
             delay={400}
-            threshold={0.3}
             className="order-1 md:order-2 flex justify-center"
           >
             <div className="relative w-64 h-64 md:w-80 md:h-80 group">

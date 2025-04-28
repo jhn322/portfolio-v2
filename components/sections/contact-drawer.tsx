@@ -172,7 +172,7 @@ export default function ContactDrawer() {
       {/* Contact button */}
       <section id="contact" className="py-20 md:py-32 relative z-20">
         <div className="container mx-auto px-4 text-center">
-          <FadeIn threshold={0.1} className="text-center mb-10">
+          <FadeIn className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 inline-block relative">
               Get In Touch
               <span className="absolute -bottom-2 left-1/3 w-1/3 h-1 bg-purple-600"></span>

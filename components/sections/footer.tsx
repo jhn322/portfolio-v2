@@ -22,7 +22,7 @@ export default function Footer() {
                 isInView ? { opacity: 1, scaleX: 1 } : { opacity: 0, scaleX: 0 }
               }
               transition={{ duration: 1.4, delay: 0.2 }}
-              className="h-px w-1/2 bg-purple-900/30"
+              className="h-px w-1/2 bg-purple-300/30"
               style={{ transformOrigin: "right" }}
             />
             <motion.div
@@ -31,17 +31,17 @@ export default function Footer() {
                 isInView ? { opacity: 1, scaleX: 1 } : { opacity: 0, scaleX: 0 }
               }
               transition={{ duration: 1.4, delay: 0.2 }}
-              className="h-px w-1/2 bg-purple-900/30"
+              className="h-px w-1/2 bg-purple-300/30"
               style={{ transformOrigin: "left" }}
             />
           </div>
 
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <FadeIn threshold={0.1} delay={300} className="mb-6 md:mb-0">
+            <FadeIn delay={300} className="mb-6 md:mb-0">
               <p className="text-gray-400 mt-2">Building for a better web</p>
             </FadeIn>
 
-            <FadeIn threshold={0.1} delay={400} className="flex gap-3">
+            <FadeIn delay={400} className="flex gap-3">
               <Link href="https://github.com/jhn322" target="_blank">
                 <Button
                   variant="outline"
@@ -69,7 +69,6 @@ export default function Footer() {
           </div>
 
           <FadeIn
-            threshold={0.1}
             delay={500}
             className="mt-8 text-center text-gray-400 text-sm"
           >

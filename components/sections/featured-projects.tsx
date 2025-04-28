@@ -147,7 +147,7 @@ export default function FeaturedProjects() {
   return (
     <section id="featured-projects" className="py-20 md:py-32 relative">
       <div className="container mx-auto px-4">
-        <FadeIn threshold={0.1} className="text-center mb-16">
+        <FadeIn delay={100} className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 inline-block relative">
             Featured Projects
             <span className="absolute -bottom-2 left-1/3 w-1/3 h-1 bg-purple-600"></span>
@@ -162,7 +162,6 @@ export default function FeaturedProjects() {
           {projects.map((project, index) => (
             <FadeIn
               key={project.title}
-              threshold={0.1}
               delay={index * 150}
               className={`flex flex-col ${
                 index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
