@@ -22,7 +22,7 @@ const projects: Project[] = [
   {
     title: "NextMove",
     description:
-      "A modern chess application built with Next.js, TypeScript, MongoDB and Prisma. Play against AI opponents of varying difficulty levels, track your game history and statistics, and customize settings. Features user authentication via NextAuth.js (login with email/password or Google OAuth), sound effects, animations, and a responsive design for both desktop and mobile.",
+      "A modern chess application built with Next.js, TypeScript, MongoDB and Prisma. Play against AI opponents of varying difficulty levels, track your game history and statistics, and customize settings. Features user authentication via NextAuth.js (login with email/password or Google OAuth), sound effects, animations, plus a special chess-related Wordle game, all in a responsive design for both desktop and mobile.",
     image: "/featured-projects/nextmove.webp",
     hoverImage: "/featured-projects/nextmove-hover.webp",
     tags: [
