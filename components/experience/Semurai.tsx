@@ -53,6 +53,57 @@ const ProjectDetails = ({
             <li>
               <div className="font-bold text-white flex flex-wrap items-center gap-2">
                 <Link
+                  href="https://egen-lista.vercel.app/"
+                  target="_blank"
+                  className="group flex items-center gap-1 hover:text-purple-300 transition-colors"
+                >
+                  EgenLista
+                  <ExternalLink size={12} />
+                </Link>
+                <span className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10">
+                  Next.js
+                </span>
+                <span className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10">
+                  Tailwind
+                </span>
+                <span className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10">
+                  Shadcn
+                </span>
+                <span className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10">
+                  Prisma
+                </span>
+                <span className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10">
+                  NextAuth
+                </span>
+                <span className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10">
+                  Bcryptjs
+                </span>
+                <span className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10">
+                  Zod
+                </span>
+                <span className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10">
+                  Recharts
+                </span>
+              </div>
+              <p className="mt-2">
+                Led the development of EgenLista, a customer list-building tool
+                for Swedish entrepreneurs. Engineered a full-stack solution
+                using Next.js, Prisma, and NextAuth, featuring OAuth and
+                email/password authentication, email/phone validation, and APIs
+                for customer, lead, and contact management. Implemented advanced
+                form capabilities with script embedding, user-specific QR codes,
+                UI skeletons, and a superAdmin role for subscription testing.
+                The platform includes a &apos;my pages&apos; section with
+                Markdown note-taking (react-md) with free/pro tiers, CSV export,
+                comprehensive list filtering (search, type, date-range),
+                sorting, pagination, and Recharts for data visualization.
+                Automated weekly cleanup of unverified users via Vercel cron
+                jobs and tracked contact interactions.
+              </p>
+            </li>
+            <li>
+              <div className="font-bold text-white flex flex-wrap items-center gap-2">
+                <Link
                   href="https://blueredgold.vercel.app/"
                   target="_blank"
                   className="group flex items-center gap-1 hover:text-purple-300 transition-colors"
