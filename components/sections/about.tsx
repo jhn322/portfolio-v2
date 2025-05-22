@@ -127,7 +127,7 @@ export default function About() {
 
               <button
                 onClick={handleToggleImage}
-                className="absolute bottom-2 right-2 z-10 p-2 border border-purple-700 text-purple-300 hover:bg-purple-900/30 rounded-full hover:text-purple-100 transition-all duration-200 opacity-0 group-hover:opacity-100 focus:opacity-100 outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-black"
+                className="absolute bottom-2 right-2 z-10 p-2 border border-purple-700 text-purple-300 hover:bg-purple-900/30 rounded-full hover:text-purple-100 transition-all duration-200 outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-black"
                 aria-label="Toggle profile picture"
                 tabIndex={0}
                 onKeyDown={(e) => {
