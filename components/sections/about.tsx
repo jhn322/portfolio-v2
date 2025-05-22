@@ -39,8 +39,8 @@ export default function About() {
             </h2>
 
             <p className="text-gray-300 mb-4 text-lg">
-              As a full-stack Web Developer I am passionate about my craft and
-              am committed to delivering solutions I can be proud of. I see each
+              As a full stack developer I am passionate about my craft and am
+              committed to delivering solutions I can be proud of. I see each
               project as an opportunity to improve and learn something new,
               ensuring that the end result surpasses the previous one. I strive
               to grow professionally and personally by focusing on efficiency,

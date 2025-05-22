@@ -87,7 +87,7 @@ const ProjectDetails = ({
               </div>
               <p className="mt-2">
                 Led the development of EgenLista, a customer list-building tool
-                for Swedish entrepreneurs. Engineered a full-stack solution
+                for Swedish entrepreneurs. Engineered a full stack solution
                 using Next.js, Prisma, and NextAuth, featuring OAuth and
                 email/password authentication, email/phone validation, and APIs
                 for customer, lead, and contact management. Implemented advanced
@@ -332,7 +332,7 @@ const Semurai = () => {
         animate="show"
         className="flex flex-col xs:flex-row text-white gap-1 font-medium text-xl"
       >
-        Full-stack Web Developer Intern
+        Full stack Web Developer Intern
         <Link
           href="https://semurai.se/"
           target="_blank"
@@ -371,7 +371,7 @@ const Semurai = () => {
             Was involved and developed on several key projects for Semurai,
             including Offertu (lead generation platform), BlueRedGold (corporate
             website), and Leadvio (LinkedIn automation tool). Created responsive
-            UIs with the most modern libraries & frameworks and full-stack
+            UIs with the most modern libraries & frameworks and full stack
             solutions using Next.js, TypeScript, Shadcn and Tailwind CSS.
           </div>
         </motion.li>

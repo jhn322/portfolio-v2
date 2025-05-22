@@ -164,11 +164,11 @@ const CoursesDetails = ({
               </div>
               <p className="mt-2">
                 Explored artificial intelligence (AI) from fundamental theory to
-                practical application in programming and full-stack development.
+                practical application in programming and full stack development.
                 Covered various AI dimensions including machine learning, neural
                 networks, and AI models, gaining comprehensive understanding of
                 integrating AI into technical solutions and implementation
-                considerations for full-stack developers.
+                considerations for full stack developers.
               </p>
             </li>
             <li>
@@ -212,7 +212,7 @@ const CoursesDetails = ({
                 Gained practical workplace experience through internship at
                 Semurai. Applied knowledge from education courses in industry
                 projects, developing skills to function effectively as a
-                JavaScript full-stack developer. Worked with HTML, CSS,
+                JavaScript full stack developer. Worked with HTML, CSS,
                 JavaScript (frontend/backend), frameworks (Next.js), APIs,
                 databases, hosting, and CI/CD while practicing project
                 methodology and version control in team settings.
@@ -228,7 +228,7 @@ const CoursesDetails = ({
               <p className="mt-2">
                 Completed final thesis demonstrating ability to take
                 responsibility for and deliver all aspects of a project
-                assignment in JavaScript full-stack development. Deepened
+                assignment in JavaScript full stack development. Deepened
                 knowledge through research and exploration of new technologies
                 to achieve project goals. Executed thesis project as an
                 assignment for an external company, applying comprehensive
@@ -271,7 +271,7 @@ const ChasAcademy = () => {
         animate="show"
         className="flex flex-col xs:flex-row text-white gap-1 font-medium text-xl"
       >
-        Full-stack JavaScript Developer
+        Full stack JavaScript Developer
         <Link
           href="https://chasacademy.se/program/fullstackutvecklare-javascript"
           target="_blank"
@@ -304,11 +304,11 @@ const ChasAcademy = () => {
           </span>
           <div>
             <span className="font-bold text-white">
-              Full-Stack Development Program
+              Full Stack Development Program
             </span>
             <br />
             Completed a comprehensive two-year higher vocational education in
-            full-stack JavaScript development. The program focused on both
+            full stack JavaScript development. The program focused on both
             front-end and back-end development, providing a solid foundation in
             modern web development practices through practical project-based
             learning.
@@ -341,7 +341,7 @@ const ChasAcademy = () => {
           <div>
             <span className="font-bold text-white">Project Highlights</span>
             <br />
-            Created several full-stack applications including e-commerce
+            Created several full stack applications including e-commerce
             platforms, content management systems, and API integrations.
             Implemented responsive designs, authentication systems, and database
             solutions across various projects with focus on performance and user
