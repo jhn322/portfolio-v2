@@ -146,7 +146,7 @@ export default function OtherProjects() {
             <span className="absolute -bottom-2 left-1/3 w-1/3 h-1 bg-purple-600"></span>
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto text-lg">
-            A collection of smaller projects that I&apos;ve worked on to explore
+            A collection of projects that I&apos;ve worked on to explore
             different technologies and learn new things throughout my coding
             journey.
           </p>
@@ -245,6 +245,25 @@ export default function OtherProjects() {
             </FadeIn>
           ))}
         </div>
+
+        <FadeIn className="flex justify-center mt-12">
+          <Button
+            asChild
+            variant="outline"
+            aria-label="View more projects on GitHub"
+            className="border-purple-300 text-purple-300 hover:bg-purple-900/30 hover:text-white rounded-full"
+          >
+            <Link
+              href="https://github.com/jhn322?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2"
+            >
+              <Github className="mr-2 h-4 w-4" />
+              <span>More on my GitHub</span>
+            </Link>
+          </Button>
+        </FadeIn>
       </div>
     </section>
   );
