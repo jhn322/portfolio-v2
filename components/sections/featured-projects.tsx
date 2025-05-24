@@ -37,7 +37,7 @@ const projects: Project[] = [
       "Stockfish",
     ],
     liveUrl: "https://next-move-js.vercel.app/",
-    githubUrl: "https://github.com/jhn322/next-move",
+    githubUrl: "https://github.com/jhn322/nextmove",
     projectType: "Personal",
   },
   {
