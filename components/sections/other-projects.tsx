@@ -20,14 +20,14 @@ interface Project {
   tags: string[];
   liveUrl: string;
   githubUrl: string;
-  projectType?: "Personal" | "Passion";
+  projectType?: "Personal" | "Passion" | "Internship";
 }
 
 const projects: Project[] = [
   {
     title: "Kometa Config",
     description:
-      "Kometa is a powerful tool designed to give you complete control over your personal Plex media library representation. With Kometa, you have granular control over metadata, collections, overlays, and much more. This is my config with a large amount of self designed posters, icon overlays and custom made collection in every detail.",
+      "Kometa is a powerful tool designed to give you complete control over your personal Plex media library representation. With Kometa, you have granular control over metadata manipulation, creating curated collections, custom overlays, and much more. This is my own config with a large amount of self designed posters, icon overlays and custom made collection on a very detailed level.",
     tags: [
       "Python",
       "Docker",
@@ -63,67 +63,76 @@ const projects: Project[] = [
     projectType: "Personal",
   },
   {
-    title: "Kanban Board",
+    title: "Dev Blog",
     description:
-      "A versatile Kanban board app designed to streamline your task management. With a user-friendly interface, it allows you to effortlessly organize tasks into customizable columns. The app supports drag-and-drop functionality, enabling smooth task movement across different stages. Additionally, it features a dynamic theme switcher, task creation and editing options, and real-time updates saved locally.",
+      "A blog for sharing software development insights and best practices, built with Next.js. Blog content is authored in Markdown within the Obsidian application. These Markdown files are managed in a separate Git repository named blog-content, which is integrated as a submodule into the main project. A synchronization process, using GitHub Actions, updates the main application with the latest content from the blog-content repository.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "GitHub Actions",
+      "Submodules",
+      "Obsidian",
+      "Typography",
+      "Husky",
+      "Remark",
+    ],
+    liveUrl: "https://dev-blog-puce-two.vercel.app/",
+    githubUrl: "https://github.com/jhn322/dev-blog",
+    projectType: "Internship",
+  },
+  {
+    title: "Kanban Group Project",
+    description:
+      "A few weeks-long group project leveraging GIT collaboration while coding in React with Redux to develop a highly functional Kanban board for effective planning. This project enables users to create and manage tasks with ease, including features for setting due dates, deadlines, and assigning team members. Also, users can move cards between columns to track progress and organize tasks efficiently. This Kanban board is designed to enhance productivity and streamline project management.",
     tags: [
       "React",
-      "API",
-      "Theme Switcher",
-      "Context",
-      "Local Storage",
-      "Drag and Drop",
-    ],
-    liveUrl: "https://jhn-kanban-react.netlify.app/",
-    githubUrl: "https://github.com/jhn322/kanban-board-react",
-  },
-  {
-    title: "Media Info",
-    description:
-      "A simple movie search tool implemented as a JavaScript application that interacts with the OMDb API to fetch and display information about movies, TV shows, or anime based on user input. The application provides a user-friendly interface where users can enter the name of a movie and either click a search button to retrieve the relevant information.",
-    tags: [
+      "Redux",
       "JavaScript",
-      "CSS",
-      "HTML",
-      "API",
-      "OMDb",
-      "Search",
+      "CSS Modules",
+      "Store",
       "Google Analytics",
+      "SEO",
+      "Custom Hooks",
+      "Slice",
     ],
-    liveUrl: "https://jhn-media-info-app.netlify.app/",
-    githubUrl: "https://github.com/jhn322/media-info-app",
+    liveUrl: "https://kanban-kollab.netlify.app/",
+    githubUrl: "https://github.com/jhn322/kanban-group-react",
   },
   {
-    title: "Mortage Calculator",
+    title: "The Dashboard",
     description:
-      "Designed to help calculate your monthly mortgage payments, total interest, and provide a detailed amortization schedule, this TypeScript-based application takes user input for the mortgage amount, interest rate, and loan term, then performs precise calculations using a financial formula.",
+      "An aesthetically pleasing dashboard designed to be your go-to landing page for bookmarking and organizing links you want to save for later. This interface provides a quick overview of the weather, so you can stay informed at a glance. Also, it features a convenient note-taking section where you can write down important information or reminders. Your notes are automatically saved and persist across visits. This dashboard combines functionality with a sleek design.",
     tags: [
       "JavaScript",
-      "TypeScript",
       "CSS",
-      "HTML",
-      "Tables",
-      "Math Calculations",
+      "Unsplash API",
+      "Weather API",
+      "Randomizer",
+      "Local Storage",
+      "Google Analytics",
       "Responsive Design",
     ],
-    liveUrl: "https://jhn-labb-typescript.netlify.app/",
-    githubUrl: "https://github.com/jhn322/labb-typescript-frontend",
+    liveUrl: "https://jhn-dashboard.netlify.app/",
+    githubUrl: "https://github.com/jhn322/dashboard-frontend",
   },
   {
-    title: "Tic Tac Toe",
+    title: "Quire",
     description:
-      "A classic Tic Tac Toe game built with TypeScript. Play against a friend or the computer in this timeless puzzle. Features include a clean interface and score tracking.",
+      "A digital assistant designed for creating, saving, and editing everyday notes with ease. Whether you need to write down a quick reminder for the next day or develop a detailed chapter for a creative project, Quire is here to support you. Its intuitive interface allows for seamless note-taking and organization, ensuring your ideas and tasks are always at your fingertips.",
     tags: [
-      "TypeScript",
-      "React",
-      "Interface",
+      "JavaScript",
       "CSS",
-      "State Management",
-      "Array",
-      "Click Handling",
+      "HTML",
+      "Google Analytics",
+      "Search",
+      "Print",
+      "Local Storage",
+      "Textformatting",
+      "Settings Panel",
     ],
-    liveUrl: "https://jhn-labb-typscript-react.netlify.app/",
-    githubUrl: "https://github.com/jhn322/labb-typescript-react",
+    liveUrl: "https://regni.github.io/quire/",
+    githubUrl: "https://github.com/jhn322/quire",
   },
 ];
 

@@ -369,10 +369,11 @@ const Semurai = () => {
             </span>
             <br />
             Was involved and developed on several key projects for Semurai,
-            including Offertu (lead generation platform), BlueRedGold (corporate
-            website), and Leadvio (LinkedIn automation tool). Created responsive
-            UIs with the most modern libraries & frameworks and full stack
-            solutions using Next.js, TypeScript, Shadcn and Tailwind CSS.
+            including EgenLista (customer list-building tool), Offertu (lead
+            generation platform), BlueRedGold (corporate website), and Leadvio
+            (LinkedIn automation tool). Created responsive UIs with the most
+            modern libraries & frameworks and full stack solutions using
+            Next.js, TypeScript, Shadcn and Tailwind CSS.
           </div>
         </motion.li>
         <motion.li

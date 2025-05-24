@@ -15,7 +15,7 @@ interface Project {
   tags: string[];
   liveUrl: string;
   githubUrl: string;
-  projectType?: "Personal" | "Passion";
+  projectType?: "Personal" | "Passion" | "Internship";
 }
 
 const projects: Project[] = [
@@ -39,6 +39,69 @@ const projects: Project[] = [
     liveUrl: "https://next-move-js.vercel.app/",
     githubUrl: "https://github.com/jhn322/next-move",
     projectType: "Personal",
+  },
+  {
+    title: "EgenLista",
+    description:
+      "A web tool designed for companies to easily generate embeddable sign-up widgets or QR codes. Its primary goal is to help businesses easily collect lead and customer contact information, building their own marketing lists that can be exported for use with external SMTP services. The tech stack includes TypeScript, React, Tailwind CSS, Shadcn for the frontend, and Next.js API routes with Prisma and MongoDB for the backend, along with NextAuth.js for authentication.",
+    image: "/featured-projects/egenlista.webp",
+    hoverImage: "/featured-projects/egenlista-hover.webp",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn",
+      "MongoDB",
+      "Prisma",
+      "NextAuth.js",
+      "Zod",
+      "Recharts",
+    ],
+    liveUrl: "https://egenlista.vercel.app/",
+    githubUrl: "https://github.com/jhn322/egenlista",
+    projectType: "Internship",
+  },
+  {
+    title: "BlueRedGold",
+    description:
+      "A website for the Swedish Saffron company BlueRedGold, designed to showcase not just their products but also their expertise and values. The website aims to engage visitors by sharing a variety of content, including scientific insights about saffron, delicious saffron-based recipes, and information about the company's commitment to sustainability. Built with Sanity CMS in mind, which allows for easily updating and publishing new material, keeping the website fresh and informative.",
+    image: "/featured-projects/blueredgold.webp",
+    hoverImage: "/featured-projects/blueredgold-hover.webp",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn",
+      "Framer Motion",
+      "Sanity CMS",
+      "React Hook Form",
+      "Zod",
+      "Brevo",
+    ],
+    liveUrl: "https://blueredgold-alpha.vercel.app/",
+    githubUrl: "https://github.com/jhn322/blueredgold",
+    projectType: "Internship",
+  },
+  {
+    title: "Offertu",
+    description:
+      "A web application primarily designed for collecting and managing leads. It features a lead submission form where users can input their email and phone number. This information is then stored in a MongoDB database and, significantly, synchronized in real-time with a Google Sheet. The project also includes sections for company information like careers, news, and policy documents, it also serve as a general informational website for a business that heavily relies on lead generation with a comprehensive dashboard for managing their leads.",
+    image: "/featured-projects/offertu.webp",
+    hoverImage: "/featured-projects/offertu-hover.webp",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn",
+      "MongoDB",
+      "Prisma",
+      "NextAuth.js",
+      "Zod",
+      "Brevo",
+    ],
+    liveUrl: "https://offertu-eight.vercel.app/",
+    githubUrl: "https://github.com/jhn322/offertu",
+    projectType: "Internship",
   },
   {
     title: "Holmsund Information",
@@ -80,66 +143,6 @@ const projects: Project[] = [
     ],
     liveUrl: "https://rently-app.netlify.app/",
     githubUrl: "https://github.com/jhn322/rently",
-  },
-  {
-    title: "Kanban Group Project",
-    description:
-      "A few weeks-long group project leveraging GIT collaboration while coding in React with Redux to develop a highly functional Kanban board for effective planning. This project enables users to create and manage tasks with ease, including features for setting due dates, deadlines, and assigning team members. Also, users can move cards between columns to track progress and organize tasks efficiently. This Kanban board is designed to enhance productivity and streamline project management.",
-    image: "/featured-projects/kanban.webp",
-    hoverImage: "/featured-projects/kanban-hover.webp",
-    tags: [
-      "React",
-      "Redux",
-      "JavaScript",
-      "CSS Modules",
-      "Store",
-      "Google Analytics",
-      "SEO",
-      "Custom Hooks",
-      "Slice",
-    ],
-    liveUrl: "https://kanban-kollab.netlify.app/",
-    githubUrl: "https://github.com/jhn322/kanban-group-react",
-  },
-  {
-    title: "The Dashboard",
-    description:
-      "An aesthetically pleasing dashboard designed to be your go-to landing page for bookmarking and organizing links you want to save for later. This interface provides a quick overview of the weather, so you can stay informed at a glance. Also, it features a convenient note-taking section where you can write down important information or reminders. Your notes are automatically saved and persist across visits. This dashboard combines functionality with a sleek design.",
-    image: "/featured-projects/dashboard.webp",
-    hoverImage: "/featured-projects/dashboard-hover.webp",
-    tags: [
-      "JavaScript",
-      "CSS",
-      "Pokémon API",
-      "Unsplash API",
-      "Weather API",
-      "Randomizer",
-      "Local Storage",
-      "Google Analytics",
-      "Responsive Design",
-    ],
-    liveUrl: "https://jhn-dashboard.netlify.app/",
-    githubUrl: "https://github.com/jhn322/dashboard-frontend",
-  },
-  {
-    title: "Quire",
-    description:
-      "A digital assistant designed for creating, saving, and editing everyday notes with ease. Whether you need to write down a quick reminder for the next day or develop a detailed chapter for a creative project, Quire is here to support you. Its intuitive interface allows for seamless note-taking and organization, ensuring your ideas and tasks are always at your fingertips.",
-    image: "/featured-projects/quire.webp",
-    hoverImage: "/featured-projects/quire-hover.webp",
-    tags: [
-      "JavaScript",
-      "CSS",
-      "HTML",
-      "Google Analytics",
-      "Search",
-      "Print",
-      "Local Storage",
-      "Textformatting",
-      "Settings Panel",
-    ],
-    liveUrl: "https://regni.github.io/quire/",
-    githubUrl: "https://github.com/jhn322/quire",
   },
 ];
 

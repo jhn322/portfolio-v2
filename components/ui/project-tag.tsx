@@ -1,20 +1,20 @@
 import React from "react";
 
 interface ProjectTagProps {
-  type: "Personal" | "Passion";
+  type: "Personal" | "Passion" | "Internship";
   className?: string;
 }
 
 const tagStyles = {
-  Personal:
-    "bg-primary-600/80 text-primary-100 border-primary-700/50 hover:bg-primary-600/90",
-  Passion:
-    "bg-primary-800/80 text-primary-200 border-primary-900/50 hover:bg-primary-800/90",
+  Personal: "bg-primary-600 text-white border-primary-600",
+  Passion: "bg-primary-900 text-white border-primary-900",
+  Internship: "bg-white text-primary-700 border-white",
 };
 
 const tagText = {
   Personal: "Personal Project",
   Passion: "Passion Project",
+  Internship: "Internship Project",
 };
 
 export const ProjectTag: React.FC<ProjectTagProps> = ({ type, className }) => {
