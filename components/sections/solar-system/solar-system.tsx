@@ -214,7 +214,7 @@ export const SolarSystem = () => {
         >
           <div className="w-full h-full rounded-full bg-purple-400/10 backdrop-blur-md shadow-lg shadow-purple-500/20 flex items-center justify-center">
             <span className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-violet-50 whitespace-nowrap text-center drop-shadow-md">
-              Stack
+              Skills
             </span>
           </div>
         </div>
