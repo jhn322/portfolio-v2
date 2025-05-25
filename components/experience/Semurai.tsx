@@ -67,7 +67,7 @@ const ProjectDetails = ({
                   Tailwind
                 </span>
                 <span className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10">
-                  Shadcn
+                  Shadcn/ui
                 </span>
                 <span className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10">
                   Prisma
@@ -118,7 +118,7 @@ const ProjectDetails = ({
                   Tailwind
                 </span>
                 <span className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10">
-                  Shadcn
+                  Shadcn/ui
                 </span>
                 <span className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10">
                   Sanity CMS
@@ -153,7 +153,7 @@ const ProjectDetails = ({
                   Tailwind
                 </span>
                 <span className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10">
-                  Shadcn
+                  Shadcn/ui
                 </span>
                 <span className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10">
                   MongoDB
@@ -188,7 +188,7 @@ const ProjectDetails = ({
                   Tailwind
                 </span>
                 <span className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10">
-                  Shadcn
+                  Shadcn/ui
                 </span>
                 <span className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/10">
                   LinkedIn API
@@ -373,7 +373,7 @@ const Semurai = () => {
             generation platform), BlueRedGold (corporate website), and Leadvio
             (LinkedIn automation tool). Created responsive UIs with the most
             modern libraries & frameworks and full stack solutions using
-            Next.js, TypeScript, Shadcn and Tailwind CSS.
+            Next.js, TypeScript, Shadcn/ui and Tailwind CSS.
           </div>
         </motion.li>
         <motion.li
@@ -407,9 +407,9 @@ const Semurai = () => {
               UI/UX & Content Management
             </span>
             <br />
-            Implemented modern component libraries including Shadcn and custom
-            animations with Framer Motion. Built reusable components such as
-            carousels, accordions, and parallax heroes. Integrated Sanity CMS
+            Implemented modern component libraries including Shadcn/ui and
+            custom animations with Framer Motion. Built reusable components such
+            as carousels, accordions, and parallax heroes. Integrated Sanity CMS
             for dynamic content management on client projects and optimized for
             SEO performance.
           </div>

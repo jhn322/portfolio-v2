@@ -14,7 +14,7 @@ const allCategories: SkillCategory[] = [
       { name: "Vue.js", category: "Frontend" },
       { name: "TypeScript", category: "Frontend" },
       { name: "Tailwind CSS", category: "Frontend" },
-      { name: "Shadcn", category: "Frontend" },
+      { name: "Shadcn/ui", category: "Frontend" },
       { name: "JavaScript", category: "Frontend" },
       { name: "Framer Motion", category: "Frontend" },
       { name: "Redux", category: "Frontend" },
