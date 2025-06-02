@@ -271,7 +271,7 @@ const ChasAcademy = () => {
         animate="show"
         className="flex flex-col xs:flex-row text-white gap-1 font-medium text-xl"
       >
-        Full stack JavaScript Developer
+        Fullstack JavaScript Developer
         <Link
           href="https://chasacademy.se/program/fullstackutvecklare-javascript"
           target="_blank"
@@ -304,7 +304,7 @@ const ChasAcademy = () => {
           </span>
           <div>
             <span className="font-bold text-white">
-              Full Stack Development Program
+              Fullstack Development Program
             </span>
             <br />
             Completed a comprehensive two-year higher vocational education in
