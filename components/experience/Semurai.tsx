@@ -332,7 +332,7 @@ const Semurai = () => {
         animate="show"
         className="flex flex-col xs:flex-row text-white gap-1 font-medium text-xl"
       >
-        Fullstack Web Developer Intern
+        Full-stack Web Developer Intern
         <Link
           href="https://semurai.se/"
           target="_blank"

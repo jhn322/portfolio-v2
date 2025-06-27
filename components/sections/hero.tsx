@@ -33,7 +33,7 @@ export default function Hero() {
           <p className="text-xl md:text-3xl font-light">
             <span className="text-gray-300">I&apos;m a </span>
             <span className="font-semibold text-purple-300">
-              Fullstack Developer
+              Full-stack Developer
             </span>
           </p>
         </FadeIn>
