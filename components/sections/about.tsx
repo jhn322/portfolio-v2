@@ -1,21 +1,20 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { FileText, Github, Linkedin, RefreshCw } from "lucide-react";
+import { FileText, Github, Linkedin } from "lucide-react";
 import Link from "next/link";
 import { FadeIn } from "../ui/fade-in";
 
 export default function About() {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const imageSources = ["/pfp.webp", "/pfp2.webp"];
+  // const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const imageSources = ["/pfp.webp"];
   const fallbackImage = "/placeholder.svg";
 
-  const handleToggleImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageSources.length);
-  };
+  // const handleToggleImage = () => {
+  //   setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageSources.length);
+  // };
 
   const handleOpenResume = () => {
     if (typeof window !== "undefined") {
@@ -97,8 +96,7 @@ export default function About() {
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-purple-500/30 p-1">
                 <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-purple-900/80 to-black relative">
                   <Image
-                    key={currentImageIndex}
-                    src={imageSources[currentImageIndex]}
+                    src={imageSources[0]}
                     alt="Profile Picture"
                     fill
                     className="object-cover"
@@ -125,7 +123,7 @@ export default function About() {
                 style={{ transformOrigin: "center center" }}
               />
 
-              <button
+              {/* <button
                 onClick={handleToggleImage}
                 className="absolute bottom-2 right-2 z-10 p-2 border border-purple-700 text-purple-300 hover:bg-purple-900/30 rounded-full hover:text-purple-100 transition-all duration-200 outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-black"
                 aria-label="Toggle profile picture"
@@ -137,7 +135,7 @@ export default function About() {
                 }}
               >
                 <RefreshCw className="h-4 w-4" />
-              </button>
+              </button> */}
             </div>
           </FadeIn>
         </div>
