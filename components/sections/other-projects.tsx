@@ -62,7 +62,62 @@ const projects: Project[] = [
     githubUrl: "https://github.com/jhn322/yaml-url-checker",
     projectType: "Personal",
   },
+      {
+    title: "Portfolio V2",
+    description:
+      "A modern portfolio web app built with Next.js and TypeScript, designed to showcase projects and skills through a fast, polished experience. It features a clean UI built with Shadcn, Radix UI, Tailwind CSS. Smooth animations created with Framer Motion, Lottie, Tailwind Animate, and a custom IntersectionObserver-based FadeIn system enhance the flow of each section, while React Three Fiber bring 3D visuals to the page. Forms are handled with React Hook Form and Zod for reliable validation, and email functionality is powered by Resend, resulting in the portfolio you are looking at now.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn/UI",
+      "Framer Motion",
+      "Lottie",
+      "React Three Fiber",
+      "Resend",
+    ],
+    liveUrl: "https://github.com/jhn322/portfolio-v2",
+    githubUrl: "https://js-portfolio-v2.vercel.app/",
+    projectType: "Personal",
+  },
   {
+    title: "Next.js Auth (PostgreSQL)",
+    description:
+      "A full-stack authentication template built with Next.js, PostgreSQL (Neon), and NextAuth.js. This template provides a complete authentication system with email/password authentication, OAuth providers (Google and GitHub), email verification, and password reset functionality. It's designed as a production-ready starter kit that brings together modern tooling, scalable database hosting, and secure auth defaults, perfect for a full-stack application.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "NextAuth.js",
+      "Neon",
+      "JWT",
+      "Tailwind CSS",
+      "Google oAuth",
+      "GitHub oAuth",
+    ],
+    liveUrl: "https://nextjs-auth-postgres-template.vercel.app/",
+    githubUrl: "https://github.com/jhn322/nextjs-auth-postgres-template",
+    projectType: "Personal",
+  },
+  {
+    title: "Next.js Auth (MongoDB)",
+    description:
+      "A full-stack authentication template built with Next.js, MongoDB (MongoDB Atlas), and NextAuth.js. This template provides a complete authentication system with email/password authentication, OAuth providers (Google and GitHub), email verification, and password reset functionality. It's designed as a production-ready starter kit that brings together modern tooling, scalable database hosting, and secure auth defaults, perfect for a full-stack application.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "MongoDB",
+      "NextAuth.js",
+      "JWT",
+      "Tailwind CSS",
+      "Google oAuth",
+      "GitHub oAuth",
+    ],
+    liveUrl: "https://nextjs-auth-mongo-template.vercel.app/",
+    githubUrl: "https://github.com/jhn322/nextjs-auth-mongo-template",
+    projectType: "Personal",
+  },
+    {
     title: "Dev Blog",
     description:
       "A blog for sharing software development insights and best practices, built with Next.js. Blog content is authored in Markdown within the Obsidian application. These Markdown files are managed in a separate Git repository named blog-content, which is integrated as a submodule into the main project. A synchronization process, using GitHub Actions, updates the main application with the latest content from the blog-content repository.",
@@ -81,7 +136,7 @@ const projects: Project[] = [
     githubUrl: "https://github.com/jhn322/dev-blog",
     projectType: "Internship",
   },
-  {
+    {
     title: "Kanban Group Project",
     description:
       "A few weeks-long group project leveraging GIT collaboration while coding in React with Redux to develop a highly functional Kanban board for effective planning. This project enables users to create and manage tasks with ease, including features for setting due dates, deadlines, and assigning team members. Also, users can move cards between columns to track progress and organize tasks efficiently. This Kanban board is designed to enhance productivity and streamline project management.",
