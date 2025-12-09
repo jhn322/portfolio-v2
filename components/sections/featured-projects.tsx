@@ -104,27 +104,6 @@ const projects: Project[] = [
     projectType: "Internship",
   },
   {
-    title: "Holmsund Information",
-    description:
-      "An informational website designed to highlight the unique destinations Holmsund has to offer. Coded with React and a variety of npm libraries, the site provides an intuitive navigation experience, ensuring that users can easily explore Holmsund. It also features a robust fuzzy search functionality, capable of handling a wide range of queries to deliver accurate results. Additionally, it boasts a large collection of images and text content, all curated to inspire and inform visitors about the local culture and places.",
-    image: "/featured-projects/holmsund.webp",
-    hoverImage: "/featured-projects/holmsund-hover.webp",
-    tags: [
-      "React",
-      "JavaScript",
-      "Router",
-      "API",
-      "CSS Modules",
-      "Fuzzy Search",
-      "Image Gallery",
-      "Google Analytics",
-      "SEO",
-    ],
-    liveUrl: "https://jhn-holmsund-information.netlify.app/",
-    githubUrl: "https://github.com/jhn322/holmsund-information",
-    projectType: "Personal",
-  },
-  {
     title: "Next.js Auth (PostgreSQL)",
     description:
       "A full-stack authentication template built with Next.js, PostgreSQL, and NextAuth.js. This template provides a complete authentication system with email/password authentication, OAuth providers (Google and GitHub), email verification, and password reset functionality. It's designed as a production-ready starter kit that brings together modern tooling, scalable database hosting, and secure auth defaults, perfect for building a full-stack application.",
@@ -143,6 +122,27 @@ const projects: Project[] = [
     ],
     liveUrl: "https://nextjs-auth-postgres-template.vercel.app/",
     githubUrl: "https://github.com/jhn322/nextjs-auth-postgres-template",
+    projectType: "Personal",
+  },
+  {
+    title: "Holmsund Information",
+    description:
+      "An informational website designed to highlight the unique destinations Holmsund has to offer. Coded with React and a variety of npm libraries, the site provides an intuitive navigation experience, ensuring that users can easily explore Holmsund. It also features a robust fuzzy search functionality, capable of handling a wide range of queries to deliver accurate results. Additionally, it boasts a large collection of images and text content, all curated to inspire and inform visitors about the local culture and places.",
+    image: "/featured-projects/holmsund.webp",
+    hoverImage: "/featured-projects/holmsund-hover.webp",
+    tags: [
+      "React",
+      "JavaScript",
+      "Router",
+      "API",
+      "CSS Modules",
+      "Fuzzy Search",
+      "Image Gallery",
+      "Google Analytics",
+      "SEO",
+    ],
+    liveUrl: "https://jhn-holmsund-information.netlify.app/",
+    githubUrl: "https://github.com/jhn322/holmsund-information",
     projectType: "Personal",
   },
 ];
