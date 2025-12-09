@@ -120,7 +120,7 @@ const projects: Project[] = [
       "Postman",
     ],
     liveUrl: "https://www.leadvio.se/",
-    icon: "/other-projects/leadvio.jpg",
+    icon: "/other-projects/leadvio.webp",
     projectType: "Internship",
   },
   {
