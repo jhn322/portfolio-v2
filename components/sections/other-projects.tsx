@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -18,9 +20,10 @@ interface Project {
   title: string;
   description: string;
   tags: string[];
-  liveUrl: string;
-  githubUrl: string;
+  liveUrl?: string;
+  githubUrl?: string;
   projectType?: "Personal" | "Passion" | "Internship";
+  icon?: string;
 }
 
 const projects: Project[] = [
@@ -41,7 +44,46 @@ const projects: Project[] = [
     ],
     liveUrl: "https://kometa.wiki/en/latest/",
     githubUrl: "https://github.com/jhn322/kometa-config",
+    icon: "/other-projects/kometa.webp",
     projectType: "Passion",
+  },
+  {
+    title: "Portfolio V2",
+    description:
+      "A modern portfolio web app designed to showcase projects and skills through a fast, polished experience. It features a clean UI built with Shadcn and Tailwind CSS. Smooth animations created with Framer Motion, Lottie, and IntersectionObserver-based fade-in, alongside React Three Fiber. Forms are handled with React Hook Form and Zod for reliable validation, and email functionality is powered by Brevo, resulting in the portfolio you are looking at now.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn/UI",
+      "Framer Motion",
+      "Lottie",
+      "React Three Fiber",
+      "Resend",
+    ],
+    liveUrl: "https://js-portfolio-v2.vercel.app/",
+    githubUrl: "https://github.com/jhn322/portfolio-v2",
+    icon: "/other-projects/portfolio.webp",
+    projectType: "Personal",
+  },
+  {
+    title: "Next.js Auth (MongoDB)",
+    description:
+      "A full-stack authentication template built with Next.js, MongoDB, and NextAuth.js. This template provides a complete authentication system with email/password authentication, OAuth providers (Google and GitHub), email verification, and password reset functionality. It's designed as a production-ready starter kit that brings together modern tooling, scalable database hosting, and secure auth defaults, perfect for building a full-stack application.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "MongoDB",
+      "NextAuth.js",
+      "JWT",
+      "Tailwind CSS",
+      "Google oAuth",
+      "GitHub oAuth",
+    ],
+    liveUrl: "https://nextjs-auth-mongo-template.vercel.app/",
+    githubUrl: "https://github.com/jhn322/nextjs-auth-mongo-template",
+    icon: "/other-projects/mongodb.webp",
+    projectType: "Personal",
   },
   {
     title: "YAML URL Checker",
@@ -58,66 +100,30 @@ const projects: Project[] = [
       "Requests",
       "Web Scraping",
     ],
-    liveUrl: "https://github.com/jhn322/yaml-url-checker",
     githubUrl: "https://github.com/jhn322/yaml-url-checker",
-    projectType: "Personal",
-  },
-      {
-    title: "Portfolio V2",
-    description:
-      "A modern portfolio web app built with Next.js and TypeScript, designed to showcase projects and skills through a fast, polished experience. It features a clean UI built with Shadcn, Radix UI, Tailwind CSS. Smooth animations created with Framer Motion, Lottie, Tailwind Animate, and a custom IntersectionObserver-based FadeIn system enhance the flow of each section, while React Three Fiber bring 3D visuals to the page. Forms are handled with React Hook Form and Zod for reliable validation, and email functionality is powered by Resend, resulting in the portfolio you are looking at now.",
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Shadcn/UI",
-      "Framer Motion",
-      "Lottie",
-      "React Three Fiber",
-      "Resend",
-    ],
-    liveUrl: "https://github.com/jhn322/portfolio-v2",
-    githubUrl: "https://js-portfolio-v2.vercel.app/",
+    icon: "/other-projects/yaml-url-checker.webp",
     projectType: "Personal",
   },
   {
-    title: "Next.js Auth (PostgreSQL)",
+    title: "Leadvio",
     description:
-      "A full-stack authentication template built with Next.js, PostgreSQL (Neon), and NextAuth.js. This template provides a complete authentication system with email/password authentication, OAuth providers (Google and GitHub), email verification, and password reset functionality. It's designed as a production-ready starter kit that brings together modern tooling, scalable database hosting, and secure auth defaults, perfect for a full-stack application.",
+      "Helped enhancing Leadvio, a LinkedIn automation tool, by developing company search functionality alongside the existing people search. Created dynamic table rendering based on search queries. Debugged XHR requests with Postman and implemented title filtering across companies. Developed Chrome extension components for LinkedIn profile interactions.",
     tags: [
       "Next.js",
       "TypeScript",
-      "PostgreSQL",
-      "NextAuth.js",
-      "Neon",
-      "JWT",
-      "Tailwind CSS",
-      "Google oAuth",
-      "GitHub oAuth",
-    ],
-    liveUrl: "https://nextjs-auth-postgres-template.vercel.app/",
-    githubUrl: "https://github.com/jhn322/nextjs-auth-postgres-template",
-    projectType: "Personal",
-  },
-  {
-    title: "Next.js Auth (MongoDB)",
-    description:
-      "A full-stack authentication template built with Next.js, MongoDB (MongoDB Atlas), and NextAuth.js. This template provides a complete authentication system with email/password authentication, OAuth providers (Google and GitHub), email verification, and password reset functionality. It's designed as a production-ready starter kit that brings together modern tooling, scalable database hosting, and secure auth defaults, perfect for a full-stack application.",
-    tags: [
-      "Next.js",
-      "TypeScript",
+      "Prisma",
       "MongoDB",
-      "NextAuth.js",
+      "Clerk",
       "JWT",
       "Tailwind CSS",
-      "Google oAuth",
-      "GitHub oAuth",
+      "LinkedIn API",
+      "Postman",
     ],
-    liveUrl: "https://nextjs-auth-mongo-template.vercel.app/",
-    githubUrl: "https://github.com/jhn322/nextjs-auth-mongo-template",
-    projectType: "Personal",
+    liveUrl: "https://www.leadvio.se/",
+    icon: "/other-projects/leadvio.jpg",
+    projectType: "Internship",
   },
-    {
+  {
     title: "Dev Blog",
     description:
       "A blog for sharing software development insights and best practices, built with Next.js. Blog content is authored in Markdown within the Obsidian application. These Markdown files are managed in a separate Git repository named blog-content, which is integrated as a submodule into the main project. A synchronization process, using GitHub Actions, updates the main application with the latest content from the blog-content repository.",
@@ -134,30 +140,51 @@ const projects: Project[] = [
     ],
     liveUrl: "https://dev-blog-puce-two.vercel.app/",
     githubUrl: "https://github.com/jhn322/dev-blog",
+    icon: "/other-projects/semurai.webp",
     projectType: "Internship",
   },
-    {
-    title: "Kanban Group Project",
+  {
+    title: "LibreChat Semurai",
     description:
-      "A few weeks-long group project leveraging GIT collaboration while coding in React with Redux to develop a highly functional Kanban board for effective planning. This project enables users to create and manage tasks with ease, including features for setting due dates, deadlines, and assigning team members. Also, users can move cards between columns to track progress and organize tasks efficiently. This Kanban board is designed to enhance productivity and streamline project management.",
+      "Deployed and configured an internal AI chatbot using OpenAI and Anthropic models. Set up with Digital Ocean droplet with Ubuntu, Docker, and MongoDB. Configured DNS with Cloudflare and implemented SSL for secure connections. Managed user access and database administration to maintain security.",
     tags: [
       "React",
-      "Redux",
-      "JavaScript",
-      "CSS Modules",
-      "Store",
-      "Google Analytics",
-      "SEO",
-      "Custom Hooks",
-      "Slice",
+      "TypeScript",
+      "Digital Ocean",
+      "Cloudflare",
+      "SSL",
+      "MongoDB",
+      "Ubuntu",
+      "Docker",
     ],
-    liveUrl: "https://kanban-kollab.netlify.app/",
-    githubUrl: "https://github.com/jhn322/kanban-group-react",
+    liveUrl: "https://www.librechat.ai/",
+    githubUrl: "https://github.com/jhn322/librechat-semurai",
+    icon: "/other-projects/librechat.webp",
+    projectType: "Internship",
+  },
+  {
+    title: "Rently",
+    description:
+      "Rently is the answer to overconsumption and unnecessary waste. Why buy when you can rent? By connecting neighbors, friends, and local communities, we've created a space where stuff gets used, not wasted. Need a tent for that one camping trip? Rent it from your neighbor instead of shelling out cash for a new one.",
+    tags: [
+      "Vue.js",
+      "Store",
+      "SFC",
+      "Search",
+      "Dashboard",
+      "User Authentication",
+      "Pinia",
+      "JSONBin",
+      "Toastify",
+    ],
+    liveUrl: "https://rently-app.netlify.app/",
+    githubUrl: "https://github.com/jhn322/rently",
+    icon: "/other-projects/rently.webp",
   },
   {
     title: "The Dashboard",
     description:
-      "An aesthetically pleasing dashboard designed to be your go-to landing page for bookmarking and organizing links you want to save for later. This interface provides a quick overview of the weather, so you can stay informed at a glance. Also, it features a convenient note-taking section where you can write down important information or reminders. Your notes are automatically saved and persist across visits. This dashboard combines functionality with a sleek design.",
+      "An aesthetically pleasing dashboard designed to be a go-to landing page for bookmarking and organizing links. The UI provides a quick overview of the weather. It also features a note-taking section for writing down important information. Notes are automatically saved and persist.",
     tags: [
       "JavaScript",
       "CSS",
@@ -170,26 +197,119 @@ const projects: Project[] = [
     ],
     liveUrl: "https://jhn-dashboard.netlify.app/",
     githubUrl: "https://github.com/jhn322/dashboard-frontend",
-  },
-  {
-    title: "Quire",
-    description:
-      "A digital assistant designed for creating, saving, and editing everyday notes with ease. Whether you need to write down a quick reminder for the next day or develop a detailed chapter for a creative project, Quire is here to support you. Its intuitive interface allows for seamless note-taking and organization, ensuring your ideas and tasks are always at your fingertips.",
-    tags: [
-      "JavaScript",
-      "CSS",
-      "HTML",
-      "Google Analytics",
-      "Search",
-      "Print",
-      "Local Storage",
-      "Textformatting",
-      "Settings Panel",
-    ],
-    liveUrl: "https://regni.github.io/quire/",
-    githubUrl: "https://github.com/jhn322/quire",
+    icon: "/other-projects/dashboard.webp",
   },
 ];
+
+const ExpandableButtonGroup = ({
+  githubUrl,
+  liveUrl,
+  projectTitle,
+}: {
+  githubUrl?: string;
+  liveUrl?: string;
+  projectTitle: string;
+}) => {
+  const [isGithubHovered, setIsGithubHovered] = useState(false);
+  const [isLiveHovered, setIsLiveHovered] = useState(false);
+
+  return (
+    <div className="flex gap-1 ml-auto">
+      {githubUrl && (
+        <motion.div
+          className="relative"
+          animate={{ width: isGithubHovered ? "auto" : "2.5rem" }}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 25,
+          }}
+          onMouseEnter={() => setIsGithubHovered(true)}
+          onMouseLeave={() => setIsGithubHovered(false)}
+        >
+          <Button
+            asChild
+            variant="ghost"
+            className="text-purple-300 hover:bg-purple-900/30 hover:text-white h-10 rounded-full overflow-hidden whitespace-nowrap w-full"
+            aria-label={`View GitHub repository for ${projectTitle}`}
+          >
+            <Link
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 justify-end"
+            >
+              <Github className="h-5 w-5 flex-shrink-0" />
+              <motion.span
+                animate={{
+                  width: isGithubHovered ? "auto" : 0,
+                  opacity: isGithubHovered ? 1 : 0,
+                }}
+                transition={{
+                  width: {
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 25,
+                  },
+                  opacity: { duration: 0.2, delay: isGithubHovered ? 0.1 : 0 },
+                }}
+                className="overflow-hidden"
+              >
+                Source Code
+              </motion.span>
+            </Link>
+          </Button>
+        </motion.div>
+      )}
+      {liveUrl && (
+        <motion.div
+          className="relative"
+          animate={{ width: isLiveHovered ? "auto" : "2.5rem" }}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 25,
+          }}
+          onMouseEnter={() => setIsLiveHovered(true)}
+          onMouseLeave={() => setIsLiveHovered(false)}
+        >
+          <Button
+            asChild
+            variant="ghost"
+            className="text-purple-300 hover:bg-purple-900/30 hover:text-white h-10 rounded-full overflow-hidden whitespace-nowrap w-full"
+            aria-label={`View live demo for ${projectTitle}`}
+          >
+            <Link
+              href={liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 justify-end"
+            >
+              <ExternalLink className="h-5 w-5 flex-shrink-0" />
+              <motion.span
+                animate={{
+                  width: isLiveHovered ? "auto" : 0,
+                  opacity: isLiveHovered ? 1 : 0,
+                }}
+                transition={{
+                  width: {
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 25,
+                  },
+                  opacity: { duration: 0.2, delay: isLiveHovered ? 0.1 : 0 },
+                }}
+                className="overflow-hidden"
+              >
+                Visit Page
+              </motion.span>
+            </Link>
+          </Button>
+        </motion.div>
+      )}
+    </div>
+  );
+};
 
 export default function OtherProjects() {
   return (
@@ -228,58 +348,52 @@ export default function OtherProjects() {
                       }}
                       className="p-3 rounded-2xl bg-purple-700 shadow-lg"
                     >
-                      <Folder className="h-6 w-6" />
+                      {project.icon ? (
+                        <Image
+                          src={project.icon}
+                          alt={`${project.title} icon`}
+                          width={24}
+                          height={24}
+                          className="h-6 w-6 object-contain"
+                        />
+                      ) : (
+                        <Folder className="h-6 w-6" />
+                      )}
                     </motion.div>
 
-                    <div className="flex gap-1">
-                      <Button
-                        asChild
-                        variant="ghost"
-                        size="icon"
-                        className="text-purple-300 hover:bg-purple-900/30 hover:text-white h-10 w-10 rounded-full"
-                        aria-label={`View GitHub repository for ${project.title}`}
-                      >
-                        <Link
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Github className="h-5 w-5" />
-                        </Link>
-                      </Button>
-                      <Button
-                        asChild
-                        variant="ghost"
-                        size="icon"
-                        className="text-purple-300 hover:bg-purple-900/30 hover:text-white h-10 w-10 rounded-full"
-                        aria-label={`View live demo for ${project.title}`}
-                      >
-                        <Link
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <ExternalLink className="h-5 w-5" />
-                        </Link>
-                      </Button>
-                    </div>
+                    <ExpandableButtonGroup
+                      githubUrl={project.githubUrl}
+                      liveUrl={project.liveUrl}
+                      projectTitle={project.title}
+                    />
                   </CardHeader>
 
                   <CardContent className="flex-grow pb-4">
-                    <Link
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    {project.liveUrl ? (
+                      <Link
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <div className="flex items-center mb-2">
+                          <CardTitle className="text-xl font-bold group-hover:text-purple-300 transition-colors duration-300">
+                            {project.title}
+                          </CardTitle>
+                          {project.projectType && (
+                            <ProjectTag type={project.projectType} />
+                          )}
+                        </div>
+                      </Link>
+                    ) : (
                       <div className="flex items-center mb-2">
-                        <CardTitle className="text-xl font-bold group-hover:text-purple-300 transition-colors duration-300">
+                        <CardTitle className="text-xl font-bold">
                           {project.title}
                         </CardTitle>
                         {project.projectType && (
                           <ProjectTag type={project.projectType} />
                         )}
                       </div>
-                    </Link>
+                    )}
                     <p className="text-gray-300 text-sm">
                       {project.description}
                     </p>
@@ -315,7 +429,7 @@ export default function OtherProjects() {
               className="flex items-center gap-2"
             >
               <Github className="mr-2 h-4 w-4" />
-              <span>More on my GitHub</span>
+              <span>More projects on my GitHub</span>
             </Link>
           </Button>
         </FadeIn>
