@@ -54,6 +54,7 @@ const projects: Project[] = [
     tags: [
       "Next.js",
       "TypeScript",
+      "Prisma",
       "Tailwind CSS",
       "Shadcn/UI",
       "Framer Motion",
@@ -67,21 +68,22 @@ const projects: Project[] = [
     projectType: "Personal",
   },
   {
-    title: "Next.js Auth (MongoDB)",
+    title: "NextAuth Template",
     description:
-      "A full-stack authentication template built with Next.js, MongoDB, and NextAuth.js. This template provides a complete authentication system with email/password authentication, OAuth providers (Google and GitHub), email verification, and password reset functionality. It's designed as a production-ready starter kit that brings together modern tooling, scalable database hosting, and secure auth defaults, perfect for building a full-stack application.",
+      "A full-stack authentication template built with Next.js, MongoDB, and NextAuth.js. This template provides a complete authentication system with email/password authentication, OAuth providers (Google and GitHub), email verification, and password reset functionality. It's designed as a production-ready starter kit that quickly brings your project up and running with scalable Atlas database, and secure authentication, perfect for building a full-stack application.",
     tags: [
       "Next.js",
       "TypeScript",
       "MongoDB",
       "NextAuth.js",
+      "Prisma",
       "JWT",
       "Tailwind CSS",
       "Google oAuth",
       "GitHub oAuth",
     ],
     liveUrl: "https://nextjs-auth-mongo-template.vercel.app/",
-    githubUrl: "https://github.com/jhn322/nextjs-auth-mongo-template",
+    githubUrl: "https://github.com/jhn322/nextauth-template",
     icon: "/other-projects/mongodb.webp",
     projectType: "Personal",
   },
