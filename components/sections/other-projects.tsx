@@ -13,6 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ExternalLink, Github, Folder } from "lucide-react";
+import { SiDocker } from "react-icons/si";
 import { FadeIn } from "../ui/fade-in";
 import { ProjectTag } from "../ui/project-tag";
 
@@ -22,6 +23,7 @@ interface Project {
   tags: string[];
   liveUrl?: string;
   githubUrl?: string;
+  dockerHubUrl?: string;
   projectType?: "Personal" | "Passion" | "Internship";
   icon?: string;
 }
@@ -90,9 +92,10 @@ const projects: Project[] = [
   {
     title: "YAML URL Checker",
     description:
-      "Python-based utility script designed to automatically scan configuration files for potentially dead web links, specifically targeting Trakt and Letterboxd list URLs within YAML structures. It efficiently checks the status of each discovered URL using HTTP HEAD requests and identifies any links that are no longer accessible. The script provides a summary report to a log file, and sends a notification to a configured Discord channel via webhooks.",
+      "Python-based utility script that can be run as a Docker container, designed to automatically scan configuration files for potentially dead web links, specifically targeting Trakt and Letterboxd list URLs within YAML structures. It efficiently checks the status of each discovered URL using HTTP HEAD requests and identifies any links that are no longer accessible. The script provides a summary report to a log file, and sends a notification to a configured Discord channel via webhooks.",
     tags: [
       "Python",
+      "Docker",
       "YAML",
       "Automation",
       "Discord",
@@ -103,6 +106,8 @@ const projects: Project[] = [
       "Web Scraping",
     ],
     githubUrl: "https://github.com/jhn322/yaml-url-checker",
+    dockerHubUrl:
+      "https://hub.docker.com/repository/docker/jhn322/yaml-url-checker/general",
     icon: "/other-projects/yaml-url-checker.webp",
     projectType: "Personal",
   },
@@ -204,19 +209,68 @@ const projects: Project[] = [
 ];
 
 const ExpandableButtonGroup = ({
+  dockerHubUrl,
   githubUrl,
   liveUrl,
   projectTitle,
 }: {
   githubUrl?: string;
+  dockerHubUrl?: string;
   liveUrl?: string;
   projectTitle: string;
 }) => {
+  const [isDockerHovered, setIsDockerHovered] = useState(false);
   const [isGithubHovered, setIsGithubHovered] = useState(false);
   const [isLiveHovered, setIsLiveHovered] = useState(false);
 
   return (
     <div className="flex gap-1 ml-auto">
+      {dockerHubUrl && (
+        <motion.div
+          className="relative"
+          animate={{ width: isDockerHovered ? "auto" : "2.5rem" }}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 25,
+          }}
+          onMouseEnter={() => setIsDockerHovered(true)}
+          onMouseLeave={() => setIsDockerHovered(false)}
+        >
+          <Button
+            asChild
+            variant="ghost"
+            className="text-purple-300 hover:bg-purple-900/30 hover:text-white h-10 rounded-full overflow-hidden whitespace-nowrap w-full"
+            aria-label={`View Docker Hub repository for ${projectTitle}`}
+          >
+            <Link
+              href={dockerHubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 justify-end"
+            >
+              <SiDocker className="h-5 w-5 flex-shrink-0" />
+              <motion.span
+                animate={{
+                  width: isDockerHovered ? "auto" : 0,
+                  opacity: isDockerHovered ? 1 : 0,
+                }}
+                transition={{
+                  width: {
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 25,
+                  },
+                  opacity: { duration: 0.2, delay: isDockerHovered ? 0.1 : 0 },
+                }}
+                className="overflow-hidden"
+              >
+                Docker Hub
+              </motion.span>
+            </Link>
+          </Button>
+        </motion.div>
+      )}
       {githubUrl && (
         <motion.div
           className="relative"
@@ -364,6 +418,7 @@ export default function OtherProjects() {
                     </motion.div>
 
                     <ExpandableButtonGroup
+                      dockerHubUrl={project.dockerHubUrl}
                       githubUrl={project.githubUrl}
                       liveUrl={project.liveUrl}
                       projectTitle={project.title}
