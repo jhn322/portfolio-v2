@@ -31,10 +31,10 @@ const flowSteps = [
 
 export function AutomationFlow() {
   return (
-    <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+    <div className="grid grid-cols-2 gap-8 sm:flex sm:flex-row sm:justify-center sm:gap-4 md:gap-8">
       {flowSteps.map((step, index) => (
         <div key={step.title} className="flex items-center gap-4">
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center text-center w-full">
             <div
               className={`flex items-center justify-center size-14 rounded-xl ${step.color} mb-2`}
             >
@@ -44,7 +44,7 @@ export function AutomationFlow() {
             <p className="text-xs text-muted-foreground">{step.description}</p>
           </div>
           {index < flowSteps.length - 1 && (
-            <ArrowRight className="hidden sm:block size-5 text-muted-foreground" />
+            <ArrowRight className="hidden sm:block size-5 text-muted-foreground opacity-50" />
           )}
         </div>
       ))}

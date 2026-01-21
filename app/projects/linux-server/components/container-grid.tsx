@@ -69,26 +69,28 @@ const containerCategories = [
 
 export function ContainerGrid() {
   return (
-    <Card className="h-full bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
+    <Card className="h-full w-full max-w-full bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30 overflow-hidden">
       <CardHeader>
         <CardTitle className="text-lg text-white">
           Container Categories
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
           {containerCategories.map((category) => (
             <div
               key={category.name}
-              className="rounded-2xl border border-purple-900/20 bg-purple-950/30 p-3"
+              className="rounded-2xl border border-purple-900/20 bg-purple-950/30 p-3 min-w-0"
             >
               <div className="flex items-center gap-2 mb-2">
-                <span className={`size-2.5 rounded-full ${category.color}`} />
-                <h4 className="text-sm font-medium text-white">
+                <span
+                  className={`size-2.5 rounded-full ${category.color} shrink-0`}
+                />
+                <h4 className="text-sm font-medium text-white truncate">
                   {category.name}
                 </h4>
               </div>
-              <p className="text-xs text-gray-300 mb-2">
+              <p className="text-xs text-gray-300 mb-2 line-clamp-2">
                 {category.description}
               </p>
               <div className="flex flex-wrap gap-1">

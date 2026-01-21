@@ -75,7 +75,7 @@ export default function HomeServerPage() {
   };
 
   return (
-    <main className="min-h-screen bg-black text-white overflow-hidden">
+    <main className="min-h-screen bg-black text-white overflow-x-hidden">
       {/* Lottie Background */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0">
         <Lottie {...lottieOptions} />
@@ -83,7 +83,7 @@ export default function HomeServerPage() {
 
       <StickyIcons />
 
-      <div className="relative z-10 flex flex-col items-center">
+      <div className="relative z-10 flex flex-col items-center w-full">
         {/* Back Button */}
         <div className="fixed top-6 left-6 z-50">
           <Button
@@ -99,8 +99,8 @@ export default function HomeServerPage() {
         </div>
 
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-purple-950/10 pt-24 pb-16 w-full">
-          <div className="container mx-auto px-4">
+        <section className="py-16 w-full flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6">
             <FadeIn
               delay={100}
               className="flex flex-col items-center text-center"
@@ -144,8 +144,8 @@ export default function HomeServerPage() {
         </section>
 
         {/* OS & Infrastructure */}
-        <section className="py-16 w-full">
-          <div className="container mx-auto px-4">
+        <section className="py-4 w-full flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6">
             <FadeIn delay={200}>
               <div className="grid gap-8 lg:grid-cols-2">
                 <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
@@ -245,8 +245,8 @@ export default function HomeServerPage() {
         </section>
 
         {/* MergerFS + SnapRAID & Hardware */}
-        <section className="py-16 w-full">
-          <div className="container mx-auto px-4">
+        <section className="py-4 w-full flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6">
             <FadeIn delay={300}>
               <div className="grid gap-8 lg:grid-cols-2">
                 <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
@@ -337,8 +337,8 @@ export default function HomeServerPage() {
         </section>
 
         {/* Plex */}
-        <section className="py-16 w-full">
-          <div className="container mx-auto px-4">
+        <section className="py-16 w-full flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6">
             <FadeIn delay={400}>
               <div className="grid gap-8 lg:grid-cols-5">
                 <div className="lg:col-span-3 flex flex-col justify-center">
@@ -464,8 +464,8 @@ export default function HomeServerPage() {
         </section>
 
         {/* Immich */}
-        <section className="py-16 bg-purple-950/10 w-full">
-          <div className="container mx-auto px-4">
+        <section className="py-16 w-full flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6">
             <FadeIn delay={500}>
               <div className="grid gap-8 lg:grid-cols-2 items-center">
                 <div>
@@ -514,8 +514,8 @@ export default function HomeServerPage() {
         </section>
 
         {/* Docker & Container Management */}
-        <section className="py-16 bg-purple-950/10 w-full">
-          <div className="container mx-auto px-4">
+        <section className="py-16 w-full flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6">
             <FadeIn delay={600}>
               <div className="mb-10 text-center">
                 <div className="inline-flex items-center justify-center rounded-2xl mb-4 size-14  bg-purple-900/30 border border-purple-700/30">
@@ -531,11 +531,11 @@ export default function HomeServerPage() {
                 </p>
               </div>
 
-              <div className="grid gap-8 lg:grid-cols-5">
-                <div className="lg:col-span-3">
+              <div className="grid gap-6 lg:gap-8 grid-cols-1 lg:grid-cols-5 w-full max-w-full overflow-hidden">
+                <div className="lg:col-span-3 min-w-0">
                   <ContainerGrid />
                 </div>
-                <div className="lg:col-span-2">
+                <div className="lg:col-span-2 min-w-0">
                   <CodeWindow />
                 </div>
               </div>
@@ -544,8 +544,8 @@ export default function HomeServerPage() {
         </section>
 
         {/* Automation Flow */}
-        <section className="py-16 w-full">
-          <div className="container mx-auto px-4">
+        <section className="py-16 w-full flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6">
             <FadeIn delay={650}>
               <div className="mb-10 text-center">
                 <div className="inline-flex items-center justify-center rounded-2xl mb-4 size-14  bg-purple-900/30 border border-purple-700/30">
@@ -626,8 +626,8 @@ export default function HomeServerPage() {
         </section>
 
         {/* Features Grid */}
-        <section className="py-16 bg-purple-950/10 w-full">
-          <div className="container mx-auto px-4">
+        <section className="py-16 w-full flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6">
             <FadeIn delay={700}>
               <div className="mb-10 text-center">
                 <h2 className="text-3xl text-white font-bold tracking-tight">
@@ -764,8 +764,8 @@ export default function HomeServerPage() {
         </section>
 
         {/* Dashboard */}
-        <section className="py-16 w-full">
-          <div className="container mx-auto px-4">
+        <section className="py-16 w-full flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6">
             <FadeIn delay={800}>
               <div className="mb-10 text-center">
                 <h2 className="text-3xl text-white font-bold tracking-tight">
