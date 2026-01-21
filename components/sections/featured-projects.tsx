@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ArrowRight } from "lucide-react";
 import { TiltImage } from "@/components/ui/tilt-image";
 import { FadeIn } from "../ui/fade-in";
 import { ProjectTag } from "../ui/project-tag";
@@ -14,7 +14,7 @@ interface Project {
   hoverImage: string;
   tags: string[];
   liveUrl: string;
-  githubUrl: string;
+  githubUrl?: string;
   projectType?: "Personal" | "Passion" | "Internship";
 }
 
@@ -102,6 +102,31 @@ const projects: Project[] = [
     liveUrl: "https://offertu-eight.vercel.app/",
     githubUrl: "https://github.com/jhn322/offertu",
     projectType: "Internship",
+  },
+  {
+    title: "Linux Server",
+    description:
+      "A comprehensive home server setup for media management, automation, backup, and self-hosting. Running 24/7 on Ubuntu LTS with Docker containers, this server handles media streaming via Plex, automated downloads with Sonarr/Radarr/Lidarr/Prowlarr, request management through Pulsarr, and secure external access via Nginx Proxy Manager. Features include 180TB+ storage with redundancy, automatic container updates with Watchtower, and easy management through Portainer.",
+    image: "/featured-projects/linux-server.webp",
+    hoverImage: "/featured-projects/linux-server-hover.webp",
+    tags: [
+      "Ubuntu LTS",
+      "Docker",
+      "Docker Compose",
+      "Plex Media Server",
+      "Sonarr",
+      "Radarr",
+      "Lidarr",
+      "Prowlarr",
+      "Pulsarr",
+      "Jellyfin",
+      "Portainer",
+      "Watchtower",
+      "Immich",
+      "Tdarr",
+    ],
+    liveUrl: "/projects/linux-server",
+    projectType: "Personal",
   },
   {
     title: "Better Auth Template",
@@ -212,27 +237,41 @@ export default function FeaturedProjects() {
                 <div className="flex gap-4">
                   <Link
                     href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target={
+                      project.liveUrl.startsWith("/") ? "_self" : "_blank"
+                    }
+                    rel={
+                      project.liveUrl.startsWith("/")
+                        ? undefined
+                        : "noopener noreferrer"
+                    }
                   >
                     <Button>
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Live Demo
+                      {project.liveUrl.startsWith("/") ? (
+                        <ArrowRight className="mr-2 h-4 w-4" />
+                      ) : (
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                      )}
+                      {project.liveUrl.startsWith("/")
+                        ? "View Project"
+                        : "Live Demo"}
                     </Button>
                   </Link>
-                  <Link
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button
-                      variant="outline"
-                      className="border-purple-300 text-purple-300 hover:bg-purple-900/30 hover:text-white rounded-full"
+                  {project.githubUrl && (
+                    <Link
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      <Github className="mr-2 h-4 w-4" />
-                      Source Code
-                    </Button>
-                  </Link>
+                      <Button
+                        variant="outline"
+                        className="border-purple-300 text-purple-300 hover:bg-purple-900/30 hover:text-white rounded-full"
+                      >
+                        <Github className="mr-2 h-4 w-4" />
+                        Source Code
+                      </Button>
+                    </Link>
+                  )}
                 </div>
               </div>
             </FadeIn>
