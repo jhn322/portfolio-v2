@@ -75,27 +75,6 @@ const containers: Container[] = [
     ip: "172.10.10.137",
     status: "running",
   },
-  {
-    name: "imagemaid",
-    image: "kometateam/imagemaid:develop",
-    ports: "-",
-    ip: "192.168.128.2",
-    status: "running",
-  },
-  {
-    name: "calendarr",
-    image: "ghcr.io/jordanlambrecht/calendarr:latest",
-    ports: "",
-    ip: "172.16.7.2",
-    status: "healthy",
-  },
-  {
-    name: "cleanuparr",
-    image: "ghcr.io/cleanuparr/cleanuparr:latest",
-    ports: "11011:11011/tcp",
-    ip: "172.10.10.141",
-    status: "running",
-  },
 
   // Media Streaming
   {
@@ -161,6 +140,13 @@ const containers: Container[] = [
     image: "lscr.io/linuxserver/readarr:develop",
     ports: "8787:8787/tcp",
     ip: "172.10.10.138",
+    status: "running",
+  },
+  {
+    name: "cleanuparr",
+    image: "ghcr.io/cleanuparr/cleanuparr:latest",
+    ports: "11011:11011/tcp",
+    ip: "172.10.10.141",
     status: "running",
   },
 
@@ -269,6 +255,13 @@ const containers: Container[] = [
     ip: "172.27.0.2",
     status: "healthy",
   },
+  {
+    name: "imagemaid",
+    image: "kometateam/imagemaid:develop",
+    ports: "-",
+    ip: "192.168.128.2",
+    status: "running",
+  },
 
   // Analytics and Sync
   {
@@ -305,6 +298,13 @@ const containers: Container[] = [
     ports: "-",
     ip: "172.16.11.2",
     status: "running",
+  },
+  {
+    name: "calendarr",
+    image: "ghcr.io/jordanlambrecht/calendarr:latest",
+    ports: "",
+    ip: "172.16.7.2",
+    status: "healthy",
   },
 
   // Photos
@@ -349,7 +349,7 @@ export function ContainerDashboard() {
       </div>
 
       {/* Toolbar */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-purple-500/20 bg-purple-950/20 p-4">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-purple-500/20 bg-purple-950/20 p-4">
         <div className="flex items-center gap-2">
           <Box className="size-5 text-purple-300" />
           <h2 className="text-lg font-semibold text-purple-100">Containers</h2>
@@ -357,39 +357,60 @@ export function ContainerDashboard() {
 
         <div className="flex items-center gap-2 flex-wrap">
           <div className="flex items-center rounded-[8px] border border-purple-500/20 bg-purple-900/10 overflow-hidden divide-x divide-purple-500/20">
-            <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-purple-200 hover:bg-purple-500/20 transition-colors">
+            <button
+              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-purple-200 hover:bg-purple-500/20 transition-colors"
+              title="Start"
+            >
               <Play className="size-3.5" />
-              Start
+              <span className="hidden sm:inline">Start</span>
             </button>
-            <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-purple-200 hover:bg-purple-500/20 transition-colors">
+            <button
+              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-purple-200 hover:bg-purple-500/20 transition-colors"
+              title="Stop"
+            >
               <Square className="size-3.5" />
-              Stop
+              <span className="hidden sm:inline">Stop</span>
             </button>
-            <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-purple-200 hover:bg-purple-500/20 transition-colors">
+            <button
+              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-purple-200 hover:bg-purple-500/20 transition-colors"
+              title="Kill"
+            >
               <XCircle className="size-3.5" />
-              Kill
+              <span className="hidden sm:inline">Kill</span>
             </button>
-            <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-purple-200 hover:bg-purple-500/20 transition-colors">
+            <button
+              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-purple-200 hover:bg-purple-500/20 transition-colors"
+              title="Restart"
+            >
               <RefreshCw className="size-3.5" />
-              Restart
+              <span className="hidden sm:inline">Restart</span>
             </button>
-            <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-purple-200 hover:bg-purple-500/20 transition-colors">
+            <button
+              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-purple-200 hover:bg-purple-500/20 transition-colors"
+              title="Pause"
+            >
               <Pause className="size-3.5" />
-              Pause
+              <span className="hidden sm:inline">Pause</span>
             </button>
-            <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-purple-200 hover:bg-purple-500/20 transition-colors">
+            <button
+              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-purple-200 hover:bg-purple-500/20 transition-colors"
+              title="Resume"
+            >
               <Play className="size-3.5" />
-              Resume
+              <span className="hidden sm:inline">Resume</span>
             </button>
-            <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-red-100 bg-red-500/40 hover:bg-red-600/80 transition-colors">
+            <button
+              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-red-100 bg-red-500/40 hover:bg-red-600/80 transition-colors"
+              title="Remove"
+            >
               <Trash2 className="size-3.5" />
-              Remove
+              <span className="hidden sm:inline">Remove</span>
             </button>
           </div>
 
-          <button className="flex items-center gap-1.5 rounded-[8px] bg-white px-3 py-1.5 text-xs font-bold text-black hover:bg-gray-200 transition-colors shadow-sm ml-2">
+          <button className="flex items-center gap-1.5 rounded-[8px] bg-white px-3 py-1.5 text-xs font-bold text-black hover:bg-gray-200 transition-colors shadow-sm ml-0 sm:ml-2">
             <Plus className="size-3.5" />
-            Add container
+            Add <span className="hidden sm:inline">container</span>
           </button>
         </div>
       </div>

@@ -126,7 +126,7 @@ const projects: Project[] = [
       "Tdarr",
     ],
     liveUrl: "/projects/linux-server",
-    projectType: "Personal",
+    projectType: "Passion",
   },
   {
     title: "Better Auth Template",

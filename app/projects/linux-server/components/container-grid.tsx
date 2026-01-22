@@ -13,7 +13,15 @@ const containerCategories = [
   {
     name: "Media Automation",
     color: "bg-purple-500",
-    containers: ["Sonarr", "Radarr", "Lidarr", "Readarr", "Prowlarr"],
+    containers: [
+      "Sonarr",
+      "Radarr",
+      "Radarr-remux",
+      "Lidarr",
+      "Readarr",
+      "Prowlarr",
+      "Cleanuparr",
+    ],
     description: "Automated media fetching, organizing, and quality upgrades",
   },
   {
@@ -37,15 +45,28 @@ const containerCategories = [
   {
     name: "Subtitles & Metadata",
     color: "bg-cyan-500",
-    containers: ["Bazarr", "Bazarr-Remux", "Kometa", "Imagemaid"],
+    containers: [
+      "Bazarr",
+      "Bazarr-Remux",
+      "Kometa",
+      "Imagemaid",
+      "Plex-auto-languages",
+    ],
     description:
       "Subtitle management, collections, poster overlays, and cleanup",
   },
   {
     name: "Analytics & Sync",
     color: "bg-orange-500",
-    containers: ["Tautulli", "Medialytics", "PlexTraktSync"],
-    description: "Viewing stats, analytics, and external service sync",
+    containers: [
+      "Tautulli",
+      "Medialytics",
+      "PlexTraktSync",
+      "Yaml-url-checker",
+      "Calendarr",
+    ],
+    description:
+      "Viewing stats, analytics, schedule, links checker, and external service sync",
   },
   {
     name: "Infrastructure",
@@ -62,7 +83,7 @@ const containerCategories = [
   {
     name: "Photo Management",
     color: "bg-teal-500",
-    containers: ["Immich", "Immich-ML", "Immich-Redis"],
+    containers: ["Immich", "Immich-ML", "Immich-Postgres", "Immich-Redis"],
     description: "Self-hosted photo and video backup with ML-powered features",
   },
 ];

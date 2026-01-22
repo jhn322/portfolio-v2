@@ -303,8 +303,8 @@ export default function HomeServerPage() {
                   <CardContent>
                     <div className="grid grid-cols-2 gap-3 text-sm">
                       <div className="rounded-2xl p-3 bg-purple-900/30 text-purple-300 border border-purple-700/30">
-                        <p className="text-xs text-gray-300 mb-0.5">Case</p>
-                        <p className="font-medium">Fractal Define 7</p>
+                        <p className="text-xs text-gray-300 mb-0.5">RAM</p>
+                        <p className="font-medium">32GB</p>
                       </div>
                       <div className="rounded-2xl p-3 bg-purple-900/30 text-purple-300 border border-purple-700/30">
                         <p className="text-xs text-gray-300 mb-0.5">CPU</p>
@@ -370,8 +370,8 @@ export default function HomeServerPage() {
                         </h4>
                         <p className="text-sm text-gray-300">
                           4K HDR and Dolby Vision playback with Dolby Atmos
-                          audio. High bitrate, no buffering, no waiting for
-                          content to be available.
+                          audio. High bitrate, no buffering, no regional
+                          restrictions.
                         </p>
                       </div>
                     </div>
