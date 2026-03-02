@@ -1,7 +1,53 @@
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
+import {
+  ArrowRight,
+  ChevronDown,
+  ChevronUp,
+  ExternalLink,
+  Github,
+} from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+
+interface SchoolProject {
+  title: string;
+  description: string;
+  tags: string[];
+  liveUrl?: string;
+  githubUrl?: string;
+  icon?: string;
+}
+
+const schoolProjects: SchoolProject[] = [
+  {
+    title: "The Dashboard",
+    description:
+      "An aesthetically pleasing dashboard designed to be a go-to landing page for bookmarking and organizing links.",
+    tags: ["JavaScript", "CSS", "Unsplash API", "Weather API", "Local Storage"],
+    liveUrl: "https://jhn-dashboard.netlify.app/",
+    githubUrl: "https://github.com/jhn322/dashboard-frontend",
+    icon: "/chas/dashboard.png",
+  },
+  {
+    title: "Kanban Group Project",
+    description:
+      "A highly functional Kanban board for effective planning and collaboration between team members.",
+    tags: ["React", "Redux", "JavaScript", "Google Analytics", "Custom Hooks"],
+    liveUrl: "https://kanban-kollab.netlify.app/",
+    githubUrl: "https://github.com/jhn322/kanban-group-react",
+    icon: "/chas/kanban.png",
+  },
+  {
+    title: "Quire",
+    description:
+      "A digital assistant designed for creating, saving, and editing everyday notes with ease.",
+    tags: ["JavaScript", "CSS", "HTML", "Google Analytics", "Textformatting"],
+    liveUrl: "https://regni.github.io/quire/",
+    githubUrl: "https://github.com/jhn322/quire",
+    icon: "/chas/quire.png",
+  },
+];
 
 const container = {
   hidden: { opacity: 0 },
@@ -24,6 +70,160 @@ const item = {
       damping: 20,
     },
   },
+};
+
+const SchoolProjectCard = ({
+  project,
+}: {
+  project: SchoolProject;
+  index: number;
+}) => {
+  const [isGithubHovered, setIsGithubHovered] = useState(false);
+  const [isLiveHovered, setIsLiveHovered] = useState(false);
+
+  return (
+    <motion.div
+      key={project.title}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        type: "spring",
+        stiffness: 300,
+        damping: 25,
+      }}
+      viewport={{ once: true }}
+      whileHover={{ y: -10 }}
+      className="relative group h-full"
+    >
+      <div className="absolute inset-0 bg-purple-700 rounded-xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none" />
+
+      <div className="relative bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border border-purple-900/30 rounded-xl p-5 h-full flex flex-col hover:border-purple-700/50 transition-colors duration-300">
+        <div className="flex items-start justify-between gap-3 mb-3">
+          <div className="p-2 rounded-xl bg-purple-700 shadow-lg">
+            {project.icon ? (
+              <Image
+                src={project.icon}
+                alt={`${project.title} icon`}
+                width={20}
+                height={20}
+                className="h-5 w-5 object-contain"
+              />
+            ) : (
+              <ExternalLink size={20} className="text-white" />
+            )}
+          </div>
+
+          <div className="flex gap-1 ml-auto">
+            {project.githubUrl && (
+              <motion.div
+                className="relative"
+                animate={{ width: isGithubHovered ? "auto" : "2.5rem" }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 25,
+                }}
+                onMouseEnter={() => setIsGithubHovered(true)}
+                onMouseLeave={() => setIsGithubHovered(false)}
+              >
+                <Link
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-300 hover:bg-purple-900/30 text-sm hover:text-white h-10 rounded-full overflow-hidden whitespace-nowrap w-full flex items-center gap-2 justify-end px-3  hover:border-purple-700/50 transition-all duration-200"
+                  aria-label={`View ${project.title} on GitHub`}
+                >
+                  <Github className="h-4 w-4 flex-shrink-0" />
+                  <motion.span
+                    animate={{
+                      width: isGithubHovered ? "auto" : 0,
+                      opacity: isGithubHovered ? 1 : 0,
+                    }}
+                    transition={{
+                      width: {
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 25,
+                      },
+                      opacity: {
+                        duration: 0.2,
+                        delay: isGithubHovered ? 0.1 : 0,
+                      },
+                    }}
+                    className="overflow-hidden"
+                  >
+                    Code
+                  </motion.span>
+                </Link>
+              </motion.div>
+            )}
+            {project.liveUrl && (
+              <motion.div
+                className="relative"
+                animate={{ width: isLiveHovered ? "auto" : "2.5rem" }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 25,
+                }}
+                onMouseEnter={() => setIsLiveHovered(true)}
+                onMouseLeave={() => setIsLiveHovered(false)}
+              >
+                <Link
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-300 hover:bg-purple-900/30 text-sm hover:text-white h-10 rounded-full overflow-hidden whitespace-nowrap w-full flex items-center gap-2 justify-end px-3  hover:border-purple-700/50 transition-all duration-200"
+                  aria-label={`View ${project.title} live`}
+                >
+                  <ExternalLink className="h-4 w-4 flex-shrink-0" />
+                  <motion.span
+                    animate={{
+                      width: isLiveHovered ? "auto" : 0,
+                      opacity: isLiveHovered ? 1 : 0,
+                    }}
+                    transition={{
+                      width: {
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 25,
+                      },
+                      opacity: {
+                        duration: 0.2,
+                        delay: isLiveHovered ? 0.1 : 0,
+                      },
+                    }}
+                    className="overflow-hidden"
+                  >
+                    Demo
+                  </motion.span>
+                </Link>
+              </motion.div>
+            )}
+          </div>
+        </div>
+
+        <h4 className="text-lg font-bold text-white mb-2 group-hover:text-purple-300 transition-colors duration-300">
+          {project.title}
+        </h4>
+
+        <p className="text-gray-300 text-sm mb-4 flex-grow">
+          {project.description}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-2 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/30"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
 };
 
 const CoursesDetails = ({
@@ -387,6 +587,28 @@ const ChasAcademy = () => {
         isOpen={isAccordionOpen}
         toggleAccordion={toggleAccordion}
       />
+
+      <div className="mt-12 pt-8 border-t border-purple-900/30">
+        <motion.h4
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          viewport={{ once: true }}
+          className="text-lg font-bold text-white mb-6"
+        >
+          School Projects
+        </motion.h4>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {schoolProjects.map((project, index) => (
+            <SchoolProjectCard
+              key={project.title}
+              project={project}
+              index={index}
+            />
+          ))}
+        </div>
+      </div>
     </motion.div>
   );
 };

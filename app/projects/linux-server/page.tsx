@@ -794,7 +794,7 @@ export default function HomeServerPage() {
                 className="flex items-center gap-2"
               >
                 <Github className="mr-2 h-4 w-4" />
-                <span>Docker compose configs on my GitHub</span>
+                <span>My Docker compose configs</span>
               </Link>
             </Button>
           </div>

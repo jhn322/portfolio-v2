@@ -52,7 +52,7 @@ const projects: Project[] = [
   {
     title: "Portfolio V2",
     description:
-      "A modern portfolio web app designed to showcase projects and skills through a fast, polished experience. It features a clean UI built with Shadcn and Tailwind CSS. Smooth animations created with Framer Motion, Lottie, and IntersectionObserver-based fade-in, alongside React Three Fiber. Forms are handled with React Hook Form and Zod for reliable validation, and email functionality is powered by Brevo, resulting in the portfolio you are looking at now.",
+      "A modern portfolio designed to showcase projects and skills through a polished experience. It features UI built with Shadcn and Tailwind CSS. Animations created with Framer Motion, Lottie, and React Three Fiber. Forms are handled with React Hook Form and Zod for reliable validation, and email functionality is powered by Brevo, resulting in the portfolio you are looking at now.",
     tags: [
       "Next.js",
       "TypeScript",
@@ -72,7 +72,7 @@ const projects: Project[] = [
   {
     title: "NextAuth Template",
     description:
-      "A full-stack authentication template built with Next.js, MongoDB, and NextAuth.js. This template provides a complete authentication system with email/password authentication, OAuth providers (Google and GitHub), email verification, and password reset functionality. It's designed as a production-ready starter kit that quickly brings your project up and running with scalable Atlas database, and secure authentication, perfect for building a full-stack application.",
+      "A full-stack authentication template built with Next.js, MongoDB, and NextAuth.js. This template provides a complete authentication system with email/password authentication, OAuth providers, email verification, and password reset functionality. It's designed as a production-ready starter kit that quickly brings your project up and running quickly and secure.",
     tags: [
       "Next.js",
       "TypeScript",
@@ -92,7 +92,7 @@ const projects: Project[] = [
   {
     title: "YAML URL Checker",
     description:
-      "Python-based utility script that can be run as a Docker container, designed to automatically scan configuration files for potentially dead web links, specifically targeting Trakt and Letterboxd list URLs within YAML structures. It efficiently checks the status of each discovered URL using HTTP HEAD requests and identifies any links that are no longer accessible. The script provides a summary report to a log file, and sends a notification to a configured Discord channel via webhooks.",
+      "Python-based utility script that runs as a Docker container, designed to automatically scan configuration files for potentially dead web links, specifically targeting Trakt, Letterboxd and IMDb list URLs within YAML structures. It checks the status of URLs using HTTP HEAD requests and identifies any links that are no longer accessible. The script provides a summary report to a log file to a Discord channel via webhooks.",
     tags: [
       "Python",
       "Docker",
@@ -170,6 +170,23 @@ const projects: Project[] = [
     projectType: "Internship",
   },
   {
+    title: "Oscar Ranking",
+    description:
+      "An interactive web application to rank and share your Oscar Best Picture nominations from current or previous years. Easily reorder your favorite movies, persist your rankings locally, and share your personal rankings with others on social media through text or a screenshot.",
+    tags: [
+      "TypeScript",
+      "Next.js",
+      "Tailwind CSS",
+      "DndKit",
+      "Local Storage",
+      "TMDb API",
+      "HtmltoImage",
+    ],
+    liveUrl: "https://oscar-ranking.vercel.app/",
+    githubUrl: "https://github.com/jhn322/oscar-ranking",
+    icon: "/other-projects/oscar.webp",
+  },
+  {
     title: "Rently",
     description:
       "Rently is the answer to overconsumption and unnecessary waste. Why buy when you can rent? By connecting neighbors, friends, and local communities, we've created a space where stuff gets used, not wasted. Need a tent for that one camping trip? Rent it from your neighbor instead of shelling out cash for a new one.",
@@ -187,24 +204,6 @@ const projects: Project[] = [
     liveUrl: "https://rently-app.netlify.app/",
     githubUrl: "https://github.com/jhn322/rently",
     icon: "/other-projects/rently.webp",
-  },
-  {
-    title: "The Dashboard",
-    description:
-      "An aesthetically pleasing dashboard designed to be a go-to landing page for bookmarking and organizing links. The UI provides a quick overview of the weather. It also features a note-taking section for writing down important information. Notes are automatically saved and persist.",
-    tags: [
-      "JavaScript",
-      "CSS",
-      "Unsplash API",
-      "Weather API",
-      "Randomizer",
-      "Local Storage",
-      "Google Analytics",
-      "Responsive Design",
-    ],
-    liveUrl: "https://jhn-dashboard.netlify.app/",
-    githubUrl: "https://github.com/jhn322/dashboard-frontend",
-    icon: "/other-projects/dashboard.webp",
   },
 ];
 
@@ -357,7 +356,7 @@ const ExpandableButtonGroup = ({
                 }}
                 className="overflow-hidden"
               >
-                Visit Page
+                Live Demo
               </motion.span>
             </Link>
           </Button>
