@@ -106,14 +106,14 @@ export function ImmichGallery() {
               <div className="aspect-square rounded-lg bg-white/5 flex items-center justify-center">
                 <ImageIcon className="size-4 text-white/20" />
               </div>
-              <div className="aspect-square rounded-lg bg-white/5 relative overflow-hidden">
-                <div className="absolute inset-0 bg-purple-500/20 animate-pulse" />
-              </div>
-              <div className="aspect-square rounded-lg bg-white/5 relative overflow-hidden">
-                <div className="absolute inset-0 bg-purple-500/20 animate-pulse" />
-              </div>
               <div className="aspect-square rounded-lg bg-white/5 flex items-center justify-center">
                 <User className="size-4 text-white/20" />
+              </div>
+              <div className="aspect-square rounded-lg bg-white/5 relative overflow-hidden">
+                <div className="absolute inset-0 bg-purple-500/20 animate-pulse" />
+              </div>
+              <div className="aspect-square rounded-lg bg-white/5 relative overflow-hidden">
+                <div className="absolute inset-0 bg-purple-500/20 animate-pulse" />
               </div>
             </div>
           </div>

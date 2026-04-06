@@ -46,6 +46,7 @@ import backgroundAnimation from "@/components/lottie/background.json";
 import StickyIcons from "@/components/sticky-icons";
 import Footer from "../../../components/sections/footer";
 import { FadeIn } from "@/components/ui/fade-in";
+import Image from "next/image";
 
 const Lottie = dynamic(() => import("lottie-react"), {
   ssr: false,
@@ -201,43 +202,58 @@ export default function HomeServerPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
-                  <CardHeader>
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-10 rounded-2xl bg-purple-900/30">
-                        <HardDrive className="size-5 text-white" />
+                <Card className="relative overflow-hidden bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30 group">
+                  <div className="absolute inset-0">
+                    <Image
+                      width={600}
+                      height={400}
+                      src="/linux-media-server/exos.webp"
+                      alt="Seagate Exos drive"
+                      className="w-full h-full object-cover opacity-40 group-hover:opacity-55 transition-opacity duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
+                  </div>
+
+                  <div className="relative p-6 h-full flex flex-col justify-between">
+                    <CardHeader>
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center size-10 rounded-2xl bg-black/40 border border-white/10">
+                          <HardDrive className="size-5 text-white" />
+                        </div>
+                        <div>
+                          <CardTitle className="text-white">
+                            Storage Architecture
+                          </CardTitle>
+                          <CardDescription className="text-gray-300">
+                            180TB+ with redundancy
+                          </CardDescription>
+                        </div>
                       </div>
-                      <div>
-                        <CardTitle className="text-white">
-                          Storage Architecture
-                        </CardTitle>
-                        <CardDescription className="text-gray-300">
-                          180TB+ with redundancy
-                        </CardDescription>
+                    </CardHeader>
+
+                    <CardContent className="space-y-4">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="rounded-2xl p-4 bg-black/50 border border-purple-700/40 text-center backdrop-blur-sm">
+                          <p className="text-2xl font-bold text-purple-300">
+                            180TB+
+                          </p>
+                          <p className="text-xs text-gray-300">HDD Storage</p>
+                        </div>
+                        <div className="rounded-2xl p-4 bg-black/50 border border-purple-700/40 text-center backdrop-blur-sm">
+                          <p className="text-2xl font-bold text-purple-300">
+                            2TB
+                          </p>
+                          <p className="text-xs text-gray-300">NVMe SSD</p>
+                        </div>
                       </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="rounded-2xl p-4 text-center bg-purple-900/30 text-purple-300 border border-purple-700/30">
-                        <p className="text-2xl font-bold text-purple-300">
-                          180TB+
-                        </p>
-                        <p className="text-xs text-gray-300">HDD Storage</p>
-                      </div>
-                      <div className="rounded-2xl p-4 text-center bg-purple-900/30 text-purple-300 border border-purple-700/30">
-                        <p className="text-2xl font-bold text-purple-300">
-                          2TB
-                        </p>
-                        <p className="text-xs text-gray-300">NVMe SSD</p>
-                      </div>
-                    </div>
-                    <p className="text-sm text-gray-300">
-                      All Docker containers run from the NVMe SSD for fast I/O
-                      and responsive application performance, while the HDD
-                      array handles the large media library.
-                    </p>
-                  </CardContent>
+                      <p className="text-sm text-gray-300">
+                        All Docker containers run from the NVMe SSD for fast I/O
+                        and responsive application performance, while the HDD
+                        array handles the large media library.
+                      </p>
+                    </CardContent>
+                  </div>
                 </Card>
               </div>
             </FadeIn>
@@ -286,50 +302,69 @@ export default function HomeServerPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
-                  <CardHeader>
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-10 rounded-2xl bg-purple-900/30">
-                        <Cpu className="size-5 text-white" />
+                <Card className="relative overflow-hidden bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30 group">
+                  <div className="absolute inset-0">
+                    <Image
+                      width={600}
+                      height={400}
+                      src="/linux-media-server/fractal.webp"
+                      alt="Fractal PC interior"
+                      className="w-full h-full object-cover opacity-40 group-hover:opacity-55 transition-opacity duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
+                  </div>
+
+                  <div className="relative p-6 h-full flex flex-col justify-between">
+                    <CardHeader>
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center size-10 rounded-2xl bg-black/40 border border-white/10">
+                          <Cpu className="size-5 text-white" />
+                        </div>
+                        <div>
+                          <CardTitle className="text-white">Hardware</CardTitle>
+                          <CardDescription className="text-gray-300">
+                            Built for storage & transcoding
+                          </CardDescription>
+                        </div>
                       </div>
-                      <div>
-                        <CardTitle className="text-white">Hardware</CardTitle>
-                        <CardDescription className="text-gray-300">
-                          Built for storage & transcoding
-                        </CardDescription>
+                    </CardHeader>
+
+                    <CardContent>
+                      <div className="grid grid-cols-2 gap-3 text-sm">
+                        <div className="rounded-2xl p-3 bg-black/50 text-purple-300 border border-purple-700/40 backdrop-blur-sm">
+                          <p className="text-xs text-gray-300 mb-0.5">RAM</p>
+                          <p className="font-medium">32GB</p>
+                        </div>
+                        <div className="rounded-2xl p-3 bg-black/50 text-purple-300 border border-purple-700/40 backdrop-blur-sm">
+                          <p className="text-xs text-gray-300 mb-0.5">CPU</p>
+                          <p className="font-medium">Ryzen 7 2700X</p>
+                        </div>
+                        <div className="rounded-2xl p-3 bg-black/50 text-purple-300 border border-purple-700/40 backdrop-blur-sm">
+                          <p className="text-xs text-gray-300 mb-0.5">
+                            Motherboard
+                          </p>
+                          <p className="font-medium">ASUS X570 Gaming F</p>
+                        </div>
+                        <div className="rounded-2xl p-3 bg-black/50 text-purple-300 border border-purple-700/40 backdrop-blur-sm">
+                          <p className="text-xs text-gray-300 mb-0.5">GPU</p>
+                          <p className="font-medium">GTX 980 Ti</p>
+                        </div>
+                        <div className="rounded-2xl p-3 bg-black/50 text-purple-300 border border-purple-700/40 backdrop-blur-sm">
+                          <p className="text-xs text-gray-300 mb-0.5">
+                            Storage
+                          </p>
+                          <p className="font-medium">11 HDDs + 1 SSD</p>
+                        </div>
+                        <div className="rounded-2xl p-3 bg-black/50 text-purple-300 border border-purple-700/40 backdrop-blur-sm">
+                          <p className="text-xs text-gray-300 mb-0.5">
+                            HBA Card
+                          </p>
+                          <p className="font-medium">LSI SAS 9210-8i</p>
+                        </div>
                       </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-2 gap-3 text-sm">
-                      <div className="rounded-2xl p-3 bg-purple-900/30 text-purple-300 border border-purple-700/30">
-                        <p className="text-xs text-gray-300 mb-0.5">RAM</p>
-                        <p className="font-medium">32GB</p>
-                      </div>
-                      <div className="rounded-2xl p-3 bg-purple-900/30 text-purple-300 border border-purple-700/30">
-                        <p className="text-xs text-gray-300 mb-0.5">CPU</p>
-                        <p className="font-medium">Ryzen 7 2700X</p>
-                      </div>
-                      <div className="rounded-2xl p-3 bg-purple-900/30 text-purple-300 border border-purple-700/30">
-                        <p className="text-xs text-gray-300 mb-0.5">
-                          Motherboard
-                        </p>
-                        <p className="font-medium">ASUS X570 Gaming F</p>
-                      </div>
-                      <div className="rounded-2xl p-3 bg-purple-900/30 text-purple-300 border border-purple-700/30">
-                        <p className="text-xs text-gray-300 mb-0.5">GPU</p>
-                        <p className="font-medium">GTX 980 Ti</p>
-                      </div>
-                      <div className="rounded-2xl p-3 bg-purple-900/30 text-purple-300 border border-purple-700/30">
-                        <p className="text-xs text-gray-300 mb-0.5">Storage</p>
-                        <p className="font-medium">11 HDDs + 1 SSD</p>
-                      </div>
-                      <div className="rounded-2xl p-3 bg-purple-900/30 text-purple-300 border border-purple-700/30">
-                        <p className="text-xs text-gray-300 mb-0.5">HBA Card</p>
-                        <p className="font-medium">LSI SAS 9210-8i</p>
-                      </div>
-                    </div>
-                  </CardContent>
+                    </CardContent>
+                  </div>
                 </Card>
               </div>
             </FadeIn>
@@ -412,51 +447,79 @@ export default function HomeServerPage() {
                   </p>
                 </div>
                 <div className="lg:col-span-2">
-                  <Card className="h-full bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
-                    <CardHeader>
-                      <CardTitle className="text-lg text-white">
-                        Media Library
-                      </CardTitle>
-                      <CardDescription className="text-gray-300">
-                        Content available for streaming
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="grid grid-cols-2 gap-3">
-                        <div className="rounded-2xl p-3 bg-purple-900/30 text-purple-300 border border-purple-700/30 text-center">
-                          <Film className="size-5 mx-auto mb-1 text-gray-300" />
-                          <p className="text-sm font-medium">Movies</p>
-                        </div>
-                        <div className="rounded-2xl p-3 bg-purple-900/30 text-purple-300 border border-purple-700/30 text-center">
-                          <Tv className="size-5 mx-auto mb-1 text-gray-300" />
-                          <p className="text-sm font-medium">TV Shows</p>
-                        </div>
-                        <div className="rounded-2xl p-3 bg-purple-900/30 text-purple-300 border border-purple-700/30 text-center">
-                          <Music className="size-5 mx-auto mb-1 text-gray-300" />
-                          <p className="text-sm font-medium">Music</p>
-                        </div>
-                        <div className="rounded-2xl p-3 bg-purple-900/30 text-purple-300 border border-purple-700/30 text-center">
-                          <Headphones className="size-5 mx-auto mb-1 text-gray-300" />
-                          <p className="text-sm font-medium">Audiobooks</p>
-                        </div>
-                        <div className="rounded-2xl p-3 bg-purple-900/30 text-purple-300 border border-purple-700/30 text-center">
-                          <Disc className="size-5 mx-auto mb-1 text-gray-300" />
-                          <p className="text-sm font-medium">Soundtracks</p>
-                        </div>
-                        <div className="rounded-2xl p-3 bg-purple-900/30 text-purple-300 border border-purple-700/30 text-center">
-                          <BookOpen className="size-5 mx-auto mb-1 text-gray-300" />
-                          <p className="text-sm font-medium">Books</p>
-                        </div>
-                      </div>
-                      <div className="pt-2 border-t text-purple-300">
-                        <p className="text-xs text-gray-300">
-                          Also includes Intros, concert recordings, and
-                          documentary collections. All organized with rich
-                          metadata, artwork, and subtitles.
+                  <div className="relative group h-full rounded-2xl overflow-hidden border border-purple-700/30 bg-gradient-to-br from-black/30 to-purple-900/10">
+                    {/* Poster Background */}
+                    <div className="absolute inset-0">
+                      <Image
+                        width={600}
+                        height={400}
+                        src="/linux-media-server/poster.webp"
+                        alt="Plex Media Library Showcase"
+                        className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-300"
+                      />
+                      {/* Gradient overlays */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
+                    </div>
+
+                    {/* Content */}
+                    <div className="relative h-full flex flex-col justify-between p-6 backdrop-blur-sm">
+                      <div>
+                        <h3 className="text-lg font-bold text-white mb-1">
+                          Media Library
+                        </h3>
+                        <p className="text-xs text-purple-300 uppercase tracking-widest mb-4">
+                          Content Available for Streaming
                         </p>
                       </div>
-                    </CardContent>
-                  </Card>
+
+                      {/* Media Types Grid */}
+                      <div className="grid grid-cols-2 gap-2.5">
+                        <div className="group/item rounded-xl p-3 bg-black/50 border border-purple-700/40 hover:border-purple-600/60 hover:bg-purple-900/20 transition-all duration-200 text-center backdrop-blur-sm">
+                          <Film className="size-5 mx-auto mb-1.5 text-purple-300 group-hover/item:text-purple-200 transition-colors" />
+                          <p className="text-xs font-semibold text-white">
+                            Movies
+                          </p>
+                        </div>
+                        <div className="group/item rounded-xl p-3 bg-black/50 border border-purple-700/40 hover:border-purple-600/60 hover:bg-purple-900/20 transition-all duration-200 text-center backdrop-blur-sm">
+                          <Tv className="size-5 mx-auto mb-1.5 text-purple-300 group-hover/item:text-purple-200 transition-colors" />
+                          <p className="text-xs font-semibold text-white">
+                            TV Shows
+                          </p>
+                        </div>
+                        <div className="group/item rounded-xl p-3 bg-black/50 border border-purple-700/40 hover:border-purple-600/60 hover:bg-purple-900/20 transition-all duration-200 text-center backdrop-blur-sm">
+                          <Music className="size-5 mx-auto mb-1.5 text-purple-300 group-hover/item:text-purple-200 transition-colors" />
+                          <p className="text-xs font-semibold text-white">
+                            Music
+                          </p>
+                        </div>
+                        <div className="group/item rounded-xl p-3 bg-black/50 border border-purple-700/40 hover:border-purple-600/60 hover:bg-purple-900/20 transition-all duration-200 text-center backdrop-blur-sm">
+                          <Headphones className="size-5 mx-auto mb-1.5 text-purple-300 group-hover/item:text-purple-200 transition-colors" />
+                          <p className="text-xs font-semibold text-white">
+                            Audiobooks
+                          </p>
+                        </div>
+                        <div className="group/item rounded-xl p-3 bg-black/50 border border-purple-700/40 hover:border-purple-600/60 hover:bg-purple-900/20 transition-all duration-200 text-center backdrop-blur-sm">
+                          <Disc className="size-5 mx-auto mb-1.5 text-purple-300 group-hover/item:text-purple-200 transition-colors" />
+                          <p className="text-xs font-semibold text-white">
+                            Soundtracks
+                          </p>
+                        </div>
+                        <div className="group/item rounded-xl p-3 bg-black/50 border border-purple-700/40 hover:border-purple-600/60 hover:bg-purple-900/20 transition-all duration-200 text-center backdrop-blur-sm">
+                          <BookOpen className="size-5 mx-auto mb-1.5 text-purple-300 group-hover/item:text-purple-200 transition-colors" />
+                          <p className="text-xs font-semibold text-white">
+                            Books
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="pt-3 border-t border-purple-700/20 text-xs text-gray-400">
+                        Also includes Intros, concert recordings, and
+                        documentary collections. All organized with rich
+                        metadata, artwork, and subtitles.
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </FadeIn>
@@ -566,8 +629,16 @@ export default function HomeServerPage() {
               <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
                   <CardHeader className="pb-2">
-                    <CardTitle className="text-base text-white flex items-center gap-2">
-                      <span className="size-2 rounded-full bg-blue-500" />
+                    <CardTitle className="text-base text-white flex items-center gap-3">
+                      <div>
+                        <Image
+                          width={24}
+                          height={24}
+                          src="/linux-media-server/sonarr.webp"
+                          alt="Sonarr logo"
+                          className="block w-6 h-6 object-contain"
+                        />
+                      </div>
                       Sonarr
                     </CardTitle>
                   </CardHeader>
@@ -580,8 +651,16 @@ export default function HomeServerPage() {
                 </Card>
                 <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
                   <CardHeader className="pb-2">
-                    <CardTitle className="text-base text-white flex items-center gap-2">
-                      <span className="size-2 rounded-full bg-amber-500" />
+                    <CardTitle className="text-base text-white flex items-center gap-3">
+                      <div>
+                        <Image
+                          width={24}
+                          height={24}
+                          src="/linux-media-server/radarr.webp"
+                          alt="Radarr logo"
+                          className="block w-6 h-6 object-contain"
+                        />
+                      </div>
                       Radarr
                     </CardTitle>
                   </CardHeader>
@@ -594,8 +673,16 @@ export default function HomeServerPage() {
                 </Card>
                 <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
                   <CardHeader className="pb-2">
-                    <CardTitle className="text-base text-white flex items-center gap-2">
-                      <span className="size-2 rounded-full bg-green-500" />
+                    <CardTitle className="text-base text-white flex items-center gap-3">
+                      <div>
+                        <Image
+                          width={24}
+                          height={24}
+                          src="/linux-media-server/lidarr.webp"
+                          alt="Lidarr logo"
+                          className="block w-6 h-6 object-contain"
+                        />
+                      </div>
                       Lidarr
                     </CardTitle>
                   </CardHeader>
@@ -608,8 +695,16 @@ export default function HomeServerPage() {
                 </Card>
                 <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
                   <CardHeader className="pb-2">
-                    <CardTitle className="text-base text-white flex items-center gap-2">
-                      <span className="size-2 rounded-full bg-purple-500 " />
+                    <CardTitle className="text-base text-white flex items-center gap-3">
+                      <div>
+                        <Image
+                          width={24}
+                          height={24}
+                          src="/linux-media-server/prowlarr.webp"
+                          alt="Prowlarr logo"
+                          className="block w-6 h-6 object-contain"
+                        />
+                      </div>
                       Prowlarr
                     </CardTitle>
                   </CardHeader>
@@ -713,8 +808,8 @@ export default function HomeServerPage() {
                   <CardContent>
                     <p className="text-sm text-gray-300">
                       Plex and Jellyfin for media streaming to any device.
-                      Pulsarr and Overseerr provide request interfaces for users
-                      to add content.
+                      Pulsarr and Seerr provide request interfaces for users to
+                      add content.
                     </p>
                   </CardContent>
                 </Card>

@@ -27,7 +27,7 @@ const containerCategories = [
   {
     name: "Requests & Discovery",
     color: "bg-pink-500",
-    containers: ["Pulsarr", "Overseerr", "Jellyseerr"],
+    containers: ["Pulsarr", "Seerr"],
     description: "User request interfaces for adding new content",
   },
   {
@@ -60,6 +60,7 @@ const containerCategories = [
     color: "bg-orange-500",
     containers: [
       "Tautulli",
+      "Tracearr",
       "Medialytics",
       "PlexTraktSync",
       "Yaml-url-checker",

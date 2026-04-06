@@ -56,9 +56,9 @@ const containers: Container[] = [
   },
   {
     name: "watchtower",
-    image: "containrrr/watchtower",
+    image: "nickfedor/watchtower:latest",
     ports: "-",
-    ip: "192.168.64.2",
+    ip: "192.168.64.3",
     status: "healthy",
   },
   {
@@ -152,17 +152,10 @@ const containers: Container[] = [
 
   // Requests & Discovery
   {
-    name: "overseerr",
-    image: "sct/overseerr:latest",
+    name: "seerr",
+    image: "ghcr.io/seerr-team/seerr:latest",
     ports: "5055:5055/tcp",
     ip: "172.10.10.136",
-    status: "running",
-  },
-  {
-    name: "jellyseerr",
-    image: "fallenbagel/jellyseerr:latest",
-    ports: "5065:5055/tcp",
-    ip: "192.168.16.2",
     status: "running",
   },
   {
@@ -272,6 +265,27 @@ const containers: Container[] = [
     status: "running",
   },
   {
+    name: "tracearr",
+    image: "ghcr.io/connorgallopo/tracearr:latest",
+    ports: "3000:3000/tcp",
+    ip: "172.16.6.4",
+    status: "running",
+  },
+  {
+    name: "tracearr-db",
+    image: "timescale/timescaledb-ha:pg18.1-ts2.25.0",
+    ports: "-",
+    ip: "172.16.6.3",
+    status: "running",
+  },
+  {
+    name: "tracearr-redis",
+    image: "redis:8-alpine",
+    ports: "-",
+    ip: "172.16.6.2",
+    status: "running",
+  },
+  {
     name: "medialytics",
     image: "ghcr.io/drewpeifer/medialytics:latest",
     ports: "8088:80",
@@ -302,7 +316,7 @@ const containers: Container[] = [
   {
     name: "calendarr",
     image: "ghcr.io/jordanlambrecht/calendarr:latest",
-    ports: "",
+    ports: "-",
     ip: "172.16.7.2",
     status: "healthy",
   },
