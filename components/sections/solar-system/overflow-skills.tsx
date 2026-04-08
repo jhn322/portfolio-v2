@@ -74,6 +74,8 @@ const allCategories: SkillCategory[] = [
     name: "Tools",
     skills: [
       { name: "Git", category: "Tools" },
+      { name: "Claude Code", category: "Tools" },
+      { name: "Codex", category: "Tools" },
       { name: "Portainer", category: "Tools" },
       { name: "Cursor", category: "Tools" },
       { name: "VS Code", category: "Tools" },
