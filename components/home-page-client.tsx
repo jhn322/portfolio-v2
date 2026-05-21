@@ -13,37 +13,46 @@ const DynamicHero = dynamic(() => import("@/components/sections/hero"), {
   loading: () => <Skeleton className="h-screen w-full" />,
   ssr: false,
 });
-const DynamicAbout = dynamic(() => import("@/components/sections/about"), {
-  loading: () => <Skeleton className="h-[600px] w-full py-20 md:py-32" />,
-});
+const DynamicApproach = dynamic(
+  () => import("@/components/sections/approach"),
+  {
+    loading: () => <Skeleton className="h-[600px] w-full py-20 md:py-32" />,
+  },
+);
 const DynamicSkillsSolarSystem = dynamic(
   () => import("@/components/sections/skills"),
   {
     loading: () => <Skeleton className="h-[900px] w-full py-20 md:py-32" />,
-  }
+  },
 );
 const DynamicFeaturedProjects = dynamic(
   () => import("@/components/sections/featured-projects"),
   {
     loading: () => <Skeleton className="h-[1000px] w-full py-20 md:py-32" />,
-  }
+  },
 );
 const DynamicOtherProjects = dynamic(
   () => import("@/components/sections/other-projects"),
   {
     loading: () => <Skeleton className="h-[700px] w-full py-20 md:py-32" />,
-  }
+  },
+);
+const DynamicSysadmin = dynamic(
+  () => import("@/components/sections/sysadmin"),
+  {
+    loading: () => <Skeleton className="h-[600px] w-full py-20 md:py-32" />,
+  },
 );
 const DynamicExperience = dynamic(
   () =>
     import("@/components/sections/experience").then((mod) => mod.Experience),
   {
     loading: () => <Skeleton className="h-[500px] w-full py-20 md:py-32" />,
-  }
+  },
 );
 const DynamicContactDrawer = dynamic(
   () => import("@/components/sections/contact-drawer"),
-  { ssr: false }
+  { ssr: false },
 );
 const DynamicFooter = dynamic(() => import("@/components/sections/footer"), {
   loading: () => <Skeleton className="h-[150px] w-full py-10" />,
@@ -57,10 +66,11 @@ export default function HomePageClient() {
       </ClientOnly>
       <Navbar />
       <DynamicHero />
-      <DynamicAbout />
+      <DynamicApproach />
       <DynamicSkillsSolarSystem />
       <DynamicFeaturedProjects />
       <DynamicOtherProjects />
+      <DynamicSysadmin />
       <DynamicExperience />
       <DynamicContactDrawer />
       <DynamicFooter />

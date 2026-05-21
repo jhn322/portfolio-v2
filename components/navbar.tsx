@@ -11,9 +11,10 @@ import "@/styles/navbar.css";
 
 const navItems = [
   { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
+  { name: "Approach", href: "#approach" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#featured-projects" },
+  { name: "Sysadmin", href: "#sysadmin" },
   { name: "Experience", href: "#experience" },
   { name: "Contact", href: "#contact" },
 ];
@@ -143,7 +144,7 @@ export default function Navbar() {
             ? "bg-purple-900/30 text-purple-300 border-purple-700/30 shadow-[0_8px_24px_rgba(0,0,0,0.10)]"
             : "bg-purple-900/20 text-purple-300 border-purple-700/20 shadow-[0_8px_24px_rgba(0,0,0,0.05)]",
           mobileMenuOpen ? "bg-transparent border-transparent shadow-none" : "",
-          isWideScreen ? "wideScreen" : ""
+          isWideScreen ? "wideScreen" : "",
         )}
       >
         <div className="flex items-center justify-between w-full gap-4">
@@ -165,14 +166,21 @@ export default function Navbar() {
                 className={cn(
                   "relative px-3 py-2 text-sm transition-all duration-300",
                   activeSection === item.href.substring(1)
-                    ? "text-white"
-                    : "text-gray-300 hover:text-white"
+                    ? item.href === "#sysadmin"
+                      ? "text-white hover:!text-orange-300 hover:!bg-transparent"
+                      : "text-white"
+                    : "text-gray-300 hover:text-white",
                 )}
               >
                 {activeSection === item.href.substring(1) && (
                   <motion.span
                     layoutId="activeSection"
-                    className="absolute inset-0 rounded-full bg-purple-700"
+                    className={cn(
+                      "absolute inset-0 rounded-full",
+                      item.href === "#sysadmin"
+                        ? "bg-orange-600"
+                        : "bg-purple-700",
+                    )}
                     style={{ borderRadius: 9999 }}
                     transition={{ type: "spring", duration: 0.6 }}
                   />
@@ -226,7 +234,7 @@ export default function Navbar() {
           exit={{ opacity: 0, y: -20 }}
           className={cn(
             "fixed inset-0 z-40 bg-[#0a0010]/90 backdrop-blur-lg md:hidden",
-            isWideScreen ? "hidden" : ""
+            isWideScreen ? "hidden" : "",
           )}
         >
           <div className="flex flex-col items-center justify-center w-full h-full pb-20">
@@ -246,8 +254,10 @@ export default function Navbar() {
                       className={cn(
                         "text-xl sm:text-2xl w-full justify-center relative font-semibold",
                         activeSection === item.href.substring(1)
-                          ? "text-white rounded-full"
-                          : "text-gray-400"
+                          ? item.href === "#sysadmin"
+                            ? "text-white hover:!text-orange-300 hover:!bg-transparent rounded-full"
+                            : "text-white rounded-full"
+                          : "text-gray-400",
                       )}
                     >
                       <div className="relative px-8">
@@ -255,7 +265,12 @@ export default function Navbar() {
                         {activeSection === item.href.substring(1) && (
                           <motion.span
                             layoutId="mobileActiveIndicator"
-                            className="absolute left-2 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-purple-300"
+                            className={cn(
+                              "absolute left-2 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full",
+                              item.href === "#sysadmin"
+                                ? "bg-orange-400"
+                                : "bg-purple-300",
+                            )}
                             transition={{ type: "spring", duration: 0.6 }}
                           />
                         )}

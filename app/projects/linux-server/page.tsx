@@ -234,13 +234,13 @@ export default function HomeServerPage() {
 
                     <CardContent className="space-y-4">
                       <div className="grid grid-cols-2 gap-4">
-                        <div className="rounded-2xl p-4 bg-black/50 border border-orange-700/40 text-center backdrop-blur-sm">
+                        <div className="rounded-2xl p-4 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
                           <p className="text-2xl font-bold text-orange-300">
                             180TB+
                           </p>
                           <p className="text-xs text-gray-300">HDD Storage</p>
                         </div>
-                        <div className="rounded-2xl p-4 bg-black/50 border border-orange-700/40 text-center backdrop-blur-sm">
+                        <div className="rounded-2xl p-4 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
                           <p className="text-2xl font-bold text-orange-300">
                             2TB
                           </p>
@@ -332,31 +332,31 @@ export default function HomeServerPage() {
 
                     <CardContent>
                       <div className="grid grid-cols-2 gap-3 text-sm">
-                        <div className="rounded-2xl p-3 bg-black/50 text-orange-300 border border-orange-700/40 backdrop-blur-sm">
+                        <div className="rounded-2xl p-3 bg-black/50 text-orange-300 border border-white/10 backdrop-blur-sm">
                           <p className="text-xs text-gray-300 mb-0.5">RAM</p>
                           <p className="font-medium">32GB</p>
                         </div>
-                        <div className="rounded-2xl p-3 bg-black/50 text-orange-300 border border-orange-700/40 backdrop-blur-sm">
+                        <div className="rounded-2xl p-3 bg-black/50 text-orange-300 border border-white/10 backdrop-blur-sm">
                           <p className="text-xs text-gray-300 mb-0.5">CPU</p>
                           <p className="font-medium">Ryzen 7 2700X</p>
                         </div>
-                        <div className="rounded-2xl p-3 bg-black/50 text-orange-300 border border-orange-700/40 backdrop-blur-sm">
+                        <div className="rounded-2xl p-3 bg-black/50 text-orange-300 border border-white/10 backdrop-blur-sm">
                           <p className="text-xs text-gray-300 mb-0.5">
                             Motherboard
                           </p>
                           <p className="font-medium">ASUS X570 Gaming F</p>
                         </div>
-                        <div className="rounded-2xl p-3 bg-black/50 text-orange-300 border border-orange-700/40 backdrop-blur-sm">
+                        <div className="rounded-2xl p-3 bg-black/50 text-orange-300 border border-white/10 backdrop-blur-sm">
                           <p className="text-xs text-gray-300 mb-0.5">GPU</p>
                           <p className="font-medium">GTX 980 Ti</p>
                         </div>
-                        <div className="rounded-2xl p-3 bg-black/50 text-orange-300 border border-orange-700/40 backdrop-blur-sm">
+                        <div className="rounded-2xl p-3 bg-black/50 text-orange-300 border border-white/10 backdrop-blur-sm">
                           <p className="text-xs text-gray-300 mb-0.5">
                             Storage
                           </p>
                           <p className="font-medium">11 HDDs + 1 SSD</p>
                         </div>
-                        <div className="rounded-2xl p-3 bg-black/50 text-orange-300 border border-orange-700/40 backdrop-blur-sm">
+                        <div className="rounded-2xl p-3 bg-black/50 text-orange-300 border border-white/10 backdrop-blur-sm">
                           <p className="text-xs text-gray-300 mb-0.5">
                             HBA Card
                           </p>
@@ -475,38 +475,38 @@ export default function HomeServerPage() {
 
                       {/* Media Types Grid */}
                       <div className="grid grid-cols-2 gap-2.5">
-                        <div className="group/item rounded-xl p-3 bg-black/50 border border-orange-700/40 hover:border-orange-600/60 hover:bg-orange-900/20 transition-all duration-200 text-center backdrop-blur-sm">
-                          <Film className="size-5 mx-auto mb-1.5 text-orange-300 group-hover/item:text-orange-200 transition-colors" />
+                        <div className="group/item rounded-xl p-3 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
+                          <Film className="size-5 mx-auto mb-1.5 text-orange-300" />
                           <p className="text-xs font-semibold text-white">
                             Movies
                           </p>
                         </div>
-                        <div className="group/item rounded-xl p-3 bg-black/50 border border-orange-700/40 hover:border-orange-600/60 hover:bg-orange-900/20 transition-all duration-200 text-center backdrop-blur-sm">
-                          <Tv className="size-5 mx-auto mb-1.5 text-orange-300 group-hover/item:text-orange-200 transition-colors" />
+                        <div className="group/item rounded-xl p-3 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
+                          <Tv className="size-5 mx-auto mb-1.5 text-orange-300" />
                           <p className="text-xs font-semibold text-white">
                             TV Shows
                           </p>
                         </div>
-                        <div className="group/item rounded-xl p-3 bg-black/50 border border-orange-700/40 hover:border-orange-600/60 hover:bg-orange-900/20 transition-all duration-200 text-center backdrop-blur-sm">
-                          <Music className="size-5 mx-auto mb-1.5 text-orange-300 group-hover/item:text-orange-200 transition-colors" />
+                        <div className="group/item rounded-xl p-3 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
+                          <Music className="size-5 mx-auto mb-1.5 text-orange-300" />
                           <p className="text-xs font-semibold text-white">
                             Music
                           </p>
                         </div>
-                        <div className="group/item rounded-xl p-3 bg-black/50 border border-orange-700/40 hover:border-orange-600/60 hover:bg-orange-900/20 transition-all duration-200 text-center backdrop-blur-sm">
-                          <Headphones className="size-5 mx-auto mb-1.5 text-orange-300 group-hover/item:text-orange-200 transition-colors" />
+                        <div className="group/item rounded-xl p-3 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
+                          <Headphones className="size-5 mx-auto mb-1.5 text-orange-300" />
                           <p className="text-xs font-semibold text-white">
                             Audiobooks
                           </p>
                         </div>
-                        <div className="group/item rounded-xl p-3 bg-black/50 border border-orange-700/40 hover:border-orange-600/60 hover:bg-orange-900/20 transition-all duration-200 text-center backdrop-blur-sm">
-                          <Disc className="size-5 mx-auto mb-1.5 text-orange-300 group-hover/item:text-orange-200 transition-colors" />
+                        <div className="group/item rounded-xl p-3 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
+                          <Disc className="size-5 mx-auto mb-1.5 text-orange-300" />
                           <p className="text-xs font-semibold text-white">
                             Soundtracks
                           </p>
                         </div>
-                        <div className="group/item rounded-xl p-3 bg-black/50 border border-orange-700/40 hover:border-orange-600/60 hover:bg-orange-900/20 transition-all duration-200 text-center backdrop-blur-sm">
-                          <BookOpen className="size-5 mx-auto mb-1.5 text-orange-300 group-hover/item:text-orange-200 transition-colors" />
+                        <div className="group/item rounded-xl p-3 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
+                          <BookOpen className="size-5 mx-auto mb-1.5 text-orange-300" />
                           <p className="text-xs font-semibold text-white">
                             Books
                           </p>
