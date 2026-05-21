@@ -88,7 +88,7 @@ export default function HomeServerPage() {
         {/* Back Button */}
         <div className="fixed top-6 left-6 z-50">
           <Button
-            className="bg-purple-700 hover:bg-purple-600 text-white rounded-full"
+            className="bg-orange-700 hover:bg-orange-600 text-white rounded-full"
             size="sm"
             asChild
           >
@@ -107,18 +107,18 @@ export default function HomeServerPage() {
               className="flex flex-col items-center text-center"
             >
               <div className="mb-6 flex items-center gap-4">
-                <div className="flex items-center justify-center size-16 rounded-2xl bg-purple-900/30 text-purple-300 border border-purple-700/30 pointer-events-none">
+                <div className="flex items-center justify-center size-16 rounded-2xl bg-orange-900/30 text-orange-300 border border-orange-700/30 pointer-events-none">
                   <UbuntuIcon className="size-9 text-white" />
                 </div>
-                <X className="size-6 text-purple-500/50" />
-                <div className="flex items-center justify-center size-16 rounded-2xl bg-purple-900/30 text-purple-300 border border-purple-700/30 pointer-events-none">
+                <X className="size-6 text-orange-500/50" />
+                <div className="flex items-center justify-center size-16 rounded-2xl bg-orange-900/30 text-orange-300 border border-orange-700/30 pointer-events-none">
                   <DockerIcon className="size-9 text-white" />
                 </div>
               </div>
-              <Badge className="px-3 py-1 mb-4 bg-primary-900 text-white border-primary-900 pointer-events-none">
+              <Badge className="px-3 py-1 mb-4 bg-orange-900 text-white border-orange-900 pointer-events-none">
                 Passion Project
               </Badge>
-              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-balance bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-purple-400">
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-balance bg-clip-text text-transparent bg-gradient-to-r from-orange-200 to-orange-400">
                 Linux Media Server
               </h1>
               <p className="mt-4 max-w-2xl text-lg text-gray-300 text-pretty">
@@ -127,15 +127,15 @@ export default function HomeServerPage() {
                 transcoding, and 24/7 uptime.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-3">
-                <Badge className="gap-1.5 py-1.5 px-3 bg-purple-900/30 text-purple-300 rounded-full border border-purple-700/30 pointer-events-none">
+                <Badge className="gap-1.5 py-1.5 px-3 bg-orange-900/30 text-orange-300 rounded-full border border-orange-700/30 pointer-events-none">
                   <Server className="size-3.5" />
                   40+ Containers
                 </Badge>
-                <Badge className="gap-1.5 py-1.5 px-3 bg-purple-900/30 text-purple-300 rounded-full border border-purple-700/30 pointer-events-none">
+                <Badge className="gap-1.5 py-1.5 px-3 bg-orange-900/30 text-orange-300 rounded-full border border-orange-700/30 pointer-events-none">
                   <HardDrive className="size-3.5" />
                   180TB+ Storage
                 </Badge>
-                <Badge className="gap-1.5 py-1.5 px-3 bg-purple-900/30 text-purple-300 rounded-full border border-purple-700/30 pointer-events-none">
+                <Badge className="gap-1.5 py-1.5 px-3 bg-orange-900/30 text-orange-300 rounded-full border border-orange-700/30 pointer-events-none">
                   <Clock className="size-3.5" />
                   24/7 Uptime
                 </Badge>
@@ -149,10 +149,10 @@ export default function HomeServerPage() {
           <div className="w-full max-w-7xl px-4 sm:px-6">
             <FadeIn delay={200}>
               <div className="grid gap-8 lg:grid-cols-2">
-                <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
+                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
                   <CardHeader>
                     <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-10 rounded-2xl bg-purple-900/30">
+                      <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
                         <UbuntuIcon className="size-5 text-white" />
                       </div>
                       <div>
@@ -185,16 +185,16 @@ export default function HomeServerPage() {
                       </h4>
                       <ul className="grid gap-1.5 text-sm text-gray-300">
                         <li className="flex items-center gap-2">
-                          <span className="size-1.5 rounded-full bg-purple-400" />
+                          <span className="size-1.5 rounded-full bg-orange-400" />
                           Intentionally minimal, optimized for lightweight
                           headless operation
                         </li>
                         <li className="flex items-center gap-2">
-                          <span className="size-1.5 rounded-full bg-purple-400" />
+                          <span className="size-1.5 rounded-full bg-orange-400" />
                           32 GB SSD swap configured for improved memory handling
                         </li>
                         <li className="flex items-center gap-2">
-                          <span className="size-1.5 rounded-full bg-purple-400" />
+                          <span className="size-1.5 rounded-full bg-orange-400" />
                           Biweekly system snapshots for contingency recovery
                         </li>
                       </ul>
@@ -202,7 +202,7 @@ export default function HomeServerPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="relative overflow-hidden bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30 group">
+                <Card className="relative overflow-hidden bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30 group">
                   <div className="absolute inset-0">
                     <Image
                       width={600}
@@ -234,14 +234,14 @@ export default function HomeServerPage() {
 
                     <CardContent className="space-y-4">
                       <div className="grid grid-cols-2 gap-4">
-                        <div className="rounded-2xl p-4 bg-black/50 border border-purple-700/40 text-center backdrop-blur-sm">
-                          <p className="text-2xl font-bold text-purple-300">
+                        <div className="rounded-2xl p-4 bg-black/50 border border-orange-700/40 text-center backdrop-blur-sm">
+                          <p className="text-2xl font-bold text-orange-300">
                             180TB+
                           </p>
                           <p className="text-xs text-gray-300">HDD Storage</p>
                         </div>
-                        <div className="rounded-2xl p-4 bg-black/50 border border-purple-700/40 text-center backdrop-blur-sm">
-                          <p className="text-2xl font-bold text-purple-300">
+                        <div className="rounded-2xl p-4 bg-black/50 border border-orange-700/40 text-center backdrop-blur-sm">
+                          <p className="text-2xl font-bold text-orange-300">
                             2TB
                           </p>
                           <p className="text-xs text-gray-300">NVMe SSD</p>
@@ -265,10 +265,10 @@ export default function HomeServerPage() {
           <div className="w-full max-w-7xl px-4 sm:px-6">
             <FadeIn delay={300}>
               <div className="grid gap-8 lg:grid-cols-2">
-                <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
+                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
                   <CardHeader>
                     <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-10 rounded-2xl bg-purple-900/30">
+                      <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
                         <Shield className="size-5 text-white" />
                       </div>
                       <div>
@@ -302,7 +302,7 @@ export default function HomeServerPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="relative overflow-hidden bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30 group">
+                <Card className="relative overflow-hidden bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30 group">
                   <div className="absolute inset-0">
                     <Image
                       width={600}
@@ -332,31 +332,31 @@ export default function HomeServerPage() {
 
                     <CardContent>
                       <div className="grid grid-cols-2 gap-3 text-sm">
-                        <div className="rounded-2xl p-3 bg-black/50 text-purple-300 border border-purple-700/40 backdrop-blur-sm">
+                        <div className="rounded-2xl p-3 bg-black/50 text-orange-300 border border-orange-700/40 backdrop-blur-sm">
                           <p className="text-xs text-gray-300 mb-0.5">RAM</p>
                           <p className="font-medium">32GB</p>
                         </div>
-                        <div className="rounded-2xl p-3 bg-black/50 text-purple-300 border border-purple-700/40 backdrop-blur-sm">
+                        <div className="rounded-2xl p-3 bg-black/50 text-orange-300 border border-orange-700/40 backdrop-blur-sm">
                           <p className="text-xs text-gray-300 mb-0.5">CPU</p>
                           <p className="font-medium">Ryzen 7 2700X</p>
                         </div>
-                        <div className="rounded-2xl p-3 bg-black/50 text-purple-300 border border-purple-700/40 backdrop-blur-sm">
+                        <div className="rounded-2xl p-3 bg-black/50 text-orange-300 border border-orange-700/40 backdrop-blur-sm">
                           <p className="text-xs text-gray-300 mb-0.5">
                             Motherboard
                           </p>
                           <p className="font-medium">ASUS X570 Gaming F</p>
                         </div>
-                        <div className="rounded-2xl p-3 bg-black/50 text-purple-300 border border-purple-700/40 backdrop-blur-sm">
+                        <div className="rounded-2xl p-3 bg-black/50 text-orange-300 border border-orange-700/40 backdrop-blur-sm">
                           <p className="text-xs text-gray-300 mb-0.5">GPU</p>
                           <p className="font-medium">GTX 980 Ti</p>
                         </div>
-                        <div className="rounded-2xl p-3 bg-black/50 text-purple-300 border border-purple-700/40 backdrop-blur-sm">
+                        <div className="rounded-2xl p-3 bg-black/50 text-orange-300 border border-orange-700/40 backdrop-blur-sm">
                           <p className="text-xs text-gray-300 mb-0.5">
                             Storage
                           </p>
                           <p className="font-medium">11 HDDs + 1 SSD</p>
                         </div>
-                        <div className="rounded-2xl p-3 bg-black/50 text-purple-300 border border-purple-700/40 backdrop-blur-sm">
+                        <div className="rounded-2xl p-3 bg-black/50 text-orange-300 border border-orange-700/40 backdrop-blur-sm">
                           <p className="text-xs text-gray-300 mb-0.5">
                             HBA Card
                           </p>
@@ -378,10 +378,10 @@ export default function HomeServerPage() {
               <div className="grid gap-8 lg:grid-cols-5">
                 <div className="lg:col-span-3 flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="flex items-center justify-center size-14 rounded-2xl bg-purple-900/30 border border-purple-700/30">
+                    <div className="flex items-center justify-center size-14 rounded-2xl bg-orange-900/30 border border-orange-700/30">
                       <Film className="size-8" />
                     </div>
-                    <Badge className="px-3 py-1 bg-purple-900/30 text-purple-300 rounded-full border border-purple-700/30 pointer-events-none">
+                    <Badge className="px-3 py-1 bg-orange-900/30 text-orange-300 rounded-full border border-orange-700/30 pointer-events-none">
                       Heart of the Server
                     </Badge>
                   </div>
@@ -396,7 +396,7 @@ export default function HomeServerPage() {
                   </p>
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
-                      <div className="flex items-center justify-center size-8 rounded-2xl bg-purple-900/30 shrink-0 mt-0.5">
+                      <div className="flex items-center justify-center size-8 rounded-2xl bg-orange-900/30 shrink-0 mt-0.5">
                         <MonitorPlay className="size-4" />
                       </div>
                       <div>
@@ -411,7 +411,7 @@ export default function HomeServerPage() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <div className="flex items-center justify-center size-8 rounded-2xl bg-purple-900/30 shrink-0 mt-0.5">
+                      <div className="flex items-center justify-center size-8 rounded-2xl bg-orange-900/30 shrink-0 mt-0.5">
                         <Users className="size-4" />
                       </div>
                       <div>
@@ -426,7 +426,7 @@ export default function HomeServerPage() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <div className="flex items-center justify-center size-8 rounded-2xl bg-purple-900/30 shrink-0 mt-0.5">
+                      <div className="flex items-center justify-center size-8 rounded-2xl bg-orange-900/30 shrink-0 mt-0.5">
                         <Wifi className="size-4" />
                       </div>
                       <div>
@@ -447,7 +447,7 @@ export default function HomeServerPage() {
                   </p>
                 </div>
                 <div className="lg:col-span-2">
-                  <div className="relative group h-full rounded-2xl overflow-hidden border border-purple-700/30 bg-gradient-to-br from-black/30 to-purple-900/10">
+                  <div className="relative group h-full rounded-2xl overflow-hidden border border-orange-700/30 bg-gradient-to-br from-black/30 to-orange-900/10">
                     {/* Poster Background */}
                     <div className="absolute inset-0">
                       <Image
@@ -468,52 +468,52 @@ export default function HomeServerPage() {
                         <h3 className="text-lg font-bold text-white mb-1">
                           Media Library
                         </h3>
-                        <p className="text-xs text-purple-300 uppercase tracking-widest mb-4">
+                        <p className="text-xs text-orange-300 uppercase tracking-widest mb-4">
                           Content Available for Streaming
                         </p>
                       </div>
 
                       {/* Media Types Grid */}
                       <div className="grid grid-cols-2 gap-2.5">
-                        <div className="group/item rounded-xl p-3 bg-black/50 border border-purple-700/40 hover:border-purple-600/60 hover:bg-purple-900/20 transition-all duration-200 text-center backdrop-blur-sm">
-                          <Film className="size-5 mx-auto mb-1.5 text-purple-300 group-hover/item:text-purple-200 transition-colors" />
+                        <div className="group/item rounded-xl p-3 bg-black/50 border border-orange-700/40 hover:border-orange-600/60 hover:bg-orange-900/20 transition-all duration-200 text-center backdrop-blur-sm">
+                          <Film className="size-5 mx-auto mb-1.5 text-orange-300 group-hover/item:text-orange-200 transition-colors" />
                           <p className="text-xs font-semibold text-white">
                             Movies
                           </p>
                         </div>
-                        <div className="group/item rounded-xl p-3 bg-black/50 border border-purple-700/40 hover:border-purple-600/60 hover:bg-purple-900/20 transition-all duration-200 text-center backdrop-blur-sm">
-                          <Tv className="size-5 mx-auto mb-1.5 text-purple-300 group-hover/item:text-purple-200 transition-colors" />
+                        <div className="group/item rounded-xl p-3 bg-black/50 border border-orange-700/40 hover:border-orange-600/60 hover:bg-orange-900/20 transition-all duration-200 text-center backdrop-blur-sm">
+                          <Tv className="size-5 mx-auto mb-1.5 text-orange-300 group-hover/item:text-orange-200 transition-colors" />
                           <p className="text-xs font-semibold text-white">
                             TV Shows
                           </p>
                         </div>
-                        <div className="group/item rounded-xl p-3 bg-black/50 border border-purple-700/40 hover:border-purple-600/60 hover:bg-purple-900/20 transition-all duration-200 text-center backdrop-blur-sm">
-                          <Music className="size-5 mx-auto mb-1.5 text-purple-300 group-hover/item:text-purple-200 transition-colors" />
+                        <div className="group/item rounded-xl p-3 bg-black/50 border border-orange-700/40 hover:border-orange-600/60 hover:bg-orange-900/20 transition-all duration-200 text-center backdrop-blur-sm">
+                          <Music className="size-5 mx-auto mb-1.5 text-orange-300 group-hover/item:text-orange-200 transition-colors" />
                           <p className="text-xs font-semibold text-white">
                             Music
                           </p>
                         </div>
-                        <div className="group/item rounded-xl p-3 bg-black/50 border border-purple-700/40 hover:border-purple-600/60 hover:bg-purple-900/20 transition-all duration-200 text-center backdrop-blur-sm">
-                          <Headphones className="size-5 mx-auto mb-1.5 text-purple-300 group-hover/item:text-purple-200 transition-colors" />
+                        <div className="group/item rounded-xl p-3 bg-black/50 border border-orange-700/40 hover:border-orange-600/60 hover:bg-orange-900/20 transition-all duration-200 text-center backdrop-blur-sm">
+                          <Headphones className="size-5 mx-auto mb-1.5 text-orange-300 group-hover/item:text-orange-200 transition-colors" />
                           <p className="text-xs font-semibold text-white">
                             Audiobooks
                           </p>
                         </div>
-                        <div className="group/item rounded-xl p-3 bg-black/50 border border-purple-700/40 hover:border-purple-600/60 hover:bg-purple-900/20 transition-all duration-200 text-center backdrop-blur-sm">
-                          <Disc className="size-5 mx-auto mb-1.5 text-purple-300 group-hover/item:text-purple-200 transition-colors" />
+                        <div className="group/item rounded-xl p-3 bg-black/50 border border-orange-700/40 hover:border-orange-600/60 hover:bg-orange-900/20 transition-all duration-200 text-center backdrop-blur-sm">
+                          <Disc className="size-5 mx-auto mb-1.5 text-orange-300 group-hover/item:text-orange-200 transition-colors" />
                           <p className="text-xs font-semibold text-white">
                             Soundtracks
                           </p>
                         </div>
-                        <div className="group/item rounded-xl p-3 bg-black/50 border border-purple-700/40 hover:border-purple-600/60 hover:bg-purple-900/20 transition-all duration-200 text-center backdrop-blur-sm">
-                          <BookOpen className="size-5 mx-auto mb-1.5 text-purple-300 group-hover/item:text-purple-200 transition-colors" />
+                        <div className="group/item rounded-xl p-3 bg-black/50 border border-orange-700/40 hover:border-orange-600/60 hover:bg-orange-900/20 transition-all duration-200 text-center backdrop-blur-sm">
+                          <BookOpen className="size-5 mx-auto mb-1.5 text-orange-300 group-hover/item:text-orange-200 transition-colors" />
                           <p className="text-xs font-semibold text-white">
                             Books
                           </p>
                         </div>
                       </div>
 
-                      <div className="pt-3 border-t border-purple-700/20 text-xs text-gray-400">
+                      <div className="pt-3 border-t border-orange-700/20 text-xs text-gray-400">
                         Also includes Intros, concert recordings, and
                         documentary collections. All organized with rich
                         metadata, artwork, and subtitles.
@@ -533,10 +533,10 @@ export default function HomeServerPage() {
               <div className="grid gap-8 lg:grid-cols-2 items-center">
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="flex items-center justify-center size-12 rounded-xl bg-purple-900/30 border border-purple-700/30">
+                    <div className="flex items-center justify-center size-12 rounded-xl bg-orange-900/30 border border-orange-700/30">
                       <Camera className="size-6" />
                     </div>
-                    <Badge className="px-3 py-1 bg-purple-900/30 text-purple-300 rounded-full border border-purple-700/30 pointer-events-none">
+                    <Badge className="px-3 py-1 bg-orange-900/30 text-orange-300 rounded-full border border-orange-700/30 pointer-events-none">
                       Self-Hosted
                     </Badge>
                   </div>
@@ -551,19 +551,19 @@ export default function HomeServerPage() {
                   </p>
                   <ul className="grid gap-2 text-sm text-gray-300">
                     <li className="flex items-center gap-2">
-                      <span className="size-1.5 rounded-full bg-purple-300" />
+                      <span className="size-1.5 rounded-full bg-orange-300" />
                       Automatic background sync from mobile devices
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="size-1.5 rounded-full bg-purple-300" />
+                      <span className="size-1.5 rounded-full bg-orange-300" />
                       Optional AI-powered facial recognition and object search
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="size-1.5 rounded-full bg-purple-300" />
+                      <span className="size-1.5 rounded-full bg-orange-300" />
                       Timeline view, albums, and sharing capabilities
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="size-1.5 rounded-full bg-purple-300" />
+                      <span className="size-1.5 rounded-full bg-orange-300" />
                       No cloud dependency, all data stays on the server
                     </li>
                   </ul>
@@ -581,7 +581,7 @@ export default function HomeServerPage() {
           <div className="w-full max-w-7xl px-4 sm:px-6">
             <FadeIn delay={600}>
               <div className="mb-10 text-center">
-                <div className="inline-flex items-center justify-center rounded-2xl mb-4 size-14  bg-purple-900/30 border border-purple-700/30">
+                <div className="inline-flex items-center justify-center rounded-2xl mb-4 size-14  bg-orange-900/30 border border-orange-700/30">
                   <DockerIcon className="size-6" />
                 </div>
                 <h2 className="text-3xl text-white font-bold tracking-tight">
@@ -611,7 +611,7 @@ export default function HomeServerPage() {
           <div className="w-full max-w-7xl px-4 sm:px-6">
             <FadeIn delay={650}>
               <div className="mb-10 text-center">
-                <div className="inline-flex items-center justify-center rounded-2xl mb-4 size-14  bg-purple-900/30 border border-purple-700/30">
+                <div className="inline-flex items-center justify-center rounded-2xl mb-4 size-14  bg-orange-900/30 border border-orange-700/30">
                   <RefreshCw className="size-6" />
                 </div>
                 <h2 className="text-3xl text-white font-bold tracking-tight">
@@ -627,7 +627,7 @@ export default function HomeServerPage() {
               <AutomationFlow />
 
               <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
+                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-base text-white flex items-center gap-3">
                       <div>
@@ -649,7 +649,7 @@ export default function HomeServerPage() {
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
+                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-base text-white flex items-center gap-3">
                       <div>
@@ -671,7 +671,7 @@ export default function HomeServerPage() {
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
+                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-base text-white flex items-center gap-3">
                       <div>
@@ -693,7 +693,7 @@ export default function HomeServerPage() {
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
+                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-base text-white flex items-center gap-3">
                       <div>
@@ -734,10 +734,10 @@ export default function HomeServerPage() {
               </div>
 
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
+                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
                   <CardHeader>
                     <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-10 rounded-2xl bg-purple-900/30">
+                      <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
                         <Cpu className="size-5" />
                       </div>
                       <CardTitle className="text-lg text-white">
@@ -754,10 +754,10 @@ export default function HomeServerPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
+                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
                   <CardHeader>
                     <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-10 rounded-2xl bg-purple-900/30">
+                      <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
                         <Shield className="size-5" />
                       </div>
                       <CardTitle className="text-lg text-white">
@@ -774,10 +774,10 @@ export default function HomeServerPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
+                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
                   <CardHeader>
                     <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-10 rounded-2xl bg-purple-900/30">
+                      <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
                         <Database className="size-5" />
                       </div>
                       <CardTitle className="text-lg text-white">
@@ -794,10 +794,10 @@ export default function HomeServerPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
+                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
                   <CardHeader>
                     <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-10 rounded-2xl bg-purple-900/30">
+                      <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
                         <MonitorPlay className="size-5" />
                       </div>
                       <CardTitle className="text-lg text-white">
@@ -814,10 +814,10 @@ export default function HomeServerPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
+                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
                   <CardHeader>
                     <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-10 rounded-2xl bg-purple-900/30">
+                      <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
                         <Layers className="size-5" />
                       </div>
                       <CardTitle className="text-lg text-white">
@@ -834,10 +834,10 @@ export default function HomeServerPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30">
+                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
                   <CardHeader>
                     <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-10 rounded-2xl bg-purple-900/30">
+                      <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
                         <Play className="size-5" />
                       </div>
                       <CardTitle className="text-lg text-white">
@@ -880,7 +880,7 @@ export default function HomeServerPage() {
               asChild
               variant="outline"
               aria-label="View more projects on GitHub"
-              className="border-purple-300 text-purple-300 hover:bg-purple-900/30 hover:text-white rounded-full"
+              className="border-orange-300 text-orange-300 hover:bg-orange-900/30 hover:text-white rounded-full"
             >
               <Link
                 href="https://github.com/jhn322/docker-compose-configs"

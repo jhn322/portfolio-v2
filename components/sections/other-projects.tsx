@@ -185,6 +185,7 @@ const projects: Project[] = [
     liveUrl: "https://oscar-ranking.vercel.app/",
     githubUrl: "https://github.com/jhn322/oscar-ranking",
     icon: "/other-projects/oscar.webp",
+    projectType: "Personal",
   },
   {
     title: "Rently",

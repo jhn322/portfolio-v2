@@ -354,60 +354,60 @@ const containers: Container[] = [
 
 export function ContainerDashboard() {
   return (
-    <div className="overflow-hidden rounded-xl border border-purple-900/30 bg-gradient-to-br from-black/60 to-purple-900/10 backdrop-blur-md shadow-2xl">
+    <div className="overflow-hidden rounded-xl border border-orange-900/30 bg-gradient-to-br from-black/60 to-orange-900/10 backdrop-blur-md shadow-2xl">
       {/* Window Header (Mac Lights) */}
-      <div className="flex items-center gap-1.5 border-b border-purple-500/20 bg-purple-950/30 px-4 py-3">
+      <div className="flex items-center gap-1.5 border-b border-orange-500/20 bg-orange-950/30 px-4 py-3">
         <span className="size-3 rounded-full bg-[#ff5f56]" />
         <span className="size-3 rounded-full bg-[#ffbd2e]" />
         <span className="size-3 rounded-full bg-[#27c93f]" />
       </div>
 
       {/* Toolbar */}
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-purple-500/20 bg-purple-950/20 p-4">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-orange-500/20 bg-orange-950/20 p-4">
         <div className="flex items-center gap-2">
-          <Box className="size-5 text-purple-300" />
-          <h2 className="text-lg font-semibold text-purple-100">Containers</h2>
+          <Box className="size-5 text-orange-300" />
+          <h2 className="text-lg font-semibold text-orange-100">Containers</h2>
         </div>
 
         <div className="flex items-center gap-2 flex-wrap">
-          <div className="flex items-center rounded-[8px] border border-purple-500/20 bg-purple-900/10 overflow-hidden divide-x divide-purple-500/20">
+          <div className="flex items-center rounded-[8px] border border-orange-500/20 bg-orange-900/10 overflow-hidden divide-x divide-orange-500/20">
             <button
-              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-purple-200 hover:bg-purple-500/20 transition-colors"
+              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-orange-200 hover:bg-orange-500/20 transition-colors"
               title="Start"
             >
               <Play className="size-3.5" />
               <span className="hidden sm:inline">Start</span>
             </button>
             <button
-              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-purple-200 hover:bg-purple-500/20 transition-colors"
+              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-orange-200 hover:bg-orange-500/20 transition-colors"
               title="Stop"
             >
               <Square className="size-3.5" />
               <span className="hidden sm:inline">Stop</span>
             </button>
             <button
-              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-purple-200 hover:bg-purple-500/20 transition-colors"
+              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-orange-200 hover:bg-orange-500/20 transition-colors"
               title="Kill"
             >
               <XCircle className="size-3.5" />
               <span className="hidden sm:inline">Kill</span>
             </button>
             <button
-              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-purple-200 hover:bg-purple-500/20 transition-colors"
+              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-orange-200 hover:bg-orange-500/20 transition-colors"
               title="Restart"
             >
               <RefreshCw className="size-3.5" />
               <span className="hidden sm:inline">Restart</span>
             </button>
             <button
-              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-purple-200 hover:bg-purple-500/20 transition-colors"
+              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-orange-200 hover:bg-orange-500/20 transition-colors"
               title="Pause"
             >
               <Pause className="size-3.5" />
               <span className="hidden sm:inline">Pause</span>
             </button>
             <button
-              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-purple-200 hover:bg-purple-500/20 transition-colors"
+              className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-orange-200 hover:bg-orange-500/20 transition-colors"
               title="Resume"
             >
               <Play className="size-3.5" />
@@ -432,22 +432,22 @@ export function ContainerDashboard() {
       {/* Container Table */}
       <div className="max-h-[800px] overflow-auto">
         <Table>
-          <TableHeader className="bg-purple-950/20 sticky top-0 z-10 transition-colors">
-            <TableRow className="hover:bg-transparent border-purple-500/20">
+          <TableHeader className="bg-orange-950/20 sticky top-0 z-10 transition-colors">
+            <TableRow className="hover:bg-transparent border-orange-500/20">
               <TableHead className="w-[40px] pl-4">
-                <div className="size-3.5 rounded border border-purple-500/30 bg-transparent" />
+                <div className="size-3.5 rounded border border-orange-500/30 bg-transparent" />
               </TableHead>
-              <TableHead className="w-[100px] text-purple-300/70">
+              <TableHead className="w-[100px] text-orange-300/70">
                 Status
               </TableHead>
-              <TableHead className="text-purple-300/70">Name</TableHead>
-              <TableHead className="text-purple-300/70 hidden sm:table-cell">
+              <TableHead className="text-orange-300/70">Name</TableHead>
+              <TableHead className="text-orange-300/70 hidden sm:table-cell">
                 Image
               </TableHead>
-              <TableHead className="text-purple-300/70 hidden md:table-cell">
+              <TableHead className="text-orange-300/70 hidden md:table-cell">
                 Ports
               </TableHead>
-              <TableHead className="text-purple-300/70 hidden lg:table-cell">
+              <TableHead className="text-orange-300/70 hidden lg:table-cell">
                 IP Address
               </TableHead>
               <TableHead className="w-[50px]"></TableHead>
@@ -459,10 +459,10 @@ export function ContainerDashboard() {
               .map((container) => (
                 <TableRow
                   key={container.name}
-                  className="border-purple-500/10 hover:bg-purple-500/10 data-[state=selected]:bg-purple-500/10 transition-colors"
+                  className="border-orange-500/10 hover:bg-orange-500/10 data-[state=selected]:bg-orange-500/10 transition-colors"
                 >
                   <TableCell className="pl-4">
-                    <div className="size-3.5 rounded border border-purple-500/30 bg-transparent" />
+                    <div className="size-3.5 rounded border border-orange-500/30 bg-transparent" />
                   </TableCell>
                   <TableCell>
                     {container.status && (
@@ -486,15 +486,15 @@ export function ContainerDashboard() {
                   </TableCell>
                   <TableCell>
                     <div className="flex flex-col">
-                      <span className="font-medium text-purple-100">
+                      <span className="font-medium text-orange-100">
                         {container.name}
                       </span>
-                      <span className="text-[10px] text-purple-400/60 hidden sm:hidden">
+                      <span className="text-[10px] text-orange-400/60 hidden sm:hidden">
                         {container.image.split(":")[0]}
                       </span>
                     </div>
                   </TableCell>
-                  <TableCell className="hidden sm:table-cell font-mono text-xs text-purple-300/60">
+                  <TableCell className="hidden sm:table-cell font-mono text-xs text-orange-300/60">
                     <div className="flex items-center gap-1.5">
                       <Box className="size-3.5" />
                       {container.image}
@@ -510,17 +510,17 @@ export function ContainerDashboard() {
                         {container.ports}
                       </a>
                     ) : (
-                      <span className="text-purple-500/40">-</span>
+                      <span className="text-orange-500/40">-</span>
                     )}
                   </TableCell>
-                  <TableCell className="hidden lg:table-cell font-mono text-xs text-purple-300/60">
+                  <TableCell className="hidden lg:table-cell font-mono text-xs text-orange-300/60">
                     <div className="flex items-center gap-1.5">
                       <Globe className="size-3.5" />
                       {container.ip}
                     </div>
                   </TableCell>
                   <TableCell>
-                    <button className="text-purple-400/50 hover:text-purple-200 transition-colors">
+                    <button className="text-orange-400/50 hover:text-orange-200 transition-colors">
                       <Settings className="size-4" />
                     </button>
                   </TableCell>
@@ -531,12 +531,12 @@ export function ContainerDashboard() {
       </div>
 
       {/* Footer */}
-      <div className="flex items-center justify-between border-t border-purple-500/20 bg-purple-950/30 px-4 py-2">
-        <div className="flex gap-4 text-xs text-purple-300/50">
+      <div className="flex items-center justify-between border-t border-orange-500/20 bg-orange-950/30 px-4 py-2">
+        <div className="flex gap-4 text-xs text-orange-300/50">
           <span>{containers.length} items</span>
           <span>0 selected</span>
         </div>
-        <div className="flex gap-2 text-xs text-purple-300/50">
+        <div className="flex gap-2 text-xs text-orange-300/50">
           <span>Page 1 of 1</span>
         </div>
       </div>

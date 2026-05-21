@@ -19,7 +19,7 @@ const SkillsSolarSystem = () => (
             <span className="font-semibold">Frontend</span>,{" "}
             <span className="font-semibold">Backend</span>,{" "}
             <span className="font-semibold">Design</span>,{" "}
-            <span className="font-semibold">DevOps</span>,{" "}
+            <span className="font-semibold">System Administration</span>,{" "}
             <span className="font-semibold">Analytics</span>, and{" "}
             <span className="font-semibold">Project Management</span>—enabling
             me to build complete applications from development to deployment. I

@@ -35,6 +35,12 @@ export default function Hero() {
             <span className="font-semibold text-purple-300">
               Full-stack Developer
             </span>
+            <span className="text-purple-400 mx-2 text-2xl md:text-4xl align-middle">
+              ·
+            </span>
+            <span className="font-semibold text-purple-300">
+              Systems Administrator
+            </span>
           </p>
         </FadeIn>
 

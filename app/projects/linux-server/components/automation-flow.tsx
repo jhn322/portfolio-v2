@@ -7,7 +7,7 @@ const flowSteps = [
     icon: Search,
     title: "Prowlarr",
     description: "Searches indexers",
-    color: "bg-purple-500/20 text-purple-500 border border-purple-700/30",
+    color: "bg-orange-500/20 text-orange-500 border border-orange-700/30",
   },
   {
     icon: Download,
@@ -25,7 +25,7 @@ const flowSteps = [
     icon: Tv,
     title: "Plex/Jellyfin",
     description: "Streams to devices",
-    color: "bg-amber-500/20 text-amber-500 border border-amber-700/30",
+    color: "bg-orange-500/20 text-orange-500 border border-orange-700/30",
   },
 ];
 

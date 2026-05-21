@@ -12,7 +12,7 @@ const containerCategories = [
   },
   {
     name: "Media Automation",
-    color: "bg-purple-500",
+    color: "bg-orange-500",
     containers: [
       "Sonarr",
       "Radarr",
@@ -38,7 +38,7 @@ const containerCategories = [
   },
   {
     name: "Transcoding & Processing",
-    color: "bg-amber-500",
+    color: "bg-orange-500",
     containers: ["Tdarr", "Tdarr-Node", "Whisper-ASR"],
     description: "Automated video transcoding and speech-to-text",
   },
@@ -91,7 +91,7 @@ const containerCategories = [
 
 export function ContainerGrid() {
   return (
-    <Card className="h-full w-full max-w-full bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30 overflow-hidden">
+    <Card className="h-full w-full max-w-full bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30 overflow-hidden">
       <CardHeader>
         <CardTitle className="text-lg text-white">
           Container Categories
@@ -102,7 +102,7 @@ export function ContainerGrid() {
           {containerCategories.map((category) => (
             <div
               key={category.name}
-              className="rounded-2xl border border-purple-900/20 bg-purple-950/30 p-3 min-w-0"
+              className="rounded-2xl border border-orange-900/20 bg-orange-950/30 p-3 min-w-0"
             >
               <div className="flex items-center gap-2 mb-2">
                 <span
@@ -120,7 +120,7 @@ export function ContainerGrid() {
                   <Badge
                     key={container}
                     variant="secondary"
-                    className="text-[10px] px-1.5 py-0 bg-purple-900/40 text-purple-200 hover:bg-purple-900/60"
+                    className="text-[10px] px-1.5 py-0 bg-orange-900/40 text-orange-200 hover:bg-orange-900/60"
                   >
                     {container}
                   </Badge>

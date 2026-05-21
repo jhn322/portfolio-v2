@@ -34,8 +34,8 @@ const dockerComposeCode = `services:
 
 export function CodeWindow() {
   return (
-    <div className="w-full max-w-full overflow-hidden rounded-xl border border-purple-900/30 bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md shadow-lg h-full flex flex-col">
-      <div className="flex items-center gap-2 border-b border-purple-300/30 bg-purple-950/30 px-4 py-3">
+    <div className="w-full max-w-full overflow-hidden rounded-xl border border-orange-900/30 bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md shadow-lg h-full flex flex-col">
+      <div className="flex items-center gap-2 border-b border-orange-300/30 bg-orange-950/30 px-4 py-3">
         <div className="flex gap-1.5">
           <span className="size-3 rounded-full bg-red-500" />
           <span className="size-3 rounded-full bg-yellow-500" />
@@ -45,7 +45,7 @@ export function CodeWindow() {
           docker-compose.yml
         </span>
       </div>
-      <div className="flex-1 overflow-auto bg-purple-950/20 p-4 min-h-0">
+      <div className="flex-1 overflow-auto bg-orange-950/20 p-4 min-h-0">
         <pre className="text-xs leading-relaxed overflow-x-auto">
           <code className="text-[#cdd6f4] font-mono whitespace-pre inline-block min-w-full">
             {dockerComposeCode.split("\n").map((line, i) => (
