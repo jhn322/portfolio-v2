@@ -39,7 +39,7 @@ export default function Hero() {
               ·
             </span>
             <span className="font-semibold text-purple-300">
-              Systems Administrator
+              System Administrator
             </span>
           </p>
         </FadeIn>

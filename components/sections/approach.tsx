@@ -39,21 +39,21 @@ export default function About() {
             </h2>
 
             <p className="text-gray-300 mb-4 text-lg">
-              As a full stack developer I am passionate about my craft and am
-              committed to delivering solutions I can be proud of. I see each
-              project as an opportunity to improve and learn something new,
-              ensuring that the end result surpasses the previous one. I strive
-              to grow professionally and personally by focusing on efficiency,
-              functionality, and sustainability.
+              As a <span className="font-bold">full-stack developer </span>I am
+              passionate about my craft and am committed to delivering solutions
+              I can be proud of. I see each project as an opportunity to improve
+              and learn something new, ensuring that the end result surpasses
+              the previous one. I strive to grow professionally and personally
+              by focusing on efficiency, functionality, and sustainability.
             </p>
 
             <p className="text-gray-300 mb-6 text-lg">
-              As a system administrator, I am driven by a deep passion for
-              reliability and automation. What began as a hobby has become a
-              serious pursuit, one I hope to grow into a career. I approach
-              every system as something that should be easy to maintain, whether
-              that means configuring security, streamlining deployments, or
-              eliminating manual work.
+              As a <span className="font-bold">system administrator</span>, I am
+              driven by a deep passion for reliability and automation. What
+              began as a hobby has become a serious pursuit, one I hope to grow
+              into a career. I approach every system as something that should be
+              easy to maintain, whether that means configuring security,
+              streamlining deployments, or eliminating manual work.
             </p>
 
             <div className="flex flex-wrap gap-4">

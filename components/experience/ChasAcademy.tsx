@@ -364,11 +364,11 @@ const CoursesDetails = ({
               </div>
               <p className="mt-2">
                 Explored artificial intelligence (AI) from fundamental theory to
-                practical application in programming and full stack development.
+                practical application in programming and full-stack development.
                 Covered various AI dimensions including machine learning, neural
                 networks, and AI models, gaining comprehensive understanding of
                 integrating AI into technical solutions and implementation
-                considerations for full stack developers.
+                considerations for full-stack developers.
               </p>
             </li>
             <li>
@@ -412,7 +412,7 @@ const CoursesDetails = ({
                 Gained practical workplace experience through internship at
                 Semurai. Applied knowledge from education courses in industry
                 projects, developing skills to function effectively as a
-                JavaScript full stack developer. Worked with HTML, CSS,
+                JavaScript full-stack developer. Worked with HTML, CSS,
                 JavaScript (frontend/backend), frameworks (Next.js), APIs,
                 databases, hosting, and CI/CD while practicing project
                 methodology and version control in team settings.
@@ -428,7 +428,7 @@ const CoursesDetails = ({
               <p className="mt-2">
                 Completed final thesis demonstrating ability to take
                 responsibility for and deliver all aspects of a project
-                assignment in JavaScript full stack development. Deepened
+                assignment in JavaScript full-stack development. Deepened
                 knowledge through research and exploration of new technologies
                 to achieve project goals. Executed thesis project as an
                 assignment for an external company, applying comprehensive
