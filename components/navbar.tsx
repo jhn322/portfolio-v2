@@ -50,6 +50,17 @@ export default function Navbar() {
   }, [mobileMenuOpen]);
 
   useEffect(() => {
+    if (!mobileMenuOpen || isWideScreen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [mobileMenuOpen, isWideScreen]);
+
+  useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
 
     const handleScroll = () => {
@@ -139,11 +150,15 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
         className={cn(
-          "fixed top-6 inset-x-0 z-50 w-[90%] max-w-3xl mx-auto px-4 py-3 rounded-full backdrop-blur-md border transition-all duration-300",
-          isScrolled
-            ? "bg-purple-900/30 text-purple-300 border-purple-700/30 shadow-[0_8px_24px_rgba(0,0,0,0.10)]"
-            : "bg-purple-900/20 text-purple-300 border-purple-700/20 shadow-[0_8px_24px_rgba(0,0,0,0.05)]",
-          mobileMenuOpen ? "bg-transparent border-transparent shadow-none" : "",
+          "fixed inset-x-0 z-[60] transition-all duration-300",
+          mobileMenuOpen && !isWideScreen
+            ? "top-0 w-full max-w-none mx-0 px-4 pb-3 pt-[max(0.75rem,env(safe-area-inset-top))] rounded-none border-0 bg-transparent shadow-none backdrop-blur-none"
+            : cn(
+                "top-6 w-[90%] max-w-3xl mx-auto px-4 py-3 rounded-full backdrop-blur-md border",
+                isScrolled
+                  ? "bg-purple-900/30 text-purple-300 border-purple-700/30 shadow-[0_8px_24px_rgba(0,0,0,0.10)]"
+                  : "bg-purple-900/20 text-purple-300 border-purple-700/20 shadow-[0_8px_24px_rgba(0,0,0,0.05)]",
+              ),
           isWideScreen ? "wideScreen" : "",
         )}
       >
@@ -206,10 +221,8 @@ export default function Navbar() {
               aria-label="Toggle menu"
             >
               <svg
-                className={`ham hamRotate ham1 ${mobileMenuOpen ? "active" : ""}`}
+                className={`ham hamRotate ham1 h-10 w-10 ${mobileMenuOpen ? "active" : ""}`}
                 viewBox="0 0 100 100"
-                width="70"
-                height="70"
               >
                 <path
                   className="line top"
@@ -233,13 +246,13 @@ export default function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           className={cn(
-            "fixed inset-0 z-40 bg-[#0a0010]/90 backdrop-blur-lg md:hidden",
+            "fixed inset-0 z-50 min-h-[100dvh] bg-[#0a0010]/95 backdrop-blur-lg md:hidden",
             isWideScreen ? "hidden" : "",
           )}
         >
-          <div className="flex flex-col items-center justify-center w-full h-full pb-20">
-            <div className="flex flex-col items-center w-full max-w-xs gap-6">
-              <div className="flex flex-col w-full gap-6">
+          <div className="flex h-full min-h-[100dvh] w-full flex-col items-center overflow-y-auto px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-[calc(4.5rem+env(safe-area-inset-top))]">
+            <div className="flex w-full max-w-xs flex-col items-center gap-4">
+              <div className="flex w-full flex-col gap-1">
                 {navItems.map((item) => (
                   <motion.div
                     key={item.name}
@@ -252,7 +265,7 @@ export default function Navbar() {
                       variant="ghost"
                       onClick={() => handleNavClick(item.href)}
                       className={cn(
-                        "text-xl sm:text-2xl w-full justify-center relative font-semibold",
+                        "h-auto py-2.5 text-lg w-full justify-center relative font-semibold",
                         activeSection === item.href.substring(1)
                           ? item.href === "#sysadmin"
                             ? "text-white hover:!text-orange-300 hover:!bg-transparent rounded-full"
@@ -284,7 +297,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navItems.length * 0.1 }}
-                className="mt-2"
+                className="mt-1"
               >
                 <Button
                   variant="outline"
@@ -300,7 +313,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: (navItems.length + 1) * 0.1 }}
-                className="mt-4 flex gap-4"
+                className="mt-3 flex gap-4"
               >
                 <Link href="https://github.com/jhn322" target="_blank">
                   <Button
