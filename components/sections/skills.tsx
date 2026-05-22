@@ -1,6 +1,6 @@
 import React from "react";
 import SolarSystem from "./solar-system/solar-system";
-import OverflowSkills from "./solar-system/overflow-skills";
+import OverflowSkills from "./solar-system/marquee-skills";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { FadeIn } from "@/components/ui/fade-in";
 
@@ -20,21 +20,21 @@ const SkillsSolarSystem = () => (
             <span className="font-semibold">Backend</span>,{" "}
             <span className="font-semibold">Design</span>,{" "}
             <span className="font-semibold">System Administration</span>,{" "}
-            <span className="font-semibold">Analytics</span>, and{" "}
-            <span className="font-semibold">Project Management</span>—enabling
+            <span className="font-semibold">Performance</span>, and{" "}
+            <span className="font-semibold">Project Management</span>, enabling
             me to build complete applications from development to deployment. I
             thrive in <span className="font-semibold">Agile</span> and{" "}
             <span className="font-semibold">Kanban</span> workflows, for
-            efficient project planning and delivery.
+            efficient project planning and delivery within a team enviroment.
           </p>
         </FadeIn>
       </header>
       <TooltipProvider>
-        <div className="flex flex-col 2xl:flex-row gap-12 items-center 2xl:items-center justify-center h-full">
-          <div className="w-full 2xl:w-1/2 flex justify-center h-full">
+        <div className="flex flex-col gap-12 items-center justify-center h-full">
+          <div className="w-full flex justify-center h-full">
             <SolarSystem />
           </div>
-          <div className="w-full xl:w-1/2 flex items-center h-full 2xl:pl-24">
+          <div className="w-full flex items-center h-full">
             <OverflowSkills />
           </div>
         </div>
