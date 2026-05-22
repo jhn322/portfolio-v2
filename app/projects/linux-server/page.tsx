@@ -106,7 +106,7 @@ export default function HomeServerPage() {
               delay={100}
               className="flex flex-col items-center text-center"
             >
-              <div className="mb-6 flex items-center gap-4">
+              <div className="mb-6 mt-6 flex items-center gap-4">
                 <div className="flex items-center justify-center size-16 rounded-2xl bg-orange-900/30 text-orange-300 border border-orange-700/30 pointer-events-none">
                   <UbuntuIcon className="size-9 text-white" />
                 </div>
@@ -144,7 +144,7 @@ export default function HomeServerPage() {
           </div>
         </section>
 
-        {/* OS & Infrastructure */}
+        {/* OS & MergerFS + Snapraid */}
         <section className="py-4 w-full flex justify-center">
           <div className="w-full max-w-7xl px-4 sm:px-6">
             <FadeIn delay={200}>
@@ -201,70 +201,6 @@ export default function HomeServerPage() {
                     </div>
                   </CardContent>
                 </Card>
-
-                <Card className="relative overflow-hidden bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30 group">
-                  <div className="absolute inset-0">
-                    <Image
-                      width={600}
-                      height={400}
-                      src="/linux-media-server/exos.webp"
-                      alt="Seagate Exos drive"
-                      className="w-full h-full object-cover opacity-40 group-hover:opacity-55 transition-opacity duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
-                  </div>
-
-                  <div className="relative p-6 h-full flex flex-col justify-between">
-                    <CardHeader>
-                      <div className="flex items-center gap-3">
-                        <div className="flex items-center justify-center size-10 rounded-2xl bg-black/40 border border-white/10">
-                          <HardDrive className="size-5 text-white" />
-                        </div>
-                        <div>
-                          <CardTitle className="text-white">
-                            Storage Architecture
-                          </CardTitle>
-                          <CardDescription className="text-gray-300">
-                            180TB+ with redundancy
-                          </CardDescription>
-                        </div>
-                      </div>
-                    </CardHeader>
-
-                    <CardContent className="space-y-4">
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="rounded-2xl p-4 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
-                          <p className="text-2xl font-bold text-orange-300">
-                            180TB+
-                          </p>
-                          <p className="text-xs text-gray-300">HDD Storage</p>
-                        </div>
-                        <div className="rounded-2xl p-4 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
-                          <p className="text-2xl font-bold text-orange-300">
-                            2TB
-                          </p>
-                          <p className="text-xs text-gray-300">NVMe SSD</p>
-                        </div>
-                      </div>
-                      <p className="text-sm text-gray-300">
-                        All Docker containers run from the NVMe SSD for fast I/O
-                        and responsive application performance, while the HDD
-                        array handles the large media library.
-                      </p>
-                    </CardContent>
-                  </div>
-                </Card>
-              </div>
-            </FadeIn>
-          </div>
-        </section>
-
-        {/* MergerFS + SnapRAID & Hardware */}
-        <section className="py-4 w-full flex justify-center">
-          <div className="w-full max-w-7xl px-4 sm:px-6">
-            <FadeIn delay={300}>
-              <div className="grid gap-8 lg:grid-cols-2">
                 <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
                   <CardHeader>
                     <div className="flex items-center gap-3">
@@ -300,6 +236,81 @@ export default function HomeServerPage() {
                       collection.
                     </p>
                   </CardContent>
+                </Card>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+
+        {/* Infrastructure & Hardware */}
+        <section className="py-4 w-full flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6">
+            <FadeIn delay={300}>
+              <div className="grid gap-8 lg:grid-cols-2">
+                <Card className="relative overflow-hidden bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30 group">
+                  <div className="absolute inset-0">
+                    <Image
+                      width={600}
+                      height={400}
+                      src="/linux-media-server/exos.webp"
+                      alt="Seagate Exos drive"
+                      className="w-full h-full object-cover opacity-40 group-hover:opacity-55 transition-opacity duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
+                  </div>
+
+                  <div className="relative p-6 h-full flex flex-col justify-between">
+                    <CardHeader>
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center size-10 rounded-2xl bg-black/40 border border-white/10">
+                          <HardDrive className="size-5 text-white" />
+                        </div>
+                        <div>
+                          <CardTitle className="text-white">
+                            Storage Architecture
+                          </CardTitle>
+                          <CardDescription className="text-gray-300">
+                            180TB+ with redundancy
+                          </CardDescription>
+                        </div>
+                      </div>
+                    </CardHeader>
+
+                    <CardContent className="space-y-4">
+                      <p className="text-sm text-gray-300">
+                        All Docker containers run from the NVMe SSD for fast I/O
+                        and responsive application performance, while the HDD
+                        array handles the large media library and redundancy.
+                      </p>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="rounded-2xl p-4 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
+                          <p className="text-xl font-bold text-orange-300">
+                            180TB+
+                          </p>
+                          <p className="text-xs text-gray-300">HDD Storage</p>
+                        </div>
+                        <div className="rounded-2xl p-4 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
+                          <p className="text-xl font-bold text-orange-300">
+                            2TB
+                          </p>
+                          <p className="text-xs text-gray-300">NVMe SSD</p>
+                        </div>
+                        <div className="rounded-2xl p-4 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
+                          <p className="text-xl font-bold text-orange-300">
+                            40TB
+                          </p>
+                          <p className="text-xs text-gray-300">Parity</p>
+                        </div>
+                        <div className="rounded-2xl p-4 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
+                          <p className="text-xl font-bold text-orange-300">
+                            Ext4 + XFS
+                          </p>
+                          <p className="text-xs text-gray-300">Filesystem</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </div>
                 </Card>
 
                 <Card className="relative overflow-hidden bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30 group">
@@ -513,7 +524,7 @@ export default function HomeServerPage() {
                         </div>
                       </div>
 
-                      <div className="pt-3 border-t border-orange-700/20 text-xs text-gray-400">
+                      <div className="pt-3 lg:mt-0 mt-6 border-t border-orange-700/20 text-xs text-gray-400">
                         Also includes Intros, concert recordings, and
                         documentary collections. All organized with rich
                         metadata, artwork, and subtitles.

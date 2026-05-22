@@ -42,20 +42,6 @@ const allCategories: SkillCategory[] = [
     ],
   },
   {
-    name: "Design",
-    skills: [
-      { name: "UI/UX", category: "Design" },
-      { name: "Photoshop", category: "Design" },
-      { name: "Sony Vegas", category: "Design" },
-      { name: "Responsive", category: "Design" },
-      { name: "Mobile First", category: "Design" },
-      { name: "Canva", category: "Design" },
-      { name: "Premiere", category: "Design" },
-      { name: "After Effects", category: "Design" },
-      { name: "Figma", category: "Design" },
-    ],
-  },
-  {
     name: "Sysadmin & OS",
     skills: [
       { name: "CI/CD", category: "Sysadmin & OS" },
@@ -68,6 +54,20 @@ const allCategories: SkillCategory[] = [
       { name: "Netlify", category: "Sysadmin & OS" },
       { name: "AWS", category: "Sysadmin & OS" },
       { name: "Nginx", category: "Sysadmin & OS" },
+    ],
+  },
+  {
+    name: "Design",
+    skills: [
+      { name: "UI/UX", category: "Design" },
+      { name: "Photoshop", category: "Design" },
+      { name: "Sony Vegas", category: "Design" },
+      { name: "Responsive", category: "Design" },
+      { name: "Mobile First", category: "Design" },
+      { name: "Canva", category: "Design" },
+      { name: "Premiere", category: "Design" },
+      { name: "After Effects", category: "Design" },
+      { name: "Figma", category: "Design" },
     ],
   },
   {

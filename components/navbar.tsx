@@ -265,7 +265,7 @@ export default function Navbar() {
                       variant="ghost"
                       onClick={() => handleNavClick(item.href)}
                       className={cn(
-                        "h-auto py-2.5 text-lg w-full justify-center relative font-semibold",
+                        "h-auto py-2.5 text-xl w-full justify-center relative font-semibold",
                         activeSection === item.href.substring(1)
                           ? item.href === "#sysadmin"
                             ? "text-white hover:!text-orange-300 hover:!bg-transparent rounded-full"
