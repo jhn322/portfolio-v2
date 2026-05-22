@@ -230,6 +230,28 @@ export const SolarSystem = () => {
           const leftPosition = Math.round(left * 100) / 100;
           const topPosition = Math.round(top * 100) / 100;
 
+          // Each planet floats subtly
+          const seed = `${planet.name}-${idx}`;
+          const hash = (str: string) => {
+            let h = 2166136261 >>> 0;
+            for (let i = 0; i < str.length; i++) {
+              h ^= str.charCodeAt(i);
+              h += (h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24);
+            }
+            return Math.abs(h >>> 0);
+          };
+
+          const rnd = (min: number, max: number, suffix = "") => {
+            const v = hash(seed + suffix) % 1000;
+            return min + (v / 1000) * (max - min);
+          };
+
+          // Duration and X Y distance
+          const floatX = rnd(-14, 14, "x");
+          const floatY = rnd(-10, 10, "y");
+          const floatDur = rnd(4, 8, "d");
+          const floatDelay = rnd(0, 2, "delay");
+
           return (
             <Tooltip key={planet.name}>
               <TooltipTrigger asChild>
@@ -254,7 +276,20 @@ export const SolarSystem = () => {
                   aria-label={planet.name}
                   role="img"
                 >
-                  <div className="bg-purple-900/30 rounded-full border border-purple-700/30 flex items-center justify-center w-8 h-8 md:w-14 md:h-14 sm:w-10 sm:h-10">
+                  <motion.div
+                    className="bg-purple-900/30 rounded-full border border-purple-700/30 flex items-center justify-center w-8 h-8 md:w-14 md:h-14 sm:w-10 sm:h-10"
+                    animate={{
+                      x: [0, floatX, 0],
+                      y: [0, floatY, 0],
+                    }}
+                    transition={{
+                      duration: floatDur,
+                      repeat: Infinity,
+                      repeatType: "mirror",
+                      ease: "easeInOut",
+                      delay: floatDelay,
+                    }}
+                  >
                     <Image
                       src={planet.logo as string}
                       alt={planet.name}
@@ -263,7 +298,7 @@ export const SolarSystem = () => {
                       className="w-5 h-5 md:w-8 md:h-8 object-contain"
                       draggable={false}
                     />
-                  </div>
+                  </motion.div>
                 </motion.div>
               </TooltipTrigger>
               <TooltipContent
