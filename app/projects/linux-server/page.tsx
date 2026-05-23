@@ -1,8 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   ArrowLeft,
+  Loader2,
   Server,
   HardDrive,
   Cpu,
@@ -65,6 +68,8 @@ const Lottie = dynamic(() => import("lottie-react"), {
 });
 
 export default function HomeServerPage() {
+  const router = useRouter();
+  const [isNavigatingHome, setIsNavigatingHome] = useState(false);
   const { getOptimizedLottieOptions } = useLottieOptimization();
 
   const lottieOptions: LottieComponentProps = {
@@ -99,12 +104,19 @@ export default function HomeServerPage() {
           <Button
             className="bg-orange-700 hover:bg-orange-600 text-white rounded-full"
             size="sm"
-            asChild
+            type="button"
+            disabled={isNavigatingHome}
+            onClick={() => {
+              setIsNavigatingHome(true);
+              router.push("/");
+            }}
           >
-            <Link href="/">
+            {isNavigatingHome ? (
+              <Loader2 className="size-4 animate-spin" />
+            ) : (
               <ArrowLeft className="size-4" />
-              Back to Portfolio
-            </Link>
+            )}
+            Back to Portfolio
           </Button>
         </div>
 

@@ -1,11 +1,13 @@
 "use client";
 
-import Link from "next/link";
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 import {
   ArrowRight,
+  Loader2,
   Server,
   Terminal,
   Database,
@@ -95,6 +97,9 @@ function FloatingIcon({
 }
 
 export default function Sysadmin() {
+  const router = useRouter();
+  const [isNavigating, setIsNavigating] = useState(false);
+
   return (
     <section id="sysadmin" className="py-20 md:py-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0d0d0d] to-transparent" />
@@ -255,12 +260,22 @@ export default function Sysadmin() {
                       ))}
                     </div>
 
-                    <Link href={linuxServer.liveUrl}>
-                      <Button className="bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-500 hover:to-orange-600 text-white rounded-full font-medium shadow-lg shadow-orange-950/30 hover:shadow-orange-900/40 transition-all w-full lg:w-auto">
-                        View Project
+                    <Button
+                      className="bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-500 hover:to-orange-600 text-white rounded-full font-medium shadow-lg shadow-orange-950/30 hover:shadow-orange-900/40 transition-all w-full lg:w-auto"
+                      type="button"
+                      disabled={isNavigating}
+                      onClick={() => {
+                        setIsNavigating(true);
+                        router.push(linuxServer.liveUrl);
+                      }}
+                    >
+                      View Project
+                      {isNavigating ? (
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      ) : (
                         <ArrowRight className="mr-2 h-4 w-4" />
-                      </Button>
-                    </Link>
+                      )}
+                    </Button>
                   </div>
                 </div>
 
