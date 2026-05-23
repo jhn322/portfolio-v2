@@ -6,14 +6,22 @@ import {
   Server,
   HardDrive,
   Cpu,
+  Microchip,
   Shield,
+  FolderSync,
   RefreshCw,
   Play,
+  Infinity,
+  Telescope,
   Database,
+  GitPullRequest,
   MonitorPlay,
+  Cast,
   Clock,
   Layers,
+  Computer,
   Film,
+  Clapperboard,
   Tv,
   Music,
   Headphones,
@@ -24,6 +32,7 @@ import {
   Camera,
   X,
   Github,
+  ExternalLink,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -115,9 +124,6 @@ export default function HomeServerPage() {
                   <DockerIcon className="size-9 text-white" />
                 </div>
               </div>
-              <Badge className="px-3 py-1 mb-4 bg-orange-900 text-white border-orange-900 pointer-events-none">
-                Passion Project
-              </Badge>
               <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-balance bg-clip-text text-transparent bg-gradient-to-r from-orange-200 to-orange-400">
                 Linux Media Server
               </h1>
@@ -205,7 +211,7 @@ export default function HomeServerPage() {
                   <CardHeader>
                     <div className="flex items-center gap-3">
                       <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
-                        <Shield className="size-5 text-white" />
+                        <FolderSync className="size-5 text-white" />
                       </div>
                       <div>
                         <CardTitle className="text-white">
@@ -487,7 +493,7 @@ export default function HomeServerPage() {
                       {/* Media Types Grid */}
                       <div className="grid grid-cols-2 gap-2.5">
                         <div className="group/item rounded-xl p-3 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
-                          <Film className="size-5 mx-auto mb-1.5 text-orange-300" />
+                          <Clapperboard className="size-5 mx-auto mb-1.5 text-orange-300" />
                           <p className="text-xs font-semibold text-white">
                             Movies
                           </p>
@@ -528,6 +534,178 @@ export default function HomeServerPage() {
                         Also includes Intros, concert recordings, and
                         documentary collections. All organized with rich
                         metadata, artwork, and subtitles.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+
+        {/* Kometa Config */}
+        <section className="py-16 w-full flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6">
+            <FadeIn delay={450}>
+              <div className="grid gap-8 lg:grid-cols-5 items-center">
+                <div className="lg:col-span-3 flex flex-col justify-center">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="flex items-center justify-center size-14 rounded-2xl bg-orange-900/30 border border-orange-700/30">
+                      <Telescope className="size-8" />
+                    </div>
+                    <Badge className="px-3 py-1 bg-orange-900/30 text-orange-300 rounded-full border border-orange-700/30 pointer-events-none">
+                      Plex Library Control
+                    </Badge>
+                  </div>
+                  <h2 className="text-3xl text-white font-bold tracking-tight mb-4">
+                    Kometa Config
+                  </h2>
+                  <p className="text-gray-300 mb-6">
+                    Kometa is a powerful tool designed to give you complete
+                    control over your personal Plex media library
+                    representation. With Kometa, you have granular control over
+                    metadata manipulation, creating curated collections, custom
+                    posters, icon overlays, and rich library presentation on a
+                    detailed level.
+                  </p>
+                  <p className="text-gray-300 mb-6">
+                    Transform your media library with Kometa and discover its
+                    full potential! Connect to third-party services like TMDb,
+                    Trakt, and IMDb, among others, to create one-of-a-kind
+                    collections, overlays and more. Your media library will
+                    stand out and be tailored to your specific needs.
+                  </p>
+                  <div className="space-y-4 text-sm text-gray-300">
+                    <div className="flex items-start gap-3">
+                      <div className="flex items-center justify-center size-8 rounded-2xl bg-orange-900/30 shrink-0 mt-0.5">
+                        <Layers className="size-4" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm text-white font-medium">
+                          Configurable Library Experience
+                        </h4>
+                        <p className="text-sm text-gray-300">
+                          Build themed collections, custom posters, and overlays
+                          that make Plex feel unique and polished.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="flex items-center justify-center size-8 rounded-2xl bg-orange-900/30 shrink-0 mt-0.5">
+                        <Play className="size-4" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm text-white font-medium">
+                          Media Library Presentation
+                        </h4>
+                        <p className="text-sm text-gray-300">
+                          Display your collection with custom artwork and
+                          overlays, crafted for a seamless Plex browsing
+                          experience.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="flex items-center justify-center size-8 rounded-2xl bg-orange-900/30 shrink-0 mt-0.5">
+                        <GitPullRequest className="size-4" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm text-white font-medium">
+                          Open Source Setup
+                        </h4>
+                        <p className="text-sm text-gray-300">
+                          Includes the full repo and documentation for easy
+                          customization and deployment.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    <Link
+                      href="https://kometa.wiki/en/latest/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button className="bg-orange-700 hover:bg-orange-600 text-white rounded-full">
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        View Kometa Wiki
+                      </Button>
+                    </Link>
+                    <Link
+                      href="https://github.com/jhn322/kometa-config"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button
+                        variant="outline"
+                        className="border-orange-300 text-orange-300 hover:bg-orange-900/30 hover:text-white rounded-full"
+                      >
+                        <Github className="mr-2 h-4 w-4" />
+                        Source Code
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+                <div className="lg:col-span-2">
+                  <div className="relative group h-full rounded-2xl overflow-hidden border border-orange-700/30 bg-gradient-to-br from-black/30 to-orange-900/10">
+                    <div className="absolute inset-0">
+                      <Image
+                        width={600}
+                        height={400}
+                        src="/linux-media-server/kometa.webp"
+                        alt="Kometa Config screenshot"
+                        className="w-full h-full object-cover opacity-40 group-hover:opacity-55 transition-opacity duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
+                    </div>
+
+                    <div className="relative h-full flex flex-col justify-between p-6">
+                      <div>
+                        <h3 className="text-lg font-bold text-white mb-1">
+                          Kometa Library View
+                        </h3>
+                        <p className="text-xs text-orange-300 uppercase tracking-widest mb-4">
+                          Custom Posters + Overlays
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-2.5">
+                        <div className="group/item rounded-xl p-6 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
+                          <p className="text-xs font-semibold text-white">
+                            Self-made Posters
+                          </p>
+                        </div>
+                        <div className="group/item rounded-xl p-6 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
+                          <p className="text-xs font-semibold text-white">
+                            Metadata Sync
+                          </p>
+                        </div>
+                        <div className="group/item rounded-xl p-6 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
+                          <p className="text-xs font-semibold text-white">
+                            Curated Collections
+                          </p>
+                        </div>
+                        <div className="group/item rounded-xl p-6 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
+                          <p className="text-xs font-semibold text-white">
+                            UI Overlays
+                          </p>
+                        </div>
+                        <div className="group/item rounded-xl p-6 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
+                          <p className="text-xs font-semibold text-white">
+                            External Sources
+                          </p>
+                        </div>
+                        <div className="group/item rounded-xl p-6 bg-black/50 border border-white/10 text-center backdrop-blur-sm">
+                          <p className="text-xs font-semibold text-white">
+                            Library Automation
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="pt-3 mt-6 border-t border-orange-700/20 text-xs text-gray-400">
+                        Add a new poster or artwork image to your library
+                        presentation with the card above.
                       </div>
                     </div>
                   </div>
@@ -749,7 +927,7 @@ export default function HomeServerPage() {
                   <CardHeader>
                     <div className="flex items-center gap-3">
                       <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
-                        <Cpu className="size-5" />
+                        <Microchip className="size-5" />
                       </div>
                       <CardTitle className="text-lg text-white">
                         GPU Passthrough
@@ -809,7 +987,7 @@ export default function HomeServerPage() {
                   <CardHeader>
                     <div className="flex items-center gap-3">
                       <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
-                        <MonitorPlay className="size-5" />
+                        <Cast className="size-5" />
                       </div>
                       <CardTitle className="text-lg text-white">
                         Multi-Platform Streaming
@@ -829,7 +1007,7 @@ export default function HomeServerPage() {
                   <CardHeader>
                     <div className="flex items-center gap-3">
                       <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
-                        <Layers className="size-5" />
+                        <Computer className="size-5" />
                       </div>
                       <CardTitle className="text-lg text-white">
                         Media Processing
@@ -849,7 +1027,7 @@ export default function HomeServerPage() {
                   <CardHeader>
                     <div className="flex items-center gap-3">
                       <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
-                        <Play className="size-5" />
+                        <Infinity className="size-5" />
                       </div>
                       <CardTitle className="text-lg text-white">
                         24/7 Uptime

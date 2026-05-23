@@ -30,26 +30,6 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Kometa Config",
-    description:
-      "Kometa is a powerful tool designed to give you complete control over your personal Plex media library representation. With Kometa, you have granular control over metadata manipulation, creating curated collections, custom overlays, and much more. This is my own config with a large amount of self designed posters, icon overlays and custom made collection on a very detailed level.",
-    tags: [
-      "Python",
-      "Docker",
-      "YAML",
-      "Plex",
-      "Metadata",
-      "Photoshop",
-      "Overlays",
-      "API",
-      "Automation",
-    ],
-    liveUrl: "https://kometa.wiki/en/latest/",
-    githubUrl: "https://github.com/jhn322/kometa-config",
-    icon: "/other-projects/kometa.webp",
-    projectType: "Passion",
-  },
-  {
     title: "Portfolio V2",
     description:
       "A modern portfolio designed to showcase projects and skills through a polished experience. It features UI built with Shadcn and Tailwind CSS. Animations created with Framer Motion, Lottie, and React Three Fiber. Forms are handled with React Hook Form and Zod for reliable validation, and email functionality is powered by Brevo, resulting in the portfolio you are looking at now.",
@@ -168,43 +148,6 @@ const projects: Project[] = [
     githubUrl: "https://github.com/jhn322/librechat-semurai",
     icon: "/other-projects/librechat.webp",
     projectType: "Internship",
-  },
-  {
-    title: "Oscar Ranking",
-    description:
-      "An interactive web application to rank and share your Oscar Best Picture nominations from current or previous years. Easily reorder your favorite movies, persist your rankings locally, and share your personal rankings with others on social media through text or a screenshot.",
-    tags: [
-      "TypeScript",
-      "Next.js",
-      "Tailwind CSS",
-      "DndKit",
-      "Local Storage",
-      "TMDb API",
-      "HtmltoImage",
-    ],
-    liveUrl: "https://oscar-ranking.vercel.app/",
-    githubUrl: "https://github.com/jhn322/oscar-ranking",
-    icon: "/other-projects/oscar.webp",
-    projectType: "Personal",
-  },
-  {
-    title: "Rently",
-    description:
-      "Rently is the answer to overconsumption and unnecessary waste. Why buy when you can rent? By connecting neighbors, friends, and local communities, we've created a space where stuff gets used, not wasted. Need a tent for that one camping trip? Rent it from your neighbor instead of shelling out cash for a new one.",
-    tags: [
-      "Vue.js",
-      "Store",
-      "SFC",
-      "Search",
-      "Dashboard",
-      "User Authentication",
-      "Pinia",
-      "JSONBin",
-      "Toastify",
-    ],
-    liveUrl: "https://rently-app.netlify.app/",
-    githubUrl: "https://github.com/jhn322/rently",
-    icon: "/other-projects/rently.webp",
   },
 ];
 
