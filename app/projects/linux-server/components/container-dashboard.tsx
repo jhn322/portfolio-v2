@@ -293,18 +293,11 @@ const containers: Container[] = [
     status: "healthy",
   },
   {
-    name: "plextraktsync",
-    image: "ghcr.io/taxel/plextraktsync:latest",
-    ports: "-",
-    ip: "172.27.0.3",
-    status: "running",
-  },
-  {
-    name: "scheduler",
-    image: "mcuadros/ofelia:latest",
-    ports: "-",
-    ip: "172.28.0.2",
-    status: "running",
+    name: "watchstate",
+    image: "ghcr.io/arabcoders/watchstate:latest",
+    ports: "9090:8080",
+    ip: "172.10.10.141",
+    status: "healthy",
   },
   {
     name: "yaml-url-checker",

@@ -62,9 +62,9 @@ const containerCategories = [
       "Tautulli",
       "Tracearr",
       "Medialytics",
-      "PlexTraktSync",
       "Yaml-url-checker",
       "Calendarr",
+      "Watchstate",
     ],
     description:
       "Viewing stats, analytics, schedule, links checker, and external service sync",
