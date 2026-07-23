@@ -187,19 +187,19 @@ export default function HomeServerPage() {
                         Ubuntu LTS
                       </h4>
                       <p className="text-sm text-gray-300">
-                        Started my server journey on{" "}
+                        Began my server journey on{" "}
                         <span className="text-white font-medium">
-                          Linux Mint (2020–2022)
-                        </span>
-                        , briefly evaluated{" "}
+                          Linux Mint
+                        </span>{" "}
+                        for a few years, briefly evaluated{" "}
                         <span className="text-white font-medium">
                           Windows 11
                         </span>
-                        , and ultimately transitioned to{" "}
+                        , and ultimately migrated to{" "}
                         <span className="text-white font-medium">
-                          Ubuntu LTS in 2023
+                          Ubuntu LTS
                         </span>{" "}
-                        for its long-term stability and server-oriented
+                        in 2023 for its long-term stability and server-oriented
                         ecosystem.
                       </p>
                       <ul className="grid gap-1.5 text-sm text-gray-300">
