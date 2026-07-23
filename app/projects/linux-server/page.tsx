@@ -8,11 +8,9 @@ import {
   Loader2,
   Server,
   HardDrive,
-  Cpu,
+  // Cpu,
   Microchip,
   Shield,
-  FolderSync,
-  RefreshCw,
   Play,
   Infinity,
   Telescope,
@@ -20,7 +18,6 @@ import {
   GitPullRequest,
   MonitorPlay,
   Cast,
-  Clock,
   Layers,
   Computer,
   Film,
@@ -155,7 +152,7 @@ export default function HomeServerPage() {
                   180TB+ Storage
                 </Badge>
                 <Badge className="gap-1.5 py-1.5 px-3 bg-orange-900/30 text-orange-300 rounded-full border border-orange-700/30 pointer-events-none">
-                  <Clock className="size-3.5" />
+                  <Infinity className="size-3.5" />
                   24/7 Uptime
                 </Badge>
               </div>
@@ -163,7 +160,7 @@ export default function HomeServerPage() {
           </div>
         </section>
 
-        {/* OS & MergerFS + Snapraid */}
+        {/* Foundation & Features */}
         <section className="py-4 w-full flex justify-center">
           <div className="w-full max-w-7xl px-4 sm:px-6">
             <FadeIn delay={200}>
@@ -171,37 +168,40 @@ export default function HomeServerPage() {
                 <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
                   <CardHeader>
                     <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
+                      {/* <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
                         <UbuntuIcon className="size-5 text-white" />
-                      </div>
+                      </div> */}
                       <div>
                         <CardTitle className="text-white">
-                          Operating System
+                          Operating System & Storage Foundation
                         </CardTitle>
-                        <CardDescription className="text-gray-300">
-                          Ubuntu LTS - Server Optimized
+                        <CardDescription className="text-gray-300 mt-1">
+                          Ubuntu LTS with MergerFS + SnapRAID
                         </CardDescription>
                       </div>
                     </div>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-sm text-gray-300">
-                      Started my server journey on{" "}
-                      <span className="text-white font-medium">
-                        Linux Mint (2020–2022)
-                      </span>
-                      , briefly evaluated{" "}
-                      <span className="text-white font-medium">Windows 11</span>
-                      , and ultimately transitioned to{" "}
-                      <span className="text-white font-medium">
-                        Ubuntu LTS in 2023
-                      </span>{" "}
-                      for its long-term stability and server-oriented ecosystem.
-                    </p>
+                  <CardContent className="space-y-5">
                     <div className="space-y-2">
                       <h4 className="text-sm text-white font-medium">
-                        System Optimizations
+                        Ubuntu LTS
                       </h4>
+                      <p className="text-sm text-gray-300">
+                        Started my server journey on{" "}
+                        <span className="text-white font-medium">
+                          Linux Mint (2020–2022)
+                        </span>
+                        , briefly evaluated{" "}
+                        <span className="text-white font-medium">
+                          Windows 11
+                        </span>
+                        , and ultimately transitioned to{" "}
+                        <span className="text-white font-medium">
+                          Ubuntu LTS in 2023
+                        </span>{" "}
+                        for its long-term stability and server-oriented
+                        ecosystem.
+                      </p>
                       <ul className="grid gap-1.5 text-sm text-gray-300">
                         <li className="flex items-center gap-2">
                           <span className="size-1.5 rounded-full bg-orange-400" />
@@ -218,43 +218,81 @@ export default function HomeServerPage() {
                         </li>
                       </ul>
                     </div>
+
+                    <div className="space-y-2 border-t border-orange-700/20 pt-4">
+                      <h4 className="text-sm text-white font-medium">
+                        MergerFS + SnapRAID
+                      </h4>
+                      <p className="text-sm text-gray-300">
+                        <span className="text-white font-medium">MergerFS</span>{" "}
+                        merges 9 data HDDs into a single 150 TB+ mount point,
+                        while two dedicated parity drives provide redundancy.
+                      </p>
+                      <p className="text-sm text-gray-300">
+                        <span className="text-white font-medium">SnapRAID</span>{" "}
+                        adds snapshot-based parity protection and weekly scrub
+                        jobs for ongoing data integrity.
+                      </p>
+                    </div>
                   </CardContent>
                 </Card>
-                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
-                  <CardHeader>
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
-                        <FolderSync className="size-5 text-white" />
+
+                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30 sm:p-6 p-6">
+                  <div className="mb-5">
+                    <CardTitle>Key features</CardTitle>
+                    <CardDescription className="text-gray-300 mt-1">
+                      Built for reliability, speed, and peace of mind
+                    </CardDescription>
+                  </div>
+
+                  <div className="space-y-2">
+                    {[
+                      {
+                        icon: Microchip,
+                        title: "GPU Passthrough",
+                        text: "Hardware-accelerated transcoding for smooth Plex and Jellyfin playback.",
+                      },
+                      {
+                        icon: Shield,
+                        title: "Secure Remote Access",
+                        text: "RustDesk and Nginx Proxy Manager keeps access safe and practical.",
+                      },
+                      {
+                        icon: Database,
+                        title: "Automated Backups",
+                        text: "Monthly system wide snapshots and weekly storage backups.",
+                      },
+                      {
+                        icon: Cast,
+                        title: "Multi-Platform Streaming",
+                        text: "Stream anywhere with Plex, Jellyfin, and request tools for users.",
+                      },
+                      {
+                        icon: Computer,
+                        title: "Media Processing",
+                        text: "Tdarr and *arr stack keeps content organized and polished.",
+                      },
+                      {
+                        icon: Infinity,
+                        title: "24/7 Uptime",
+                        text: "Always-on availability with automatic recovery and live monitoring.",
+                      },
+                    ].map(({ icon: Icon, title, text }) => (
+                      <div key={title} className="group flex items-start gap-3">
+                        <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-900/20">
+                          <Icon className="size-4" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-sm font-semibold text-white">
+                            {title}
+                          </p>
+                          <p className="mt-1 text-sm leading-6 text-gray-400">
+                            {text}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <CardTitle className="text-white">
-                          MergerFS + SnapRAID
-                        </CardTitle>
-                        <CardDescription className="text-gray-300">
-                          Unified storage with parity protection
-                        </CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-sm text-gray-300">
-                      <span className="text-white font-medium">MergerFS</span>{" "}
-                      is A union filesystem that merges 9 data HDDs into a
-                      single 150 TB+ mount point, while two dedicated parity
-                      drives provide redundancy. The data array appears as one
-                      unified volume, with seamless expansion by simply adding
-                      drives.
-                    </p>
-                    <p className="text-sm text-gray-300">
-                      <span className="text-white font-medium">SnapRAID</span>{" "}
-                      provides snapshot-based parity protection. With 2
-                      dedicated parity drives, up to 2 drives can fail
-                      simultaneously without data loss. Weekly automated syncs
-                      via SnapRAID Runner calculate parity and scrub for bit
-                      rot. This is gives a peace of mind over the entire data
-                      collection.
-                    </p>
-                  </CardContent>
+                    ))}
+                  </div>
                 </Card>
               </div>
             </FadeIn>
@@ -279,17 +317,17 @@ export default function HomeServerPage() {
                     <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
                   </div>
 
-                  <div className="relative p-6 h-full flex flex-col justify-between">
+                  <div className="relative h-full flex flex-col justify-between">
                     <CardHeader>
                       <div className="flex items-center gap-3">
-                        <div className="flex items-center justify-center size-10 rounded-2xl bg-black/40 border border-white/10">
+                        {/* <div className="flex items-center justify-center size-10 rounded-2xl bg-black/40 border border-white/10">
                           <HardDrive className="size-5 text-white" />
-                        </div>
+                        </div> */}
                         <div>
                           <CardTitle className="text-white">
                             Storage Architecture
                           </CardTitle>
-                          <CardDescription className="text-gray-300">
+                          <CardDescription className="text-gray-300 mt-1">
                             180TB+ with redundancy
                           </CardDescription>
                         </div>
@@ -345,15 +383,15 @@ export default function HomeServerPage() {
                     <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
                   </div>
 
-                  <div className="relative p-6 h-full flex flex-col justify-between">
+                  <div className="relative h-full flex flex-col justify-between">
                     <CardHeader>
                       <div className="flex items-center gap-3">
-                        <div className="flex items-center justify-center size-10 rounded-2xl bg-black/40 border border-white/10">
+                        {/* <div className="flex items-center justify-center size-10 rounded-2xl bg-black/40 border border-white/10">
                           <Cpu className="size-5 text-white" />
-                        </div>
+                        </div> */}
                         <div>
                           <CardTitle className="text-white">Hardware</CardTitle>
-                          <CardDescription className="text-gray-300">
+                          <CardDescription className="text-gray-300 mt-1">
                             Built for storage & transcoding
                           </CardDescription>
                         </div>
@@ -407,17 +445,13 @@ export default function HomeServerPage() {
             <FadeIn delay={400}>
               <div className="grid gap-8 lg:grid-cols-5">
                 <div className="lg:col-span-3 flex flex-col justify-center">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="flex items-center justify-center size-14 rounded-2xl bg-orange-900/30 border border-orange-700/30">
-                      <Film className="size-8" />
-                    </div>
-                    <Badge className="px-3 py-1 bg-orange-900/30 text-orange-300 rounded-full border border-orange-700/30 pointer-events-none">
-                      Heart of the Server
-                    </Badge>
-                  </div>
-                  <h2 className="text-3xl text-white font-bold tracking-tight mb-4">
+                  <Badge className="mb-4 gap-2 py-2 px-3 bg-orange-900/30 rounded-full border border-orange-700/30 pointer-events-none inline-flex items-center w-fit">
+                    <Film className="size-5" />
+                    Heart of the Server
+                  </Badge>
+                  <CardTitle className="text-3xl text-white font-bold tracking-tight mb-4">
                     Plex Media Server
-                  </h2>
+                  </CardTitle>
                   <p className="text-gray-300 mb-6">
                     All the automation, storage, and infrastructure exists to
                     serve one main purpose: delivering a premium streaming
@@ -562,17 +596,13 @@ export default function HomeServerPage() {
             <FadeIn delay={450}>
               <div className="grid gap-8 lg:grid-cols-5 items-center">
                 <div className="lg:col-span-3 flex flex-col justify-center">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="flex items-center justify-center size-14 rounded-2xl bg-orange-900/30 border border-orange-700/30">
-                      <Telescope className="size-8" />
-                    </div>
-                    <Badge className="px-3 py-1 bg-orange-900/30 text-orange-300 rounded-full border border-orange-700/30 pointer-events-none">
-                      Plex Library Control
-                    </Badge>
-                  </div>
-                  <h2 className="text-3xl text-white font-bold tracking-tight mb-4">
+                  <Badge className="mb-4 gap-2 py-2 px-3 bg-orange-900/30  rounded-full border border-orange-700/30 pointer-events-none inline-flex items-center w-fit">
+                    <Telescope className="size-5" />
+                    Plex Library Control
+                  </Badge>
+                  <CardTitle className="text-3xl text-white font-bold tracking-tight mb-4">
                     Kometa Config
-                  </h2>
+                  </CardTitle>
                   <p className="text-gray-300 mb-6">
                     Kometa is a powerful tool designed to give you complete
                     control over your personal Plex media library
@@ -728,106 +758,14 @@ export default function HomeServerPage() {
           </div>
         </section>
 
-        {/* Immich */}
-        <section className="py-16 w-full flex justify-center">
-          <div className="w-full max-w-7xl px-4 sm:px-6">
-            <FadeIn delay={500}>
-              <div className="grid gap-8 lg:grid-cols-2 items-center">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="flex items-center justify-center size-12 rounded-xl bg-orange-900/30 border border-orange-700/30">
-                      <Camera className="size-6" />
-                    </div>
-                    <Badge className="px-3 py-1 bg-orange-900/30 text-orange-300 rounded-full border border-orange-700/30 pointer-events-none">
-                      Self-Hosted Photo Backup
-                    </Badge>
-                  </div>
-                  <h2 className="text-3xl text-white font-bold tracking-tight text-left mb-4">
-                    Immich Photo Backup
-                  </h2>
-                  <p className="text-gray-300 mb-4 text-left">
-                    Immich is a self-hosted alternative to Google Photos and
-                    iCloud. Every photo and video taken on your phone, tablet or
-                    PC is automatically backed up locally to the server, no
-                    monthly fees, no storage limits, full privacy.
-                  </p>
-                  <ul className="grid gap-2 text-sm text-gray-300">
-                    <li className="flex items-center gap-2">
-                      <span className="size-1.5 rounded-full bg-orange-300" />
-                      Automatic background sync from mobile devices
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="size-1.5 rounded-full bg-orange-300" />
-                      Optional AI-powered facial recognition and object search
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="size-1.5 rounded-full bg-orange-300" />
-                      Timeline view, albums, and sharing capabilities
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="size-1.5 rounded-full bg-orange-300" />
-                      No cloud dependency, all data stays on the server
-                    </li>
-                  </ul>
-                </div>
-                <div className="flex justify-center">
-                  <ImmichGallery />
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-        </section>
-
-        {/* Docker & Container Management */}
-        <section className="py-16 w-full flex justify-center">
-          <div className="w-full max-w-7xl px-4 sm:px-6">
-            <FadeIn delay={600}>
-              <div className="mb-10 text-center">
-                <div className="inline-flex items-center justify-center rounded-2xl mb-4 size-14  bg-orange-900/30 border border-orange-700/30">
-                  <DockerIcon className="size-6" />
-                </div>
-                <h2 className="text-3xl text-white font-bold tracking-tight">
-                  Docker Compose Stack
-                </h2>
-                <p className="mt-2 text-gray-300 max-w-2xl mx-auto">
-                  All services are containerized and managed through Docker
-                  Compose, with Portainer providing a web-based UI for
-                  monitoring and management.
-                </p>
-              </div>
-
-              <div className="grid gap-6 lg:gap-8 grid-cols-1 lg:grid-cols-5 w-full max-w-full overflow-hidden">
-                <div className="lg:col-span-3 min-w-0">
-                  <ContainerGrid />
-                </div>
-                <div className="lg:col-span-2 min-w-0">
-                  <CodeWindow />
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-        </section>
-
-        {/* Tailscale Remote Access */}
-        <section className="py-16 w-full flex justify-center">
-          <div className="w-full max-w-7xl px-4 sm:px-6">
-            <FadeIn delay={625}>
-              <TailscaleSection />
-            </FadeIn>
-          </div>
-        </section>
-
         {/* Automation Flow */}
         <section className="py-16 w-full flex justify-center">
           <div className="w-full max-w-7xl px-4 sm:px-6">
             <FadeIn delay={650}>
               <div className="mb-10 text-center">
-                <div className="inline-flex items-center justify-center rounded-2xl mb-4 size-14  bg-orange-900/30 border border-orange-700/30">
-                  <RefreshCw className="size-6" />
-                </div>
-                <h2 className="text-3xl text-white font-bold tracking-tight">
+                <CardTitle className="text-3xl text-white font-bold tracking-tight mb-4">
                   Media Automation
-                </h2>
+                </CardTitle>
                 <p className="mt-2 text-gray-300 max-w-2xl mx-auto">
                   The *arr stack automates the entire media acquisition and
                   organization process. From search to organized library,
@@ -931,140 +869,84 @@ export default function HomeServerPage() {
           </div>
         </section>
 
-        {/* Features Grid */}
+        {/* Docker & Container Management */}
         <section className="py-16 w-full flex justify-center">
           <div className="w-full max-w-7xl px-4 sm:px-6">
-            <FadeIn delay={700}>
+            <FadeIn delay={600}>
               <div className="mb-10 text-center">
-                <h2 className="text-3xl text-white font-bold tracking-tight">
-                  Key Features
-                </h2>
-                <p className="mt-2 text-gray-300">
-                  Built for reliability, security, and performance
+                <CardTitle className="text-3xl text-white font-bold tracking-tight mb-4">
+                  Docker Compose Stack
+                </CardTitle>
+                <p className="mt-2 text-gray-300 max-w-2xl mx-auto">
+                  All services are containerized and managed through Docker
+                  Compose, with Portainer providing a web-based UI for
+                  monitoring and management.
                 </p>
               </div>
 
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
-                  <CardHeader>
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
-                        <Microchip className="size-5" />
-                      </div>
-                      <CardTitle className="text-lg text-white">
-                        GPU Passthrough
-                      </CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-300">
-                      Nvidia GPU passthrough configured via Nvidia Container
-                      Toolkit for hardware-accelerated transcoding in Plex and
-                      Jellyfin, enabling smooth playback on all devices.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
-                  <CardHeader>
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
-                        <Shield className="size-5" />
-                      </div>
-                      <CardTitle className="text-lg text-white">
-                        Secure Remote Access
-                      </CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-300">
-                      RustDesk for secure remote desktop access. Nginx Proxy
-                      Manager handles reverse proxy for select containers with
-                      SSL encryption.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
-                  <CardHeader>
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
-                        <Database className="size-5" />
-                      </div>
-                      <CardTitle className="text-lg text-white">
-                        Automated Backups
-                      </CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-300">
-                      Daily backups of Plex, Sonarr, Radarr, Lidarr, Prowlarr
-                      configs. Biweekly Ubuntu system snapshots. Watchtower
-                      handles container updates.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
-                  <CardHeader>
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
-                        <Cast className="size-5" />
-                      </div>
-                      <CardTitle className="text-lg text-white">
-                        Multi-Platform Streaming
-                      </CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-300">
-                      Plex and Jellyfin for media streaming to any device.
-                      Pulsarr and Seerr provide request interfaces for users to
-                      add content.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
-                  <CardHeader>
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
-                        <Computer className="size-5" />
-                      </div>
-                      <CardTitle className="text-lg text-white">
-                        Media Processing
-                      </CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-300">
-                      Tdarr for automated transcoding and codec optimization.
-                      Kometa for creating smart collections and poster overlays.
-                      Bazarr for subtitle management.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-gradient-to-br from-black/30 to-orange-900/10 backdrop-blur-md border-orange-900/30">
-                  <CardHeader>
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-10 rounded-2xl bg-orange-900/30">
-                        <Infinity className="size-5" />
-                      </div>
-                      <CardTitle className="text-lg text-white">
-                        24/7 Uptime
-                      </CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-300">
-                      Always-on availability with automatic container recovery.
-                      Homarr dashboard for at-a-glance monitoring. Dozzle for
-                      real-time log viewing.
-                    </p>
-                  </CardContent>
-                </Card>
+              <div className="grid gap-6 lg:gap-8 grid-cols-1 lg:grid-cols-5 w-full max-w-full overflow-hidden">
+                <div className="lg:col-span-3 min-w-0">
+                  <ContainerGrid />
+                </div>
+                <div className="lg:col-span-2 min-w-0">
+                  <CodeWindow />
+                </div>
               </div>
+            </FadeIn>
+          </div>
+        </section>
+
+        {/* Immich */}
+        <section className="py-16 w-full flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6">
+            <FadeIn delay={500}>
+              <div className="grid gap-8 lg:grid-cols-2 items-center">
+                <div>
+                  <Badge className="mb-4 gap-2 py-2 px-3 bg-orange-900/30 rounded-full border border-orange-700/30 pointer-events-none inline-flex items-center w-fit">
+                    <Camera className="size-5" />
+                    Self-Hosted Photo Backup
+                  </Badge>
+                  <CardTitle className="text-3xl text-white font-bold tracking-tight text-left mb-4">
+                    Immich Photo Backup
+                  </CardTitle>
+                  <p className="text-gray-300 mb-4 text-left">
+                    Immich is a self-hosted alternative to Google Photos and
+                    iCloud. Every photo and video taken on your phone, tablet or
+                    PC is automatically backed up locally to the server, no
+                    monthly fees, no storage limits, full privacy.
+                  </p>
+                  <ul className="grid gap-2 text-sm text-gray-300">
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-orange-300" />
+                      Automatic background sync from mobile devices
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-orange-300" />
+                      Optional AI-powered facial recognition and object search
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-orange-300" />
+                      Timeline view, albums, and sharing capabilities
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-orange-300" />
+                      No cloud dependency, all data stays on the server
+                    </li>
+                  </ul>
+                </div>
+                <div className="flex justify-center">
+                  <ImmichGallery />
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+
+        {/* Tailscale Remote Access */}
+        <section className="py-16 w-full flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6">
+            <FadeIn delay={775}>
+              <TailscaleSection />
             </FadeIn>
           </div>
         </section>
@@ -1074,37 +956,17 @@ export default function HomeServerPage() {
           <div className="w-full max-w-7xl px-4 sm:px-6">
             <FadeIn delay={800}>
               <div className="mb-10 text-center">
-                <h2 className="text-3xl text-white font-bold tracking-tight">
-                  Container Dashboard
-                </h2>
+                <CardTitle className="text-3xl text-white font-bold tracking-tight">
+                  Portainer Dashboard UI
+                </CardTitle>
                 <p className="mt-2 text-gray-300">
-                  Portainer view of the running container stack
+                  View of the running container stack
                 </p>
               </div>
               <ContainerDashboard />
             </FadeIn>
           </div>
         </section>
-        <FadeIn>
-          <div className="py-16 flex justify-center">
-            <Button
-              asChild
-              variant="outline"
-              aria-label="View more projects on GitHub"
-              className="border-orange-300 text-orange-300 hover:bg-orange-900/30 hover:text-white rounded-full"
-            >
-              <Link
-                href="https://github.com/jhn322/docker-compose-configs"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2"
-              >
-                <Github className="mr-2 h-4 w-4" />
-                <span>My Docker compose configs</span>
-              </Link>
-            </Button>
-          </div>
-        </FadeIn>
       </div>
       <Footer />
     </main>

@@ -42,20 +42,16 @@ export function TailscaleSection() {
   return (
     <div className="grid gap-8 lg:grid-cols-5 items-center">
       <div className="lg:col-span-3 flex flex-col justify-center">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="flex items-center justify-center size-14 rounded-2xl bg-orange-900/30 border border-orange-700/30">
-            <Image
-              width={32}
-              height={32}
-              src="/linux-media-server/tailscale.svg"
-              alt="Tailscale logo"
-              className="size-8 object-contain"
-            />
-          </div>
-          <Badge className="px-3 py-1 bg-orange-900/30 text-orange-300 rounded-full border border-orange-700/30 pointer-events-none">
-            Secure Remote Access
-          </Badge>
-        </div>
+        <Badge className="mb-4 gap-2 py-2 px-3 bg-orange-900/30 rounded-full border border-orange-700/30 pointer-events-none inline-flex items-center w-fit">
+          <Image
+            width={20}
+            height={20}
+            src="/linux-media-server/tailscale.svg"
+            alt="Tailscale logo"
+            className="size-5 object-contain"
+          />
+          Secure Remote Access
+        </Badge>
 
         <h2 className="text-3xl text-white font-bold tracking-tight mb-4">
           Tailscale Mesh VPN
@@ -144,7 +140,7 @@ export function TailscaleSection() {
             <div className="flex items-center justify-between gap-2 rounded-2xl border border-orange-900/20 bg-orange-950/30 p-4">
               <div className="flex items-center gap-3 min-w-0">
                 <div className="flex items-center justify-center size-10 rounded-xl bg-orange-900/40 shrink-0">
-                  <Server className="size-5 text-orange-300" />
+                  <Server className="size-5" />
                 </div>
                 <div className="min-w-0">
                   <p className="text-sm font-medium text-white truncate">
@@ -183,7 +179,7 @@ export function TailscaleSection() {
                   className="flex items-start gap-3 rounded-xl border border-white/10 bg-black/40 p-3 backdrop-blur-sm"
                 >
                   <div className="flex items-center justify-center size-8 rounded-xl bg-orange-900/30 shrink-0">
-                    <point.icon className="size-4 text-orange-300" />
+                    <point.icon className="size-4 " />
                   </div>
                   <div>
                     <p className="text-sm font-medium text-white">

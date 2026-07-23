@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   Table,
   TableBody,
@@ -20,6 +21,7 @@ import {
   Trash2,
   Square,
   XCircle,
+  Github,
 } from "lucide-react";
 
 interface Container {
@@ -414,6 +416,18 @@ export function ContainerDashboard() {
               <span className="hidden sm:inline">Remove</span>
             </button>
           </div>
+
+          <button className="flex items-center gap-1.5 rounded-[8px] border border-orange-500/40 bg-orange-500/10 px-3 py-1.5 text-xs font-bold text-orange-100 hover:bg-orange-500/20 transition-colors shadow-sm ml-0 sm:ml-2 animate-bounce">
+            <Link
+              href="https://github.com/jhn322/docker-compose-configs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2"
+            >
+              <Github className="size-3.5 text-orange-100" />
+              <span>Source code</span>
+            </Link>
+          </button>
 
           <button className="flex items-center gap-1.5 rounded-[8px] bg-white px-3 py-1.5 text-xs font-bold text-black hover:bg-gray-200 transition-colors shadow-sm ml-0 sm:ml-2">
             <Plus className="size-3.5" />
