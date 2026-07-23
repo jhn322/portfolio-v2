@@ -896,6 +896,23 @@ export default function HomeServerPage() {
           </div>
         </section>
 
+        {/* Dashboard */}
+        <section className="py-16 w-full flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6">
+            <FadeIn delay={800}>
+              <div className="mb-10 text-center">
+                <CardTitle className="text-3xl text-white font-bold tracking-tight">
+                  Portainer Dashboard
+                </CardTitle>
+                <p className="mt-2 text-gray-300">
+                  View of the currently running container stack
+                </p>
+              </div>
+              <ContainerDashboard />
+            </FadeIn>
+          </div>
+        </section>
+
         {/* Immich */}
         <section className="py-16 w-full flex justify-center">
           <div className="w-full max-w-7xl px-4 sm:px-6">
@@ -947,23 +964,6 @@ export default function HomeServerPage() {
           <div className="w-full max-w-7xl px-4 sm:px-6">
             <FadeIn delay={775}>
               <TailscaleSection />
-            </FadeIn>
-          </div>
-        </section>
-
-        {/* Dashboard */}
-        <section className="py-16 w-full flex justify-center">
-          <div className="w-full max-w-7xl px-4 sm:px-6">
-            <FadeIn delay={800}>
-              <div className="mb-10 text-center">
-                <CardTitle className="text-3xl text-white font-bold tracking-tight">
-                  Portainer Dashboard UI
-                </CardTitle>
-                <p className="mt-2 text-gray-300">
-                  View of the running container stack
-                </p>
-              </div>
-              <ContainerDashboard />
             </FadeIn>
           </div>
         </section>

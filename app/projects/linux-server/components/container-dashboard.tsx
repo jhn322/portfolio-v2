@@ -425,7 +425,7 @@ export function ContainerDashboard() {
               className="flex items-center gap-2"
             >
               <Github className="size-3.5 text-orange-100" />
-              <span>Source code</span>
+              <span>Compose configs</span>
             </Link>
           </button>
 
