@@ -51,6 +51,7 @@ import { CodeWindow } from "./components/code-window";
 import { ContainerDashboard } from "./components/container-dashboard";
 import { AutomationFlow } from "./components/automation-flow";
 import { ImmichGallery } from "./components/immich-gallery";
+import { TailscaleSection } from "./components/tailscale-section";
 import dynamic from "next/dynamic";
 import { useLottieOptimization } from "@/hooks/use-lottie-optimization";
 import type { LottieComponentProps } from "lottie-react";
@@ -738,7 +739,7 @@ export default function HomeServerPage() {
                       <Camera className="size-6" />
                     </div>
                     <Badge className="px-3 py-1 bg-orange-900/30 text-orange-300 rounded-full border border-orange-700/30 pointer-events-none">
-                      Self-Hosted
+                      Self-Hosted Photo Backup
                     </Badge>
                   </div>
                   <h2 className="text-3xl text-white font-bold tracking-tight text-left mb-4">
@@ -803,6 +804,15 @@ export default function HomeServerPage() {
                   <CodeWindow />
                 </div>
               </div>
+            </FadeIn>
+          </div>
+        </section>
+
+        {/* Tailscale Remote Access */}
+        <section className="py-16 w-full flex justify-center">
+          <div className="w-full max-w-7xl px-4 sm:px-6">
+            <FadeIn delay={625}>
+              <TailscaleSection />
             </FadeIn>
           </div>
         </section>

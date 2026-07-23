@@ -99,7 +99,7 @@ const coreSkills: PlanetSkill[] = [
   },
   {
     name: "Node.js",
-    logo: "/logos/node.png",
+    logo: "/logos/node.svg",
     category: "Backend",
     orbitRadius: orbitRadiusPercentages.xl,
     angle: 250,
