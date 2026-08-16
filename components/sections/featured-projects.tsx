@@ -16,6 +16,10 @@ interface Project {
   liveUrl: string;
   githubUrl?: string;
   projectType?: "Personal" | "Passion" | "Internship";
+  alternativeVersion?: {
+    label: string;
+    url: string;
+  };
 }
 
 const projects: Project[] = [
@@ -123,6 +127,10 @@ const projects: Project[] = [
     liveUrl: "https://next-betterauth-template.vercel.app/",
     githubUrl: "https://github.com/jhn322/better-auth-template",
     projectType: "Personal",
+    alternativeVersion: {
+      label: "NextAuth version",
+      url: "https://nextjs-auth-mongo-template.vercel.app/",
+    },
   },
   {
     title: "Holmsund Information",
@@ -207,43 +215,58 @@ export default function FeaturedProjects() {
                   ))}
                 </div>
 
-                <div className="flex gap-4">
-                  <Link
-                    href={project.liveUrl}
-                    target={
-                      project.liveUrl.startsWith("/") ? "_self" : "_blank"
-                    }
-                    rel={
-                      project.liveUrl.startsWith("/")
-                        ? undefined
-                        : "noopener noreferrer"
-                    }
-                  >
-                    <Button>
-                      {project.liveUrl.startsWith("/") ? (
-                        <ArrowRight className="mr-2 h-4 w-4" />
-                      ) : (
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                      )}
-                      {project.liveUrl.startsWith("/")
-                        ? "View Project"
-                        : "Live Demo"}
-                    </Button>
-                  </Link>
-                  {project.githubUrl && (
+                <div className="flex flex-col gap-4">
+                  <div className="flex gap-4">
                     <Link
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={project.liveUrl}
+                      target={
+                        project.liveUrl.startsWith("/") ? "_self" : "_blank"
+                      }
+                      rel={
+                        project.liveUrl.startsWith("/")
+                          ? undefined
+                          : "noopener noreferrer"
+                      }
                     >
-                      <Button
-                        variant="outline"
-                        className="border-purple-300 text-purple-300 hover:bg-purple-900/30 hover:text-white rounded-full"
-                      >
-                        <Github className="mr-2 h-4 w-4" />
-                        Source Code
+                      <Button>
+                        {project.liveUrl.startsWith("/") ? (
+                          <ArrowRight className="mr-2 h-4 w-4" />
+                        ) : (
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                        )}
+                        {project.liveUrl.startsWith("/")
+                          ? "View Project"
+                          : "Live Demo"}
                       </Button>
                     </Link>
+                    {project.githubUrl && (
+                      <Link
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button
+                          variant="outline"
+                          className="border-purple-300 text-purple-300 hover:bg-purple-900/30 hover:text-white rounded-full"
+                        >
+                          <Github className="mr-2 h-4 w-4" />
+                          Source Code
+                        </Button>
+                      </Link>
+                    )}
+                  </div>
+                  {project.alternativeVersion && (
+                    <p className="text-sm text-gray-400 mt-2">
+                      Also available:{" "}
+                      <Link
+                        href={project.alternativeVersion.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-purple-400 hover:text-purple-300 underline"
+                      >
+                        {project.alternativeVersion.label}
+                      </Link>
+                    </p>
                   )}
                 </div>
               </div>
