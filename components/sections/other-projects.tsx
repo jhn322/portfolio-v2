@@ -52,7 +52,7 @@ const projects: Project[] = [
   {
     title: "Countdn",
     description:
-      "A modern countdown timer dashboard to keep track of your services that are currently on cooldown with a focus on usability. Create and manage multiple countdowns with drag-and-drop functionality, and adjustable timer durations. Features a clean dark/light theme and preset suggestions for quick setup.",
+      "A modern countdown timer dashboard to keep track of your services that are currently on cooldown with a focus on usability. Create and manage multiple countdowns with drag-and-drop functionality, adjustable timer durations and import/export lists you already created. Features a clean dark/light theme and preset suggestions for quick setup.",
     tags: [
       "Next.js",
       "TypeScript",
@@ -62,7 +62,7 @@ const projects: Project[] = [
       "Framer Motion",
       "Shadcn/UI",
       "Local Storage",
-      "React Hook Form",
+      "JSON import/export",
     ],
     liveUrl: "https://countdn.vercel.app/",
     githubUrl: "https://github.com/jhn322/countdn",
