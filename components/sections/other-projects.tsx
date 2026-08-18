@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
@@ -16,140 +16,15 @@ import { ExternalLink, Github, Folder } from "lucide-react";
 import { SiDocker } from "react-icons/si";
 import { FadeIn } from "../ui/fade-in";
 import { ProjectTag } from "../ui/project-tag";
-
-interface Project {
-  title: string;
-  description: string;
-  tags: string[];
-  liveUrl?: string;
-  githubUrl?: string;
-  dockerHubUrl?: string;
-  projectType?: "Personal" | "Passion" | "Internship";
-  icon?: string;
-}
-
-const projects: Project[] = [
-  {
-    title: "Portfolio V2",
-    description:
-      "A modern portfolio designed to showcase projects and skills through a polished experience. It features UI built with Shadcn and Tailwind CSS. Animations created with Framer Motion, Lottie, and React Three Fiber. Forms are handled with React Hook Form and Zod for reliable validation, and email functionality is powered by Brevo, resulting in the portfolio you are looking at now.",
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "Prisma",
-      "Tailwind CSS",
-      "Shadcn/UI",
-      "Framer Motion",
-      "Lottie",
-      "React Three Fiber",
-      "Resend",
-    ],
-    liveUrl: "https://js-portfolio-v2.vercel.app/",
-    githubUrl: "https://github.com/jhn322/portfolio-v2",
-    icon: "/other-projects/portfolio.webp",
-    projectType: "Personal",
-  },
-  {
-    title: "Countdn",
-    description:
-      "A countdown timer dashboard for keeping track of services currently on cooldown, designed with a focus on usability. Create and manage multiple countdowns with drag-and-drop functionality, adjustable timer durations, quick notes, and the ability to import/export lists you’ve already created. Features a clean dark/light theme and preset suggestions for quick setup.",
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "Pnpm",
-      "DnD",
-      "Tailwind CSS",
-      "Framer Motion",
-      "Shadcn/UI",
-      "Local Storage",
-      "JSON import/export",
-    ],
-    liveUrl: "https://countdn.vercel.app/",
-    githubUrl: "https://github.com/jhn322/countdn",
-    icon: "/other-projects/countdn.webp",
-    projectType: "Personal",
-  },
-  {
-    title: "YAML URL Checker",
-    description:
-      "Python-based utility script that runs as a Docker container, designed to automatically scan configuration files for potentially dead web links, specifically targeting Trakt, Letterboxd and IMDb list URLs within YAML structures. It checks the status of URLs using HTTP HEAD requests and identifies any links that are no longer accessible. The script provides a summary report to a log file to a Discord channel via webhooks.",
-    tags: [
-      "Python",
-      "Docker",
-      "YAML",
-      "Automation",
-      "Discord",
-      "API",
-      "Cron",
-      "URL Validation",
-      "Requests",
-      "Web Scraping",
-    ],
-    githubUrl: "https://github.com/jhn322/yaml-url-checker",
-    dockerHubUrl:
-      "https://hub.docker.com/repository/docker/jhn322/yaml-url-checker/general",
-    icon: "/other-projects/yaml-url-checker.webp",
-    projectType: "Personal",
-  },
-  {
-    title: "Leadvio",
-    description:
-      "Helped enhancing Leadvio, a LinkedIn automation tool, by developing company search functionality alongside the existing people search. Created dynamic table rendering based on search queries. Debugged XHR requests with Postman and implemented title filtering across companies. Developed Chrome extension components for LinkedIn profile interactions.",
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "Prisma",
-      "MongoDB",
-      "Clerk",
-      "JWT",
-      "Tailwind CSS",
-      "LinkedIn API",
-      "Postman",
-    ],
-    liveUrl: "https://www.leadvio.se/",
-    icon: "/other-projects/leadvio.webp",
-    projectType: "Internship",
-  },
-  {
-    title: "Dev Blog",
-    description:
-      "A blog for sharing software development insights and best practices, built with Next.js. Blog content is authored in Markdown within the Obsidian application. These Markdown files are managed in a separate Git repository named blog-content, which is integrated as a submodule into the main project. A synchronization process, using GitHub Actions, updates the main application with the latest content from the blog-content repository.",
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "GitHub Actions",
-      "Submodules",
-      "Obsidian",
-      "Typography",
-      "Husky",
-      "Remark",
-    ],
-    liveUrl: "https://dev-blog-puce-two.vercel.app/",
-    githubUrl: "https://github.com/jhn322/dev-blog",
-    icon: "/other-projects/semurai.webp",
-    projectType: "Internship",
-  },
-  {
-    title: "LibreChat Semurai",
-    description:
-      "Deployed and configured an internal AI chatbot using OpenAI and Anthropic models. Set up with Digital Ocean droplet with Ubuntu, Docker, and MongoDB. Configured DNS with Cloudflare and implemented SSL for secure connections. Managed user access and database administration to maintain security.",
-    tags: [
-      "React",
-      "TypeScript",
-      "Digital Ocean",
-      "Cloudflare",
-      "SSL",
-      "MongoDB",
-      "Ubuntu",
-      "Docker",
-    ],
-    liveUrl: "https://www.librechat.ai/",
-    githubUrl: "https://github.com/jhn322/librechat-semurai",
-    icon: "/other-projects/librechat.webp",
-    projectType: "Internship",
-  },
-];
+import { projectPages } from "../data/other-projects";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "../ui/pagination";
 
 const ExpandableButtonGroup = ({
   dockerHubUrl,
@@ -311,109 +186,201 @@ const ExpandableButtonGroup = ({
 };
 
 export default function OtherProjects() {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [pageDirection, setPageDirection] = useState(1);
+  const pageCount = projectPages.length;
+
+  const changePage = (page: number, direction?: number) => {
+    if (page === currentPage) {
+      return;
+    }
+
+    setPageDirection(direction ?? (page > currentPage ? 1 : -1));
+    setCurrentPage(page);
+  };
+
+  const goToPreviousPage = () => {
+    changePage((currentPage - 1 + pageCount) % pageCount, -1);
+  };
+
+  const goToNextPage = () => {
+    changePage((currentPage + 1) % pageCount, 1);
+  };
+
   return (
     <section id="other-projects" className="py-20 md:py-32 relative">
       <div className="container mx-auto px-4">
-        <FadeIn className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 inline-block relative">
-            Other Noteworthy Projects
-            <span className="absolute -bottom-2 left-1/3 w-1/3 h-1 bg-purple-600"></span>
-          </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto text-lg">
-            A collection of projects that I&apos;ve worked on to explore
-            different technologies and learn new things throughout my coding
-            journey.
-          </p>
-        </FadeIn>
+        <div className="mb-8">
+          <FadeIn className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 inline-block relative">
+              Other Noteworthy Projects
+              <span className="absolute -bottom-2 left-1/3 w-1/3 h-1 bg-purple-600"></span>
+            </h2>
+            <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+              A collection of projects that I&apos;ve worked on to explore
+              different technologies and learn new things throughout my coding
+              journey.
+            </p>
+          </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <FadeIn
-              key={project.title}
-              delay={index * 100}
-              className="relative group h-full"
-            >
-              <motion.div whileHover={{ y: -10 }} className="h-full">
-                <div className="absolute inset-0 bg-purple-700 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none" />
+          <Pagination className="mt-8 justify-end md:mt-10 md:w-auto">
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious
+                  href="#other-projects"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    goToPreviousPage();
+                  }}
+                  size="icon"
+                  className="h-10 w-10 rounded-full p-0 [&>span]:hidden [&_svg]:size-6"
+                />
+              </PaginationItem>
+              {projectPages.map((_, pageIndex) => (
+                <PaginationItem key={pageIndex}>
+                  <PaginationLink
+                    href="#other-projects"
+                    isActive={currentPage === pageIndex}
+                    aria-label={`Go to projects page ${pageIndex + 1}`}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      changePage(pageIndex);
+                    }}
+                    className={
+                      currentPage === pageIndex
+                        ? "relative rounded-full border-transparent text-white hover:text-white"
+                        : "relative rounded-full"
+                    }
+                  >
+                    {currentPage === pageIndex && (
+                      <motion.span
+                        layoutId="activeOtherProjectsPage"
+                        className="absolute inset-0 rounded-full bg-purple-600"
+                        style={{ borderRadius: 9999 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 25,
+                        }}
+                      />
+                    )}
+                    <span className="relative z-10">{pageIndex + 1}</span>
+                  </PaginationLink>
+                </PaginationItem>
+              ))}
+              <PaginationItem>
+                <PaginationNext
+                  href="#other-projects"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    goToNextPage();
+                  }}
+                  size="icon"
+                  className="h-10 w-10 rounded-full p-0 [&>span]:hidden [&_svg]:size-6"
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </div>
 
-                <Card className="relative h-full flex flex-col bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30 overflow-hidden group">
-                  <CardHeader className="flex flex-row justify-between items-start pb-4 relative">
-                    <motion.div
-                      whileHover={{ scale: 1.1, rotate: -5 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 15,
-                      }}
-                      className="p-3 rounded-2xl bg-purple-700 shadow-lg"
-                    >
-                      {project.icon ? (
-                        <Image
-                          src={project.icon}
-                          alt={`${project.title} icon`}
-                          width={24}
-                          height={24}
-                          className="h-6 w-6 object-contain"
-                        />
-                      ) : (
-                        <Folder className="h-6 w-6" />
-                      )}
-                    </motion.div>
+        <AnimatePresence mode="wait" custom={pageDirection}>
+          <motion.div
+            key={currentPage}
+            custom={pageDirection}
+            initial={{ opacity: 0, x: pageDirection * 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: pageDirection * -40 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {projectPages[currentPage].map((project, index) => (
+              <FadeIn
+                key={project.title}
+                delay={index * 100}
+                className="relative group h-full"
+              >
+                <motion.div whileHover={{ y: -10 }} className="h-full">
+                  <div className="absolute inset-0 bg-purple-700 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none" />
 
-                    <ExpandableButtonGroup
-                      dockerHubUrl={project.dockerHubUrl}
-                      githubUrl={project.githubUrl}
-                      liveUrl={project.liveUrl}
-                      projectTitle={project.title}
-                    />
-                  </CardHeader>
-
-                  <CardContent className="flex-grow pb-4">
-                    {project.liveUrl ? (
-                      <Link
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                  <Card className="relative h-full flex flex-col bg-gradient-to-br from-black/30 to-purple-900/10 backdrop-blur-md border-purple-900/30 overflow-hidden group">
+                    <CardHeader className="flex flex-row justify-between items-start pb-4 relative">
+                      <motion.div
+                        whileHover={{ scale: 1.1, rotate: -5 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 15,
+                        }}
+                        className="p-3 rounded-2xl bg-purple-700 shadow-lg"
                       >
+                        {project.icon ? (
+                          <Image
+                            src={project.icon}
+                            alt={`${project.title} icon`}
+                            width={24}
+                            height={24}
+                            className="h-6 w-6 object-contain"
+                          />
+                        ) : (
+                          <Folder className="h-6 w-6" />
+                        )}
+                      </motion.div>
+
+                      <ExpandableButtonGroup
+                        dockerHubUrl={project.dockerHubUrl}
+                        githubUrl={project.githubUrl}
+                        liveUrl={project.liveUrl}
+                        projectTitle={project.title}
+                      />
+                    </CardHeader>
+
+                    <CardContent className="flex-grow pb-4">
+                      {project.liveUrl ? (
+                        <Link
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <div className="flex items-center mb-2">
+                            <CardTitle className="text-xl font-bold group-hover:text-purple-300 transition-colors duration-300">
+                              {project.title}
+                            </CardTitle>
+                            {project.projectType && (
+                              <ProjectTag type={project.projectType} />
+                            )}
+                          </div>
+                        </Link>
+                      ) : (
                         <div className="flex items-center mb-2">
-                          <CardTitle className="text-xl font-bold group-hover:text-purple-300 transition-colors duration-300">
+                          <CardTitle className="text-xl font-bold">
                             {project.title}
                           </CardTitle>
                           {project.projectType && (
                             <ProjectTag type={project.projectType} />
                           )}
                         </div>
-                      </Link>
-                    ) : (
-                      <div className="flex items-center mb-2">
-                        <CardTitle className="text-xl font-bold">
-                          {project.title}
-                        </CardTitle>
-                        {project.projectType && (
-                          <ProjectTag type={project.projectType} />
-                        )}
-                      </div>
-                    )}
-                    <p className="text-gray-300 text-sm">
-                      {project.description}
-                    </p>
-                  </CardContent>
+                      )}
+                      <p className="text-gray-300 text-sm">
+                        {project.description}
+                      </p>
+                    </CardContent>
 
-                  <CardFooter className="flex flex-wrap gap-2 pt-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/30"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </CardFooter>
-                </Card>
-              </motion.div>
-            </FadeIn>
-          ))}
-        </div>
+                    <CardFooter className="flex flex-wrap gap-2 pt-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 text-xs text-purple-300 rounded-full border border-purple-700/30 bg-purple-900/30"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </CardFooter>
+                  </Card>
+                </motion.div>
+              </FadeIn>
+            ))}
+          </motion.div>
+        </AnimatePresence>
 
         <FadeIn className="flex justify-center mt-12">
           <Button
