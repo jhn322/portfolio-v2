@@ -1,0 +1,39 @@
+# Keeps the Brevo API key active via scheduled pings.
+#
+# Repository secrets (Settings → Secrets and variables → Actions):
+#   BREVO_API_KEY — same Brevo API key as the app
+
+name: Keep services active
+
+on:
+  schedule:
+    # Weekly — Monday 08:00 UTC (Brevo inactivity ~90 days)
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+
+concurrency:
+  group: keepalive
+  cancel-in-progress: false
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Ping Brevo
+        run: npm run keepalive
+        env:
+          #   DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
