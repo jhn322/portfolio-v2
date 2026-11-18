@@ -170,7 +170,7 @@ export const projectPages: Project[][] = [
       ],
       liveUrl: "https://rently-app.netlify.app/",
       githubUrl: "https://github.com/jhn322/rently",
-      icon: "/other-projects/rently.webp",
+      icon: "/chas/rently.webp",
       projectType: "School",
     },
     {
@@ -190,7 +190,7 @@ export const projectPages: Project[][] = [
       ],
       liveUrl: "https://kanban-kollab.netlify.app/",
       githubUrl: "https://github.com/jhn322/kanban-group-react",
-      icon: "/other-projects/kanban.webp",
+      icon: "/chas/kanban-group.webp",
       projectType: "School",
     },
   ],

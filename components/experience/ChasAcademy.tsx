@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
   ChevronDown,
@@ -9,46 +9,17 @@ import {
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { schoolProjects, type SchoolProject } from "../data/chas-academy";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "../ui/pagination";
 
-interface SchoolProject {
-  title: string;
-  description: string;
-  tags: string[];
-  liveUrl?: string;
-  githubUrl?: string;
-  icon?: string;
-}
-
-const schoolProjects: SchoolProject[] = [
-  {
-    title: "The Dashboard",
-    description:
-      "An aesthetically pleasing dashboard designed to be a go-to landing page for bookmarking and organizing links.",
-    tags: ["JavaScript", "CSS", "Unsplash API", "Weather API", "Local Storage"],
-    liveUrl: "https://jhn-dashboard.netlify.app/",
-    githubUrl: "https://github.com/jhn322/dashboard-frontend",
-    icon: "/chas/dashboard.png",
-  },
-  {
-    title: "Kanban Group Project",
-    description:
-      "A highly functional Kanban board for effective planning and collaboration between team members.",
-    tags: ["React", "Redux", "JavaScript", "Google Analytics", "Custom Hooks"],
-    liveUrl: "https://kanban-kollab.netlify.app/",
-    githubUrl: "https://github.com/jhn322/kanban-group-react",
-    icon: "/chas/kanban.png",
-  },
-  {
-    title: "Quire",
-    description:
-      "A digital assistant designed for creating, saving, and editing everyday notes with ease.",
-    tags: ["JavaScript", "CSS", "HTML", "Google Analytics", "Textformatting"],
-    liveUrl: "https://regni.github.io/quire/",
-    githubUrl: "https://github.com/jhn322/quire",
-    icon: "/chas/quire.png",
-  },
-];
-
+const projectsPerPage = 3;
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -453,9 +424,29 @@ const CoursesDetails = ({
 
 const ChasAcademy = () => {
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [pageDirection, setPageDirection] = useState(1);
+  const pageCount = Math.ceil(schoolProjects.length / projectsPerPage);
 
   const toggleAccordion = () => {
     setIsAccordionOpen((prev) => !prev);
+  };
+
+  const changePage = (page: number, direction?: number) => {
+    if (page === currentPage) {
+      return;
+    }
+
+    setPageDirection(direction ?? (page > currentPage ? 1 : -1));
+    setCurrentPage(page);
+  };
+
+  const goToPreviousPage = () => {
+    changePage((currentPage - 1 + pageCount) % pageCount, -1);
+  };
+
+  const goToNextPage = () => {
+    changePage((currentPage + 1) % pageCount, 1);
   };
 
   return (
@@ -588,7 +579,10 @@ const ChasAcademy = () => {
         toggleAccordion={toggleAccordion}
       />
 
-      <div className="mt-12 pt-8 border-t border-purple-900/30">
+      <div
+        id="school-projects"
+        className="mt-12 pt-8 border-t border-purple-900/30"
+      >
         <motion.h4
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -599,15 +593,89 @@ const ChasAcademy = () => {
           School Projects
         </motion.h4>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {schoolProjects.map((project, index) => (
-            <SchoolProjectCard
-              key={project.title}
-              project={project}
-              index={index}
-            />
-          ))}
-        </div>
+        <Pagination className="mb-6 justify-end md:w-auto">
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
+                href="#school-projects"
+                onClick={(event) => {
+                  event.preventDefault();
+                  goToPreviousPage();
+                }}
+                size="icon"
+                className="h-10 w-10 rounded-full p-0 [&>span]:hidden [&_svg]:size-6"
+              />
+            </PaginationItem>
+            {Array.from({ length: pageCount }, (_, pageIndex) => (
+              <PaginationItem key={pageIndex}>
+                <PaginationLink
+                  href="#school-projects"
+                  isActive={currentPage === pageIndex}
+                  aria-label={`Go to school projects page ${pageIndex + 1}`}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    changePage(pageIndex);
+                  }}
+                  className={
+                    currentPage === pageIndex
+                      ? "relative rounded-full border-transparent text-white hover:text-white"
+                      : "relative rounded-full"
+                  }
+                >
+                  {currentPage === pageIndex && (
+                    <motion.span
+                      layoutId="activeSchoolProjectsPage"
+                      className="absolute inset-0 rounded-full bg-purple-600"
+                      style={{ borderRadius: 9999 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 25,
+                      }}
+                    />
+                  )}
+                  <span className="relative z-10">{pageIndex + 1}</span>
+                </PaginationLink>
+              </PaginationItem>
+            ))}
+            <PaginationItem>
+              <PaginationNext
+                href="#school-projects"
+                onClick={(event) => {
+                  event.preventDefault();
+                  goToNextPage();
+                }}
+                size="icon"
+                className="h-10 w-10 rounded-full p-0 [&>span]:hidden [&_svg]:size-6"
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+
+        <AnimatePresence mode="wait" custom={pageDirection}>
+          <motion.div
+            key={currentPage}
+            custom={pageDirection}
+            initial={{ opacity: 0, x: pageDirection * 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: pageDirection * -40 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+          >
+            {schoolProjects
+              .slice(
+                currentPage * projectsPerPage,
+                (currentPage + 1) * projectsPerPage,
+              )
+              .map((project, index) => (
+                <SchoolProjectCard
+                  key={project.title}
+                  project={project}
+                  index={index}
+                />
+              ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </motion.div>
   );
