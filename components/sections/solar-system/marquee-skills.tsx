@@ -166,7 +166,7 @@ const marqueeRows = [
     direction: "right" as const,
   },
   {
-    label: "Tools & Performance",
+    label: "Tools & AI",
     categoryNames: ["Tools", "Performance"],
     duration: 32,
     direction: "left" as const,
